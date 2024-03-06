@@ -16,8 +16,7 @@ public class MapManager : MonoBehaviour
 
     private Dictionary<TileBase, TileData> dataFromTiles;
     // Start is called before the first frame update
-    [SerializeField]
-    CropManager cropManager;
+    public CropManager cropManager;
     private void Awake()
     {
         dataFromTiles = new Dictionary<TileBase, TileData>();
@@ -47,12 +46,10 @@ public class MapManager : MonoBehaviour
 
     if(Input.GetKeyDown("p")){
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector3Int gridPos = tilemap.WorldToCell(mousePos);
             PlantCrop(mousePos,1);
         }
     if(Input.GetKeyDown("c")){
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector3Int gridPos = tilemap.WorldToCell(mousePos);
             CollectCrop(mousePos);
         }
     }
@@ -70,7 +67,7 @@ public class MapManager : MonoBehaviour
                 tilemap.SetTile(gridPosition, carrot);
                 break;
         }
-        //cropManager.updateCropSeeds(cropType, -1);
+        cropManager.UpdateCropSeeds(cropType, -1);
 
         
     }
@@ -81,7 +78,7 @@ public class MapManager : MonoBehaviour
             return;
         }
         tilemap.SetTile(gridPosition, soil);
-        //cropManager.updateCropQuantity(dataFromTiles[tile].crop_type, (int) (dataFromTiles[tile].quantity*dataFromTiles[tile].crop_growth/100));
+        cropManager.UpdateCropQuantity(dataFromTiles[tile].crop_type, (int) (dataFromTiles[tile].quantity*dataFromTiles[tile].crop_growth/100));
 
     }
     public void WaterCrop(Vector2 worldPosition){
