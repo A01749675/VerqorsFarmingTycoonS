@@ -7,6 +7,9 @@ public class MapManager : MonoBehaviour
     [SerializeField]
     private Tilemap tilemap;
 
+    public TileBase wheat;
+    public TileBase carrot;
+
     [SerializeField]
     private List<TileData> tileDatas;
 
@@ -20,6 +23,7 @@ public class MapManager : MonoBehaviour
         {
             foreach(var tile in tileData.tiles)
             {
+
                 dataFromTiles.Add(tile, tileData);
             }
         }
@@ -28,7 +32,23 @@ public class MapManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+      if(Input.GetMouseButtonDown(0))
+        {
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3Int gridPos = tilemap.WorldToCell(mousePos);
+
+            TileBase clickedTile = tilemap.GetTile(gridPos);
+            print("At pos: "+gridPos+" tile: "+clickedTile);
+            print("Crop type: "+dataFromTiles[clickedTile].crop_type);
+
+        }
+        if(Input.GetKeyDown("p")){
+            print("A");
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3Int gridPos = tilemap.WorldToCell(mousePos);
+            PlantCrop(mousePos,1);
+
+        }
     }
     public void PlantCrop(Vector2 worldPosition, int cropType){
         Vector3Int gridPosition = tilemap.WorldToCell(worldPosition);
@@ -38,6 +58,16 @@ public class MapManager : MonoBehaviour
         }
         dataFromTiles[tile].crop_type = cropType;
         dataFromTiles[tile].isPlanted = true;
+        print("Planted: "+cropType);
+        switch(cropType){
+            case 1:
+                tilemap.SetTile(gridPosition, wheat);
+                break;
+            case 2:
+                tilemap.SetTile(gridPosition, carrot);
+                break;
+        }
+        
     }
     public void CollectCrop(Vector2 worldPosition){
         Vector3Int gridPosition = tilemap.WorldToCell(worldPosition);
