@@ -6,14 +6,14 @@ public class CropManager : MonoBehaviour
 {
     // Start is called before the first frame update
     private Dictionary<int, int> crop_quantity = new Dictionary<int, int>(){
-        {1,0},
+        {1,10},
         {2,0},
         {3,0},
         {4,0},
         {5,0}
     };
     private Dictionary<int, int> crop_seeds = new Dictionary<int, int>(){
-        {1,0},
+        {1,5},
         {2,0},
         {3,0},
         {4,0},
@@ -21,6 +21,7 @@ public class CropManager : MonoBehaviour
     };
     public void updateCropQuantity(int cropType, int quantity){
         crop_quantity[cropType] += quantity;
+        print(crop_quantity[cropType]);
     }
     public int getCropQuantity(int cropType){
         return crop_quantity[cropType];
