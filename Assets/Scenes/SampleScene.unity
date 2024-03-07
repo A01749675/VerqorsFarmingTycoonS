@@ -153,11 +153,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 1066584982}
-  wheat: {fileID: 11400000, guid: 8f2b17453d695354397cce2e5b4c41cf, type: 2}
-  carrot: {fileID: 0}
+  soil: {fileID: 11400000, guid: d39302ae27b96b644935d0747b3218b1, type: 2}
+  barley_seeds: {fileID: 11400000, guid: 8f2b17453d695354397cce2e5b4c41cf, type: 2}
+  corn_seeds: {fileID: 0}
+  tomato_seeds: {fileID: 0}
+  avocado_seeds: {fileID: 0}
+  coffee_seeds: {fileID: 0}
+  chili_seeds: {fileID: 0}
   tileDatas:
   - {fileID: 11400000, guid: 8c39387d9da3ff2418101e2e3e0b97be, type: 2}
   - {fileID: 11400000, guid: f87947477c3cd144f8171ea3a28147ac, type: 2}
+  cropManager: {fileID: 1475232810}
 --- !u!4 &11134405
 Transform:
   m_ObjectHideFlags: 0
@@ -234,7 +240,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.4
+  orthographic size: 2.391411
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -259,7 +265,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 4.43, y: 0.41, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20858,6 +20864,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 989288574}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1475232809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1475232811}
+  - component: {fileID: 1475232810}
+  m_Layer: 0
+  m_Name: CropManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1475232810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475232809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f5a715f582fc894e981d53b5614f1bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1475232811
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475232809}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.3339167, y: 1.2929707, z: 0.07731562}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -20865,3 +20915,4 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 989288574}
   - {fileID: 11134405}
+  - {fileID: 1475232811}

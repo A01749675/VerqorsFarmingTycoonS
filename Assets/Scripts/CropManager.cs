@@ -27,7 +27,6 @@ public class CropManager : MonoBehaviour
     public void UpdateCropQuantity(int cropType, int quantity){
         crop_quantity[cropType] += quantity;
         print(crop_quantity[cropType]);
-
     }
     public int GetCropQuantity(int cropType){
         return crop_quantity[cropType];

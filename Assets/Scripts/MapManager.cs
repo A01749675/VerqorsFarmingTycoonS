@@ -8,13 +8,13 @@ public class MapManager : MonoBehaviour
     private Tilemap tilemap;
 
     public TileBase soil;
-    public TileBase barley;
-    public TileBase corn;
+    public TileBase barley_seeds;
+    public TileBase corn_seeds;
 
-    public TileBase tomato;
-    public TileBase avocado;
-    public TileBase coffee;
-    public TileBase chili;
+    public TileBase tomato_seeds;
+    public TileBase avocado_seeds;
+    public TileBase coffee_seeds;
+    public TileBase chili_seeds;
 
     [SerializeField]
     private List<TileData> tileDatas;
@@ -60,33 +60,33 @@ public class MapManager : MonoBehaviour
     }
     public void PlantCrop(Vector2 worldPosition, int cropType){
         Vector3Int gridPosition = tilemap.WorldToCell(worldPosition);
-        TileBase tile = tilemap.GetTile(gridPosition);
         if(tileDatas==null){
             return;
         }
-        switch(cropType){
-            case 1:
-                tilemap.SetTile(gridPosition, barley);
-                break;
-            case 2:
-                tilemap.SetTile(gridPosition, corn);
-                break;
-            case 3:
-                tilemap.SetTile(gridPosition, tomato);
-                break;
-            case 4:
-                tilemap.SetTile(gridPosition, avocado);
-                break;
-            case 5:
-                tilemap.SetTile(gridPosition, coffee);
-                break;
-            case 6: 
-                tilemap.SetTile(gridPosition, chili);
-                break;
-            
+        TileBase tile = tilemap.GetTile(gridPosition);
+        if(dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type==-1){
+            switch(cropType){
+                case 1:
+                    tilemap.SetTile(gridPosition, barley_seeds);
+                    break;
+                case 2:
+                    tilemap.SetTile(gridPosition, corn_seeds);
+                    break;
+                case 3:
+                    tilemap.SetTile(gridPosition, tomato_seeds);
+                    break;
+                case 4:
+                    tilemap.SetTile(gridPosition, avocado_seeds);
+                    break;
+                case 5:
+                    tilemap.SetTile(gridPosition, coffee_seeds);
+                    break;
+                case 6: 
+                    tilemap.SetTile(gridPosition, chili_seeds);
+                    break;   
+            }
+            cropManager.UpdateCropSeeds(cropType, -1);
         }
-        cropManager.UpdateCropSeeds(cropType, -1);
-
         
     }
     public void CollectCrop(Vector2 worldPosition){
@@ -95,8 +95,11 @@ public class MapManager : MonoBehaviour
         if(tileDatas==null){
             return;
         }
-        tilemap.SetTile(gridPosition, soil);
-        cropManager.UpdateCropQuantity(dataFromTiles[tile].crop_type, (int) (dataFromTiles[tile].quantity*dataFromTiles[tile].crop_growth/100));
+        if(dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type!=-1){
+            tilemap.SetTile(gridPosition, soil);
+            cropManager.UpdateCropQuantity(dataFromTiles[tile].crop_type, (int) (dataFromTiles[tile].quantity*dataFromTiles[tile].crop_growth/100));
+        }
+        
 
     }
     public void WaterCrop(Vector2 worldPosition){
