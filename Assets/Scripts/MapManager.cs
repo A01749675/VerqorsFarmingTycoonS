@@ -8,8 +8,13 @@ public class MapManager : MonoBehaviour
     private Tilemap tilemap;
 
     public TileBase soil;
-    public TileBase wheat;
-    public TileBase carrot;
+    public TileBase barley;
+    public TileBase corn;
+
+    public TileBase tomato;
+    public TileBase avocado;
+    public TileBase coffee;
+    public TileBase chili;
 
     [SerializeField]
     private List<TileData> tileDatas;
@@ -61,11 +66,24 @@ public class MapManager : MonoBehaviour
         }
         switch(cropType){
             case 1:
-                tilemap.SetTile(gridPosition, wheat);
+                tilemap.SetTile(gridPosition, barley);
                 break;
             case 2:
-                tilemap.SetTile(gridPosition, carrot);
+                tilemap.SetTile(gridPosition, corn);
                 break;
+            case 3:
+                tilemap.SetTile(gridPosition, tomato);
+                break;
+            case 4:
+                tilemap.SetTile(gridPosition, avocado);
+                break;
+            case 5:
+                tilemap.SetTile(gridPosition, coffee);
+                break;
+            case 6: 
+                tilemap.SetTile(gridPosition, chili);
+                break;
+            
         }
         cropManager.UpdateCropSeeds(cropType, -1);
 
