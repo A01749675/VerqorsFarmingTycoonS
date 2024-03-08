@@ -42,18 +42,18 @@ public class MapManager : MonoBehaviour
     {
     if(Input.GetMouseButtonDown(0))
         {
+
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3Int gridPos = tilemap.WorldToCell(mousePos);
             TileBase clickedTile = tilemap.GetTile(gridPos);
             if(clickedTile && dataFromTiles.ContainsKey(clickedTile)){
                 selected_crop = dataFromTiles[clickedTile].crop_type;
-                print("Selected: " + selected_crop);
+                print("Selected crop "+selected_crop);
             }
 
         }
 
     if(Input.GetKeyDown("p")){
-
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             PlantCrop(mousePos);
         }
@@ -75,22 +75,22 @@ public class MapManager : MonoBehaviour
                 print("Selecting crop");
                 switch(selected_crop){
                         case 1:
-                            PlantAll(barley_seeds,selected_crop);
+                            PlantAll(barley_seeds);
                             break;
                         case 2:
-                            PlantAll(corn_seeds,selected_crop);
+                            PlantAll(corn_seeds);
                             break;
                         case 3:
-                            PlantAll(tomato_seeds,selected_crop);
+                            PlantAll(tomato_seeds);
                             break;
                         case 4:
-                            PlantAll(avocado_seeds,selected_crop);
+                            PlantAll(avocado_seeds);
                             break;
                         case 5:
-                            PlantAll(coffee_seeds,selected_crop);
+                            PlantAll(coffee_seeds);
                             break;
                         case 6: 
-                            PlantAll(chili_seeds,selected_crop);
+                            PlantAll(chili_seeds);
                             break;   
                     }
             }
@@ -168,7 +168,7 @@ public class MapManager : MonoBehaviour
         int Water = dataFromTiles[tile].water;
         return Water;
     }
-    public void PlantAll(TileBase seed, int crop_type){
+    public void PlantAll(TileBase seed){
         int i = 0;
         for(i = 0; i<tilemap.size.x; i++){
             for(int j = 0; j<tilemap.size.y; j++){
@@ -176,7 +176,7 @@ public class MapManager : MonoBehaviour
                 TileBase tile = tilemap.GetTile(gridPosition);
                 if(tile && dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type==-1){
                     tilemap.SetTile(gridPosition, seed);
-                    cropManager.UpdateCropSeeds(crop_type, -1);
+                    cropManager.UpdateCropSeeds(selected_crop, -1);
                 }
             }
         }
