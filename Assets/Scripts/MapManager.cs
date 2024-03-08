@@ -135,7 +135,7 @@ public class MapManager : MonoBehaviour
         int CropGrowth = dataFromTiles[tile].crop_growth;
         return CropGrowth;
     }
-    public bool isPlanted(Vector2 worldPosition){
+    public bool IsPlanted(Vector2 worldPosition){
         Vector3Int gridPosition = tilemap.WorldToCell(worldPosition);
         TileBase tile = tilemap.GetTile(gridPosition);
         if(tileDatas==null){
