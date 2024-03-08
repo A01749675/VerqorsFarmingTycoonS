@@ -42,6 +42,7 @@ public class MapManager : MonoBehaviour
     {
     if(Input.GetMouseButtonDown(0))
         {
+            
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3Int gridPos = tilemap.WorldToCell(mousePos);
             TileBase clickedTile = tilemap.GetTile(gridPos);
@@ -162,11 +163,11 @@ public class MapManager : MonoBehaviour
         int Water = dataFromTiles[tile].water;
         return Water;
     }
-    public void UpdateGrowths(){
+    public void PlantCorn(){
         foreach(var tileData in tileDatas){
             foreach(var tile in tileData.tiles){
-                if(tileData.isPlanted){
-                    tileData.crop_growth += 1;
+                if(tileData.crop_type==0){
+                    
                 }
             }
         }
