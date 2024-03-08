@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c58f5abb410fa74f91d1cb3ddbf122a, type: 3}
-  m_Name: Avocado
+  m_Name: TomatoBox
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
   tiles:
-  - {fileID: 11400000, guid: 037e47a50a9274441ab3e872bf0144db, type: 2}
-  - {fileID: 11400000, guid: facee1ceae9c16c4397319181ea9a2b0, type: 2}
-  - {fileID: 11400000, guid: 2efc59c132576f8448f7798450be8cb8, type: 2}
-  crop_type: 4
+  - {fileID: 11400000, guid: 97ca415ae1430f940990513579dbca57, type: 2}
+  crop_type: 3
   crop_growth: 0
-  quantity: 5
+  quantity: 0
   water: 0
-  isPlanted: 1
+  isPlanted: 0
+  isBox: 1
