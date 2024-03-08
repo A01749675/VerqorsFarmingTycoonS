@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c58f5abb410fa74f91d1cb3ddbf122a, type: 3}
-  m_Name: Soil
+  m_Name: Soil2
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
   tiles:
-  - {fileID: 11400000, guid: d39302ae27b96b644935d0747b3218b1, type: 2}
-  crop_type: -1
+  - {fileID: 11400000, guid: 46fc41e621bf08f458bca14b7de2f415, type: 2}
+  crop_type: 2
   crop_growth: 0
   quantity: 0
   water: 0

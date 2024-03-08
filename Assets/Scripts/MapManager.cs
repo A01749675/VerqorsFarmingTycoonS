@@ -53,6 +53,8 @@ public class MapManager : MonoBehaviour
 
         }
 
+
+
     if(Input.GetKeyDown("p")){
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             PlantCrop(mousePos);
@@ -169,8 +171,7 @@ public class MapManager : MonoBehaviour
         return Water;
     }
     public void PlantAll(TileBase seed){
-        print("SIZEEEE");
-        print(tilemap.size);
+
         int i;
 
         for(i = -2*tilemap.size.x; i<2*tilemap.size.x; i++){
