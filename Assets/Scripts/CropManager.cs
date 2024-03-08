@@ -23,11 +23,11 @@ public class CropManager : MonoBehaviour
         };
         crop_seeds = new Dictionary<int, int>(){
             {1,10},
-            {2,100},
-            {3,10},
+            {2,500},
+            {3,100},
             {4,10},
             {5,10},
-            {6,10}
+            {6,20}
         };
         crop_soil = new Dictionary<int, int>(){
             {1,-1},
@@ -48,9 +48,9 @@ public class CropManager : MonoBehaviour
         return crop_quantity[cropType];
     }
     public void UpdateCropSeeds(int cropType, int quantity){
-        if(crop_seeds[cropType]+quantity<=0){
-            crop_seeds[cropType] += quantity;
-        }
+        crop_seeds[cropType] += quantity;
+        
+        print("UPDATEEEEEEEEEEEEEEEEEEEE");
         print(crop_seeds[cropType]);
     }
     public int GetCropSeeds(int cropType){

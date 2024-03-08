@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: WheatBox
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  tiles: []
-  crop_type: 0
+  tiles:
+  - {fileID: 11400000, guid: 57c0dc3647b48244ba98c58850a233cb, type: 2}
+  crop_type: 1
   crop_growth: 0
   quantity: 0
   water: 0
-  isPlanted: 0
-  isBox: 0
+  isPlanted: 1
+  isBox: 1
