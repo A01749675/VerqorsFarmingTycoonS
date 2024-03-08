@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="background-image"></div>
+        <div class="form-back"></div>
+        <div class="form-back-2"></div>
+        <div class="form-display" id="register-form">
+            <form action="registro.php" method="POST">
+                <h2>Registrar</h2>
+                <input id="usuario" type="text" name="usuario" placeholder="Usuario" required="required">
+                <input id="correo" type="email" name="correo" placeholder="Correo" required="required">
+                <input id="contraseña" type="password" name="contraseña" placeholder="Contraseña" required="required">
+                
+                <div class="select-container">
+                    <select id="opciones" name="tipo_usuario" required="required">
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="inversionista">Inversionista</option>
+                        <option value="cliente_regular">Cliente regular</option>
+                        <option value="publico_general">Público general</option>
+                    </select>
+                </div>
+                
+                <button type="submit">Crear cuenta</button>
+                <div class="divider"></div>
+                <p>¿Ya tienes una cuenta? <a href="#" onclick="toggleForms()">Inicia sesión</a></p>
+            </form>
+        </div>
+        <div class="form-display hidden" id="login-form">
+            <form action="login.php" method="POST">
+                <h2>Iniciar Sesión</h2>
+                <br>
+                <input id="correo" type="email" name="correo" placeholder="Correo" required="required">
+                <input id="contraseña" type="password" name="contraseña" placeholder="Contraseña" required="required">
+                <button type="submit">Iniciar sesión</button>
+                <div class="divider"></div>
+                <p>¿No tienes una cuenta? <a href="#" onclick="toggleForms()">Regístrate</a></p>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
