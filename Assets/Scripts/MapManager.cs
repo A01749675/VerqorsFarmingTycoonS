@@ -48,7 +48,7 @@ public class MapManager : MonoBehaviour
             TileBase clickedTile = tilemap.GetTile(gridPos);
             if(clickedTile && dataFromTiles.ContainsKey(clickedTile)){
                 selected_crop = dataFromTiles[clickedTile].crop_type;
-                print("Selected crop "+selected_crop);
+                print("Selected crop "+selected_crop +" at "+gridPos);
             }
 
         }
@@ -59,7 +59,7 @@ public class MapManager : MonoBehaviour
         }
     if(Input.GetKeyDown("c")){
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            CollectCrop(mousePos);
+            CollectAll();
         }
     }
 
@@ -95,7 +95,7 @@ public class MapManager : MonoBehaviour
                     }
             }
             print("Planted");
-            cropManager.UpdateCropSeeds(selected_crop, -1);
+
         }
         
     }
@@ -169,14 +169,33 @@ public class MapManager : MonoBehaviour
         return Water;
     }
     public void PlantAll(TileBase seed){
-        int i = 0;
-        for(i = 0; i<tilemap.size.x; i++){
-            for(int j = 0; j<tilemap.size.y; j++){
+        print("SIZEEEE");
+        print(tilemap.size);
+        int i;
+
+        for(i = -2*tilemap.size.x; i<2*tilemap.size.x; i++){
+            for(int j = -2*tilemap.size.y; j<2*tilemap.size.y; j++){
                 Vector3Int gridPosition = new Vector3Int(i, j, 0);
                 TileBase tile = tilemap.GetTile(gridPosition);
-                if(tile && dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type==-1){
+                if(cropManager.GetCropSeeds(selected_crop)>0 && tile && dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type==-1){
                     tilemap.SetTile(gridPosition, seed);
                     cropManager.UpdateCropSeeds(selected_crop, -1);
+                    
+                }
+            }
+        }
+    }
+
+    public void CollectAll(){
+        int i = 0;
+        for(i = -2*tilemap.size.x; i<2*tilemap.size.x; i++){
+            for(int j = -2*tilemap.size.y; j<2*tilemap.size.y; j++){
+                Vector3Int gridPosition = new Vector3Int(i, j, 0);
+                TileBase tile = tilemap.GetTile(gridPosition);
+                if(tile && dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type!=-1 && !dataFromTiles[tile].isBox){
+                    tilemap.SetTile(gridPosition, soil);
+                    cropManager.UpdateCropQuantity(dataFromTiles[tile].crop_type, dataFromTiles[tile].quantity);
+                    
                 }
             }
         }
