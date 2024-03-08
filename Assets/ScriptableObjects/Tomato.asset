@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c58f5abb410fa74f91d1cb3ddbf122a, type: 3}
+  m_Name: Tomato
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
+  tiles:
+  - {fileID: 11400000, guid: 1cf6552aee93e054c89bf5e7aa637f8d, type: 2}
+  - {fileID: 11400000, guid: ef20e07003ea76843b22c4f9e3842d06, type: 2}
+  - {fileID: 11400000, guid: 6a9b7c64cdd78ce4e82607b6a12837be, type: 2}
+  crop_type: 3
+  crop_growth: 0
+  quantity: 0
+  water: 0
+  isPlanted: 1

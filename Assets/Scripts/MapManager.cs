@@ -16,6 +16,8 @@ public class MapManager : MonoBehaviour
     public TileBase coffee_seeds;
     public TileBase chili_seeds;
 
+    public int selected_crop = 0;
+
     [SerializeField]
     private List<TileData> tileDatas;
 
@@ -42,30 +44,32 @@ public class MapManager : MonoBehaviour
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3Int gridPos = tilemap.WorldToCell(mousePos);
-
             TileBase clickedTile = tilemap.GetTile(gridPos);
-            print("At pos: "+gridPos+" tile: "+clickedTile);
-            print("Crop type: "+dataFromTiles[clickedTile].crop_type);
+            if(dataFromTiles.ContainsKey(clickedTile)){
+                selected_crop = dataFromTiles[clickedTile].crop_type;
+                print("Current crop: "+selected_crop);
+            }
 
         }
 
     if(Input.GetKeyDown("p")){
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            PlantCrop(mousePos,1);
+            PlantCrop(mousePos);
         }
     if(Input.GetKeyDown("c")){
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             CollectCrop(mousePos);
         }
     }
-    public void PlantCrop(Vector2 worldPosition, int cropType){
+
+    public void PlantCrop(Vector2 worldPosition){
         Vector3Int gridPosition = tilemap.WorldToCell(worldPosition);
         if(tileDatas==null){
             return;
         }
         TileBase tile = tilemap.GetTile(gridPosition);
         if(dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type==-1){
-            switch(cropType){
+            switch(selected_crop){
                 case 1:
                     tilemap.SetTile(gridPosition, barley_seeds);
                     break;
@@ -85,7 +89,7 @@ public class MapManager : MonoBehaviour
                     tilemap.SetTile(gridPosition, chili_seeds);
                     break;   
             }
-            cropManager.UpdateCropSeeds(cropType, -1);
+            cropManager.UpdateCropSeeds(selected_crop, -1);
         }
         
     }

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c58f5abb410fa74f91d1cb3ddbf122a, type: 3}
+  m_Name: Chili
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
+  tiles:
+  - {fileID: 11400000, guid: 7961cdbe372728d41b02df95ebf0b4bf, type: 2}
+  - {fileID: 11400000, guid: 849a5545e8fbf01439b99a8462ca392e, type: 2}
+  - {fileID: 11400000, guid: c6c39f4d345044b439d72412ffacb06a, type: 2}
+  - {fileID: 11400000, guid: 44434ecde60225f4499dbb80232e6764, type: 2}
+  - {fileID: 11400000, guid: f92fb580f53fbf44786c8a9010fd8dc7, type: 2}
+  crop_type: 6
+  crop_growth: 0
+  quantity: 0
+  water: 0
+  isPlanted: 1

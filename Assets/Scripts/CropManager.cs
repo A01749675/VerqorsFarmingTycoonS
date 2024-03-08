@@ -6,6 +6,8 @@ using UnityEngine;
 public class CropManager : MonoBehaviour
 {
     // Start is called before the first frame update
+
+    public static int selected_crop;
     public Dictionary<int, int> crop_quantity;
     public Dictionary<int, int> crop_seeds;
     private void Awake(){
@@ -14,14 +16,16 @@ public class CropManager : MonoBehaviour
             {2,0},
             {3,0},
             {4,0},
-            {5,0}
+            {5,0},
+            {6,0}
         };
         crop_seeds = new Dictionary<int, int>(){
             {1,0},
             {2,0},
             {3,0},
             {4,0},
-            {5,0}
+            {5,0},
+            {6,0}
         };
     }
     public void UpdateCropQuantity(int cropType, int quantity){
@@ -40,5 +44,7 @@ public class CropManager : MonoBehaviour
     public int GetCropSeeds(int cropType){
         return crop_seeds[cropType];
     }
+
+
 
 }
