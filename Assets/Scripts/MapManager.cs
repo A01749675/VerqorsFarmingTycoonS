@@ -16,8 +16,12 @@ public class MapManager : MonoBehaviour
     public TileBase chili_seeds;
     private int selected_crop = 0;
     private int current_cycle = 0;
+
     private int chili_cycle = 0;
     private int barley_cycle = 0;
+    private int corn_cycle = 0;
+    private int tomato_cycle = 0;
+    private int avocado_cycle = 0;
 
 
     [SerializeField]
@@ -27,6 +31,11 @@ public class MapManager : MonoBehaviour
     [SerializeField]
     public List<TileBase> chilli_grow_tiles;
     public List<TileBase> barley_grow_tiles;
+    public List<TileBase> corn_grow_tiles;
+    public List<TileBase> tomato_grow_tiles;
+    public List<TileBase> avocado_grow_tiles;
+    public List<TileBase> coffee_grow_tiles;
+
     // Start is called before the first frame update
     public CropManager cropManager;
     private void Awake()
@@ -140,10 +149,18 @@ public class MapManager : MonoBehaviour
                     if(tile && dataFromTiles.ContainsKey(tile) && !dataFromTiles[tile].isBox){  
                         switch(dataFromTiles[tile].crop_type){
                             case 1:
-                                tilemap.SetTile(gridPosition, barley_grow_tiles[barley_cycle%barley_grow_tiles.Count]);
+                                tilemap.SetTile(gridPosition, barley_grow_tiles[barley_cycle]);
+                                break;
+                            case 2:
+                                tilemap.SetTile(gridPosition, corn_grow_tiles[corn_cycle]);
+                                break;
+                            case 3:
+                                tilemap.SetTile(gridPosition, tomato_grow_tiles[tomato_cycle]);
+                                break;
+                            case 4:
+                                tilemap.SetTile(gridPosition, avocado_grow_tiles[avocado_cycle]);
                                 break;
                             case 6:
-                                print("Chili cycle "+chili_cycle);
                                 tilemap.SetTile(gridPosition, chilli_grow_tiles[chili_cycle]);
                                 break;
                             }
@@ -156,10 +173,44 @@ public class MapManager : MonoBehaviour
 
     private void UpdateCropCycle(){
         if(plantedCrops[1]){
-            barley_cycle=(barley_cycle+1)%barley_grow_tiles.Count;
+            if(barley_cycle==barley_grow_tiles.Count-1){
+                barley_cycle=barley_grow_tiles.Count-1;
+            }
+            else{
+                barley_cycle=(barley_cycle+1)%barley_grow_tiles.Count;
+            }
+        }
+        if(plantedCrops[2]){
+            if(corn_cycle==corn_grow_tiles.Count-1){
+                corn_cycle=corn_grow_tiles.Count-1;
+            }
+            else{
+                corn_cycle=(corn_cycle+1)%corn_grow_tiles.Count;
+            }
+        }
+        if(plantedCrops[3]){
+            if(tomato_cycle==tomato_grow_tiles.Count-1){
+                tomato_cycle=tomato_grow_tiles.Count-1;
+            }
+            else{
+                tomato_cycle=(tomato_cycle+1)%tomato_grow_tiles.Count;
+            }
+        }
+        if(plantedCrops[4]){
+            if(avocado_cycle==avocado_grow_tiles.Count-1){
+                avocado_cycle=avocado_grow_tiles.Count-1;
+            }
+            else{
+                avocado_cycle=(avocado_cycle+1)%avocado_grow_tiles.Count;
+            }
         }
         if(plantedCrops[6]){
-            chili_cycle=(chili_cycle+1)%chilli_grow_tiles.Count;
+            if(chili_cycle==chilli_grow_tiles.Count-1){
+                chili_cycle=chilli_grow_tiles.Count-1;
+            }
+            else{
+                chili_cycle=(chili_cycle+1)%chilli_grow_tiles.Count;
+            }
         }
     }
     public void WaterCrop(Vector2 worldPosition){

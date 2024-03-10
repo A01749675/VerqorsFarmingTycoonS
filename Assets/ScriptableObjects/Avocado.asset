@@ -15,7 +15,9 @@ MonoBehaviour:
   sprite: {fileID: 0}
   tiles:
   - {fileID: 11400000, guid: 037e47a50a9274441ab3e872bf0144db, type: 2}
-  - {fileID: 11400000, guid: 2efc59c132576f8448f7798450be8cb8, type: 2}
+  - {fileID: 11400000, guid: eddb8c1095579a54cb05a5976e31c06e, type: 2}
+  - {fileID: 11400000, guid: 45256bf0259c9534e8ad419e889fdbc1, type: 2}
+  - {fileID: 11400000, guid: f37ea2620e693f240a9089f392bcede6, type: 2}
   crop_type: 4
   crop_growth: 0
   quantity: 5
