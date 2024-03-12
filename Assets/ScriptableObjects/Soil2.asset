@@ -10,17 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c58f5abb410fa74f91d1cb3ddbf122a, type: 3}
-  m_Name: Wheat
+  m_Name: Soil2
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
   tiles:
-  - {fileID: 11400000, guid: 8f2b17453d695354397cce2e5b4c41cf, type: 2}
-  - {fileID: 11400000, guid: fa2e276ab3e1d4e46846828a1bbbb916, type: 2}
-  - {fileID: 11400000, guid: 8006c820fe86aba43a0ae163a7bedc48, type: 2}
-  - {fileID: 11400000, guid: e81d4d6a0a6eb044bbad09c97a2de535, type: 2}
-  crop_type: 1
-  crop_growth: 2
-  quantity: 5
+  - {fileID: 11400000, guid: 46fc41e621bf08f458bca14b7de2f415, type: 2}
+  crop_type: -2
+  crop_growth: 0
+  quantity: 0
   water: 0
-  isPlanted: 1
+  isPlanted: 0
   isBox: 0
