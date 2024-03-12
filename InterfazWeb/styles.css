@@ -2,10 +2,11 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
+    
 }
 
 h2 {
-    font-family: Arial, sans-serif;
+    font-family: 'ArcadeClassic', sans-serif;
     margin-top: 0;
     text-align: center; 
     color: #b58026;
@@ -35,29 +36,6 @@ h2 {
     z-index: -1; 
 }
 
-.form-back{
-    z-index: 0;
-    background-color: #b58026;
-    opacity: 0.5;
-    width: 300px;
-    height: 300px;
-    margin-top: 13%;
-    display: flex;
-    position:fixed;
-    margin-left: 37%; 
-}
-
-.form-back-2{
-    z-index: 0;
-    background-color: #b58026;
-    opacity: 0.5;
-    width: 250px;
-    height: 300px;
-    margin-top: 15%;
-    display: flex;
-    position:fixed;
-    margin-left: 37%; 
-}
 
 .form-display {
     z-index: 1; 
@@ -66,42 +44,53 @@ h2 {
 }
 
 form {
-    background-color: #fff;
-    padding: 20px;
+    padding: 80px 70px;
+    padding-top: 80;
     width: 300px;
-    height: 400px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-image: url('form3.png');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
 }
-
-h2, p, a {
-    font-family: Arial, sans-serif; 
+h2, a {
+    font-family: 'ArcadeClassic', sans-serif;
     margin-top: 0;
 }
 
+p{
+    font-family: 'ArcadeClassic', sans-serif;
+    margin-top: 60px;
+}
 input[type="text"],
 input[type="email"],
 input[type="password"],
+input[type="date"],
+select,
 button {
-    width: 100%;
+    width: 90%;
     padding: 10px;
-    margin-top: 15px;
-    border: 1px solid #ccc;
+    margin-top: 10px;
+    border: 1px solid #b58026;
     border-radius: 5px;
     box-sizing: border-box;
+    color: #000;
+    background-color:#FDF4E5;
 }
 
 button {
     background-color: #b58026;
     color: #fff;
-    font-family: Arial, sans-serif;
+    font-family: 'ArcadeClassic', sans-serif;
     border: none;
     border-radius: 20px;
     cursor: pointer;
     align-self: center;
     width: 50%; 
-    margin-top: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 button:hover {
@@ -109,10 +98,9 @@ button:hover {
 }
 
 .divider {
-    width: 100%;
+    width: 90%;
     height: 1px;
-    background-color: #ccc;
-    margin: 20px 0;
+    background-color: #b58026;
 }
 
 p {
@@ -147,10 +135,10 @@ p a {
 }
 
 select {
-    width: 100%; 
+    width: 90%; 
     padding: 10px;
-    margin-top: 15px;
-    border: 1px solid #ccc;
+    margin-top: 10px;
+    border: 1px solid #b58026;
     border-radius: 5px;
     box-sizing: border-box;
     appearance: none; 
@@ -167,7 +155,7 @@ select {
     content: '\25BC'; 
     position: absolute;
     top: 73%;
-    right: 10px;
+    right: 40px;
     transform: translateY(-70%);
     pointer-events: none; 
     color:#aaa;

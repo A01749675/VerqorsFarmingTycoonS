@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.cdnfonts.com/css/arcade-classic" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <title>Verqor Farming Tycoon</title>
 </head>
 
 <body>
@@ -14,10 +16,19 @@
         <div class="form-back-2"></div>
         <div class="form-display" id="register-form">
             <form action="registro.php" method="POST">
-                <h2>Registrar</h2>
+                <h2 >Registrar</h2>
                 <input id="usuario" type="text" name="usuario" placeholder="Usuario" required="required">
                 <input id="correo" type="email" name="correo" placeholder="Correo" required="required">
                 <input id="contraseña" type="password" name="contraseña" placeholder="Contraseña" required="required">
+                
+                <input style=" width: 90%;
+                padding: 10px 10px;
+                margin-top: 10px;
+                border: 1px solid #b58026;
+                border-radius: 5px;
+                box-sizing: border-box;
+                font-family: Arial, sans-serif;
+                color: #aaa;" id="fecha_nacimiento" type="date" name="fecha_nacimiento" required="required">
                 
                 <div class="select-container">
                     <select id="opciones" name="tipo_usuario" required="required">
@@ -28,20 +39,21 @@
                     </select>
                 </div>
                 
-                <button type="submit">Crear cuenta</button>
-                <div class="divider"></div>
-                <p>¿Ya tienes una cuenta? <a href="#" onclick="toggleForms()">Inicia sesión</a></p>
+                <button type="submit">Crear<span style="color: #b58026;">_</span> cuenta</button>
+                
+                <p>¿Ya <span style="color: #FDF4E5;">_</span>tienes <span style="color: #FDF4E5;">_</span>una <span style="color: #FDF4E5;">_</span>cuenta? <br> <a href="#" onclick="toggleForms()">Inicia <span style="color: #FDF4E5;">_</span>sesión</a></p>
             </form>
         </div>
         <div class="form-display hidden" id="login-form">
             <form action="login.php" method="POST">
-                <h2>Iniciar Sesión</h2>
+                <h2 style="margin: 0;">Iniciar <br>Sesion</h2>
                 <br>
                 <input id="correo" type="email" name="correo" placeholder="Correo" required="required">
                 <input id="contraseña" type="password" name="contraseña" placeholder="Contraseña" required="required">
-                <button type="submit">Iniciar sesión</button>
+                <button type="submit">Iniciar <span style="color: #b58026;">_</span> sesión</button>
                 <div class="divider"></div>
-                <p>¿No tienes una cuenta? <a href="#" onclick="toggleForms()">Regístrate</a></p>
+                <p style="margin-top: 1%;">¿No<span style="color: #FDF4E5;">_</span> tienes <span style="color: #FDF4E5;">_</span>una <span style="color: #FDF4E5;">_</span>cuenta? 
+                    <br><a href="#" onclick="toggleForms()">Regístrate</a></p>
             </form>
         </div>
     </div>
