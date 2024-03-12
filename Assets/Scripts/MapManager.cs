@@ -8,6 +8,8 @@ public class MapManager : MonoBehaviour
     private Tilemap tilemap;
 
     public TileBase soil;
+    public TileBase soil2;
+    public TileBase soil3;
     public TileBase barley_seeds;
     public TileBase corn_seeds;
     public TileBase tomato_seeds;
@@ -27,6 +29,7 @@ public class MapManager : MonoBehaviour
     [SerializeField]
     private List<TileData> tileDatas;
     private Dictionary<TileBase, TileData> dataFromTiles;
+    private Dictionary<int,TileBase> soilFromCrop;
     private Dictionary<int,bool> plantedCrops;
     [SerializeField]
     public List<TileBase> chilli_grow_tiles;
@@ -56,6 +59,11 @@ public class MapManager : MonoBehaviour
             {4, false},
             {5, false},
             {6, false}
+        };
+        soilFromCrop = new Dictionary<int, TileBase>(){
+            {-1, soil},
+            {-2,soil2},
+            {-3,soil3}
         };
         InvokeRepeating("UpdateCycle", 0, 1f);
 
@@ -290,9 +298,9 @@ public class MapManager : MonoBehaviour
             for(int j = -2*tilemap.size.y; j<2*tilemap.size.y; j++){
                 Vector3Int gridPosition = new Vector3Int(i, j, 0);
                 TileBase tile = tilemap.GetTile(gridPosition);
-                if(tile && dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type!=-1 && !dataFromTiles[tile].isBox){
+                if(tile && dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type>0 && !dataFromTiles[tile].isBox){
                     plantedCrops[dataFromTiles[tile].crop_type] = false;
-                    tilemap.SetTile(gridPosition, soil);
+                    tilemap.SetTile(gridPosition, soilFromCrop[-dataFromTiles[tile].crop_type]);
                     cropManager.UpdateCropQuantity(dataFromTiles[tile].crop_type, dataFromTiles[tile].quantity);
                 }
             }

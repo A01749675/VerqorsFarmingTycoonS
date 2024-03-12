@@ -154,6 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemap: {fileID: 1066584982}
   soil: {fileID: 11400000, guid: d39302ae27b96b644935d0747b3218b1, type: 2}
+  soil2: {fileID: 11400000, guid: 46fc41e621bf08f458bca14b7de2f415, type: 2}
+  soil3: {fileID: 11400000, guid: d208daf539b5864499541df29c400f83, type: 2}
   barley_seeds: {fileID: 11400000, guid: 8f2b17453d695354397cce2e5b4c41cf, type: 2}
   corn_seeds: {fileID: 11400000, guid: 747c2bc4638e2064282e48c0f13e8b8b, type: 2}
   tomato_seeds: {fileID: 11400000, guid: ef20e07003ea76843b22c4f9e3842d06, type: 2}
