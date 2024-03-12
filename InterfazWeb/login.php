@@ -1,5 +1,5 @@
 <?php
-session_start(); // Inicia o reanuda la sesión actual
+session_start(); 
 
 // Conexión a la base de datos
 $servername = "localhost";
@@ -17,47 +17,52 @@ if ($conn->connect_error) {
 
 // Obtener los datos del formulario
 $correo = $_POST['correo'];
-$contraseña = $_POST['contraseña'];
+$contraseña = $_POST['contraseña']; 
 
-// Preparar consulta SQL
-$sql = "SELECT * FROM usuarios WHERE correo = ? AND contraseña = ?";
+$sql = "SELECT * FROM usuarios WHERE correo = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ss", $correo, $contraseña); 
+$stmt->bind_param("s", $correo);
 $stmt->execute();
 $result = $stmt->get_result();
 
-// Verificar usuario
 if ($result->num_rows > 0) {
-    // Inicio de sesión exitoso, establecer variables de sesión
     $userData = $result->fetch_assoc();
-    $_SESSION['usuario_id'] = $userData['id'];
-    $_SESSION['usuario_nombre'] = $userData['usuario'];  
 
-    // Verificar el tipo de usuario
-    if ($userData['tipo_usuario'] === "administrador") {
-        // Redirigir al administrador a la página de información
-        header("Location: info.php");
-        exit();
+    if (password_verify($contraseña, $userData['contraseña'])) {
+        // Inicio de sesión exitoso, establecer variables de sesión
+        $_SESSION['usuario_id'] = $userData['id'];
+        $_SESSION['usuario_nombre'] = $userData['usuario'];
+
+        // Verificar el tipo de usuario
+        if ($userData['tipo_usuario'] === "administrador") {
+            // Redirigir al administrador a la página de información
+            header("Location: info.php");
+            exit();
+        }
+
+        // Comprobar si el usuario tiene algún progreso guardado
+        $stmt = $conn->prepare("SELECT * FROM Progreso WHERE id_usuario = ?");
+        $stmt->bind_param("i", $_SESSION['usuario_id']);
+        $stmt->execute();
+        $progressResult = $stmt->get_result();
+
+        if ($progressResult->num_rows > 0) {
+            // Si hay un progreso asociado con el usuario, redirigir al juego
+            header("Location: game.php");
+            exit();
+        } else {
+            // Si no hay progreso, redirigir a credito.html para elegir financiamiento
+            header("Location: credito.html");
+            exit();
+        }
+    } else {
+        // Credenciales incorrectas
+        echo "Correo electrónico o contraseña incorrectos.";
     }
-
-    $stmt = $conn->prepare("SELECT id FROM Progreso WHERE id_usuario = ?");
-    $stmt->bind_param("i", $_SESSION['usuario_id']);
-    $stmt->execute();
-    $progressResult = $stmt->get_result();
-
-    if ($progressResult->num_rows > 0) {
-        // Si hay un progreso asociado con el usuario, establece la sesión con ese ID
-        $progressData = $progressResult->fetch_assoc();
-        $_SESSION['progreso_id'] = $progressData['id'];
-    } 
-    // Redireccionar al juego Unity
-    header("Location: http://localhost:61080"); // Asegúrate de que esta es la URL correcta de tu juego Unity
-    exit();
 } else {
-    // Credenciales incorrectas
-    echo "Correo electrónico o contraseña incorrectos";
+    // Usuario no encontrado
+    echo "Correo electrónico o contraseña incorrectos.";
 }
-
 
 // Cerrar la conexión y la declaración preparada
 $stmt->close();

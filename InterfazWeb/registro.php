@@ -1,5 +1,4 @@
 <?php
-// Conexión a la base de datos (cambiar estos valores por los correspondientes a tu servidor MySQL)
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -16,21 +15,26 @@ if ($conn->connect_error) {
 // Obtener los datos del formulario
 $usuario = $_POST['usuario'];
 $correo = $_POST['correo'];
-$contraseña = $_POST['contraseña'];
+$contraseña = $_POST['contraseña']; 
 $tipo_usuario = $_POST['tipo_usuario'];
+$fecha_nacimiento = $_POST['fecha_nacimiento']; 
 
-// Preparar y ejecutar la consulta SQL para insertar el registro
-$sql = "INSERT INTO usuarios (usuario, correo, contraseña, tipo_usuario) VALUES ('$usuario', '$correo', '$contraseña', '$tipo_usuario')";
+// Aplicar hash a la contraseña
+$contraseñaHash = password_hash($contraseña, PASSWORD_DEFAULT);
 
-if ($conn->query($sql) === TRUE) {
+$sql = $conn->prepare("INSERT INTO usuarios (usuario, correo, contraseña, tipo_usuario, fecha_nacimiento) VALUES (?, ?, ?, ?, ?)");
+$sql->bind_param("sssss", $usuario, $correo, $contraseñaHash, $tipo_usuario, $fecha_nacimiento); 
+
+if ($sql->execute()) {
     echo "<script>
             alert('Usuario registrado');
             window.location.href='login.html';
           </script>";
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "Error: " . $sql->error;
 }
 
 // Cerrar la conexión
+$sql->close();
 $conn->close();
 ?>
