@@ -36,6 +36,7 @@ public class UiControl : MonoBehaviour
         Inventario.SetActive(false);
         flagDeuda=false;
         Deuda.SetActive(false);
+        flagHerramienta=false;
         PanelOpciones.SetActive(true);
         Time.timeScale = 0;
     }
