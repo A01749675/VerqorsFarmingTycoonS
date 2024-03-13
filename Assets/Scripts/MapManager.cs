@@ -25,7 +25,8 @@ public class MapManager : MonoBehaviour
     private int tomato_cycle = 0;
     private int avocado_cycle = 0;
 
-    private int crop_cycle_constant = 15;
+    private int crop_cycle_constant = 20;
+    private int update_rate = 1;
 
 
     [SerializeField]
@@ -48,6 +49,8 @@ public class MapManager : MonoBehaviour
     public CropManager cropManager;
 
     public UiControl ui;
+
+    public ClimateManager climateManager;
 
     public GameObject herramienta;
 
@@ -99,19 +102,34 @@ public class MapManager : MonoBehaviour
         if(Input.GetKeyDown("c")){
                 CollectAll();
             }
-        if(ui.flagHerramienta){
+        ShowTool(ui.flagHerramienta,mousePos);
+    }
+
+    public void UpdateCycle(){
+        print(current_cycle);
+        current_cycle+=update_rate;
+        ChangeCropSprite();
+    }
+
+    public void FastForward(int value){
+        update_rate=10;
+    }
+    public void SlowDown(int value){
+        update_rate=1;
+    }
+
+    public int GetCurrentCycle(){
+        return current_cycle;
+    }
+
+    private void ShowTool(bool tool,Vector2 mousePos){
+        if(tool){
             herramienta.SetActive(true);
             herramienta.transform.position = mousePos;
         }
         else{
             herramienta.SetActive(false);
         }
-    }
-
-    public void UpdateCycle(){
-        print(current_cycle);
-        current_cycle++;
-        ChangeCropSprite();
     }
 
     public void PlantCrop(Vector2 worldPosition){
@@ -190,14 +208,13 @@ public class MapManager : MonoBehaviour
                                     cropManager.cropCycleGrowth[gridPosition]["growth"] = UpdateCropSpriteCycle(gridPosition,6);
                                     break;
                                 }
-                            
+                                UpdateTileWater(gridPosition,dataFromTiles[tile].crop_type);
                         }
                     }
 
                 }
             }
         }
-        
     }
     private int UpdateCropSpriteCycle(Vector3Int gridPosition,int cropType){
         int cycle = cropManager.cropCycleGrowth[gridPosition]["growth"];
@@ -266,7 +283,7 @@ public class MapManager : MonoBehaviour
                     cropManager.cropCycleGrowth.Add(gridPosition, new Dictionary<string,int>(){
                         {"growth", 0},
                         {"cycle", current_cycle},
-                        {"water",0},
+                        {"water",30},
                         {"crop_type", selected_crop}
                     });
                 }
@@ -318,6 +335,32 @@ public class MapManager : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    public void ClimateWaterUpdate(){
+        int i = 0;
+        for(i = -2*tilemap.size.x; i<2*tilemap.size.x; i++){
+            for(int j = -2*tilemap.size.y; j<2*tilemap.size.y; j++){
+                Vector3Int gridPosition = new Vector3Int(i, j, 0);
+                TileBase tile = tilemap.GetTile(gridPosition);
+                if(tile && dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type>0 && !dataFromTiles[tile].isBox){
+                    if(cropManager.cropCycleGrowth.ContainsKey(gridPosition) && cropManager.cropCycleGrowth[gridPosition]["water"]<100){
+                        cropManager.cropCycleGrowth[gridPosition]["water"] = climateManager.GetCurrentClimate()["water"];
+                        UpdateTileWater(gridPosition,dataFromTiles[tile].crop_type);
+                    }
+                }
+            }
+        }
+    }
+
+    public void UpdateTileWater(Vector3Int gridPosition,int crop_type){
+        if(cropManager.cropCycleGrowth.ContainsKey(gridPosition)){
+            cropManager.cropCycleGrowth[gridPosition]["water"]-= 5;
+        }
+        if(cropManager.cropCycleGrowth[gridPosition]["water"]<10 || cropManager.cropCycleGrowth[gridPosition]["water"]>120){
+            tilemap.SetTile(gridPosition, soilFromCrop[-crop_type]);
+            cropManager.cropCycleGrowth.Remove(gridPosition);
         }
     }
 
