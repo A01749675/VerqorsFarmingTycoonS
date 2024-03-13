@@ -10,8 +10,7 @@ public class CropManager : MonoBehaviour
     public static int selected_crop;
     public Dictionary<int, int> crop_quantity;
     public Dictionary<int, int> crop_seeds;
-
-    public Dictionary<int, int> crop_soil;
+    public Dictionary<Vector3Int, Dictionary<string,int>> cropCycleGrowth = new Dictionary<Vector3Int, Dictionary<string,int>>();
     private void Awake(){
         crop_quantity = new Dictionary<int, int>(){
             {1,10},
@@ -29,16 +28,9 @@ public class CropManager : MonoBehaviour
             {5,500},
             {6,500}
         };
-        crop_soil = new Dictionary<int, int>(){
-            {1,-1},
-            {2,-2},
-            {3,-3},
-            {4,-4},
-            {5,-5},
-            {6,-6}
-        };
+        }
 
-    }
+    
 
     public void UpdateCropQuantity(int cropType, int quantity){
         crop_quantity[cropType] += quantity;
@@ -53,9 +45,7 @@ public class CropManager : MonoBehaviour
         return crop_seeds[cropType];
     }
 
-    public int GetCropSoil(int cropType){
-        return crop_soil[cropType];
-    }
+
 
 
 

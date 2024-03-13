@@ -25,12 +25,17 @@ public class MapManager : MonoBehaviour
     private int tomato_cycle = 0;
     private int avocado_cycle = 0;
 
+    private int crop_cycle_constant = 15;
+
 
     [SerializeField]
     private List<TileData> tileDatas;
     private Dictionary<TileBase, TileData> dataFromTiles;
     private Dictionary<int,TileBase> soilFromCrop;
     private Dictionary<int,bool> plantedCrops;
+
+    
+
     [SerializeField]
     public List<TileBase> chilli_grow_tiles;
     public List<TileBase> barley_grow_tiles;
@@ -144,8 +149,7 @@ public class MapManager : MonoBehaviour
         
     }
     public void ChangeCropSprite(){
-        if(current_cycle%15==0){
-            UpdateCropCycle();
+        if(plantedCrops[1] || plantedCrops[2] || plantedCrops[3] || plantedCrops[4] || plantedCrops[5] || plantedCrops[6]){
             int i;
             for(i = -2*tilemap.size.x; i<2*tilemap.size.x; i++){
                 for(int j = -2*tilemap.size.y; j<2*tilemap.size.y; j++){
@@ -154,31 +158,93 @@ public class MapManager : MonoBehaviour
                     if(tileDatas==null){
                         return;
                     }
-                    if(tile && dataFromTiles.ContainsKey(tile) && !dataFromTiles[tile].isBox){  
-                        switch(dataFromTiles[tile].crop_type){
-                            case 1:
-                                tilemap.SetTile(gridPosition, barley_grow_tiles[barley_cycle]);
-                                break;
-                            case 2:
-                                tilemap.SetTile(gridPosition, corn_grow_tiles[corn_cycle]);
-                                break;
-                            case 3:
-                                tilemap.SetTile(gridPosition, tomato_grow_tiles[tomato_cycle]);
-                                break;
-                            case 4:
-                                tilemap.SetTile(gridPosition, avocado_grow_tiles[avocado_cycle]);
-                                break;
-                            case 6:
-                                tilemap.SetTile(gridPosition, chilli_grow_tiles[chili_cycle]);
-                                break;
-                            }
-                        
+                    if(cropManager.cropCycleGrowth.ContainsKey(gridPosition) && (current_cycle-cropManager.cropCycleGrowth[gridPosition]["cycle"])%crop_cycle_constant==0){
+                        if(tile && dataFromTiles.ContainsKey(tile) && !dataFromTiles[tile].isBox){  
+                            switch(dataFromTiles[tile].crop_type){
+                                case 1:
+                                    tilemap.SetTile(gridPosition, barley_grow_tiles[barley_cycle]);
+                                    cropManager.cropCycleGrowth[gridPosition]["growth"] = UpdateCropSpriteCycle(gridPosition,1);
+                                    break;
+                                case 2:
+                                    tilemap.SetTile(gridPosition, corn_grow_tiles[corn_cycle]);
+                                    cropManager.cropCycleGrowth[gridPosition]["growth"] = UpdateCropSpriteCycle(gridPosition,2);
+                                    break;
+                                case 3:
+                                    tilemap.SetTile(gridPosition, tomato_grow_tiles[tomato_cycle]);
+                                    cropManager.cropCycleGrowth[gridPosition]["growth"] = UpdateCropSpriteCycle(gridPosition,3);
+                                    break;
+                                case 4:
+                                    tilemap.SetTile(gridPosition, avocado_grow_tiles[avocado_cycle]);
+                                    cropManager.cropCycleGrowth[gridPosition]["growth"] = UpdateCropSpriteCycle(gridPosition,4);
+                                    break;
+                                case 6:
+                                    tilemap.SetTile(gridPosition, chilli_grow_tiles[chili_cycle]);
+                                    cropManager.cropCycleGrowth[gridPosition]["growth"] = UpdateCropSpriteCycle(gridPosition,6);
+                                    break;
+                                }
+                            
+                        }
                     }
+
                 }
             }
         }
+        
     }
-
+    private int UpdateCropSpriteCycle(Vector3Int gridPosition,int cropType){
+        int cycle = cropManager.cropCycleGrowth[gridPosition]["growth"];
+        switch(cropType){
+            case 1:
+                if(cycle==barley_grow_tiles.Count-1){
+                    cycle=barley_grow_tiles.Count-1;
+                }
+                else{
+                    cycle=(cycle+1)%barley_grow_tiles.Count;
+                }
+                break;
+            case 2:
+                if(cycle==corn_grow_tiles.Count-1){
+                    cycle=corn_grow_tiles.Count-1;
+                }
+                else{
+                    cycle=(cycle+1)%corn_grow_tiles.Count;
+                }
+                break;
+            case 3:
+                if(cycle==tomato_grow_tiles.Count-1){
+                    cycle=tomato_grow_tiles.Count-1;
+                }
+                else{
+                    cycle=(cycle+1)%tomato_grow_tiles.Count;
+                }
+                break;
+            case 4:
+                if(cycle==avocado_grow_tiles.Count-1){
+                    cycle=avocado_grow_tiles.Count-1;
+                }
+                else{
+                    cycle=(cycle+1)%avocado_grow_tiles.Count;
+                }
+                break;
+            case 5:
+                if(cycle==coffee_grow_tiles.Count-1){
+                    cycle=coffee_grow_tiles.Count-1;
+                }
+                else{
+                    cycle=(cycle+1)%coffee_grow_tiles.Count;
+                }
+                break;
+            case 6:
+                if(cycle==chilli_grow_tiles.Count-1){
+                    cycle=chilli_grow_tiles.Count-1;
+                }
+                else{
+                    cycle=(cycle+1)%chilli_grow_tiles.Count;
+                }
+                break;
+        }
+        return cycle;
+    }
     private void UpdateCropCycle(){
         if(plantedCrops[1]){
             if(barley_cycle==barley_grow_tiles.Count-1){
@@ -286,7 +352,10 @@ public class MapManager : MonoBehaviour
                 if(cropManager.GetCropSeeds(selected_crop)>0 && tile && dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type==-selected_crop){
                     tilemap.SetTile(gridPosition, seed);
                     cropManager.UpdateCropSeeds(selected_crop, -1);
-                    
+                    cropManager.cropCycleGrowth.Add(gridPosition, new Dictionary<string,int>(){
+                        {"growth", 0},
+                        {"cycle", current_cycle}
+                    });
                 }
             }
         }
@@ -299,9 +368,13 @@ public class MapManager : MonoBehaviour
                 Vector3Int gridPosition = new Vector3Int(i, j, 0);
                 TileBase tile = tilemap.GetTile(gridPosition);
                 if(tile && dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type>0 && !dataFromTiles[tile].isBox){
-                    plantedCrops[dataFromTiles[tile].crop_type] = false;
-                    tilemap.SetTile(gridPosition, soilFromCrop[-dataFromTiles[tile].crop_type]);
-                    cropManager.UpdateCropQuantity(dataFromTiles[tile].crop_type, dataFromTiles[tile].quantity);
+                    if(cropManager.cropCycleGrowth.ContainsKey(gridPosition) && cropManager.cropCycleGrowth[gridPosition]["growth"]>=2){
+                        cropManager.cropCycleGrowth.Remove(gridPosition);
+                        plantedCrops[dataFromTiles[tile].crop_type] = false;
+                        tilemap.SetTile(gridPosition, soilFromCrop[-dataFromTiles[tile].crop_type]);
+                        cropManager.UpdateCropQuantity(dataFromTiles[tile].crop_type, dataFromTiles[tile].quantity);
+                        cropManager.cropCycleGrowth.Remove(gridPosition);
+                    }
                 }
             }
         }
