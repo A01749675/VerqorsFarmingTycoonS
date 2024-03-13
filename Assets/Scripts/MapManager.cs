@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class MapManager : MonoBehaviour
     public TileBase soil;
     public TileBase soil2;
     public TileBase soil3;
+    public TileBase soil6;
     public TileBase barley_seeds;
     public TileBase corn_seeds;
     public TileBase tomato_seeds;
@@ -53,6 +55,11 @@ public class MapManager : MonoBehaviour
     public ClimateManager climateManager;
 
     public GameObject herramienta;
+    public GameObject regadera;
+
+    private int contadorAgua = 0;
+
+    private bool startedWatering = false;
 
     private void Awake()
     {
@@ -76,7 +83,8 @@ public class MapManager : MonoBehaviour
         soilFromCrop = new Dictionary<int, TileBase>(){
             {-1, soil},
             {-2,soil2},
-            {-3,soil3}
+            {-3,soil3},
+            {-6,soil6}
         };
         InvokeRepeating("UpdateCycle", 0, 1f);
 
@@ -95,6 +103,9 @@ public class MapManager : MonoBehaviour
                 print("Selected crop "+selected_crop +" at "+gridPos);
             }
         }
+    if(Input.GetMouseButtonDown(1)){
+            SeeWater(mousePos);
+        }
 
         if(Input.GetKeyDown("p")){
                 PlantCrop(mousePos);
@@ -102,7 +113,6 @@ public class MapManager : MonoBehaviour
         if(Input.GetKeyDown("c")){
                 CollectAll();
             }
-        ShowTool(ui.flagHerramienta,mousePos);
     }
 
     public void UpdateCycle(){
@@ -122,23 +132,13 @@ public class MapManager : MonoBehaviour
         return current_cycle;
     }
 
-    private void ShowTool(bool tool,Vector2 mousePos){
-        if(tool){
-            herramienta.SetActive(true);
-            herramienta.transform.position = mousePos;
-        }
-        else{
-            herramienta.SetActive(false);
-        }
-    }
-
     public void PlantCrop(Vector2 worldPosition){
         Vector3Int gridPosition = tilemap.WorldToCell(worldPosition);
         if(tileDatas==null){
             return;
         }
         TileBase tile = tilemap.GetTile(gridPosition);
-        if(dataFromTiles.ContainsKey(tile)){
+        if(tile && dataFromTiles.ContainsKey(tile)){
             print("Key found");
             if(dataFromTiles[tile].crop_type==-selected_crop){
                 print("Selecting crop");
@@ -361,6 +361,14 @@ public class MapManager : MonoBehaviour
         if(cropManager.cropCycleGrowth[gridPosition]["water"]<10 || cropManager.cropCycleGrowth[gridPosition]["water"]>120){
             tilemap.SetTile(gridPosition, soilFromCrop[-crop_type]);
             cropManager.cropCycleGrowth.Remove(gridPosition);
+        }
+    }
+
+    public void SeeWater(Vector2 mousePos){
+        Vector3Int gridPos = tilemap.WorldToCell(mousePos);
+        TileBase tile = tilemap.GetTile(gridPos);
+        if(tile && cropManager.cropCycleGrowth.ContainsKey(gridPos)){
+            print("The crop at: "+gridPos+" has this water: "+cropManager.cropCycleGrowth[gridPos]["water"]);
         }
     }
 
