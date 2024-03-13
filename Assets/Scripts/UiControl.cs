@@ -14,6 +14,7 @@ public class UiControl : MonoBehaviour
     public GameObject Mercado;
     public GameObject Inventario;
     public GameObject Deuda;
+    public GameObject Herramienta;
     private bool flagUsuario=false;
     private bool flagFinanciamiento=false;
     private bool flagProduccion=false;

@@ -46,6 +46,11 @@ public class MapManager : MonoBehaviour
 
     // Start is called before the first frame update
     public CropManager cropManager;
+
+    public UiControl ui;
+
+    public GameObject herramienta;
+
     private void Awake()
     {
         dataFromTiles = new Dictionary<TileBase, TileData>();
@@ -77,26 +82,29 @@ public class MapManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     if(Input.GetMouseButtonDown(0))
         {
-
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3Int gridPos = tilemap.WorldToCell(mousePos);
             TileBase clickedTile = tilemap.GetTile(gridPos);
             if(clickedTile && dataFromTiles.ContainsKey(clickedTile)){
                 selected_crop = dataFromTiles[clickedTile].crop_type;
                 print("Selected crop "+selected_crop +" at "+gridPos);
             }
-
         }
 
-    if(Input.GetKeyDown("p")){
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            PlantCrop(mousePos);
+        if(Input.GetKeyDown("p")){
+                PlantCrop(mousePos);
+            }
+        if(Input.GetKeyDown("c")){
+                CollectAll();
+            }
+        if(ui.flagHerramienta){
+            herramienta.SetActive(true);
+            herramienta.transform.position = mousePos;
         }
-    if(Input.GetKeyDown("c")){
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            CollectAll();
+        else{
+            herramienta.SetActive(false);
         }
     }
 
@@ -244,48 +252,6 @@ public class MapManager : MonoBehaviour
                 break;
         }
         return cycle;
-    }
-    private void UpdateCropCycle(){
-        if(plantedCrops[1]){
-            if(barley_cycle==barley_grow_tiles.Count-1){
-                barley_cycle=barley_grow_tiles.Count-1;
-            }
-            else{
-                barley_cycle=(barley_cycle+1)%barley_grow_tiles.Count;
-            }
-        }
-        if(plantedCrops[2]){
-            if(corn_cycle==corn_grow_tiles.Count-1){
-                corn_cycle=corn_grow_tiles.Count-1;
-            }
-            else{
-                corn_cycle=(corn_cycle+1)%corn_grow_tiles.Count;
-            }
-        }
-        if(plantedCrops[3]){
-            if(tomato_cycle==tomato_grow_tiles.Count-1){
-                tomato_cycle=tomato_grow_tiles.Count-1;
-            }
-            else{
-                tomato_cycle=(tomato_cycle+1)%tomato_grow_tiles.Count;
-            }
-        }
-        if(plantedCrops[4]){
-            if(avocado_cycle==avocado_grow_tiles.Count-1){
-                avocado_cycle=avocado_grow_tiles.Count-1;
-            }
-            else{
-                avocado_cycle=(avocado_cycle+1)%avocado_grow_tiles.Count;
-            }
-        }
-        if(plantedCrops[6]){
-            if(chili_cycle==chilli_grow_tiles.Count-1){
-                chili_cycle=chilli_grow_tiles.Count-1;
-            }
-            else{
-                chili_cycle=(chili_cycle+1)%chilli_grow_tiles.Count;
-            }
-        }
     }
     public void WaterCrop(Vector2 worldPosition){
         Vector3Int gridPosition = tilemap.WorldToCell(worldPosition);
