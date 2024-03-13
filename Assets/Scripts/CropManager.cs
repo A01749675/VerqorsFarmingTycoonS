@@ -45,8 +45,4 @@ public class CropManager : MonoBehaviour
         return crop_seeds[cropType];
     }
 
-
-
-
-
 }

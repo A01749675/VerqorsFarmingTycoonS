@@ -266,7 +266,8 @@ public class MapManager : MonoBehaviour
                     cropManager.cropCycleGrowth.Add(gridPosition, new Dictionary<string,int>(){
                         {"growth", 0},
                         {"cycle", current_cycle},
-                        {"water",0}
+                        {"water",0},
+                        {"crop_type", selected_crop}
                     });
                 }
             }
