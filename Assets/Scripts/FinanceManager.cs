@@ -9,16 +9,40 @@ public class FinanceManager : MonoBehaviour
     private Dictionary<int, int> _prices;
     private int _financiamiento;
 
+    private Dictionary<string, float> VerqorFinanceData;
+
+    private Dictionary<string, float> BancoFinanceData;
+
+    private Dictionary<string, float> CoyoteFinanceData;
+
     private void Awake()
     {
         _prices = new Dictionary<int, int>()
         {
-            {1, 200},
-            {2, 300},
-            {3, 400},
-            {4, 500},
-            {5, 600},
-            {6, 700}
+            {1, 60},
+            {2, 62},
+            {3, 70},
+            {4, 140},
+            {5, 60},
+            {6, 96}
+        };
+        VerqorFinanceData = new Dictionary<string, float>()
+        {
+            {"tasaInteres", 0.5f},
+            {"plazo", 12},
+            {"montoMaximo", 100000}
+        };
+        BancoFinanceData = new Dictionary<string, float>()
+        {
+            {"tasaInteres", 0.3f},
+            {"plazo", 24},
+            {"montoMaximo", 200000}
+        };
+        CoyoteFinanceData = new Dictionary<string, float>()
+        {
+            {"tasaInteres", 0.75f},
+            {"plazo", 6},
+            {"montoMaximo", 50000}
         };
 
         // Iniciar la coroutine para obtener el financiamiento del usuario
