@@ -30,8 +30,6 @@ public class CropManager : MonoBehaviour
         };
         }
 
-    
-
     public void UpdateCropQuantity(int cropType, int quantity){
         crop_quantity[cropType] += quantity;
     }
