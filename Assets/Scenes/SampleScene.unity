@@ -201,7 +201,7 @@ MonoBehaviour:
   coffee_grow_tiles: []
   cropManager: {fileID: 1475232810}
   ui: {fileID: 1227971498}
-  climateManager: {fileID: 0}
+  climateManager: {fileID: 547871428}
   herramienta: {fileID: 271182236}
   regadera: {fileID: 2093088775}
 --- !u!4 &11134405
@@ -39659,6 +39659,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &547871427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 547871429}
+  - component: {fileID: 547871428}
+  m_Layer: 0
+  m_Name: ClimateManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &547871428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547871427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4962b918c01c4184690b4a9802aa4204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapManager: {fileID: 11134404}
+--- !u!4 &547871429
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547871427}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.4128906, y: 1.0775838, z: -0.0051257764}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &556038161
 GameObject:
   m_ObjectHideFlags: 0
@@ -50811,3 +50856,4 @@ SceneRoots:
   - {fileID: 271182238}
   - {fileID: 2093088777}
   - {fileID: 829527261}
+  - {fileID: 547871429}

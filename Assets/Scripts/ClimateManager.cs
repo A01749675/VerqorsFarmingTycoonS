@@ -11,11 +11,11 @@ public class ClimateManager : MonoBehaviour
 
     private Dictionary<int,Dictionary<string,int>> climates;
 
-    private int currentClimatecycle = 600;
+    private int currentClimatecycle = 30;
 
     private int currentClimate = 1;
 
-    MapManager mapManager;
+    public MapManager mapManager;
     private Dictionary<int,int> probability;
     // Start is called before the first frame update
     void Awake()
@@ -71,13 +71,18 @@ public class ClimateManager : MonoBehaviour
     {
         int cycle = mapManager.GetCurrentCycle();
         if(cycle%currentClimatecycle == 0){
+            print("_____________________________________________");
             int possibleClimate = random.Next(0,4);
             int odds = probability[possibleClimate];
             currentClimatecycle = random.Next(0,100);
 
             if(currentClimatecycle < odds){
                 currentClimate = possibleClimate;
-                mapManager.ClimateWaterUpdate();
+                PrintClimate(currentClimate);
+                if(currentClimate != 1){
+                    mapManager.ClimateWaterUpdate();
+                }
+                
             }
         }
     }
@@ -87,5 +92,25 @@ public class ClimateManager : MonoBehaviour
     }
     public void SetCurrentClimate(int climate){
         currentClimate = climate;
+    }
+
+    public void PrintClimate(int climate){
+        switch(climate){
+            case 0:
+                Debug.Log("Drought");
+                break;
+            case 1:
+                Debug.Log("Normal");
+                break;
+            case 2:
+                Debug.Log("Rain");
+                break;
+            case 3:
+                Debug.Log("Flood");
+                break;
+            case 4:
+                Debug.Log("Hurricane");
+                break;
+        }
     }
 }

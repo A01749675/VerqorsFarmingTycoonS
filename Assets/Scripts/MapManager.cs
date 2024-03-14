@@ -355,10 +355,11 @@ public class MapManager : MonoBehaviour
     }
 
     public void UpdateTileWater(Vector3Int gridPosition,int crop_type){
+        
         if(cropManager.cropCycleGrowth.ContainsKey(gridPosition)){
             cropManager.cropCycleGrowth[gridPosition]["water"]-= 5;
         }
-        if(cropManager.cropCycleGrowth[gridPosition]["water"]<10 || cropManager.cropCycleGrowth[gridPosition]["water"]>120){
+        if(cropManager.cropCycleGrowth[gridPosition]["water"]<10){
             tilemap.SetTile(gridPosition, soilFromCrop[-crop_type]);
             cropManager.cropCycleGrowth.Remove(gridPosition);
         }
