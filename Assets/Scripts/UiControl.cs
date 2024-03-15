@@ -14,6 +14,15 @@ public class UiControl : MonoBehaviour
     public GameObject Mercado;
     public GameObject Inventario;
     public GameObject Deuda;
+
+    public GameObject STrigoN;
+
+    public GameObject TrigoN;
+    public GameObject MaizN;
+    public GameObject ChileN;
+    public GameObject AguacateN;
+    public GameObject CafeN;
+    public GameObject TomateN;
     private bool flagUsuario=false;
     private bool flagFinanciamiento=false;
     private bool flagProduccion=false;
