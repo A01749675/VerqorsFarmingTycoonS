@@ -58,9 +58,9 @@ public class ClimateManager : MonoBehaviour
             }}
         };
         probability = new Dictionary<int,int>(){
-        {0,10},
+        {0,50},
         {1,60},
-        {2,20},
+        {2,60},
         {3,40},
         {4,5}
     };
@@ -71,18 +71,32 @@ public class ClimateManager : MonoBehaviour
     {
         int cycle = mapManager.GetCurrentCycle();
         if(cycle%currentClimatecycle == 0){
-            print("_____________________________________________");
-            int possibleClimate = random.Next(0,4);
+            print("_________Climate update__________");
+            print("Current climate: "+currentClimate);
+            int possibleClimate = random.Next(0,5);
             int odds = probability[possibleClimate];
             currentClimatecycle = random.Next(0,100);
-
             if(currentClimatecycle < odds){
+                print("Climate changed to "+possibleClimate);
                 currentClimate = possibleClimate;
                 PrintClimate(currentClimate);
                 if(currentClimate != 1){
                     mapManager.ClimateWaterUpdate();
                 }
-                
+            }
+            else{
+                print("Climate did not change, checking probability again");
+                if(currentClimatecycle<probability[currentClimate]){
+                    if(currentClimate != 1){
+                        print("Updating water as climate probability repeated");
+                        mapManager.ClimateWaterUpdate();
+                        print("For current climate "+currentClimate+" water was updated");
+                    }
+                }
+                else{
+                    currentClimate = 1;
+                    print("Change to normal climate as previous climate probability was not met");
+                }
             }
         }
     }

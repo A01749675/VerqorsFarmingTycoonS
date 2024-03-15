@@ -29,6 +29,8 @@ public class UiControl : MonoBehaviour
     public GameObject AguacateN;
     public GameObject CafeN;
     public GameObject TomateN;
+
+    public CropManager cropManager;
     private bool flagUsuario=false;
     private bool flagFinanciamiento=false;
     private bool flagProduccion=false;
@@ -190,19 +192,19 @@ public class UiControl : MonoBehaviour
             Inventario.SetActive(false);
         }else{
             flagInventario=true;
-            STrigoN.GetComponent<TextMeshProUGUI>().text = 0.ToString();
-            SMaizN.GetComponent<TextMeshProUGUI>().text = 1.ToString();
-            SChileN.GetComponent<TextMeshProUGUI>().text = 2.ToString();
-            SAguacateN.GetComponent<TextMeshProUGUI>().text = 3.ToString();
-            SCafeN.GetComponent<TextMeshProUGUI>().text = 4.ToString();
-            STomateN.GetComponent<TextMeshProUGUI>().text = 5.ToString();
-            TrigoN.GetComponent<TextMeshProUGUI>().text = 6.ToString();
-            MaizN.GetComponent<TextMeshProUGUI>().text = 7.ToString();
-            ChileN.GetComponent<TextMeshProUGUI>().text = 8.ToString();
-            AguacateN.GetComponent<TextMeshProUGUI>().text = 9.ToString();
-            CafeN.GetComponent<TextMeshProUGUI>().text = 10.ToString();
-            TomateN.GetComponent<TextMeshProUGUI>().text = 11.ToString();
             Inventario.SetActive(true);
+            STrigoN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropSeeds(1).ToString();
+            SMaizN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropSeeds(2).ToString();
+            SChileN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropSeeds(6).ToString();
+            SAguacateN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropSeeds(4).ToString();
+            SCafeN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropSeeds(5).ToString();
+            STomateN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropSeeds(3).ToString();
+            TrigoN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropQuantity(1).ToString();
+            MaizN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropQuantity(2).ToString();
+            ChileN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropQuantity(6).ToString();
+            AguacateN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropQuantity(4).ToString();
+            CafeN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropQuantity(5).ToString();
+            TomateN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropQuantity(3).ToString();
         }
     }
     public void ShowDeuda()

@@ -52929,6 +52929,7 @@ MonoBehaviour:
   AguacateN: {fileID: 1368987201}
   CafeN: {fileID: 1705665458}
   TomateN: {fileID: 2096193967}
+  cropManager: {fileID: 1475232810}
   flagHerramienta: 0
   flagRegadera: 0
 --- !u!1 &2023044497
