@@ -51027,7 +51027,7 @@ GameObject:
   - component: {fileID: 1467810153}
   - component: {fileID: 1467810152}
   m_Layer: 5
-  m_Name: SemillasAguacateN
+  m_Name: SemillasTomateN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52917,13 +52917,18 @@ MonoBehaviour:
   Mercado: {fileID: 1300734122}
   Inventario: {fileID: 1000215696}
   Deuda: {fileID: 485213834}
-  STrigoN: {fileID: 0}
-  TrigoN: {fileID: 0}
-  MaizN: {fileID: 0}
-  ChileN: {fileID: 0}
-  AguacateN: {fileID: 0}
-  CafeN: {fileID: 0}
-  TomateN: {fileID: 0}
+  STrigoN: {fileID: 1438517740}
+  SMaizN: {fileID: 804222839}
+  SChileN: {fileID: 1522306285}
+  SAguacateN: {fileID: 1784929787}
+  SCafeN: {fileID: 251350338}
+  STomateN: {fileID: 1467810150}
+  TrigoN: {fileID: 1595369782}
+  MaizN: {fileID: 1668661196}
+  ChileN: {fileID: 1264445642}
+  AguacateN: {fileID: 1368987201}
+  CafeN: {fileID: 1705665458}
+  TomateN: {fileID: 2096193967}
   flagHerramienta: 0
   flagRegadera: 0
 --- !u!1 &2023044497

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class UiControl : MonoBehaviour
 {
@@ -16,6 +17,11 @@ public class UiControl : MonoBehaviour
     public GameObject Deuda;
 
     public GameObject STrigoN;
+    public GameObject SMaizN;
+    public GameObject SChileN;
+    public GameObject SAguacateN;
+    public GameObject SCafeN;
+    public GameObject STomateN;
 
     public GameObject TrigoN;
     public GameObject MaizN;
@@ -184,6 +190,18 @@ public class UiControl : MonoBehaviour
             Inventario.SetActive(false);
         }else{
             flagInventario=true;
+            STrigoN.GetComponent<TextMeshProUGUI>().text = 0.ToString();
+            SMaizN.GetComponent<TextMeshProUGUI>().text = 1.ToString();
+            SChileN.GetComponent<TextMeshProUGUI>().text = 2.ToString();
+            SAguacateN.GetComponent<TextMeshProUGUI>().text = 3.ToString();
+            SCafeN.GetComponent<TextMeshProUGUI>().text = 4.ToString();
+            STomateN.GetComponent<TextMeshProUGUI>().text = 5.ToString();
+            TrigoN.GetComponent<TextMeshProUGUI>().text = 6.ToString();
+            MaizN.GetComponent<TextMeshProUGUI>().text = 7.ToString();
+            ChileN.GetComponent<TextMeshProUGUI>().text = 8.ToString();
+            AguacateN.GetComponent<TextMeshProUGUI>().text = 9.ToString();
+            CafeN.GetComponent<TextMeshProUGUI>().text = 10.ToString();
+            TomateN.GetComponent<TextMeshProUGUI>().text = 11.ToString();
             Inventario.SetActive(true);
         }
     }
@@ -240,4 +258,5 @@ public class UiControl : MonoBehaviour
             Cursor.visible = false;
         }
     }
+
 }
