@@ -23,6 +23,7 @@ public class UiControl : MonoBehaviour
     private bool flagInventario=false;
     private bool flagDeuda=false;
     public bool flagHerramienta=false;
+    public bool flagRegadera=false;
     
 
     //Al dar click al boton de opciones se abre el panel PanelOpciones
@@ -203,10 +204,31 @@ public class UiControl : MonoBehaviour
         Inventario.SetActive(false);
         flagDeuda=false;
         Deuda.SetActive(false);
+        flagRegadera=false;
         if(flagHerramienta){
-            flagHerramienta=false;    
+            flagHerramienta=false;
+            Cursor.visible = true;    
         }else{
             flagHerramienta=true;
+            Cursor.visible = false;
+        }
+    }
+    public void regadera(){
+        flagCelular=false;
+        Celular.SetActive(false);
+        flagMercado=false;
+        Mercado.SetActive(false);
+        flagInventario=false;
+        Inventario.SetActive(false);
+        flagDeuda=false;
+        Deuda.SetActive(false);
+        flagHerramienta=false;
+        if(flagRegadera){
+            flagRegadera=false;
+            Cursor.visible = true;    
+        }else{
+            flagRegadera=true;
+            Cursor.visible = false;
         }
     }
 }

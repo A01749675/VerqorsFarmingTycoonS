@@ -30,8 +30,6 @@ public class CropManager : MonoBehaviour
         };
         }
 
-    
-
     public void UpdateCropQuantity(int cropType, int quantity){
         crop_quantity[cropType] += quantity;
     }
@@ -44,9 +42,5 @@ public class CropManager : MonoBehaviour
     public int GetCropSeeds(int cropType){
         return crop_seeds[cropType];
     }
-
-
-
-
 
 }
