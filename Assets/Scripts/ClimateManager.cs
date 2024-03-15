@@ -61,7 +61,7 @@ public class ClimateManager : MonoBehaviour
         {0,10},
         {1,60},
         {2,20},
-        {3,10},
+        {3,40},
         {4,5}
     };
     }
