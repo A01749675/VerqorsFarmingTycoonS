@@ -57,10 +57,6 @@ public class MapManager : MonoBehaviour
     public GameObject herramienta;
     public GameObject regadera;
 
-    private int contadorAgua = 0;
-
-    private bool startedWatering = false;
-
     private void Awake()
     {
         dataFromTiles = new Dictionary<TileBase, TileData>();
@@ -116,7 +112,6 @@ public class MapManager : MonoBehaviour
     }
 
     public void UpdateCycle(){
-        print(current_cycle);
         current_cycle+=update_rate;
         ChangeCropSprite();
     }
@@ -359,7 +354,7 @@ public class MapManager : MonoBehaviour
         if(cropManager.cropCycleGrowth.ContainsKey(gridPosition)){
             cropManager.cropCycleGrowth[gridPosition]["water"]-= 5;
         }
-        if(cropManager.cropCycleGrowth[gridPosition]["water"]<10){
+        if(cropManager.cropCycleGrowth[gridPosition]["water"]<10 || cropManager.cropCycleGrowth[gridPosition]["water"]>110){
             tilemap.SetTile(gridPosition, soilFromCrop[-crop_type]);
             cropManager.cropCycleGrowth.Remove(gridPosition);
         }

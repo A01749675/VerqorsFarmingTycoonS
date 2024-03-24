@@ -40,17 +40,15 @@ public class ControlManager : MonoBehaviour
         if(tool){
             regadera.SetActive(true);
             regadera.transform.position = mousePos;
-            if (Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2)){
+            if (Input.GetMouseButtonDown(0)){
                 if(!startedWatering){
                     startedWatering = true;
                     contadorAgua = mapManager.GetCurrentCycle();
                     
                 }
-                print("Pressed");
                 mapManager.WaterAll();
             }
             if(mapManager.GetCurrentCycle()-contadorAgua<1){
-                print(mapManager.GetCurrentCycle()-contadorAgua);
                 regadera.GetComponent<Animator>().SetBool("Regando",true);
             }
             else{
