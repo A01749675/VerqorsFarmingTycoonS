@@ -10077,55 +10077,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelFarmPackShadow_487
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 320
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f34ba103e277faa4f8f4cb679a1cd356
-      internalID: 916031191
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelFarmPackShadow_488
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 320
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b3ffb63bca59c10479bf264b09ff21b6
-      internalID: 573083312
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: PixelFarmPackShadow_489
       rect:
         serializedVersion: 2
         x: 288
-        y: 320
-        width: 32
-        height: 32
+        y: 288
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -10140,34 +10098,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelFarmPackShadow_490
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 320
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 80073227b3b2f5d4a98df74537f342b9
-      internalID: -2101042246
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: PixelFarmPackShadow_491
       rect:
         serializedVersion: 2
         x: 352
-        y: 320
-        width: 32
-        height: 32
+        y: 288
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -10182,34 +10119,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelFarmPackShadow_492
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 320
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 42071981f27977a4da81eedd8ea3832b
-      internalID: 1875677570
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: PixelFarmPackShadow_493
       rect:
         serializedVersion: 2
         x: 416
-        y: 320
-        width: 32
-        height: 32
+        y: 288
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -10224,34 +10140,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelFarmPackShadow_494
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 320
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 852902b0b576d6543b5cc0d182e7d434
-      internalID: 30698060
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: PixelFarmPackShadow_495
       rect:
         serializedVersion: 2
         x: 480
-        y: 320
-        width: 32
-        height: 32
+        y: 288
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -10261,27 +10156,6 @@ TextureImporter:
       bones: []
       spriteID: 656f9b3917069be40a9faa1f60a5a3f3
       internalID: 1356562401
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelFarmPackShadow_496
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 320
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 37602cc562641804e97c9f5ba1865018
-      internalID: 1636484829
       vertices: []
       indices: 
       edges: []
@@ -10497,34 +10371,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelFarmPackShadow_507
+      name: PixelFarmPackShadow_508
       rect:
         serializedVersion: 2
         x: 224
         y: 288
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8d3c4085142ad584b810c32ac137e568
-      internalID: 728408458
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelFarmPackShadow_508
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 288
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -10534,174 +10387,6 @@ TextureImporter:
       bones: []
       spriteID: b251b22f0e687014793db2fc4d4df1d3
       internalID: 1599669200
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelFarmPackShadow_509
-      rect:
-        serializedVersion: 2
-        x: 288
-        y: 288
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a62c2018857730d41854e9df169de8ca
-      internalID: 1609766966
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelFarmPackShadow_510
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 288
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c0efd2f395322ff49a32f7b3b79b9237
-      internalID: -1667126157
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelFarmPackShadow_511
-      rect:
-        serializedVersion: 2
-        x: 352
-        y: 288
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ee3eb7c6f1fc6554b916aac2ac5a096d
-      internalID: -2061096356
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelFarmPackShadow_512
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 288
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 737dd33511b5011498048357e5a4f562
-      internalID: -734363263
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelFarmPackShadow_513
-      rect:
-        serializedVersion: 2
-        x: 416
-        y: 288
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 48fe5b3806f030947b8ac4b80ed99ab1
-      internalID: -55988297
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelFarmPackShadow_514
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 288
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4889f29efc51df343b14b65fa9d6a390
-      internalID: 1114130694
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelFarmPackShadow_515
-      rect:
-        serializedVersion: 2
-        x: 480
-        y: 288
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0981a9f2d19e19a448b3573fa38cf411
-      internalID: 1619940787
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelFarmPackShadow_516
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 288
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e08edf23326768b4786960652329f404
-      internalID: -863831380
       vertices: []
       indices: 
       edges: []
@@ -11068,9 +10753,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 512
-        y: 256
+        y: 224
         width: 32
-        height: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -11089,9 +10774,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 544
-        y: 256
+        y: 224
         width: 32
-        height: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -11110,9 +10795,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 576
-        y: 256
+        y: 224
         width: 32
-        height: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -11131,9 +10816,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 608
-        y: 256
+        y: 224
         width: 32
-        height: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -11484,90 +11169,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelFarmPackShadow_554
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 224
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9f84ebb12fa56e54f854e507ee716d8d
-      internalID: -996561286
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelFarmPackShadow_555
-      rect:
-        serializedVersion: 2
-        x: 544
-        y: 224
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8c5ef92b071da0345b77039077f10147
-      internalID: 2095674782
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelFarmPackShadow_556
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 224
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 59d11307f8861ce43943ea4783dae41f
-      internalID: -416771799
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelFarmPackShadow_557
-      rect:
-        serializedVersion: 2
-        x: 608
-        y: 224
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 037681ec30fced745a48f6414471eb3c
-      internalID: -506908658
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: PixelFarmPackShadow_558
       rect:
         serializedVersion: 2
@@ -11866,9 +11467,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 448
-        y: 192
+        y: 160
         width: 32
-        height: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -11887,9 +11488,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 480
-        y: 192
+        y: 160
         width: 32
-        height: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -11908,9 +11509,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 512
-        y: 192
+        y: 160
         width: 32
-        height: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -11929,9 +11530,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 544
-        y: 192
+        y: 160
         width: 32
-        height: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -11950,9 +11551,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 576
-        y: 192
+        y: 160
         width: 32
-        height: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -12277,111 +11878,6 @@ TextureImporter:
       bones: []
       spriteID: 3000fa278d735d64b801600cb7434084
       internalID: -1446068893
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelFarmPackShadow_592
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 160
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8657cb605ed1aa14fada4140fdb19f2e
-      internalID: 1329251697
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelFarmPackShadow_593
-      rect:
-        serializedVersion: 2
-        x: 480
-        y: 160
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1b2ff893d97c3df4ebcebd09cb902aed
-      internalID: 220381178
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelFarmPackShadow_594
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 160
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5ecd483da3bec7b4799fc47710b36a49
-      internalID: -920168279
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelFarmPackShadow_595
-      rect:
-        serializedVersion: 2
-        x: 544
-        y: 160
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 358e2db9065930043a05c10bb79b6726
-      internalID: -907203245
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelFarmPackShadow_596
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 160
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 831cd79dc2f93a0479d50986912854ee
-      internalID: 240096718
       vertices: []
       indices: 
       edges: []

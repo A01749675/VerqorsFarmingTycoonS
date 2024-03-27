@@ -9,8 +9,8 @@ public class FinanceManager : MonoBehaviour
     private Dictionary<int, int> _prices;
     private int _financiamiento;
 
-    private UserController user_controller;
-    private CropManager crop_manager;
+    public UserController user_controller;
+    public CropManager crop_manager;
 
     private Dictionary<string, float> VerqorFinanceData;
 
@@ -26,7 +26,7 @@ public class FinanceManager : MonoBehaviour
             {2, 62},
             {3, 70},
             {4, 140},
-            {5, 60},
+            {5, 61},
             {6, 96}
         };
         VerqorFinanceData = new Dictionary<string, float>()
@@ -49,7 +49,7 @@ public class FinanceManager : MonoBehaviour
         };
 
         // Iniciar la coroutine para obtener el financiamiento del usuario
-        StartCoroutine(ObtenerFinanciamiento());
+        //StartCoroutine(ObtenerFinanciamiento());
     }
 
     public void SellItem(int cropType, int quantity)
@@ -59,6 +59,14 @@ public class FinanceManager : MonoBehaviour
             user_controller.UpdateCapital(_prices[cropType] * quantity);
             crop_manager.UpdateCropQuantity(cropType, -quantity);
         }
+    }
+    public int GetCropPrice(int cropType)
+    {
+        if (_prices.ContainsKey(cropType))
+        {
+            return _prices[cropType];
+        }
+        return 0;
     }
 
     public void SetUserId(int userId)

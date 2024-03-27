@@ -381,7 +381,7 @@ public class MapManager : MonoBehaviour
                     tilemap.SetTile(gridPosition, water_tiles[1]);
                 }
                 else if(tile && dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type==0 && climate==3){
-                    tilemap.SetTile(gridPosition, water_tiles[1]);
+                    tilemap.SetTile(gridPosition, water_tiles[0]);
                 }
             }
         }
