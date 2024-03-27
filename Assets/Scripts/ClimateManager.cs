@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ClimateManager : MonoBehaviour
@@ -16,6 +17,8 @@ public class ClimateManager : MonoBehaviour
     private int currentClimate = 1;
 
     public MapManager mapManager;
+    
+    public TextMeshProUGUI newsText;
     private Dictionary<int,int> probability;
     // Start is called before the first frame update
     void Awake()
@@ -112,18 +115,23 @@ public class ClimateManager : MonoBehaviour
         switch(climate){
             case 0:
                 Debug.Log("Drought");
+                newsText.text = "Drought";
                 break;
             case 1:
                 Debug.Log("Normal");
+                newsText.text = "Normal";
                 break;
             case 2:
                 Debug.Log("Rain");
+                newsText.text = "Rain";
                 break;
             case 3:
                 Debug.Log("Flood");
+                newsText.text = "Flood";
                 break;
             case 4:
                 Debug.Log("Hurricane");
+                newsText.text = "Hurricane";
                 break;
         }
     }
