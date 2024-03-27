@@ -61,7 +61,7 @@ public class ClimateManager : MonoBehaviour
             }}
         };
         probability = new Dictionary<int,int>(){
-        {0,50},
+        {0,80},
         {1,60},
         {2,60},
         {3,40},
@@ -85,6 +85,7 @@ public class ClimateManager : MonoBehaviour
                 PrintClimate(currentClimate);
                 if(currentClimate != 1){
                     mapManager.ClimateWaterUpdate();
+                    mapManager.UpdateVisualWater(currentClimate);
                 }
             }
             else{
