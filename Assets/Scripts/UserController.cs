@@ -50,21 +50,21 @@ public class UserController : MonoBehaviour
         user_data[param] = value;
     }
 
-    void UpdateCapital(int money){
+    public void UpdateCapital(int money){
         user_data["capital"]+=money;
     }
-    void PayDebt(int money){
+    public void PayDebt(int money){
         user_data["deudas"]-=money;
     }
-    int GetCapital(){
+    public int GetCapital(){
         return user_data["capital"];
     }
 
-    void UpdateCrops(int crops){
+    public void UpdateCrops(int crops){
         user_data["cosechas"]+=crops;
     }
 
-    int GetDebt(){
+    public int GetDebt(){
         return user_data["deudas"];
     }
 

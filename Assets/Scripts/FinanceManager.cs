@@ -9,6 +9,9 @@ public class FinanceManager : MonoBehaviour
     private Dictionary<int, int> _prices;
     private int _financiamiento;
 
+    private UserController user_controller;
+    private CropManager crop_manager;
+
     private Dictionary<string, float> VerqorFinanceData;
 
     private Dictionary<string, float> BancoFinanceData;
@@ -49,13 +52,13 @@ public class FinanceManager : MonoBehaviour
         StartCoroutine(ObtenerFinanciamiento());
     }
 
-    public int SellItem(int cropType, int quantity)
+    public void SellItem(int cropType, int quantity)
     {
         if (_prices.ContainsKey(cropType))
         {
-            return _prices[cropType] * quantity;
+            user_controller.UpdateCapital(_prices[cropType] * quantity);
+            crop_manager.UpdateCropQuantity(cropType, -quantity);
         }
-        return 0;
     }
 
     public void SetUserId(int userId)
