@@ -7,7 +7,6 @@ public class CropManager : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public static int selected_crop;
     public Dictionary<int, int> crop_quantity;
     public Dictionary<int, int> crop_seeds;
     public Dictionary<Vector3Int, Dictionary<string,int>> cropCycleGrowth = new Dictionary<Vector3Int, Dictionary<string,int>>();
