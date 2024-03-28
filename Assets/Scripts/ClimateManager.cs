@@ -78,7 +78,7 @@ public class ClimateManager : MonoBehaviour
             print("Current climate: "+currentClimate);
             int possibleClimate = random.Next(0,5);
             int odds = probability[possibleClimate];
-            currentClimatecycle = random.Next(0,100);
+            currentClimatecycle = random.Next(1,100);
             if(currentClimatecycle < odds){
                 print("Climate changed to "+possibleClimate);
                 currentClimate = possibleClimate;

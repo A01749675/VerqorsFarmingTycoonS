@@ -124,6 +124,10 @@ public class FinanceManager : MonoBehaviour
                 break;
         }
     }
+    public Dictionary<int, int> GetPrices()
+    {
+        return _prices;
+    }
 }
 
 [System.Serializable]

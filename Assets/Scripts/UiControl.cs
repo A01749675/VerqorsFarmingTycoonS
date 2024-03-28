@@ -61,6 +61,22 @@ public class UiControl : MonoBehaviour
     public GameObject precioCafe;
     public GameObject precioTomate;
 
+// Mercado Comprar
+
+    public MarketManager marketManager;
+    public GameObject trigoPrice;
+    public GameObject maizPrice;
+    public GameObject chilePrice;
+    public GameObject aguacatePrice;
+    public GameObject cafePrice;
+    public GameObject tomatePrice;
+    public GameObject trigoCantidad;
+    public GameObject maizCantidad;
+    public GameObject chileCantidad;
+    public GameObject aguacateCantidad;
+    public GameObject cafeCantidad;
+    public GameObject tomateCantidad;
+
     public GameObject Dinero;
 
 
@@ -371,78 +387,114 @@ public class UiControl : MonoBehaviour
         }else{
             flagMenuComprar=true;
             MenuComprar.SetActive(true);
+            trigoCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(1).ToString();
+            trigoPrice.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal(1)).ToString();
+            maizCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(2).ToString();
+            maizPrice.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal(2)).ToString();
+            chileCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(6).ToString();
+            chilePrice.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal(6)).ToString();
+            aguacateCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(4).ToString();
+            aguacatePrice.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal(4)).ToString();
+            cafeCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(5).ToString();
+            cafePrice.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal(5)).ToString();
+            tomateCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(3).ToString();
+            tomatePrice.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal(3)).ToString();
         }
     }
 
     public void SumarTrigoV(){
         if(cropManager.GetCropQuantity(1)>trigov){
-            trigov++;
+            trigov+=5;
+        }else{
+            trigov =cropManager.GetCropQuantity(1);
         }
         TrigoVcontador.GetComponent<TextMeshProUGUI>().text = trigov.ToString();
     }
     public void RestarTrigoV(){
         if(trigov>0){
-            trigov--;
+            trigov-=5;
+        } else{
+            trigov = 0;
         }
         TrigoVcontador.GetComponent<TextMeshProUGUI>().text = trigov.ToString();
     }
     public void SumarMaízV(){
         if(cropManager.GetCropQuantity(2)>maizv){
-            maizv++;
+            maizv+=5;
+        }else{
+            maizv =cropManager.GetCropQuantity(2); 
         }
         MaizVcontador.GetComponent<TextMeshProUGUI>().text = maizv.ToString();
     }
     public void RestarMaízV(){
         if(maizv>0){
-            maizv--;
+            maizv-=5;
+        } else{
+            maizv = 0;
         }
         MaizVcontador.GetComponent<TextMeshProUGUI>().text = maizv.ToString();
     }
     public void SumarChileV(){
         if(cropManager.GetCropQuantity(6)>chilev){
-            chilev++;
+            chilev+=5;
+        }else{
+            chilev =cropManager.GetCropQuantity(6);
         }
         ChileVcontador.GetComponent<TextMeshProUGUI>().text = chilev.ToString();
     }
     public void RestarChileV(){
         if(chilev>0){
-            chilev--;
+            chilev-=5;
+        } else{
+            chilev = 0;
         }
         ChileVcontador.GetComponent<TextMeshProUGUI>().text = chilev.ToString();
     }
     public void SumarAguacateV(){
         if(cropManager.GetCropQuantity(4)>aguacatev){
-            aguacatev++;
+            aguacatev+=5;
+        }else{
+            aguacatev =cropManager.GetCropQuantity(4);
         }
         AguacateVcontador.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString();
     }
     public void RestarAguacateV(){
         if(aguacatev>0){
-            aguacatev--;
+            aguacatev-=5;
+        }else{  
+            aguacatev = 0;
         }
         AguacateVcontador.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString();
     }
     public void SumarCafeV(){
         if(cropManager.GetCropQuantity(5)>cafev){
-            cafev++;
+            cafev+=5;
+        } else{
+            cafev =cropManager.GetCropQuantity(5);
         }
         CafeVcontador.GetComponent<TextMeshProUGUI>().text = cafev.ToString();
     }
     public void RestarCafeV(){
         if(cafev>0){
-            cafev--;
+            cafev-=5;
+        } else{
+            cafev = 0;
         }
         CafeVcontador.GetComponent<TextMeshProUGUI>().text = cafev.ToString();
     }
     public void SumarTomateV(){
         if(cropManager.GetCropQuantity(3)>tomatev){
-            tomatev++;
+            tomatev+=5;
+        } else{
+            tomatev =cropManager.GetCropQuantity(3);
         }
         TomateVcontador.GetComponent<TextMeshProUGUI>().text = tomatev.ToString();
     }
     public void RestarTomateV(){
         if(tomatev>0){
-            tomatev--;
+            tomatev-=5;
+        } else{
+            tomatev = 0;
         }
         TomateVcontador.GetComponent<TextMeshProUGUI>().text = tomatev.ToString();
     }
@@ -469,11 +521,70 @@ public class UiControl : MonoBehaviour
         Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
     }
 
-     private void Awake()
+    public void ComprarSemillas(string cropType){
+        if(cropType=="1"){
+            if(UserController.GetCapital()>=marketManager.GetTotal(1)){
+                UserController.UpdateCapital(-(int)marketManager.GetTotal(1));
+                cropManager.UpdateCropSeeds(1,marketManager.GetCantidad(1));
+                marketManager.UpdateCropQuantity(1,0);
+                trigoCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(1).ToString();
+                trigoPrice.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal(1)).ToString();
+                Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
+            }
+        } else if (cropType=="2"){
+            if(UserController.GetCapital()>=marketManager.GetTotal(2)){
+                UserController.UpdateCapital(-(int)marketManager.GetTotal(2));
+                cropManager.UpdateCropSeeds(2,marketManager.GetCantidad(2));
+                marketManager.UpdateCropQuantity(2,0);
+                maizCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(2).ToString();
+                maizPrice.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal(2)).ToString();
+                Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
+            }
+        } else if (cropType=="3"){ 
+            if(UserController.GetCapital()>=marketManager.GetTotal(3)){
+                UserController.UpdateCapital(-(int)marketManager.GetTotal(3));
+                cropManager.UpdateCropSeeds(3,marketManager.GetCantidad(3));
+                marketManager.UpdateCropQuantity(3,0);
+                tomateCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(3).ToString();
+                tomatePrice.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal(3)).ToString();
+                Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
+            }
+        } else if (cropType=="4"){
+            if(UserController.GetCapital()>=marketManager.GetTotal(4)){
+                UserController.UpdateCapital(-(int)marketManager.GetTotal(4));
+                cropManager.UpdateCropSeeds(4,marketManager.GetCantidad(4));
+                marketManager.UpdateCropQuantity(4,0);
+                aguacateCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(4).ToString();
+                aguacatePrice.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal(4)).ToString();
+                Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
+            }
+        } else if (cropType=="5"){
+            if(UserController.GetCapital()>=marketManager.GetTotal(5)){
+                UserController.UpdateCapital(-(int)marketManager.GetTotal(5));
+                cropManager.UpdateCropSeeds(5,marketManager.GetCantidad(5));
+                marketManager.UpdateCropQuantity(5,0);
+                cafeCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(5).ToString();
+                cafePrice.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal(5)).ToString();
+                Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
+            }
+        } else if (cropType=="6"){
+            if(UserController.GetCapital()>=marketManager.GetTotal(6)){
+                UserController.UpdateCapital(-(int)marketManager.GetTotal(6));
+                cropManager.UpdateCropSeeds(6,marketManager.GetCantidad(6));
+                marketManager.UpdateCropQuantity(6,0);
+                chileCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(6).ToString();
+                chilePrice.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal(6)).ToString();
+                Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
+            }
+        }
+    }
+
+
+    private void Awake()
     {
         Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
     }
 
-    
+
 
 }
