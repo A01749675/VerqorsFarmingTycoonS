@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class UserController : MonoBehaviour
 {
-    Dictionary<string,int> user_data;
-    Dictionary<int,string> achievements;
-    Dictionary<int,bool> unlocked_achievements;
+    public Dictionary<string,int> user_data;
+    public Dictionary<int,string> achievements;
+    public Dictionary<int,bool> unlocked_achievements;
 
     private void Awake()
     {
