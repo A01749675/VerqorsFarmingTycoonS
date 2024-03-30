@@ -1,8 +1,5 @@
 using UnityEngine;
-using UnityEngine.Networking;
-using System.Collections;
 using System.Collections.Generic;
-
 public class FinanceManager : MonoBehaviour
 {
     private int _userId;
@@ -11,11 +8,10 @@ public class FinanceManager : MonoBehaviour
 
     public UserController user_controller;
     public CropManager crop_manager;
+    public ObtenerDatos obtener_datos;
 
     private Dictionary<string, float> VerqorFinanceData;
-
     private Dictionary<string, float> BancoFinanceData;
-
     private Dictionary<string, float> CoyoteFinanceData;
 
     private void Awake()
@@ -47,9 +43,16 @@ public class FinanceManager : MonoBehaviour
             {"plazo", 6},
             {"montoMaximo", 50000}
         };
-
-        // Iniciar la coroutine para obtener el financiamiento del usuario
-        //StartCoroutine(ObtenerFinanciamiento());
+    }
+    void Start()
+    {
+        if (obtener_datos.progreso != null && obtener_datos.progreso.Count > 0)
+        {
+            _userId = obtener_datos.user_id;
+            _financiamiento = obtener_datos.progreso[0].financiamiento;
+            // Llamar al método UpdateFinanciamiento
+            UpdateFinanciamiento(_financiamiento);
+        }
     }
 
     public void SellItem(int cropType, int quantity)
@@ -60,45 +63,15 @@ public class FinanceManager : MonoBehaviour
             crop_manager.UpdateCropQuantity(cropType, -quantity);
         }
     }
+
     public int GetCropPrice(int cropType)
     {
-        if (_prices.ContainsKey(cropType))
-        {
-            return _prices[cropType];
-        }
-        return 0;
-    }
-
-    public void SetUserId(int userId)
-    {
-        _userId = userId;
+        return _prices.ContainsKey(cropType) ? _prices[cropType] : 0;
     }
 
     public int GetFinanciamiento()
     {
         return _financiamiento;
-    }
-
-    private IEnumerator ObtenerFinanciamiento()
-    {
-        // Obtener el financiamiento del usuario 
-        UnityWebRequest www = UnityWebRequest.Get("http://localhost:8080/Verqor/api/apiFinanciamiento.php?user_id=" + _userId);
-        yield return www.SendWebRequest();
-
-        if (www.result == UnityWebRequest.Result.Success)
-        {
-            // Parsear el resultado JSON y obtener el financiamiento
-            string jsonString = www.downloadHandler.text;
-            FinanciamientoData financiamientoData = JsonUtility.FromJson<FinanciamientoData>(jsonString);
-            _financiamiento = financiamientoData.financiamiento;
-
-            // Llamar al método UpdateFinanciamiento para actualizar el financiamiento
-            UpdateFinanciamiento(_financiamiento);
-        }
-        else
-        {
-            Debug.LogError("Error al obtener el financiamiento: " + www.error);
-        }
     }
 
     public void UpdateFinanciamiento(int financiamiento)
@@ -124,14 +97,9 @@ public class FinanceManager : MonoBehaviour
                 break;
         }
     }
+
     public Dictionary<int, int> GetPrices()
     {
         return _prices;
     }
-}
-
-[System.Serializable]
-public class FinanciamientoData
-{
-    public int financiamiento;
 }

@@ -1,78 +1,138 @@
 using UnityEngine;
 using UnityEngine.Networking;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ObtenerDatos : MonoBehaviour
 {
-    public string phpScriptURL = "http://localhost:8080/Verqor/api/apiUsuario.php";
-    public void ObtenerFinanciamiento()
+    
+    // Variables públicas para guardar los datos del usuario
+    public bool success;
+    public string message;
+    public int user_id;
+    public Usuario usuario;
+    public List<Progreso> progreso;
+    public List<Semilla> semillas;
+    public List<Cultivo> cultivos;
+
+    private void Awake()
     {
-        StartCoroutine(ObtenerUsuarioYFinanciamiento());
+        StartCoroutine(ObtenerDatosUsuario());
     }
-    private IEnumerator ObtenerUsuarioYFinanciamiento()
+
+    private IEnumerator ObtenerDatosUsuario()
     {
-        // Realizar la solicitud GET 
-        UnityWebRequest usuarioRequest = UnityWebRequest.Get(phpScriptURL);
-        yield return usuarioRequest.SendWebRequest();
+        // Obtener la URL absoluta de la aplicación
+        string url = Application.absoluteURL;
 
-        // Verificar si hubo algún error en la solicitud
-        if (usuarioRequest.result == UnityWebRequest.Result.Success)
+        int index = url.IndexOf("user_id=");
+        if (index != -1)
         {
-            // Obtener el ID de usuario como un string
-            string userIdString = usuarioRequest.downloadHandler.text;
-
-            // Convertir el ID de usuario a un entero
-            int userId;
-            if (int.TryParse(userIdString, out userId))
+            // Obtener el valor del 'user_id' desde la URL
+            string userIdStr = url.Substring(index + 8); // Sumar 8 para ignorar 'user_id='
+            if (int.TryParse(userIdStr, out user_id))
             {
-                StartCoroutine(ObtenerFinanciamientoDeUsuario(userId));
-                print("ID de usuario obtenido: " + userIdString);
+                Debug.Log("user_id obtenido de la URL: " + user_id);
             }
             else
             {
-                Debug.LogError("Error al convertir el ID de usuario: " + userIdString);
+                Debug.LogError("No se pudo convertir el 'user_id' de la URL a entero.");
+                yield break; 
             }
         }
         else
         {
-            Debug.LogError("Error al obtener el ID de usuario: " + usuarioRequest.error);
+            Debug.LogError("El parámetro 'user_id' no se encontró en la URL.");
+            yield break; 
         }
-    }
 
-    private IEnumerator ObtenerFinanciamientoDeUsuario(int userId)
-    {
-        // Construir la URL completa con el ID de usuario como parámetro
-        string url = phpScriptURL + "?user_id=" + userId;
+        string apiUrl = "http://localhost:8080/Verqor/api/apiUsuario.php?user_id=" + user_id;
 
-        // Realizar la solicitud GET al script PHP
-        UnityWebRequest www = UnityWebRequest.Get(url);
+        UnityWebRequest www = UnityWebRequest.Get(apiUrl);
         yield return www.SendWebRequest();
 
-        // Verificar si hubo algún error en la solicitud
         if (www.result == UnityWebRequest.Result.Success)
         {
-            // Obtener el financiamiento como un string JSON y convertirlo a un objeto JSON
             string jsonString = www.downloadHandler.text;
-            
-            // Verificar si el JSON contiene un mensaje de error
-            if (jsonString.Contains("error"))
+            DatosUsuario datosUsuario = JsonUtility.FromJson<DatosUsuario>(jsonString);
+
+            success = datosUsuario.success;
+            message = datosUsuario.message;
+            usuario = datosUsuario.usuario;
+            progreso = datosUsuario.progreso;
+            semillas = datosUsuario.semillas;
+            cultivos = datosUsuario.cultivos;
+
+            if (success)
             {
-                Debug.LogError("Error al obtener el financiamiento: " + jsonString);
+                Debug.Log("Nombre de usuario: " + usuario.usuario);
+                Debug.Log("Tipo de usuario: " + usuario.tipo_usuario);
+                Debug.Log("Progreso: " + progreso[0].practica);
+                Debug.Log("Financiamiento: " + progreso[0].financiamiento); 
+                
+                Debug.Log("Datos del usuario obtenidos correctamente.");
             }
             else
             {
-                FinanciamientoData financiamiento = JsonUtility.FromJson<FinanciamientoData>(jsonString);
-
-                // Usar el financiamiento en tu juego
-                Debug.Log("Financiamiento obtenido: " + financiamiento.financiamiento);
-
-                // Llamar al método UpdateFinanciamiento del FinanceManager
-                FindObjectOfType<FinanceManager>().UpdateFinanciamiento(financiamiento.financiamiento);
+                Debug.Log("Error al obtener los datos del usuario: " + message);
             }
         }
         else
         {
-            Debug.LogError("Error al obtener el financiamiento: " + www.error);
+            Debug.LogError("Error al obtener los datos del usuario: " + www.error);
         }
     }
+}
+
+// Clases para deserializar la respuesta JSON
+[System.Serializable]
+public class DatosUsuario
+{
+    public bool success;
+    public string message;
+    public Usuario usuario;
+    public List<Progreso> progreso;
+    public List<Semilla> semillas;
+    public List<Cultivo> cultivos;
+}
+
+[System.Serializable]
+public class Usuario
+{
+    public int id;
+    public string tipo_usuario;
+    public string usuario;
+}
+
+[System.Serializable]
+public class Progreso
+{
+    public int id;
+    public int seguro;
+    public int ciclo;
+    public string practica;
+    public float dinero;
+    public int financiamiento;
+}
+
+[System.Serializable]
+public class Semilla
+{
+    public int id;
+    public int maiz;
+    public int trigo;
+    public int chile;
+    public int tomate;
+}
+
+[System.Serializable]
+public class Cultivo
+{
+    public int id;
+    public string hora_plantacion;
+    public string estado;
+    public string semilla;
+    public float posx;
+    public float posy;
 }
