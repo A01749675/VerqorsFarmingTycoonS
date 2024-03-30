@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ClimateManager : MonoBehaviour
@@ -16,6 +17,8 @@ public class ClimateManager : MonoBehaviour
     private int currentClimate = 1;
 
     public MapManager mapManager;
+    
+    public TextMeshProUGUI newsText;
     private Dictionary<int,int> probability;
     // Start is called before the first frame update
     void Awake()
@@ -58,7 +61,7 @@ public class ClimateManager : MonoBehaviour
             }}
         };
         probability = new Dictionary<int,int>(){
-        {0,50},
+        {0,80},
         {1,60},
         {2,60},
         {3,40},
@@ -75,13 +78,14 @@ public class ClimateManager : MonoBehaviour
             print("Current climate: "+currentClimate);
             int possibleClimate = random.Next(0,5);
             int odds = probability[possibleClimate];
-            currentClimatecycle = random.Next(0,100);
+            currentClimatecycle = random.Next(1,100);
             if(currentClimatecycle < odds){
                 print("Climate changed to "+possibleClimate);
                 currentClimate = possibleClimate;
                 PrintClimate(currentClimate);
                 if(currentClimate != 1){
                     mapManager.ClimateWaterUpdate();
+                    mapManager.UpdateVisualWater(currentClimate);
                 }
             }
             else{
@@ -112,18 +116,23 @@ public class ClimateManager : MonoBehaviour
         switch(climate){
             case 0:
                 Debug.Log("Drought");
+                newsText.text = "Drought";
                 break;
             case 1:
                 Debug.Log("Normal");
+                newsText.text = "Normal";
                 break;
             case 2:
                 Debug.Log("Rain");
+                newsText.text = "Rain";
                 break;
             case 3:
                 Debug.Log("Flood");
+                newsText.text = "Flood";
                 break;
             case 4:
                 Debug.Log("Hurricane");
+                newsText.text = "Hurricane";
                 break;
         }
     }

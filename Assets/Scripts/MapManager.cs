@@ -47,6 +47,8 @@ public class MapManager : MonoBehaviour
     public List<TileBase> avocado_grow_tiles;
     public List<TileBase> coffee_grow_tiles;
 
+    public List<TileBase> water_tiles;
+
     // Start is called before the first frame update
     public CropManager cropManager;
 
@@ -365,6 +367,23 @@ public class MapManager : MonoBehaviour
         TileBase tile = tilemap.GetTile(gridPos);
         if(tile && cropManager.cropCycleGrowth.ContainsKey(gridPos)){
             print("The crop at: "+gridPos+" has this water: "+cropManager.cropCycleGrowth[gridPos]["water"]);
+        }
+    }
+
+    public void UpdateVisualWater(int climate){
+        print("Drying");
+        int i = 0;
+        for(i = -2*tilemap.size.x; i<2*tilemap.size.x; i++){
+            for(int j = -2*tilemap.size.y; j<2*tilemap.size.y; j++){
+                Vector3Int gridPosition = new Vector3Int(i, j, 0);
+                TileBase tile = tilemap.GetTile(gridPosition);
+                if(tile && dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type==0 && climate==0){
+                    tilemap.SetTile(gridPosition, water_tiles[1]);
+                }
+                else if(tile && dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type==0 && climate==3){
+                    tilemap.SetTile(gridPosition, water_tiles[0]);
+                }
+            }
         }
     }
 
