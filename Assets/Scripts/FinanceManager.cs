@@ -43,9 +43,12 @@ public class FinanceManager : MonoBehaviour
             {"plazo", 6},
             {"montoMaximo", 50000}
         };
+
+        // ObtenerFinanciamiento();
     }
-    void Start()
+    private void ObtenerFinanciamiento()
     {
+        print("Datos progreso: " + obtener_datos.progreso);
         if (obtener_datos.progreso != null && obtener_datos.progreso.Count > 0)
         {
             _userId = obtener_datos.user_id;
@@ -54,7 +57,6 @@ public class FinanceManager : MonoBehaviour
             UpdateFinanciamiento(_financiamiento);
         }
     }
-
     public void SellItem(int cropType, int quantity)
     {
         if (_prices.ContainsKey(cropType))

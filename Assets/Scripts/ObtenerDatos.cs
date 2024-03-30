@@ -68,7 +68,7 @@ public class ObtenerDatos : MonoBehaviour
             {
                 Debug.Log("Nombre de usuario: " + usuario.usuario);
                 Debug.Log("Tipo de usuario: " + usuario.tipo_usuario);
-                Debug.Log("Progreso: " + progreso[0].practica);
+                Debug.Log("Progreso: " + progreso[0]);
                 Debug.Log("Financiamiento: " + progreso[0].financiamiento); 
                 
                 Debug.Log("Datos del usuario obtenidos correctamente.");
