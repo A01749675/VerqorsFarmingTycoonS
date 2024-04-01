@@ -3,7 +3,7 @@ using System.Collections.Generic;
 public class FinanceManager : MonoBehaviour
 {
     private int _userId;
-    private Dictionary<int, int> _prices;
+    public Dictionary<int, int> _prices;
     private int _financiamiento;
 
     public UserController user_controller;

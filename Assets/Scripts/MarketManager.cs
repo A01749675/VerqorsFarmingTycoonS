@@ -10,7 +10,7 @@ public class MarketManager : MonoBehaviour
     public FinanceManager financeManager;
 
     private void Awake(){
-        crop_prices= financeManager.GetPrices();
+        crop_prices = financeManager.GetPrices();
         crop_quantity = new Dictionary<int, int>(){
               {1, random.Next(1, 500)},
               {2, random.Next(1, 500)},
@@ -21,16 +21,12 @@ public class MarketManager : MonoBehaviour
         };
     }
 
-    public int GetPrice(int cropType){
-        return crop_prices[cropType];
-    }
-
     public int GetCantidad(int cropType){
         return crop_quantity[cropType];
     }
 
     public double GetTotal(int cropType){
-        return GetPrice(cropType) * GetCantidad(cropType) * 0.8;
+        return financeManager._prices[cropType] * GetCantidad(cropType) * 0.8;
     }
 
     public void UpdateCropQuantity(int cropType, int quantity){
