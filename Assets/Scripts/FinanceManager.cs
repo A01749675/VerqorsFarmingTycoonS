@@ -10,6 +10,8 @@ public class FinanceManager : MonoBehaviour
     public CropManager crop_manager;
     public ObtenerDatos obtener_datos;
 
+    public MapManager mapManager;
+
     private Dictionary<string, float> VerqorFinanceData;
     private Dictionary<string, float> BancoFinanceData;
     private Dictionary<string, float> CoyoteFinanceData;
@@ -45,6 +47,14 @@ public class FinanceManager : MonoBehaviour
         };
 
         // ObtenerFinanciamiento();
+    }
+
+    private void Update(){
+        int cycle = mapManager.GetCurrentCycle();
+        if(cycle%3650==0){
+            print("Financiamiento actualizado");
+            user_controller.PayDebt(100000);
+        }
     }
     private void ObtenerFinanciamiento()
     {

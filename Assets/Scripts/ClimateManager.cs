@@ -73,6 +73,11 @@ public class ClimateManager : MonoBehaviour
     void Update()
     {
         int cycle = mapManager.GetCurrentCycle();
+        UpdateClimate(cycle);
+        UpdateCurrentDay(cycle);
+    }
+
+    private void UpdateClimate(int cycle){
         if(cycle%currentClimatecycle == 0){
             print("_________Climate update__________");
             print("Current climate: "+currentClimate);
@@ -104,6 +109,12 @@ public class ClimateManager : MonoBehaviour
                     PrintClimate(currentClimate);
                 }
             }
+        }
+    }
+
+    private void UpdateCurrentDay(int cycle){
+        if(cycle%10==0){
+
         }
     }
 
