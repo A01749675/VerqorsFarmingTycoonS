@@ -95,11 +95,13 @@ public class ClimateManager : MonoBehaviour
                         print("Updating water as climate probability repeated");
                         mapManager.ClimateWaterUpdate();
                         print("For current climate "+currentClimate+" water was updated");
+                        PrintClimate(currentClimate);
                     }
                 }
                 else{
                     currentClimate = 1;
                     print("Change to normal climate as previous climate probability was not met");
+                    PrintClimate(currentClimate);
                 }
             }
         }
@@ -116,7 +118,7 @@ public class ClimateManager : MonoBehaviour
         switch(climate){
             case 0:
                 Debug.Log("Drought");
-                newsText.text = "Drought";
+                newsText.text = "Sequía";
                 break;
             case 1:
                 Debug.Log("Normal");
@@ -124,15 +126,15 @@ public class ClimateManager : MonoBehaviour
                 break;
             case 2:
                 Debug.Log("Rain");
-                newsText.text = "Rain";
+                newsText.text = "Lluvia";
                 break;
             case 3:
                 Debug.Log("Flood");
-                newsText.text = "Flood";
+                newsText.text = "Inundación";
                 break;
             case 4:
                 Debug.Log("Hurricane");
-                newsText.text = "Hurricane";
+                newsText.text = "Huracán";
                 break;
         }
     }
