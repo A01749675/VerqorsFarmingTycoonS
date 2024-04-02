@@ -12,7 +12,29 @@ h2 {
     color: #b58026;
     margin-bottom: 10px;;
 }
-
+@media (max-width: 400px) {
+    .container {
+        justify-content: center; 
+    }
+    .form{
+        background-image:none;
+        background-size: 55% auto;
+        color: #fff;
+        padding: 0%;
+        padding-top: 0;
+    }
+    .form-display {
+        margin: 0; 
+    }
+    .form-back{
+        max-width: 20%;
+    }
+    
+    .form-back-2{
+        max-width: 20%;
+    }
+    
+}
 
 .container {
     display: flex;
@@ -45,7 +67,7 @@ h2 {
 
 form {
     padding: 80px 70px;
-    padding-top: 80;
+    padding-top: 80px;
     width: 300px;
     height: 500px;
     display: flex;
@@ -113,22 +135,7 @@ p a {
     font-weight: bold;
 }
 
-@media (max-width: 400px) {
-    .container {
-        justify-content: center; 
-    }
 
-    .form-display {
-        margin: 0; 
-    }
-    .form-back{
-        max-width: 20%;
-    }
-    
-    .form-back-2{
-        max-width: 20%;
-    }
-}
 
 .hidden {
     display: none; 

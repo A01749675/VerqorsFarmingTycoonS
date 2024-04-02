@@ -28,9 +28,9 @@ $valor = isset($_POST['valor']) ? (int)$_POST['valor'] : 0;
 $usuarioId = $_SESSION['usuario_id'];
 
 // Inicializar la variable seguro
-$seguro = 0; 
+$seguro = 0; // Predeterminado a 0
 if ($valor === 1) {
-    $seguro = 1; 
+    $seguro = 1; // Si el valor es 1, el seguro se establece en 1
 }
 
 // Insertar el valor en la base de datos
@@ -47,7 +47,7 @@ if ($stmt->execute()) {
     if ($valor === 2) {
         header("Location: banco.html");
     } else {
-        header("Location: game.html");
+        header("Location: http://localhost:60308");
     }
     exit;
 } else {

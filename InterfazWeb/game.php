@@ -43,8 +43,6 @@
         <div id="unity-loading-bar">Cargando...</div>
     </div>
 
-    <!-- PENDIENTE -->
-
     <!-- Incluir el script de Unity Loader -->
     <script src="webTest/UnityLoader.js"></script>
     <script>

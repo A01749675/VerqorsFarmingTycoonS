@@ -1,5 +1,5 @@
 <?php
-session_start(); 
+session_start();
 
 // Conexión a la base de datos
 $servername = "localhost";
@@ -17,8 +17,9 @@ if ($conn->connect_error) {
 
 // Obtener los datos del formulario
 $correo = $_POST['correo'];
-$contraseña = $_POST['contraseña']; 
+$contraseña = $_POST['contraseña']; // La contraseña introducida por el usuario
 
+// Preparar consulta SQL para obtener el hash de la contraseña basado en el correo
 $sql = "SELECT * FROM usuarios WHERE correo = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $correo);
@@ -28,6 +29,7 @@ $result = $stmt->get_result();
 if ($result->num_rows > 0) {
     $userData = $result->fetch_assoc();
 
+    // Verificar la contraseña con el hash almacenado
     if (password_verify($contraseña, $userData['contraseña'])) {
         // Inicio de sesión exitoso, establecer variables de sesión
         $_SESSION['usuario_id'] = $userData['id'];
@@ -47,8 +49,9 @@ if ($result->num_rows > 0) {
         $progressResult = $stmt->get_result();
 
         if ($progressResult->num_rows > 0) {
-            // Si hay un progreso asociado con el usuario, redirigir al juego
-            header("Location: game.php");
+            $puerto = 60308; // Puerto de UNITY
+            header("Location: http://localhost:$puerto/?user_id=" . $_SESSION['usuario_id']);
+
             exit();
         } else {
             // Si no hay progreso, redirigir a credito.html para elegir financiamiento
@@ -67,4 +70,3 @@ if ($result->num_rows > 0) {
 // Cerrar la conexión y la declaración preparada
 $stmt->close();
 $conn->close();
-?>

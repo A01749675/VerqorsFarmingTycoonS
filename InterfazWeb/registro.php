@@ -15,15 +15,16 @@ if ($conn->connect_error) {
 // Obtener los datos del formulario
 $usuario = $_POST['usuario'];
 $correo = $_POST['correo'];
-$contraseña = $_POST['contraseña']; 
+$contraseña = $_POST['contraseña']; // La contraseña introducida por el usuario
 $tipo_usuario = $_POST['tipo_usuario'];
 $fecha_nacimiento = $_POST['fecha_nacimiento']; 
 
 // Aplicar hash a la contraseña
 $contraseñaHash = password_hash($contraseña, PASSWORD_DEFAULT);
 
+// Preparar y ejecutar la consulta SQL para insertar el registro con la contraseña hasheada y la fecha de nacimiento
 $sql = $conn->prepare("INSERT INTO usuarios (usuario, correo, contraseña, tipo_usuario, fecha_nacimiento) VALUES (?, ?, ?, ?, ?)");
-$sql->bind_param("sssss", $usuario, $correo, $contraseñaHash, $tipo_usuario, $fecha_nacimiento); 
+$sql->bind_param("sssss", $usuario, $correo, $contraseñaHash, $tipo_usuario, $fecha_nacimiento); // Se utiliza 'sssss' por cinco parámetros de tipo string
 
 if ($sql->execute()) {
     echo "<script>

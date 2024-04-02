@@ -19,8 +19,7 @@
                 <h2 >Registrar</h2>
                 <input id="usuario" type="text" name="usuario" placeholder="Usuario" required="required">
                 <input id="correo" type="email" name="correo" placeholder="Correo" required="required">
-                <input id="contraseña" type="password" name="contraseña" placeholder="Contraseña" required="required">
-                
+                <input id="contraseña" type="password" name="contraseña" placeholder="Contraseña" required="required">                
                 <input style=" width: 90%;
                 padding: 10px 10px;
                 margin-top: 10px;
@@ -33,8 +32,14 @@
                 <div class="select-container">
                     <select id="opciones" name="tipo_usuario" required="required">
                         <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="cliente">Cliente</option>
+                        <option value="fabricante">Fabricante de Agroinsumos</option>
+                        <option value="distribuidor">Distribuidor de Agroinsumos</option>
+                        <option value="proveedor_seguros">Proveedor de Seguros</option>
+                        <option value="financiera">Financiera</option>
+                        <option value="cpg">Empresa CPG</option>
+                        <option value="acopiador">Acopiador</option>
                         <option value="inversionista">Inversionista</option>
-                        <option value="cliente_regular">Cliente regular</option>
                         <option value="publico_general">Público general</option>
                     </select>
                 </div>
