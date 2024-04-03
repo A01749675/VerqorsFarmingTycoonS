@@ -80,7 +80,7 @@ public class UiControl : MonoBehaviour
     public GameObject tomateCantidad;
 
     public GameObject Dinero;
-
+    public GameObject Arbol;
 
     public CropManager cropManager;
     private bool flagUsuario=false;
@@ -94,9 +94,10 @@ public class UiControl : MonoBehaviour
     public bool flagHerramienta=false;
     public bool flagRegadera=false;
 
-    public bool flagMenuVender=false;
-    public bool flagMenuComprar=false;
-    public bool flagBigPeriodico=false;
+    private bool flagMenuVender=false;
+    private bool flagMenuComprar=false;
+    private bool flagBigPeriodico=false;
+    private bool flagArbol=false;
     
     
 
@@ -238,6 +239,8 @@ public class UiControl : MonoBehaviour
         MenuVender.SetActive(false);
         flagBigPeriodico=false;
         BigPeriodico.SetActive(false);
+        flagArbol=false;
+        Arbol.SetActive(false);
         if(flagCelular){
             flagCelular=false;
             Celular.SetActive(false);
@@ -260,6 +263,8 @@ public class UiControl : MonoBehaviour
         MenuVender.SetActive(false);
         flagBigPeriodico=false;
         BigPeriodico.SetActive(false);
+        flagArbol=false;
+        Arbol.SetActive(false);
         if(flagMercado){
             flagMercado=false;
             Mercado.SetActive(false);
@@ -282,6 +287,8 @@ public class UiControl : MonoBehaviour
         MenuVender.SetActive(false);
         flagBigPeriodico=false;
         BigPeriodico.SetActive(false);
+        flagArbol=false;
+        Arbol.SetActive(false);
         if(flagInventario){
             flagInventario=false;
             Inventario.SetActive(false);
@@ -316,6 +323,8 @@ public class UiControl : MonoBehaviour
         MenuVender.SetActive(false);
         flagBigPeriodico=false;
         BigPeriodico.SetActive(false);
+        flagArbol=false;
+        Arbol.SetActive(false);
         if(flagDeuda){
             flagDeuda=false;
             Deuda.SetActive(false);
@@ -341,6 +350,8 @@ public class UiControl : MonoBehaviour
         MenuVender.SetActive(false);
         flagBigPeriodico=false;
         BigPeriodico.SetActive(false);
+        flagArbol=false;
+        Arbol.SetActive(false);
         if(flagHerramienta){
             flagHerramienta=false;
             Cursor.visible = true;    
@@ -365,6 +376,8 @@ public class UiControl : MonoBehaviour
         MenuVender.SetActive(false);
         flagBigPeriodico=false;
         BigPeriodico.SetActive(false);
+        flagArbol=false;
+        Arbol.SetActive(false);
         if(flagRegadera){
             flagRegadera=false;
             Cursor.visible = true;    
@@ -608,6 +621,8 @@ public class UiControl : MonoBehaviour
         Celular.SetActive(false);
         flagMercado=false;
         Mercado.SetActive(false);
+        flagArbol=false;
+        Arbol.SetActive(false);
         if(flagBigPeriodico){
             flagBigPeriodico=false;
             BigPeriodico.SetActive(false);
@@ -617,14 +632,31 @@ public class UiControl : MonoBehaviour
         }
     }
 
-
+    public void ShowArbol(){
+        flagInventario=false;
+        Inventario.SetActive(false);
+        flagDeuda=false;
+        Deuda.SetActive(false);
+        flagMenuComprar=false;
+        MenuComprar.SetActive(false);
+        flagMenuVender=false;
+        MenuVender.SetActive(false);
+        flagCelular=false;
+        Celular.SetActive(false);
+        flagMercado=false;
+        Mercado.SetActive(false);
+        flagBigPeriodico=false;
+        BigPeriodico.SetActive(false);
+        if(flagArbol){
+            flagArbol=false;
+            Arbol.SetActive(false);
+        }else{
+            flagArbol=true;
+            Arbol.SetActive(true);
+        }
+    }
     private void Awake()
     {
         Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
     }
-
-
-
-
-
 }
