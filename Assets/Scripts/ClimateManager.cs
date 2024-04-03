@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Image = UnityEngine.UI.Image;
 
 public class ClimateManager : MonoBehaviour
 {
@@ -19,6 +20,23 @@ public class ClimateManager : MonoBehaviour
     public MapManager mapManager;
     
     public TextMeshProUGUI newsText;
+
+    public TextMeshProUGUI bigPeriodicoText1;
+    public TextMeshProUGUI bigPeriodicoText2;
+
+    public Image bigPeriodicoImg1;
+    public Image bigPeriodicoImg2;
+
+    public Sprite bigPeriodicoSprite1;
+    public Sprite bigPeriodicoSprite2;
+    public Sprite bigPeriodicoSprite3;
+    public Sprite bigPeriodicoSprite4;
+    public Sprite bigPeriodicoSprite5;
+    public Sprite bigPeriodicoSprite6;
+    public Sprite bigPeriodicoSprite7;
+    public Sprite bigPeriodicoSprite8;
+    public Sprite bigPeriodicoSprite9;
+    public Sprite bigPeriodicoSprite10;
     private Dictionary<int,int> probability;
     // Start is called before the first frame update
     void Awake()
@@ -130,22 +148,42 @@ public class ClimateManager : MonoBehaviour
             case 0:
                 Debug.Log("Drought");
                 newsText.text = "Sequía";
+                bigPeriodicoText1.text = "Sequía azota el país y mata las cosechas";
+                bigPeriodicoImg1.sprite = bigPeriodicoSprite1;
+                bigPeriodicoText2.text = "Hombre afeita la cabeza de un gato en su casa";
+                bigPeriodicoImg2.sprite = bigPeriodicoSprite2;
                 break;
             case 1:
                 Debug.Log("Normal");
                 newsText.text = "Normal";
+                bigPeriodicoText1.text = "Clima normal en el país";
+                bigPeriodicoImg1.sprite = bigPeriodicoSprite3;
+                bigPeriodicoText2.text = "Científicos alemanes sugieren descongelar a Hitler para combatir a Israel";
+                bigPeriodicoImg2.sprite = bigPeriodicoSprite4;
                 break;
             case 2:
                 Debug.Log("Rain");
                 newsText.text = "Lluvia";
+                bigPeriodicoText1.text = "Se espera lluvia moderada en el país";
+                bigPeriodicoImg1.sprite = bigPeriodicoSprite5;
+                bigPeriodicoText2.text = "Mujer se casa con su perro";
+                bigPeriodicoImg2.sprite = bigPeriodicoSprite6;
                 break;
             case 3:
                 Debug.Log("Flood");
                 newsText.text = "Inundación";
+                bigPeriodicoText1.text = "Inundación en los estados del norte o algo así";
+                bigPeriodicoImg1.sprite = bigPeriodicoSprite7;
+                bigPeriodicoText2.text = "Joe Biden se cae de su avión, otra vez";
+                bigPeriodicoImg2.sprite = bigPeriodicoSprite8;
                 break;
             case 4:
                 Debug.Log("Hurricane");
                 newsText.text = "Huracán";
+                bigPeriodicoText1.text = "Huracán categoría 5 azota los cultivos, se estiman 690000 muertos y desaparecidos";
+                bigPeriodicoImg1.sprite = bigPeriodicoSprite9;
+                bigPeriodicoText2.text = "Bandas Sinaloenses combaten la gentrificación en el norte del país";
+                bigPeriodicoImg2.sprite = bigPeriodicoSprite10;
                 break;
         }
     }

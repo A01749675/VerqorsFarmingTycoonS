@@ -61,6 +61,8 @@ public class UiControl : MonoBehaviour
     public GameObject precioCafe;
     public GameObject precioTomate;
 
+    public GameObject BigPeriodico;
+
 // Mercado Comprar
 
     public MarketManager marketManager;
@@ -94,6 +96,8 @@ public class UiControl : MonoBehaviour
 
     public bool flagMenuVender=false;
     public bool flagMenuComprar=false;
+    public bool flagBigPeriodico=false;
+    
     
 
     //Al dar click al boton de opciones se abre el panel PanelOpciones
@@ -579,11 +583,36 @@ public class UiControl : MonoBehaviour
         }
     }
 
+    public void OpenBigPeriodico(){
+        flagBigPeriodico=false;
+        BigPeriodico.SetActive(false);
+        flagInventario=false;
+        Inventario.SetActive(false);
+        flagDeuda=false;
+        Deuda.SetActive(false);
+        flagMenuComprar=false;
+        MenuComprar.SetActive(false);
+        flagMenuVender=false;
+        MenuVender.SetActive(false);
+        flagCelular=false;
+        Celular.SetActive(false);
+
+        if(flagBigPeriodico){
+            flagBigPeriodico=false;
+            BigPeriodico.SetActive(false);
+        }else{
+            flagBigPeriodico=true;
+            BigPeriodico.SetActive(true);
+        }
+    }
+
 
     private void Awake()
     {
         Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
     }
+
+
 
 
 

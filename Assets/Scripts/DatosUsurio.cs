@@ -12,7 +12,7 @@ public class DatosUsurio : MonoBehaviour
     private int financiamiento;
 
     // Start is called before the first frame update
-    void Start(){
+   /* void Start(){
         nombreUsuario = obtenerDatos.usuario.usuario;
         financiamiento = obtenerDatos.progreso[0].financiamiento;
         switch (financiamiento){
@@ -30,5 +30,5 @@ public class DatosUsurio : MonoBehaviour
                 break;
         }
         NombreUsuario.GetComponent<TextMeshProUGUI>().text = nombreUsuario;
-    }
+    } */
 }

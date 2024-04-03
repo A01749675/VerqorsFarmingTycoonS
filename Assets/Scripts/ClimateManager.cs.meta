@@ -3,7 +3,23 @@ guid: 4962b918c01c4184690b4a9802aa4204
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - mapManager: {instanceID: 0}
+  - newsText: {instanceID: 0}
+  - bigPeriodicoObj1: {instanceID: 0}
+  - bigPeriodicoText1: {instanceID: 0}
+  - bigPeriodicoObj2: {instanceID: 0}
+  - bigPeriodicoText2: {instanceID: 0}
+  - bigPeriodicoSprite1: {instanceID: 0}
+  - bigPeriodicoSprite2: {instanceID: 0}
+  - bigPeriodicoSprite3: {instanceID: 0}
+  - bigPeriodicoSprite4: {instanceID: 0}
+  - bigPeriodicoSprite5: {instanceID: 0}
+  - bigPeriodicoSprite6: {instanceID: 0}
+  - bigPeriodicoSprite7: {instanceID: 0}
+  - bigPeriodicoSprite8: {instanceID: 0}
+  - bigPeriodicoSprite9: {instanceID: 0}
+  - bigPeriodicoSprite10: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
