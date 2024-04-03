@@ -16,6 +16,8 @@ public class FinanceManager : MonoBehaviour
     private Dictionary<string, float> BancoFinanceData;
     private Dictionary<string, float> CoyoteFinanceData;
 
+    
+
     private void Awake()
     {
         _prices = new Dictionary<int, int>()
@@ -31,7 +33,7 @@ public class FinanceManager : MonoBehaviour
         {
             {"tasaInteres", 0.5f},
             {"plazo", 12},
-            {"montoMaximo", 100000}
+            {"montoMaximo", 300000}
         };
         BancoFinanceData = new Dictionary<string, float>()
         {
@@ -53,7 +55,31 @@ public class FinanceManager : MonoBehaviour
         int cycle = mapManager.GetCurrentCycle();
         if(cycle%3650==0){
             print("Financiamiento actualizado");
-            user_controller.PayDebt(100000);
+            int fin = 0;
+            int debt = 0;
+            switch(fin){
+                case 1:
+                    debt = (int) (VerqorFinanceData["montoMaximo"]*VerqorFinanceData["tasaInteres"]);
+                    break;
+                case 2:
+                    debt = (int) (BancoFinanceData["montoMaximo"]*BancoFinanceData["tasaInteres"]);
+                    break;
+                case 3:
+                    debt = (int) (CoyoteFinanceData["montoMaximo"]*CoyoteFinanceData["tasaInteres"]);
+                    break;
+                    
+            }
+            if(user_controller.GetCapital()>debt){
+                user_controller.PayDebt(debt);
+                user_controller.UpdateCapital(-debt);
+            }
+            else{
+                user_controller.PayDebt(user_controller.GetCapital());
+                user_controller.UpdateCapital(-debt);
+                if(user_controller.GetCapital()<-1000000){
+                    print("GameOver");
+                }
+            }
         }
     }
     private void ObtenerFinanciamiento()

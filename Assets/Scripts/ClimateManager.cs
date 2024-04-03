@@ -114,7 +114,7 @@ public class ClimateManager : MonoBehaviour
 
     private void UpdateCurrentDay(int cycle){
         if(cycle%10==0){
-
+            
         }
     }
 
