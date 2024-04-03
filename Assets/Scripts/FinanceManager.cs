@@ -16,6 +16,9 @@ public class FinanceManager : MonoBehaviour
     private Dictionary<string, float> BancoFinanceData;
     private Dictionary<string, float> CoyoteFinanceData;
 
+    private int loosingCondition = -1000000;
+
+    private bool RegenerativeAgriculture = false;
     
 
     private void Awake()
@@ -56,19 +59,8 @@ public class FinanceManager : MonoBehaviour
         if(cycle%3650==0){
             print("Financiamiento actualizado");
             int fin = 0;
-            int debt = 0;
-            switch(fin){
-                case 1:
-                    debt = (int) (VerqorFinanceData["montoMaximo"]*VerqorFinanceData["tasaInteres"]);
-                    break;
-                case 2:
-                    debt = (int) (BancoFinanceData["montoMaximo"]*BancoFinanceData["tasaInteres"]);
-                    break;
-                case 3:
-                    debt = (int) (CoyoteFinanceData["montoMaximo"]*CoyoteFinanceData["tasaInteres"]);
-                    break;
-                    
-            }
+            int debt = CalculateDebt(fin);
+
             if(user_controller.GetCapital()>debt){
                 user_controller.PayDebt(debt);
                 user_controller.UpdateCapital(-debt);
@@ -76,11 +68,28 @@ public class FinanceManager : MonoBehaviour
             else{
                 user_controller.PayDebt(user_controller.GetCapital());
                 user_controller.UpdateCapital(-debt);
-                if(user_controller.GetCapital()<-1000000){
+                if(user_controller.GetCapital()<loosingCondition){
                     print("GameOver");
                 }
             }
         }
+    }
+
+    private int CalculateDebt(int fin){
+        int debt = 0;
+        switch(fin){
+            case 1:
+                debt = (int) (VerqorFinanceData["montoMaximo"]*VerqorFinanceData["tasaInteres"]+VerqorFinanceData["montoMaximo"]);
+                break;
+            case 2:
+                debt = (int) (BancoFinanceData["montoMaximo"]*BancoFinanceData["tasaInteres"]+BancoFinanceData["montoMaximo"]);
+                break;
+            case 3:
+                debt = (int) (CoyoteFinanceData["montoMaximo"]*CoyoteFinanceData["tasaInteres"]+CoyoteFinanceData["montoMaximo"]);
+                break;
+                
+        }
+        return debt;
     }
     private void ObtenerFinanciamiento()
     {
