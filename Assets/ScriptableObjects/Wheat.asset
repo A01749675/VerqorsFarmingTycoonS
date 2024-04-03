@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
   tiles:
-  - {fileID: 11400000, guid: 8f2b17453d695354397cce2e5b4c41cf, type: 2}
-  - {fileID: 11400000, guid: fa2e276ab3e1d4e46846828a1bbbb916, type: 2}
-  - {fileID: 11400000, guid: 8006c820fe86aba43a0ae163a7bedc48, type: 2}
-  - {fileID: 11400000, guid: e81d4d6a0a6eb044bbad09c97a2de535, type: 2}
+  - {fileID: 11400000, guid: 3535e2b70a75caf4cb0778095e71a404, type: 2}
+  - {fileID: 11400000, guid: c53d0e33c6a549745b04641b41d7e4d8, type: 2}
+  - {fileID: 11400000, guid: e6cf513d293162449b1795b9afee36cc, type: 2}
+  - {fileID: 11400000, guid: 17fd48964d545ab419f7a13ba33c49b0, type: 2}
   crop_type: 1
   crop_growth: 2
   quantity: 2

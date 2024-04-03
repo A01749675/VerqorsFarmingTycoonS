@@ -20,13 +20,6 @@ public class MapManager : MonoBehaviour
     public TileBase chili_seeds;
     private int selected_crop = 0;
     private int current_cycle = 0;
-
-    private int chili_cycle = 0;
-    private int barley_cycle = 0;
-    private int corn_cycle = 0;
-    private int tomato_cycle = 0;
-    private int avocado_cycle = 0;
-
     private int crop_cycle_constant = 20;
     private int update_rate = 1;
 
@@ -185,23 +178,23 @@ public class MapManager : MonoBehaviour
                         if(tile && dataFromTiles.ContainsKey(tile) && !dataFromTiles[tile].isBox){  
                             switch(dataFromTiles[tile].crop_type){
                                 case 1:
-                                    tilemap.SetTile(gridPosition, barley_grow_tiles[barley_cycle]);
+                                    tilemap.SetTile(gridPosition, barley_grow_tiles[cropManager.cropCycleGrowth[gridPosition]["growth"]]);
                                     cropManager.cropCycleGrowth[gridPosition]["growth"] = UpdateCropSpriteCycle(gridPosition,1);
                                     break;
                                 case 2:
-                                    tilemap.SetTile(gridPosition, corn_grow_tiles[corn_cycle]);
+                                    tilemap.SetTile(gridPosition, corn_grow_tiles[cropManager.cropCycleGrowth[gridPosition]["growth"]]);
                                     cropManager.cropCycleGrowth[gridPosition]["growth"] = UpdateCropSpriteCycle(gridPosition,2);
                                     break;
                                 case 3:
-                                    tilemap.SetTile(gridPosition, tomato_grow_tiles[tomato_cycle]);
+                                    tilemap.SetTile(gridPosition, tomato_grow_tiles[cropManager.cropCycleGrowth[gridPosition]["growth"]]);
                                     cropManager.cropCycleGrowth[gridPosition]["growth"] = UpdateCropSpriteCycle(gridPosition,3);
                                     break;
                                 case 4:
-                                    tilemap.SetTile(gridPosition, avocado_grow_tiles[avocado_cycle]);
+                                    tilemap.SetTile(gridPosition, avocado_grow_tiles[cropManager.cropCycleGrowth[gridPosition]["growth"]]);
                                     cropManager.cropCycleGrowth[gridPosition]["growth"] = UpdateCropSpriteCycle(gridPosition,4);
                                     break;
                                 case 6:
-                                    tilemap.SetTile(gridPosition, chilli_grow_tiles[chili_cycle]);
+                                    tilemap.SetTile(gridPosition, chilli_grow_tiles[cropManager.cropCycleGrowth[gridPosition]["growth"]]);
                                     cropManager.cropCycleGrowth[gridPosition]["growth"] = UpdateCropSpriteCycle(gridPosition,6);
                                     break;
                                 }

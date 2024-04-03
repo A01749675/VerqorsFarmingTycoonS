@@ -58,7 +58,7 @@ public class FinanceManager : MonoBehaviour
         int cycle = mapManager.GetCurrentCycle();
         if(cycle%3650==0){
             print("Financiamiento actualizado");
-            int fin = 0;
+            int fin = 1;
             int debt = CalculateDebt(fin);
 
             if(user_controller.GetCapital()>debt){

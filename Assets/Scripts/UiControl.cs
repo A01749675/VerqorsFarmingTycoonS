@@ -236,6 +236,8 @@ public class UiControl : MonoBehaviour
         MenuComprar.SetActive(false);
         flagMenuVender=false;
         MenuVender.SetActive(false);
+        flagBigPeriodico=false;
+        BigPeriodico.SetActive(false);
         if(flagCelular){
             flagCelular=false;
             Celular.SetActive(false);
@@ -256,6 +258,8 @@ public class UiControl : MonoBehaviour
         MenuComprar.SetActive(false);
         flagMenuVender=false;
         MenuVender.SetActive(false);
+        flagBigPeriodico=false;
+        BigPeriodico.SetActive(false);
         if(flagMercado){
             flagMercado=false;
             Mercado.SetActive(false);
@@ -276,6 +280,8 @@ public class UiControl : MonoBehaviour
         MenuComprar.SetActive(false);
         flagMenuVender=false;
         MenuVender.SetActive(false);
+        flagBigPeriodico=false;
+        BigPeriodico.SetActive(false);
         if(flagInventario){
             flagInventario=false;
             Inventario.SetActive(false);
@@ -308,6 +314,8 @@ public class UiControl : MonoBehaviour
         MenuComprar.SetActive(false);
         flagMenuVender=false;
         MenuVender.SetActive(false);
+        flagBigPeriodico=false;
+        BigPeriodico.SetActive(false);
         if(flagDeuda){
             flagDeuda=false;
             Deuda.SetActive(false);
@@ -331,6 +339,8 @@ public class UiControl : MonoBehaviour
         MenuComprar.SetActive(false);
         flagMenuVender=false;
         MenuVender.SetActive(false);
+        flagBigPeriodico=false;
+        BigPeriodico.SetActive(false);
         if(flagHerramienta){
             flagHerramienta=false;
             Cursor.visible = true;    
@@ -353,6 +363,8 @@ public class UiControl : MonoBehaviour
         MenuComprar.SetActive(false);
         flagMenuVender=false;
         MenuVender.SetActive(false);
+        flagBigPeriodico=false;
+        BigPeriodico.SetActive(false);
         if(flagRegadera){
             flagRegadera=false;
             Cursor.visible = true;    
@@ -584,8 +596,6 @@ public class UiControl : MonoBehaviour
     }
 
     public void OpenBigPeriodico(){
-        flagBigPeriodico=false;
-        BigPeriodico.SetActive(false);
         flagInventario=false;
         Inventario.SetActive(false);
         flagDeuda=false;
@@ -596,7 +606,8 @@ public class UiControl : MonoBehaviour
         MenuVender.SetActive(false);
         flagCelular=false;
         Celular.SetActive(false);
-
+        flagMercado=false;
+        Mercado.SetActive(false);
         if(flagBigPeriodico){
             flagBigPeriodico=false;
             BigPeriodico.SetActive(false);

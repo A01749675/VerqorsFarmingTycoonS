@@ -2832,27 +2832,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelFarmPackShadow_131
-      rect:
-        serializedVersion: 2
-        x: 352
-        y: 896
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c14285aec98f933479e029213d574f05
-      internalID: 717863464
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: PixelFarmPackShadow_132
       rect:
         serializedVersion: 2
@@ -3258,7 +3237,7 @@ TextureImporter:
         x: 352
         y: 864
         width: 32
-        height: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5205,27 +5184,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PixelFarmPackShadow_244
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 704
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 666d8a5dbea378d48a0d4f60c34ecaee
-      internalID: -1617918295
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: PixelFarmPackShadow_245
       rect:
         serializedVersion: 2
@@ -5547,7 +5505,7 @@ TextureImporter:
         x: 128
         y: 672
         width: 32
-        height: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5809,27 +5767,6 @@ TextureImporter:
       bones: []
       spriteID: ab84ece45650f7d4d93abaaff5d9c589
       internalID: -1823790111
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PixelFarmPackShadow_284
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 640
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 91803e059ae2702478e4efa68ddcd5ae
-      internalID: -2135803929
       vertices: []
       indices: 
       edges: []
@@ -6240,7 +6177,7 @@ TextureImporter:
         x: 128
         y: 608
         width: 32
-        height: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
