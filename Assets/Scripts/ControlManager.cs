@@ -46,7 +46,7 @@ public class ControlManager : MonoBehaviour
                     contadorAgua = mapManager.GetCurrentCycle();
                     
                 }
-                mapManager.WaterAll();
+                mapManager.WaterSpecificCrop();
             }
             if(mapManager.GetCurrentCycle()-contadorAgua<1){
                 regadera.GetComponent<Animator>().SetBool("Regando",true);

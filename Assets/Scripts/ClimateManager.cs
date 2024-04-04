@@ -106,28 +106,24 @@ public class ClimateManager : MonoBehaviour
                 print("Climate changed to "+possibleClimate);
                 currentClimate = possibleClimate;
                 PrintClimate(currentClimate);
-                if(currentClimate != 1){
-                    mapManager.ClimateWaterUpdate();
-                    mapManager.UpdateVisualWater(currentClimate);
-                }
+                mapManager.WaterRate(currentClimate);
+                mapManager.UpdateVisualWater(currentClimate);
             }
             else{
                 print("Climate did not change, checking probability again");
-                if(currentClimatecycle<probability[currentClimate]){
-                    if(currentClimate != 1){
-                        print("Updating water as climate probability repeated");
-                        mapManager.ClimateWaterUpdate();
-                        print("For current climate "+currentClimate+" water was updated");
-                        PrintClimate(currentClimate);
-                    }
-                }
-                else{
+                if(!(currentClimatecycle<probability[currentClimate])){
                     currentClimate = 1;
                     print("Change to normal climate as previous climate probability was not met");
-                    PrintClimate(currentClimate);
                 }
+                PrintClimate(currentClimate);
+                mapManager.WaterRate(currentClimate);
+                mapManager.UpdateVisualWater(currentClimate);
             }
         }
+    }
+
+    public int GetClimateID(){
+        return currentClimate;
     }
 
     private void UpdateCurrentDay(int cycle){
