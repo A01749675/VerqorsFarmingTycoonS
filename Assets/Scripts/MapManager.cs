@@ -303,7 +303,9 @@ public class MapManager : MonoBehaviour
             for(int j = -2*tilemap.size.y; j<2*tilemap.size.y; j++){
                 Vector3Int gridPosition = new Vector3Int(i, j, 0);
                 TileBase tile = tilemap.GetTile(gridPosition);
-                if(cropManager.GetCropSeeds(selected_crop)>0 && tile && dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type==-selected_crop && CheckIfTileIsLand(gridPosition)!= -1 && CheckIfTileIsLand(gridPosition) == selected_land && UnlockedLands[CheckIfTileIsLand(gridPosition)]){
+                if(cropManager.GetCropSeeds(selected_crop)>0 && tile && dataFromTiles.ContainsKey(tile) && 
+                dataFromTiles[tile].crop_type==-selected_crop && CheckIfTileIsLand(gridPosition)!= -1 
+                && CheckIfTileIsLand(gridPosition) == selected_land && UnlockedLands[CheckIfTileIsLand(gridPosition)]){
                     tilemap.SetTile(gridPosition, seed);
                     cropManager.UpdateCropSeeds(selected_crop, -1);
                     cropManager.cropCycleGrowth.Add(gridPosition, new Dictionary<string,int>(){
@@ -508,7 +510,7 @@ public class MapManager : MonoBehaviour
                     print("Is Soil");
                     print("Found Land at: "+i+" "+j);
                     LandPosition.Add(numberOfLands,GetLand(i,j));
-                    UnlockedLands.Add(numberOfLands, false);
+                    UnlockedLands.Add(numberOfLands-1, false);
                 }
             }
         }
