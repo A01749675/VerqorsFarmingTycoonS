@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 public class MapManager : MonoBehaviour
@@ -32,6 +33,9 @@ public class MapManager : MonoBehaviour
 
     private Dictionary<int,int> CropSpriteCounter;
 
+    private Dictionary<int,int[,]> LandPosition;
+    private int numberOfLands = 0;
+
     
 
     [SerializeField]
@@ -43,6 +47,7 @@ public class MapManager : MonoBehaviour
     public List<TileBase> coffee_grow_tiles;
 
     public List<TileBase> water_tiles;
+    public List<TileBase> building_tiles;
 
     // Start is called before the first frame update
     public CropManager cropManager;
@@ -90,6 +95,8 @@ public class MapManager : MonoBehaviour
             {5,coffee_grow_tiles.Count},
             {6,chilli_grow_tiles.Count}
         };
+        LandPosition = new Dictionary<int, int[,]>();
+        FindLand();
         InvokeRepeating("UpdateCycle", 0, 1f);
 
     }
@@ -106,6 +113,7 @@ public class MapManager : MonoBehaviour
                 selected_crop = dataFromTiles[clickedTile].crop_type;
                 print("Selected crop "+selected_crop +" at "+gridPos);
             }
+            print("Tile is at: " + CheckIfTileIsLand(gridPos));
         }
     if(Input.GetMouseButtonDown(1)){
             SeeWater(mousePos);
@@ -430,6 +438,75 @@ public class MapManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void FireAccidentTileUpdate(){
+
+    }
+
+    private bool IsSoil(int crop_type){
+        if(crop_type <= -1 && crop_type>=-6){
+            return true;
+        }
+        return false;
+    }
+
+    private int[,] GetLand(int x, int y){
+        bool xTrue = true;
+        bool yTrue = true;
+        int x1 = x;
+        int y1 = y;
+            TileBase tile = tilemap.GetTile(new Vector3Int(x, y, 0));
+            while(xTrue){
+                tile = tilemap.GetTile(new Vector3Int(x, y, 0));
+                if(tile && dataFromTiles.ContainsKey(tile) && IsSoil(dataFromTiles[tile].crop_type) && xTrue){
+                    x++;
+                }
+                else{
+                    xTrue = false;
+                }
+            }
+            x--;
+            while(yTrue){
+                tile = tilemap.GetTile(new Vector3Int(x, y, 0));
+                if(tile && dataFromTiles.ContainsKey(tile) && IsSoil(dataFromTiles[tile].crop_type) && yTrue){
+                    y++;
+                }
+                else{
+                    yTrue = false;
+                }
+            }
+            y--;
+        int[,] result = {{x1,y1},{x,y}};
+        print("Land dimensions "+x1+" "+y1+"|"+x+" "+y);
+        numberOfLands++;
+        return result;
+
+    }
+    private void FindLand(){
+        int i = 0;
+        for(i = -2*tilemap.size.x; i<2*tilemap.size.x; i++){
+            for(int j = -2*tilemap.size.y; j<2*tilemap.size.y; j++){
+                Vector3Int gridPosition = new Vector3Int(i, j, 0);
+                TileBase tile = tilemap.GetTile(gridPosition);
+                if(tile && dataFromTiles.ContainsKey(tile) && IsSoil(dataFromTiles[tile].crop_type) && CheckIfTileIsLand(gridPosition)==-1){
+                    print("Is Soil");
+                    print("Found Land at: "+i+" "+j);
+                    LandPosition.Add(numberOfLands,GetLand(i,j));
+                }
+
+            }
+        }
+    }
+
+
+    private int CheckIfTileIsLand(Vector3Int gridPosition){
+        foreach (KeyValuePair<int, int[,]> entry in LandPosition){
+            if(gridPosition.x>=entry.Value[0,0] && gridPosition.x<=entry.Value[1,0] && gridPosition.y>=entry.Value[0,1] && gridPosition.y<=entry.Value[1,1]){
+                return entry.Key;
+            }
+        }
+        return -1;
     }
 
 }
