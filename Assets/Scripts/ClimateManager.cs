@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using Image = UnityEngine.UI.Image;
 
@@ -13,7 +14,7 @@ public class ClimateManager : MonoBehaviour
 
     private Dictionary<int,Dictionary<string,int>> climates;
 
-    private int currentClimatecycle = 60;
+    public int currentClimatecycle = 60;
 
     private int currentClimate = 1;
 
@@ -37,6 +38,8 @@ public class ClimateManager : MonoBehaviour
     public Sprite bigPeriodicoSprite8;
     public Sprite bigPeriodicoSprite9;
     public Sprite bigPeriodicoSprite10;
+
+    public bool ClimateAlreadyExecuted = false;
     private Dictionary<int,int> probability;
     // Start is called before the first frame update
     void Awake()
@@ -96,13 +99,14 @@ public class ClimateManager : MonoBehaviour
     }
 
     private void UpdateClimate(int cycle){
-        if(cycle%currentClimatecycle == 0){
+        if(!ClimateAlreadyExecuted){
+            ClimateAlreadyExecuted = true;
             print("_________Climate update__________");
             print("Current climate: "+currentClimate);
             int possibleClimate = random.Next(0,5);
             int odds = probability[possibleClimate];
-            currentClimatecycle = random.Next(1,100);
-            if(currentClimatecycle < odds){
+            int climate_probability = random.Next(1,100);
+            if(climate_probability < odds){
                 print("Climate changed to "+possibleClimate);
                 currentClimate = possibleClimate;
                 PrintClimate(currentClimate);
@@ -111,7 +115,7 @@ public class ClimateManager : MonoBehaviour
             }
             else{
                 print("Climate did not change, checking probability again");
-                if(!(currentClimatecycle<probability[currentClimate])){
+                if(!(climate_probability<probability[currentClimate])){
                     currentClimate = 1;
                     print("Change to normal climate as previous climate probability was not met");
                 }
