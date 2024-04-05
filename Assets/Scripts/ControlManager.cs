@@ -27,7 +27,7 @@ public class ControlManager : MonoBehaviour
         ShowTool(ui.flagHerramienta,mousePos);
         ShowRegadera(ui.flagRegadera,mousePos);  
     }
-       private void ShowTool(bool tool,Vector2 mousePos){
+    private void ShowTool(bool tool,Vector2 mousePos){
         if(tool){
             herramienta.SetActive(true);
             herramienta.transform.position = mousePos;

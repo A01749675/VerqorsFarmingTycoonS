@@ -130,6 +130,9 @@ public class MapManager : MonoBehaviour
     public void UpdateCycle(){
         current_cycle+=update_rate;
         ChangeCropSprite();
+        if(current_cycle%climateManager.currentClimatecycle==0){
+            climateManager.ClimateAlreadyExecuted = false;
+        }
     }
 
     public void FastForward(int value){

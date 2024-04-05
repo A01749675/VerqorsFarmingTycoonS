@@ -12,12 +12,12 @@ public class MarketManager : MonoBehaviour
     private void Awake(){
         crop_prices = financeManager.GetPrices();
         crop_quantity = new Dictionary<int, int>(){
-              {1, random.Next(1, 500)},
-              {2, random.Next(1, 500)},
-              {3, random.Next(1, 500)},
-              {4, random.Next(1, 500)},
-              {5, random.Next(1, 500)},
-              {6, random.Next(1, 500)}
+            {1, random.Next(1, 500)},
+            {2, random.Next(1, 500)},
+            {3, random.Next(1, 500)},
+            {4, random.Next(1, 500)},
+            {5, random.Next(1, 500)},
+            {6, random.Next(1, 500)}
         };
     }
 
