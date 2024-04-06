@@ -3503,6 +3503,90 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: PixelFarmPackShadow_65
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 484
+        width: 64
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 412146fb0cfb01c4e932835e190f5667
+      internalID: -777134121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelFarmPackShadow_162
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 736
+        width: 35
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 242db05e844ac5e438381493331659db
+      internalID: 672681958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelFarmPackShadow_163
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 160
+        width: 191
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 447235c202b5e6346a16b328db9902c9
+      internalID: -1925399609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelFarmPackShadow_164
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 784
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dfff25ba77120b48953ca30c47e6e21
+      internalID: 1900227690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -3585,6 +3669,9 @@ TextureImporter:
       PixelFarmPackShadow_16: -1612268354
       PixelFarmPackShadow_160: -1796513911
       PixelFarmPackShadow_161: 1481230660
+      PixelFarmPackShadow_162: 672681958
+      PixelFarmPackShadow_163: -1925399609
+      PixelFarmPackShadow_164: 1900227690
       PixelFarmPackShadow_17: -1148066252
       PixelFarmPackShadow_18: 1433252459
       PixelFarmPackShadow_19: 924358149
