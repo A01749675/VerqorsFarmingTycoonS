@@ -100,7 +100,7 @@ public class MapManager : MonoBehaviour
         LandPosition = new Dictionary<int, int[,]>();
         UnlockedLands =new Dictionary<int, bool>();
         FindLand();
-        UpdateUnlockedLands(new int[]{0,1,2,4});
+        UpdateUnlockedLands(new int[]{0,1,2,4,12,15,16,19});
         InvokeRepeating("UpdateCycle", 0, 1f);
 
     }
