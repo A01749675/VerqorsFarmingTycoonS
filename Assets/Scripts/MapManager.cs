@@ -492,7 +492,6 @@ public class MapManager : MonoBehaviour
     }
 
     public void UpdateVisualWater(int climate){
-        print("Drying");
         int i = 0;
         for(i = -2*tilemap.size.x; i<2*tilemap.size.x; i++){
             for(int j = -2*tilemap.size.y; j<2*tilemap.size.y; j++){
