@@ -18,23 +18,7 @@ public class ObtenerDatos : MonoBehaviour
 
     private void Awake()
     {
-        try
-        {
-            StartCoroutine(ObtenerDatosUsuario());
-        }
-        catch (Exception e)
-        {
-            Debug.LogError("Error al obtener los datos del usuario: " + e.Message);
-            // imprimir 
-            Debug.Log("Usando datos dummy" );;
-            // datos dummy
-            usuario.usuario = "User";
-            usuario.tipo_usuario = "Agricultor";
-            usuario.id = 1;
-            progreso = new List<Progreso> { new() { financiamiento = 1 } };
-            semillas = new List<Semilla> { new() { maiz = 10, trigo = 10, chile = 10, tomate = 10 } };
-
-        }
+        StartCoroutine(ObtenerDatosUsuario());
     }
 
     private IEnumerator ObtenerDatosUsuario()
@@ -49,34 +33,18 @@ public class ObtenerDatos : MonoBehaviour
             string userIdStr = url.Substring(index + 8); // Sumar 8 para ignorar 'user_id='
             if (int.TryParse(userIdStr, out user_id))
             {
-                Debug.Log("Usando datos dummy" );
-            // datos dummy
-            usuario.usuario = "User";
-            usuario.tipo_usuario = "Agricultor";
-            usuario.id = 1;
-            progreso = new List<Progreso> { new() { financiamiento = 1 } };
-            semillas = new List<Semilla> { new() { maiz = 10, trigo = 10, chile = 10, tomate = 10 } };
+                Debug.Log("user_id obtenido de la URL: " + user_id);
             }
             else
             {
-                Debug.Log("Usando datos dummy" );
-            // datos dummy
-            usuario.usuario = "User";
-            usuario.tipo_usuario = "Agricultor";
-            usuario.id = 1;
-            progreso = new List<Progreso> { new() { financiamiento = 1 } };
-            semillas = new List<Semilla> { new() { maiz = 10, trigo = 10, chile = 10, tomate = 10 } };
+                Debug.LogError("No se pudo convertir el 'user_id' de la URL a entero.");
+                yield break; 
             }
         }
         else
         {
-            Debug.Log("Usando datos dummy" );
-            // datos dummy
-            usuario.usuario = "User";
-            usuario.tipo_usuario = "Agricultor";
-            usuario.id = 1;
-            progreso = new List<Progreso> { new() { financiamiento = 1 } };
-            semillas = new List<Semilla> { new() { maiz = 10, trigo = 10, chile = 10, tomate = 10 } };
+            Debug.LogError("El parámetro 'user_id' no se encontró en la URL.");
+            yield break; 
         }
 
         string apiUrl = "http://localhost:8080/Verqor/api/apiUsuario.php?user_id=" + user_id;
@@ -108,25 +76,11 @@ public class ObtenerDatos : MonoBehaviour
             else
             {
                 Debug.Log("Error al obtener los datos del usuario: " + message);
-                Debug.Log("Usando datos dummy" );
-            // datos dummy
-            usuario.usuario = "User";
-            usuario.tipo_usuario = "Agricultor";
-            usuario.id = 1;
-            progreso = new List<Progreso> { new() { financiamiento = 1 } };
-            semillas = new List<Semilla> { new() { maiz = 10, trigo = 10, chile = 10, tomate = 10 } };
             }
         }
         else
         {
-            
-            Debug.Log("Usando datos dummy" );
-            // datos dummy
-            usuario.usuario = "User";
-            usuario.tipo_usuario = "Agricultor";
-            usuario.id = 1;
-            progreso = new List<Progreso> { new() { financiamiento = 1 } };
-            semillas = new List<Semilla> { new() { maiz = 10, trigo = 10, chile = 10, tomate = 10 } };
+            Debug.LogError("Error al obtener los datos del usuario: " + www.error);
         }
     }
 }
