@@ -100,7 +100,7 @@ public class MapManager : MonoBehaviour
         LandPosition = new Dictionary<int, int[,]>();
         UnlockedLands =new Dictionary<int, bool>();
         FindLand();
-        UpdateUnlockedLands(new int[]{0,1,2,4,12,15,16,19});
+        UpdateUnlockedLands(new int[]{8,11,12,17});
         InvokeRepeating("UpdateCycle", 0, 1f);
 
     }
@@ -331,7 +331,6 @@ public class MapManager : MonoBehaviour
                         plantedCrops[dataFromTiles[tile].crop_type] = false;
                         tilemap.SetTile(gridPosition, soilFromCrop[-dataFromTiles[tile].crop_type]);
                         cropManager.UpdateCropQuantity(dataFromTiles[tile].crop_type, dataFromTiles[tile].quantity);
-                        cropManager.cropCycleGrowth.Remove(gridPosition);
                     }
                 }
             }
@@ -350,7 +349,31 @@ public class MapManager : MonoBehaviour
                         plantedCrops[dataFromTiles[tile].crop_type] = false;
                         tilemap.SetTile(gridPosition, soilFromCrop[-dataFromTiles[tile].crop_type]);
                         cropManager.UpdateCropQuantity(dataFromTiles[tile].crop_type, dataFromTiles[tile].quantity);
+                    }
+                }
+            }
+        }
+    }
+
+    public void AutomaticCollection(int land){
+        if(!LandPosition.ContainsKey(land) || UnlockedLands[land]==false){
+            return;
+        }
+        int[,] ranges = LandPosition[land];
+        int x = ranges[0,0];
+        int y = ranges[0,1];
+        int x1 = ranges[1,0];
+        int y1 = ranges[1,1];
+        for(int i = x;i<x1+1;i++){
+            for(int j = y;i<y1+1;j++){
+                Vector3Int gridPosition = new Vector3Int(i, j, 0);
+                TileBase tile = tilemap.GetTile(gridPosition);
+                if(tile && dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type>0){
+                    if(cropManager.cropCycleGrowth.ContainsKey(gridPosition) && cropManager.cropCycleGrowth[gridPosition]["growth"]>=CropSpriteCounter[dataFromTiles[tile].crop_type]-1){
                         cropManager.cropCycleGrowth.Remove(gridPosition);
+                        plantedCrops[dataFromTiles[tile].crop_type] = false;
+                        tilemap.SetTile(gridPosition, soilFromCrop[-dataFromTiles[tile].crop_type]);
+                        cropManager.UpdateCropQuantity(dataFromTiles[tile].crop_type, dataFromTiles[tile].quantity);
                     }
                 }
             }
@@ -440,6 +463,34 @@ public class MapManager : MonoBehaviour
         }
     }
 
+    public int GetAverageWaterAtLand(int land){
+        if(!LandPosition.ContainsKey(land) || UnlockedLands[land]==false){
+            return 0;
+        }
+        int[,] ranges = LandPosition[land];
+        int x = ranges[0,0];
+        int y = ranges[0,1];
+        int x1 = ranges[1,0];
+        int y1 = ranges[1,1];
+        int average_water = 0;
+        int count=0;
+        for(int i = x;i<x1+1;i++){
+            for(int j = y;j<y1+1;j++){
+                Vector3Int gridPosition = new Vector3Int(i, j, 0);
+                TileBase tile = tilemap.GetTile(gridPosition);
+                if(tile && cropManager.cropCycleGrowth.ContainsKey(gridPosition) && dataFromTiles[tile].crop_type>0){
+                    average_water+=cropManager.cropCycleGrowth[gridPosition]["water"];
+                    count++;
+                }
+            }
+        }
+        if(count>0){
+            return average_water/=count;
+        }
+        return 0;
+        
+    }
+
     public void UpdateVisualWater(int climate){
         print("Drying");
         int i = 0;
@@ -495,7 +546,6 @@ public class MapManager : MonoBehaviour
             }
             y--;
         int[,] result = {{x1,y1},{x,y}};
-        print("Land dimensions "+x1+" "+y1+"|"+x+" "+y);
         numberOfLands++;
         return result;
 
@@ -507,8 +557,6 @@ public class MapManager : MonoBehaviour
                 Vector3Int gridPosition = new Vector3Int(i, j, 0);
                 TileBase tile = tilemap.GetTile(gridPosition);
                 if(tile && dataFromTiles.ContainsKey(tile) && IsSoil(dataFromTiles[tile].crop_type) && CheckIfTileIsLand(gridPosition)==-1){
-                    print("Is Soil");
-                    print("Found Land at: "+i+" "+j);
                     LandPosition.Add(numberOfLands,GetLand(i,j));
                     UnlockedLands.Add(numberOfLands-1, false);
                 }
