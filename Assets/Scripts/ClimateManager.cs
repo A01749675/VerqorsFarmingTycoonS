@@ -147,7 +147,7 @@ public class ClimateManager : MonoBehaviour
         switch(climate){
             case 0:
                 Debug.Log("Drought");
-                newsText.text = "Sequía";
+                newsText.text = "Sequía daña los cultivos";
                 bigPeriodicoText1.text = "Sequía azota el país y mata las cosechas";
                 bigPeriodicoImg1.sprite = bigPeriodicoSprite1;
                 bigPeriodicoText2.text = "Hombre afeita la cabeza de un gato en su casa";
@@ -155,7 +155,7 @@ public class ClimateManager : MonoBehaviour
                 break;
             case 1:
                 Debug.Log("Normal");
-                newsText.text = "Normal";
+                newsText.text = "Un día normal en el país";
                 bigPeriodicoText1.text = "Clima normal en el país";
                 bigPeriodicoImg1.sprite = bigPeriodicoSprite3;
                 bigPeriodicoText2.text = "Científicos alemanes sugieren descongelar a Hitler para combatir a Israel";
@@ -163,7 +163,7 @@ public class ClimateManager : MonoBehaviour
                 break;
             case 2:
                 Debug.Log("Rain");
-                newsText.text = "Lluvia";
+                newsText.text = "Lluvias moderadas en el país";
                 bigPeriodicoText1.text = "Se espera lluvia moderada en el país";
                 bigPeriodicoImg1.sprite = bigPeriodicoSprite5;
                 bigPeriodicoText2.text = "Mujer se casa con su perro";
@@ -171,7 +171,7 @@ public class ClimateManager : MonoBehaviour
                 break;
             case 3:
                 Debug.Log("Flood");
-                newsText.text = "Inundación";
+                newsText.text = "Inundación daña negocios locales";
                 bigPeriodicoText1.text = "Inundación en los estados del norte o algo así";
                 bigPeriodicoImg1.sprite = bigPeriodicoSprite7;
                 bigPeriodicoText2.text = "Joe Biden se cae de su avión, otra vez";
@@ -179,7 +179,7 @@ public class ClimateManager : MonoBehaviour
                 break;
             case 4:
                 Debug.Log("Hurricane");
-                newsText.text = "Huracán";
+                newsText.text = "Alerta de huracán";
                 bigPeriodicoText1.text = "Huracán categoría 5 azota los cultivos, se estiman 690000 muertos y desaparecidos";
                 bigPeriodicoImg1.sprite = bigPeriodicoSprite9;
                 bigPeriodicoText2.text = "Bandas Sinaloenses combaten la gentrificación en el norte del país";
