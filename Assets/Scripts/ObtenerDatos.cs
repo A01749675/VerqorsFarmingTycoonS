@@ -6,31 +6,31 @@ using System.Collections.Generic;
 
 public class ObtenerDatos : MonoBehaviour
 {
-    
     // Variables públicas para guardar los datos del usuario
     public bool success;
     public string message;
     public int user_id;
-    public Usuario usuario;
+    public string usuario;
+    public string tipo_usuario;
     public List<Progreso> progreso;
     public List<Semilla> semillas;
     public List<Cultivo> cultivos;
 
     private void Awake()
     {
-        StartCoroutine(ObtenerDatosUsuario());
+        StartCoroutine(ObtenerIdUsuario());
     }
 
-    private IEnumerator ObtenerDatosUsuario()
+    private IEnumerator ObtenerIdUsuario()
     {
         // Obtener la URL absoluta de la aplicación
         string url = Application.absoluteURL;
 
-        int index = url.IndexOf("user_id=");
-        if (index != -1)
+        // Obtener el 'user_id' desde la URL
+        int startIndex = url.IndexOf("user_id=");
+        if (startIndex != -1)
         {
-            // Obtener el valor del 'user_id' desde la URL
-            string userIdStr = url.Substring(index + 8); // Sumar 8 para ignorar 'user_id='
+            string userIdStr = url.Substring(startIndex + 8); // Sumar 8 para ignorar 'user_id='
             if (int.TryParse(userIdStr, out user_id))
             {
                 Debug.Log("user_id obtenido de la URL: " + user_id);
@@ -38,16 +38,21 @@ public class ObtenerDatos : MonoBehaviour
             else
             {
                 Debug.LogError("No se pudo convertir el 'user_id' de la URL a entero.");
-                yield break; 
+                yield break;
             }
         }
         else
         {
             Debug.LogError("El parámetro 'user_id' no se encontró en la URL.");
-            yield break; 
+            yield break;
         }
 
-        string apiUrl = "http://localhost:8080/Verqor/api/apiUsuario.php?user_id=" + user_id;
+        StartCoroutine(ObtenerDatosUsuario(user_id));
+    }
+
+    private IEnumerator ObtenerDatosUsuario(int userId)
+    {
+        string apiUrl = "http://localhost:3000/game-data?user_id=" + userId;
 
         UnityWebRequest www = UnityWebRequest.Get(apiUrl);
         yield return www.SendWebRequest();
@@ -60,17 +65,18 @@ public class ObtenerDatos : MonoBehaviour
             success = datosUsuario.success;
             message = datosUsuario.message;
             usuario = datosUsuario.usuario;
+            tipo_usuario = datosUsuario.tipo_usuario;
             progreso = datosUsuario.progreso;
             semillas = datosUsuario.semillas;
             cultivos = datosUsuario.cultivos;
 
             if (success)
             {
-                Debug.Log("Nombre de usuario: " + usuario.usuario);
-                Debug.Log("Tipo de usuario: " + usuario.tipo_usuario);
-                Debug.Log("Progreso: " + progreso[0]);
-                Debug.Log("Financiamiento: " + progreso[0].financiamiento); 
-                
+                Debug.Log("Nombre de usuario: " + usuario);
+                Debug.Log("Tipo de usuario: " + tipo_usuario);
+                Debug.Log("Progreso: " + progreso[0].id);
+                Debug.Log("Financiamiento: " + progreso[0].financiamiento);
+
                 Debug.Log("Datos del usuario obtenidos correctamente.");
             }
             else
@@ -91,28 +97,23 @@ public class DatosUsuario
 {
     public bool success;
     public string message;
-    public Usuario usuario;
+    public int user_id;
+    public string usuario;
+    public string tipo_usuario;
     public List<Progreso> progreso;
     public List<Semilla> semillas;
     public List<Cultivo> cultivos;
 }
 
 [System.Serializable]
-public class Usuario
-{
-    public int id;
-    public string tipo_usuario;
-    public string usuario;
-}
-
-[System.Serializable]
 public class Progreso
 {
     public int id;
-    public int seguro;
-    public int ciclo;
-    public string practica;
+    public int id_usuario;
     public float dinero;
+    public int ciclo;
+    public int seguro;
+    public string practica;
     public int financiamiento;
 }
 
@@ -120,19 +121,15 @@ public class Progreso
 public class Semilla
 {
     public int id;
-    public int maiz;
-    public int trigo;
-    public int chile;
-    public int tomate;
+    public int tipo;
+    public int cantidad;
 }
 
 [System.Serializable]
 public class Cultivo
 {
     public int id;
-    public string hora_plantacion;
-    public string estado;
-    public string semilla;
-    public float posx;
-    public float posy;
+    public int id_progreso;
+    public string tipo;
+    public int cantidad;
 }
