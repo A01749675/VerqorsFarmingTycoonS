@@ -18,7 +18,7 @@ public class TimeManager : MonoBehaviour
     public int year;
     [Range (0, 24)]
     public int hour;
-    [Range (0, 60)]
+    [Range (0, 6)]
     public int minutes;
 
     private DateTime DateTime;
@@ -33,6 +33,11 @@ public class TimeManager : MonoBehaviour
     private void Awake()
     {
         DateTime = new DateTime (dateInMonth, season - 1, year, hour, minutes * 10);
+        Debug.Log($"Starting Date: {DateTime.NewYearsDay(2)}");
+        Debug.Log($"Starting Date: {DateTime.SummerSolstice(4)}");
+        Debug.Log($"Starting Date: {DateTime.PumpkinHarvest(10)}");
+        Debug.Log($"Starting Date: {DateTime.StartofSeason(1,3)}");
+        Debug.Log($"Starting Date: {DateTime.StartofWinter(2)}");
     }
 
     private void Start(){
@@ -80,7 +85,7 @@ public struct DateTime{
     public int Date => date;
     public int Hour => hour;
     public int Minutes => minutes;
-    public Season Season => season;
+    public Season Season1 => season;
     public int Year => year;
     public int TotalNumDays => totalNumDays;
     public int TotalNumWeeks => totalNumWeeks;
@@ -145,8 +150,8 @@ public struct DateTime{
     }
 
     private void AdvanceSeason(){
-        if (season == Season.Winter){
-            season = Season.Spring;
+        if (season == Season.Invierno){
+            season = Season.Primavera;
             AdvanceYear();
         }
         else season++;
@@ -175,7 +180,7 @@ public struct DateTime{
     }
 
     public bool IsWeekend(){
-        return day > Days.Fri? true : false;
+        return day > Days.Vie? true : false;
     }
 
     public bool IsParticularDay(Days _day){
@@ -264,22 +269,22 @@ public DateTime StartofWinter(int year){
 
 public enum Days{
     NULL = 0,
-    Mon = 1,
-    Tue = 2,
-    Wed = 3,
-    Thu = 4,
-    Fri = 5,
-    Sat = 6,
-    Sun = 7 
+    Lun = 1,
+    Mar = 2,
+    Mier = 3,
+    Jue = 4,
+    Vie = 5,
+    Sab = 6,
+    Dom = 7 
 }
 
 [System.Serializable]
 
 public enum Season{
-    Spring = 0,
-    Sumer = 1,
-    Autumn = 2,
-    Winter = 3
+    Primavera = 0,
+    Verano = 1,
+    Otoño = 2,
+    Invierno = 3
 }
 
 }}

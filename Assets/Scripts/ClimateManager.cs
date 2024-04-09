@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Image = UnityEngine.UI.Image;
 
+
 public class ClimateManager : MonoBehaviour
 {
 
