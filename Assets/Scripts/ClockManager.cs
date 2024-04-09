@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DPUtils.Systems.DateTime;
-using Microsoft.Unity.VisualStudio.Editor;
 using Image = UnityEngine.UI.Image;
 
 public class ClockManager : MonoBehaviour
