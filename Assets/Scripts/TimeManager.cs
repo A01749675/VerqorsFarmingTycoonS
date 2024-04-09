@@ -243,7 +243,6 @@ public DateTime StartofWinter(int year){
     public string DateToString(){
         return $"{Day} {Date} {Year.ToString("D2")}";
     }
-
     public string TimeToString(){
         int adjustedHour = 0;
 
@@ -287,4 +286,5 @@ public enum Season{
     Invierno = 3
 }
 
-}}
+}
+}

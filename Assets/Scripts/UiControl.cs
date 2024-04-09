@@ -12,6 +12,7 @@ public class UiControl : MonoBehaviour
     public GameObject Financiamiento;
     public GameObject Produccion;
     public GameObject Rankings;
+    public GameObject Ajustes;
     public GameObject Celular;
     public GameObject Mercado;
     public GameObject Inventario;
@@ -63,6 +64,9 @@ public class UiControl : MonoBehaviour
 
     public GameObject BigPeriodico;
 
+    public GameObject MenuPlantar;
+    public int typecrop=0;
+
 // Mercado Comprar
 
     public MarketManager marketManager;
@@ -91,6 +95,7 @@ public class UiControl : MonoBehaviour
     private bool flagMercado=false;
     private bool flagInventario=false;
     private bool flagDeuda=false;
+    private bool flagMenuPlantar=false;
     public bool flagHerramienta=false;
     public bool flagRegadera=false;
 
@@ -98,6 +103,9 @@ public class UiControl : MonoBehaviour
     private bool flagMenuComprar=false;
     private bool flagBigPeriodico=false;
     private bool flagArbol=false;
+
+    private bool flagAjustes=false;
+
     
     
 
@@ -118,6 +126,12 @@ public class UiControl : MonoBehaviour
         MenuComprar.SetActive(false);
         flagMenuVender=false;
         MenuVender.SetActive(false);
+        flagBigPeriodico=false;
+        BigPeriodico.SetActive(false);
+        flagArbol=false;
+        Arbol.SetActive(false);
+        flagMenuPlantar=false;
+        MenuPlantar.SetActive(false);
         Time.timeScale = 0;
     }
 
@@ -132,6 +146,8 @@ public class UiControl : MonoBehaviour
         flagRankings=false;
         Rankings.SetActive(false);
         PanelOpciones.SetActive(false);
+        flagAjustes=false;
+        Ajustes.SetActive(false);
         Time.timeScale = 1;
     }
 
@@ -147,6 +163,8 @@ public class UiControl : MonoBehaviour
         MenuComprar.SetActive(false);
         flagMenuVender=false;
         MenuVender.SetActive(false);
+        flagAjustes=false;
+        Ajustes.SetActive(false);
         if(flagUsuario){
             flagUsuario=false;
             UsuarioNombre.SetActive(false);
@@ -168,6 +186,8 @@ public class UiControl : MonoBehaviour
         MenuComprar.SetActive(false);
         flagMenuVender=false;
         MenuVender.SetActive(false);
+        flagAjustes=false;
+        Ajustes.SetActive(false);
         if(flagFinanciamiento){
             flagFinanciamiento=false;
             Financiamiento.SetActive(false);
@@ -189,6 +209,8 @@ public class UiControl : MonoBehaviour
         MenuComprar.SetActive(false);
         flagMenuVender=false;
         MenuVender.SetActive(false);
+        flagAjustes=false;
+        Ajustes.SetActive(false);
         if(flagProduccion){
             flagProduccion=false;
             Produccion.SetActive(false);
@@ -212,6 +234,8 @@ public class UiControl : MonoBehaviour
         MenuComprar.SetActive(false);
         flagMenuVender=false;
         MenuVender.SetActive(false);
+        flagAjustes=false;
+        Ajustes.SetActive(false);
         if(flagRankings){
             flagRankings=false;
             Rankings.SetActive(false);
@@ -220,8 +244,39 @@ public class UiControl : MonoBehaviour
             Rankings.SetActive(true);
         }
     }
+
+    public void ShowAjustes()
+    {
+        flagUsuario=false;
+        UsuarioNombre.SetActive(false);
+        flagFinanciamiento=false;
+        Financiamiento.SetActive(false);
+        flagProduccion=false;
+        Produccion.SetActive(false);
+        flagRankings=false;
+        Rankings.SetActive(false);
+        flagMenuComprar=false;
+        MenuComprar.SetActive(false);
+        flagMenuVender=false;
+        MenuVender.SetActive(false);
+        if(flagAjustes){
+            flagAjustes=false;
+            Ajustes.SetActive(false);
+        }else{
+            flagAjustes=true;
+            Ajustes.SetActive(true);
+        }
+    }
+
+    public void SaveGame()
+    {
+        Debug.Log("Guardando...");
+        //UserController.SaveGame();
+        Debug.Log("Guardado exitoso.");
+        }
     public void CloseGame()
     {
+        //UserController.SaveGame();
         Application.Quit();
     }
 
@@ -241,6 +296,8 @@ public class UiControl : MonoBehaviour
         BigPeriodico.SetActive(false);
         flagArbol=false;
         Arbol.SetActive(false);
+        flagMenuPlantar=false;
+        MenuPlantar.SetActive(false);
         if(flagCelular){
             flagCelular=false;
             Celular.SetActive(false);
@@ -265,6 +322,8 @@ public class UiControl : MonoBehaviour
         BigPeriodico.SetActive(false);
         flagArbol=false;
         Arbol.SetActive(false);
+        flagMenuPlantar=false;
+        MenuPlantar.SetActive(false);
         if(flagMercado){
             flagMercado=false;
             Mercado.SetActive(false);
@@ -289,6 +348,8 @@ public class UiControl : MonoBehaviour
         BigPeriodico.SetActive(false);
         flagArbol=false;
         Arbol.SetActive(false);
+        flagMenuPlantar=false;
+        MenuPlantar.SetActive(false);
         if(flagInventario){
             flagInventario=false;
             Inventario.SetActive(false);
@@ -324,6 +385,8 @@ public class UiControl : MonoBehaviour
         flagBigPeriodico=false;
         BigPeriodico.SetActive(false);
         flagArbol=false;
+        flagMenuPlantar=false;
+        MenuPlantar.SetActive(false);
         Arbol.SetActive(false);
         if(flagDeuda){
             flagDeuda=false;
@@ -352,12 +415,99 @@ public class UiControl : MonoBehaviour
         BigPeriodico.SetActive(false);
         flagArbol=false;
         Arbol.SetActive(false);
-        if(flagHerramienta){
-            flagHerramienta=false;
-            Cursor.visible = true;    
+        if(flagMenuPlantar){
+            flagMenuPlantar=false;
+            MenuPlantar.SetActive(false);
+            flagHerramienta=false; 
+            Cursor.visible = true;
+            typecrop=0;
         }else{
-            flagHerramienta=true;
-            Cursor.visible = false;
+            flagMenuPlantar=true;
+            MenuPlantar.SetActive(true);
+            //Cursor.visible = false;
+        }
+    }
+
+    public void SelectCrop(string cropType){
+        switch(cropType){
+            case "1":
+                if (typecrop==1){
+                    Cursor.visible = true;
+                    flagHerramienta=false;
+                    typecrop=0;
+                }
+                else{
+                    Cursor.visible = false;
+                    flagHerramienta=true;
+                    typecrop=1;
+                    //Añadir la selecion de planta
+                }
+                break;
+            case "2":
+                if (typecrop==2){
+                    Cursor.visible = true;
+                    flagHerramienta=false;
+                    typecrop=0;
+                }
+                else{
+                    Cursor.visible = false;
+                    flagHerramienta=true;
+                    typecrop=2;
+                    //Añadir la selecion de planta
+                }
+                break;
+            case "3":
+                if (typecrop==3){
+                    Cursor.visible = true;
+                    flagHerramienta=false;
+                    typecrop=0;
+                }
+                else{
+                    Cursor.visible = false;
+                    flagHerramienta=true;
+                    typecrop=3;
+                    //Añadir la selecion de planta
+                }
+                break;
+            case "4":
+                if (typecrop==4){
+                    Cursor.visible = true;
+                    flagHerramienta=false;
+                    typecrop=0;
+                }
+                else{
+                    Cursor.visible = false;
+                    flagHerramienta=true;
+                    typecrop=4;
+                    //Añadir la selecion de planta
+                }
+                break;
+            case "5":
+                if (typecrop==5){
+                    Cursor.visible = true;
+                    flagHerramienta=false;
+                    typecrop=0;
+                }
+                else{
+                    Cursor.visible = false;
+                    flagHerramienta=true;
+                    typecrop=5;
+                    //Añadir la selecion de planta
+                }
+                break;
+            case "6":
+                if (typecrop==6){
+                    Cursor.visible = true;
+                    flagHerramienta=false;
+                    typecrop=0;
+                }
+                else{
+                    Cursor.visible = false;
+                    flagHerramienta=true;
+                    typecrop=6;
+                    //Añadir la selecion de planta
+                }
+                break;
         }
     }
     public void regadera(){
@@ -378,6 +528,8 @@ public class UiControl : MonoBehaviour
         BigPeriodico.SetActive(false);
         flagArbol=false;
         Arbol.SetActive(false);
+        flagMenuPlantar=false;
+        MenuPlantar.SetActive(false);
         if(flagRegadera){
             flagRegadera=false;
             Cursor.visible = true;    
@@ -549,6 +701,27 @@ public class UiControl : MonoBehaviour
         TomateVcontador.GetComponent<TextMeshProUGUI>().text = tomatev.ToString();
         Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
     }
+    public void VenderTodo(){
+        financeManager.SellItem(1,cropManager.GetCropQuantity(1));
+        financeManager.SellItem(2,cropManager.GetCropQuantity(2));
+        financeManager.SellItem(6,cropManager.GetCropQuantity(3));
+        financeManager.SellItem(4,cropManager.GetCropQuantity(4));
+        financeManager.SellItem(5,cropManager.GetCropQuantity(5));
+        financeManager.SellItem(3,cropManager.GetCropQuantity(6));
+        trigov=0;
+        maizv=0;
+        chilev=0;
+        aguacatev=0;
+        cafev=0;
+        tomatev=0;
+        TrigoVcontador.GetComponent<TextMeshProUGUI>().text = trigov.ToString();
+        MaizVcontador.GetComponent<TextMeshProUGUI>().text = maizv.ToString();
+        ChileVcontador.GetComponent<TextMeshProUGUI>().text = chilev.ToString();
+        AguacateVcontador.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString();
+        CafeVcontador.GetComponent<TextMeshProUGUI>().text = cafev.ToString();
+        TomateVcontador.GetComponent<TextMeshProUGUI>().text = tomatev.ToString();
+        Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
+    }
 
     public void ComprarSemillas(string cropType){
         if(cropType=="1"){
@@ -623,6 +796,8 @@ public class UiControl : MonoBehaviour
         Mercado.SetActive(false);
         flagArbol=false;
         Arbol.SetActive(false);
+        flagMenuPlantar=false;
+        MenuPlantar.SetActive(false);
         if(flagBigPeriodico){
             flagBigPeriodico=false;
             BigPeriodico.SetActive(false);
@@ -647,6 +822,8 @@ public class UiControl : MonoBehaviour
         Mercado.SetActive(false);
         flagBigPeriodico=false;
         BigPeriodico.SetActive(false);
+        flagMenuPlantar=false;
+        MenuPlantar.SetActive(false);
         if(flagArbol){
             flagArbol=false;
             Arbol.SetActive(false);
