@@ -43,7 +43,7 @@ public class ObtenerDatos : MonoBehaviour
         }
         else
         {
-            Debug.LogError("El parámetro 'user_id' no se encontró en la URL.");
+            //Debug.LogError("El parámetro 'user_id' no se encontró en la URL.");
             yield break;
         }
 

@@ -6,9 +6,14 @@ public class ControlManager : MonoBehaviour
 {
     public GameObject herramienta;
     public GameObject regadera;
+    public GameObject Maízhoz;
+    public GameObject Trigohoz;
+    public GameObject Tomatehoz;
+    public GameObject Chilehoz;
+    public GameObject Aguacatehoz;
+    public GameObject Caféhoz;
     
     public UiControl ui;
-
     public MapManager mapManager;
     private int contadorAgua = 0;
 
@@ -31,9 +36,80 @@ public class ControlManager : MonoBehaviour
         if(tool){
             herramienta.SetActive(true);
             herramienta.transform.position = mousePos;
+            switch(ui.typecrop){
+                case 0:
+                    Maízhoz.SetActive(false);
+                    Trigohoz.SetActive(false);
+                    Tomatehoz.SetActive(false);
+                    Chilehoz.SetActive(false);
+                    Aguacatehoz.SetActive(false);
+                    Caféhoz.SetActive(false);
+                    mapManager.SetSelectedCrop(0);
+                    break;
+                case 1:
+                    Trigohoz.SetActive(true);
+                    Maízhoz.SetActive(false);
+                    Tomatehoz.SetActive(false);
+                    Chilehoz.SetActive(false);
+                    Aguacatehoz.SetActive(false);
+                    Caféhoz.SetActive(false);
+                    mapManager.SetSelectedCrop(1);
+                    break;
+                case 2:
+                    Maízhoz.SetActive(true);
+                    Trigohoz.SetActive(false);
+                    Tomatehoz.SetActive(false);
+                    Chilehoz.SetActive(false);
+                    Aguacatehoz.SetActive(false);
+                    Caféhoz.SetActive(false);
+                    mapManager.SetSelectedCrop(2);
+                    break;
+                case 3:
+                    Tomatehoz.SetActive(true);
+                    Maízhoz.SetActive(false);
+                    Trigohoz.SetActive(false);
+                    Chilehoz.SetActive(false);
+                    Aguacatehoz.SetActive(false);
+                    Caféhoz.SetActive(false);
+                    mapManager.SetSelectedCrop(3);
+                    break;
+                case 4: 
+                    Chilehoz.SetActive(true);
+                    Maízhoz.SetActive(false);
+                    Trigohoz.SetActive(false);
+                    Tomatehoz.SetActive(false);
+                    Aguacatehoz.SetActive(false);
+                    Caféhoz.SetActive(false);
+                    mapManager.SetSelectedCrop(6);
+                    break;
+                case 5:
+                    Aguacatehoz.SetActive(true);
+                    Maízhoz.SetActive(false);
+                    Trigohoz.SetActive(false);
+                    Tomatehoz.SetActive(false);
+                    Chilehoz.SetActive(false);
+                    Caféhoz.SetActive(false);
+                    mapManager.SetSelectedCrop(4);
+                    break;
+                case 6:
+                    Caféhoz.SetActive(true);
+                    Maízhoz.SetActive(false);
+                    Trigohoz.SetActive(false);
+                    Tomatehoz.SetActive(false);
+                    Chilehoz.SetActive(false);
+                    Aguacatehoz.SetActive(false);
+                    mapManager.SetSelectedCrop(5);
+                    break;
+            }
         }
         else{
             herramienta.SetActive(false);
+            Maízhoz.SetActive(false);
+            Trigohoz.SetActive(false);
+            Tomatehoz.SetActive(false);
+            Chilehoz.SetActive(false);
+            Aguacatehoz.SetActive(false);
+            Caféhoz.SetActive(false);
         }
     }
     private void ShowRegadera(bool tool,Vector2 mousePos){

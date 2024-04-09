@@ -159,6 +159,10 @@ public class MapManager : MonoBehaviour
         update_rate=1;
     }
 
+    public void SetSelectedCrop(int crop){
+        selected_crop = crop;
+    }
+
     public int GetCurrentCycle(){
         return current_cycle;
     }
@@ -199,6 +203,7 @@ public class MapManager : MonoBehaviour
                             PlantLand(chili_seeds);
                             break;   
                     }
+                ui.hoz();
             }
             print("Planted");
 
@@ -592,7 +597,7 @@ public class MapManager : MonoBehaviour
                 if(tile && dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type==0 && climate==0){
                     tilemap.SetTile(gridPosition, water_tiles[1]);
                 }
-                else if(tile && dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type==0 && climate==3){
+                else if(tile && dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type==0 && climate!=0){
                     tilemap.SetTile(gridPosition, water_tiles[0]);
                 }
             }
