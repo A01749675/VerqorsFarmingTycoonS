@@ -123,6 +123,7 @@ public class Semilla
     public int id;
     public int tipo;
     public int cantidad;
+    public int estado;
 }
 
 [System.Serializable]
@@ -130,6 +131,8 @@ public class Cultivo
 {
     public int id;
     public int id_progreso;
-    public string tipo;
-    public int cantidad;
+    public float posx;
+    public float posy;
+    public string semilla;
+    public int estado;
 }
