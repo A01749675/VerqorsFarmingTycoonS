@@ -14,7 +14,8 @@ public class ObtenerDatos : MonoBehaviour
     public string tipo_usuario;
     public List<Progreso> progreso;
     public List<Semilla> semillas;
-    public List<Cultivo> cultivos;
+    public List<Cosecha> cosechas;
+    public List<Parcela> parcelas;
 
     private void Awake()
     {
@@ -68,13 +69,14 @@ public class ObtenerDatos : MonoBehaviour
             tipo_usuario = datosUsuario.tipo_usuario;
             progreso = datosUsuario.progreso;
             semillas = datosUsuario.semillas;
-            cultivos = datosUsuario.cultivos;
+            cosechas = datosUsuario.cosechas;
+            parcelas = datosUsuario.parcelas;
+            
 
             if (success)
             {
                 Debug.Log("Nombre de usuario: " + usuario);
                 Debug.Log("Tipo de usuario: " + tipo_usuario);
-                Debug.Log("Progreso: " + progreso[0].id);
                 Debug.Log("Financiamiento: " + progreso[0].financiamiento);
 
                 Debug.Log("Datos del usuario obtenidos correctamente.");
@@ -102,7 +104,8 @@ public class DatosUsuario
     public string tipo_usuario;
     public List<Progreso> progreso;
     public List<Semilla> semillas;
-    public List<Cultivo> cultivos;
+    public List<Cosecha> cosechas;
+    public List<Parcela> parcelas;
 }
 
 [System.Serializable]
@@ -121,18 +124,29 @@ public class Progreso
 public class Semilla
 {
     public int id;
-    public int tipo;
-    public int cantidad;
-    public int estado;
+    public int id_progreso;
+    public int maiz;
+    public int trigo;
+    public int tomate;
+    public int chille;
 }
 
-[System.Serializable]
-public class Cultivo
+public class Cosecha
 {
     public int id;
     public int id_progreso;
-    public float posx;
-    public float posy;
-    public string semilla;
+    public int maiz;
+    public int trigo;
+    public int tomate;
+    public int chille;
+}
+
+[System.Serializable]
+public class Parcela
+{
+    public int id_progreso;
+    public int id_parcela;
     public int estado;
+    public int cantidad;
+    public int agua;
 }

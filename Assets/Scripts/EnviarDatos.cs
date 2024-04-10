@@ -9,6 +9,12 @@ public class EnviarDatos : MonoBehaviour
 
     private void Start()
     {
+        Guardar();
+    }
+
+    // Funcion Guardar() que envia los daros a la bae de datos se puede llamar desde cualqueir punto del juego
+    public void Guardar()
+    {
         string url = Application.absoluteURL;
         int userId = ObtenerUserIdDeURL(url);
 
@@ -19,12 +25,38 @@ public class EnviarDatos : MonoBehaviour
         }
 
         // Crear el objeto JSON con los datos del usuario
-        string jsonData = CrearJSON(userId, obtenerDatos.progreso, obtenerDatos.semillas, obtenerDatos.cultivos);
+        string jsonData = CrearJSON(userId, obtenerDatos.progreso, obtenerDatos.semillas, obtenerDatos.cosechas, obtenerDatos.parcelas);
 
         // Enviar los datos a la base de datos
-        //StartCoroutine(EnviarDatosUsuario(jsonData));
+        // StartCoroutine(EnviarDatosUsuario(jsonData));
     }
 
+    // corrutina de enviar datos
+    private IEnumerator EnviarDatosUsuario(string jsonData)
+    {
+        string apiUrl = "http://localhost:3000/game-data";
+
+        // Crear un objeto UnityWebRequest para enviar los datos
+        UnityWebRequest www = new UnityWebRequest(apiUrl, "POST");
+        byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonData);
+        www.uploadHandler = new UploadHandlerRaw(bodyRaw);
+        www.downloadHandler = new DownloadHandlerBuffer();
+        www.SetRequestHeader("Content-Type", "application/json");
+
+        // Enviar la petición
+        yield return www.SendWebRequest();
+
+        // Verificar si la petición fue exitosa
+        if (www.result != UnityWebRequest.Result.Success)
+        {
+            Debug.LogError("Error al enviar los datos: " + www.error);
+        }
+        else
+        {
+            Debug.Log("Datos enviados correctamente.");
+        }
+    }
+    
     private int ObtenerUserIdDeURL(string url)
     {
         int userId = -1;
@@ -40,7 +72,7 @@ public class EnviarDatos : MonoBehaviour
         return userId;
     }
 
-    private string CrearJSON(int userId, List<Progreso> progreso, List<Semilla> semillas, List<Cultivo> cultivos)
+    private string CrearJSON(int userId, List<Progreso> progreso, List<Semilla> semillas, List<Cosecha> cosechas, List<Parcela> parcelas)
     {
         // Crear un objeto DatosUsuario con los datos del usuario
         DatosUsuario userData = new()
@@ -48,7 +80,8 @@ public class EnviarDatos : MonoBehaviour
             user_id = userId,
             progreso = progreso,
             semillas = semillas,
-            cultivos = cultivos
+            cosechas = cosechas,
+            parcelas = parcelas
         };
 
         // Convertir el objeto a JSON
