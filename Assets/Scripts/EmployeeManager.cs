@@ -33,6 +33,13 @@ public class EmployeeManager : MonoBehaviour
             mapManager.FarmerAutomaticCollection(assigned_land);
         }
     }
+
+    public void PlantLand(){
+        if(assigned_land != -1){
+            mapManager.FarmerAutomaticPlanting(assigned_land,assigned_crop);
+        }
+    
+    }
     // Update is called once per frame
     void Update()
     {
