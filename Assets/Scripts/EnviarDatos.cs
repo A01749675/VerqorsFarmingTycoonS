@@ -20,7 +20,7 @@ public class EnviarDatos : MonoBehaviour
 
         if (userId == -1)
         {
-            Debug.LogError("No se encontró el parámetro 'user_id' en la URL.");
+            //Debug.LogError("No se encontró el parámetro 'user_id' en la URL.");
             return;
         }
 
