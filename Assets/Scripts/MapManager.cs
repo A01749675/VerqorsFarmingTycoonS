@@ -369,7 +369,7 @@ public class MapManager : MonoBehaviour
         }
         LandIsPlanted[land] = true;
         TileBase seed = seeds[crop-1];
-        int[,] ranges = LandPosition[selected_land];
+        int[,] ranges = LandPosition[land];
         int x = ranges[0,0];
         int y = ranges[0,1];
         int x1 = ranges[1,0];
@@ -380,8 +380,9 @@ public class MapManager : MonoBehaviour
                 TileBase tile = tilemap.GetTile(gridPosition);
                 if(cropManager.GetCropSeeds(crop)>0 && tile && dataFromTiles.ContainsKey(tile) && 
                 dataFromTiles[tile].crop_type==-crop && CheckIfTileIsLand(gridPosition)!= -1 
-                && CheckIfTileIsLand(gridPosition) == selected_land && UnlockedLands[CheckIfTileIsLand(gridPosition)]
+                && CheckIfTileIsLand(gridPosition) == land && UnlockedLands[CheckIfTileIsLand(gridPosition)]
                 &&!cropManager.cropCycleGrowth.ContainsKey(gridPosition)){
+                    print("Planting");
                     tilemap.SetTile(gridPosition, seed);
                     cropManager.UpdateCropSeeds(crop, -1);
                     cropManager.cropCycleGrowth.Add(gridPosition, new Dictionary<string,int>(){
@@ -731,6 +732,10 @@ public class MapManager : MonoBehaviour
 
     public int GetCropAtLand(int land){
         return Land_Crop_Assigned[land];
+    }
+
+    public bool LandPlanted(int land){
+        return LandIsPlanted[land];
     }
 
 }
