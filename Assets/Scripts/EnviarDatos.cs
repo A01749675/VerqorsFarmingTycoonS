@@ -28,7 +28,7 @@ public class EnviarDatos : MonoBehaviour
         string jsonData = CrearJSON(userId, obtenerDatos.progreso, obtenerDatos.semillas, obtenerDatos.cosechas, obtenerDatos.parcelas);
 
         // Enviar los datos a la base de datos
-        // StartCoroutine(EnviarDatosUsuario(jsonData));
+        StartCoroutine(EnviarDatosUsuario(jsonData));
     }
 
     // corrutina de enviar datos

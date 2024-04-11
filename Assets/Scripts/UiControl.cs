@@ -67,6 +67,9 @@ public class UiControl : MonoBehaviour
     public GameObject MenuPlantar;
     public int typecrop=0;
 
+// Objeto EviarDatos
+    public EnviarDatos enviardatos;
+
 // Mercado Comprar
 
     public MarketManager marketManager;
@@ -271,12 +274,14 @@ public class UiControl : MonoBehaviour
     public void SaveGame()
     {
         Debug.Log("Guardando...");
-        //UserController.SaveGame();
+        enviardatos.Guardar();
         Debug.Log("Guardado exitoso.");
         }
     public void CloseGame()
     {
-        //UserController.SaveGame();
+        Debug.Log("Guardando...");
+        enviardatos.Guardar();
+        Debug.Log("Guardado exitoso.");
         Application.Quit();
     }
 

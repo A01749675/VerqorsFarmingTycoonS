@@ -128,7 +128,7 @@ public class Semilla
     public int maiz;
     public int trigo;
     public int tomate;
-    public int chille;
+    public int chile;
 }
 
 public class Cosecha
@@ -138,7 +138,7 @@ public class Cosecha
     public int maiz;
     public int trigo;
     public int tomate;
-    public int chille;
+    public int chile;
 }
 
 [System.Serializable]
