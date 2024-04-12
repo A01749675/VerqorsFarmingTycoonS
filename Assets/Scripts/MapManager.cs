@@ -162,10 +162,10 @@ public class MapManager : MonoBehaviour
     }
 
     public void FastForward(){
-        update_rate=10;
+        Time.timeScale = 5;
     }
     public void SlowDown(){
-        update_rate=1;
+        Time.timeScale = 0.3f;
     }
 
     public void SetSelectedCrop(int crop){
