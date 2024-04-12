@@ -22,7 +22,7 @@ public class EmployeeManager : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        AssignLandToEmployee(12);
+        //AssignLandToEmployee(12);
         
     }
 
@@ -54,10 +54,8 @@ public class EmployeeManager : MonoBehaviour
     {
         int cycle = mapManager.GetCurrentCycle();
         
-        if(cycle % 60 == 0){
-            CollectLand();
-        }
-        if(cycle % 10 == 0 && mapManager.LandPlanted(assigned_land) == false){
+        if(cycle % 10 == 0 && mapManager.LandPlanted(assigned_land) == false && assigned_land != -1){
+            assigned_crop = mapManager.GetCropAtLand(assigned_land);
             print("Employee has been called to work at " +assigned_land+ " with crop "+ assigned_crop);
             print("Employee Tried to plant");
             PlantLand();

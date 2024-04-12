@@ -83,10 +83,10 @@ public class ClimateManager : MonoBehaviour
             }}
         };
         probability = new Dictionary<int,int>(){
-        {0,80},
-        {1,60},
+        {0,50},
+        {1,90},
         {2,60},
-        {3,40},
+        {3,20},
         {4,5}
     };
     }
