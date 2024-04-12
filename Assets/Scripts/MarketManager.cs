@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DPUtils.Systems.DateTime;
@@ -11,6 +12,8 @@ public class MarketManager : MonoBehaviour
     public FinanceManager financeManager;
     public TimeManager timeManager;
 
+    private bool flag1;
+
     private void Awake(){
         crop_prices = financeManager.GetPrices();
         crop_quantity = new Dictionary<int, int>(){
@@ -20,11 +23,18 @@ public class MarketManager : MonoBehaviour
             {4, random.Next(1, 500)},
             {5, random.Next(1, 500)},
             {6, random.Next(1, 500)}
+
         };
+        flag1 = false;
     }
 
     public int GetCantidad(int cropType){
         return crop_quantity[cropType];
+    }
+
+    private int GetDate(){
+        int week = timeManager.GetWeek();
+        return week;
     }
 
     public double GetTotal(int cropType){
@@ -36,7 +46,9 @@ public class MarketManager : MonoBehaviour
     }
 
     private void Update(){
-        if(timeManager.hour == 6 && timeManager.minutes == 0){
+        int week1 = GetDate();
+        if(week1%2 == 0){
+            flag1 = true;
             print("Cambiando cantidades");
             crop_quantity = new Dictionary<int, int>(){
                 {1, random.Next(1, 500)},
@@ -46,6 +58,9 @@ public class MarketManager : MonoBehaviour
                 {5, random.Next(1, 500)},
                 {6, random.Next(1, 500)}
             };
+        }
+        else if (week1%2 != 0){
+            flag1 = false;
         }
     }
 }

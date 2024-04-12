@@ -63,6 +63,10 @@ public class TimeManager : MonoBehaviour
         OnDateTimeChanged ?.Invoke(DateTime);
     }
 
+    public int GetWeek(){
+        return DateTime.CurrentWeek;
+    }
+
 
 }
 
@@ -267,7 +271,6 @@ public DateTime StartofWinter(int year){
 [System.Serializable]
 
 public enum Days{
-    NULL = 0,
     Lun = 1,
     Mar = 2,
     Mier = 3,
@@ -280,10 +283,10 @@ public enum Days{
 [System.Serializable]
 
 public enum Season{
-    Primavera = 0,
-    Verano = 1,
-    Otoño = 2,
-    Invierno = 3
+    Primavera = 1,
+    Verano = 2,
+    Otoño = 3,
+    Invierno = 4
 }
 
 }
