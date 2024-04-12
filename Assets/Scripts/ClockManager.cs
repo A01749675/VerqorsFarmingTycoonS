@@ -39,7 +39,7 @@ public class ClockManager : MonoBehaviour
         Date.text = dateTime.DateToString();
         Time.text = dateTime.TimeToString();
         Season.text = dateTime.Season1.ToString();
-        Week.text = $"SEM: {dateTime.CurrentWeek.ToString()}";
+        Week.text = $"SEM: {dateTime.CurrentWeek+1.ToString()}";
         //weatherImg1.sprite = weatherSprites[ClimateID];
         float t =  (float)dateTime.Hour/24f;
         float newRotation = Mathf.Lerp(0,360,t);
