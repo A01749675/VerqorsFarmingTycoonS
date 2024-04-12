@@ -186,7 +186,7 @@ public class MapManager : MonoBehaviour
             for(int j=y;j<y1+1;j++){
                 Vector3Int gridPosition = new Vector3Int(i, j, 0);
                 TileBase tile = tilemap.GetTile(gridPosition);
-                if(tile && dataFromTiles.ContainsKey(tile) && cantidad>0){
+                if(tile && dataFromTiles.ContainsKey(tile) && cantidad>0 && !cropManager.cropCycleGrowth.ContainsKey(gridPosition)){
                     cropManager.cropCycleGrowth.Add(gridPosition, new Dictionary<string,int>(){
                         {"growth", estado},
                         {"cycle", current_cycle},
