@@ -17,6 +17,7 @@ public class ObtenerDatos : MonoBehaviour
     public List<Cosecha> cosechas;
     public List<Parcela> parcelas;
 
+    public List<List<int>> parcela_data = new List<List<int>>();
     private void Awake()
     {
         StartCoroutine(ObtenerIdUsuario());
@@ -78,6 +79,7 @@ public class ObtenerDatos : MonoBehaviour
                 Debug.Log("Nombre de usuario: " + usuario);
                 Debug.Log("Tipo de usuario: " + tipo_usuario);
                 Debug.Log("Financiamiento: " + progreso[0].financiamiento);
+                GetParcelaData(parcelas);
 
                 Debug.Log("Datos del usuario obtenidos correctamente.");
             }
@@ -91,7 +93,23 @@ public class ObtenerDatos : MonoBehaviour
             Debug.LogError("Error al obtener los datos del usuario: " + www.error);
         }
     }
+    public void GetParcelaData(List<Parcela> parcelas)
+    {
+        List<List<int>> parcela = new List<List<int>>();
+        foreach (Parcela p in parcelas)
+        {
+            List<int> data = new List<int>();
+            data.Add(p.id_parcela);
+            data.Add(p.estado);
+            data.Add(p.cantidad);
+            data.Add(p.agua);
+            parcela.Add(data);
+        }
+
+    }
 }
+
+
 
 // Clases para deserializar la respuesta JSON
 [System.Serializable]

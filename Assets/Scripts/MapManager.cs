@@ -31,9 +31,7 @@ public class MapManager : MonoBehaviour
     private Dictionary<TileBase, TileData> dataFromTiles;
     private Dictionary<int,TileBase> soilFromCrop;
     private Dictionary<int,bool> plantedCrops;
-
     private Dictionary<int,int> CropSpriteCounter;
-
     private Dictionary<int,int[,]> LandPosition;
     private Dictionary<int,bool>  UnlockedLands;
     private Dictionary<int,int> Land_Crop_Assigned;
@@ -56,11 +54,9 @@ public class MapManager : MonoBehaviour
 
     // Start is called before the first frame update
     public CropManager cropManager;
-
     public UiControl ui;
-
     public ClimateManager climateManager;
-
+    public ObtenerDatos obtenerDatos;
     public GameObject herramienta;
     public GameObject regadera;
 
@@ -107,6 +103,7 @@ public class MapManager : MonoBehaviour
         CropsInLand = new Dictionary<int, int>();
         FindLand();
         UpdateUnlockedLands(new int[]{8,11,12,16,17});
+        LoadPredefinedMap(8, 0, 100, 30);
         InvokeRepeating("UpdateCycle", 0, 1f);
 
     }
@@ -161,6 +158,63 @@ public class MapManager : MonoBehaviour
         }
     }
 
+
+    public void LoadDataFromMap(){
+        List<List<int>> parcelas = obtenerDatos.parcela_data;
+        foreach(var parcela in parcelas){
+            LoadPredefinedMap(parcela[0],parcela[1],parcela[2],parcela[3]);
+        }
+    }
+    public void LoadPredefinedMap(int land, int estado, int cantidad,int agua){
+        if(!LandPosition.ContainsKey(land) || UnlockedLands[land]==false){
+            return;
+        }
+        UnlockedLands[land] = true;
+        CropsInLand[land] = cantidad;
+        int[,] ranges = LandPosition[land];
+        int x = ranges[0,0];
+        int y = ranges[0,1];
+        int x1 = ranges[1,0];
+        int y1 = ranges[1,1];
+        if(cantidad>0){
+            LandIsPlanted[land] = true;
+        }
+        int crop = Land_Crop_Assigned[land];
+        plantedCrops[crop] = true;
+        for(int i = x;i<x1+1;i++){
+            for(int j=y;j<y1+1;j++){
+                Vector3Int gridPosition = new Vector3Int(i, j, 0);
+                TileBase tile = tilemap.GetTile(gridPosition);
+                if(tile && dataFromTiles.ContainsKey(tile) && cantidad>0){
+                    cropManager.cropCycleGrowth.Add(gridPosition, new Dictionary<string,int>(){
+                        {"growth", estado},
+                        {"cycle", current_cycle},
+                        {"water",agua},
+                        {"crop_type", crop}
+                    });
+                    cantidad--;
+                    switch(crop){
+                        case 1:
+                            tilemap.SetTile(gridPosition, barley_grow_tiles[estado]);
+                            break;
+                        case 2:
+                            tilemap.SetTile(gridPosition, corn_grow_tiles[estado]);
+                            break;
+                        case 3:
+                            tilemap.SetTile(gridPosition, tomato_grow_tiles[estado]);
+                            break;
+                        case 4:
+                            tilemap.SetTile(gridPosition, avocado_grow_tiles[estado]);
+                            break;
+                        case 6:
+                            tilemap.SetTile(gridPosition, chilli_grow_tiles[estado]);
+                            break;
+                    }
+                }
+            }
+        }
+
+    }
     public void FastForward(){
         Time.timeScale = 5;
     }
