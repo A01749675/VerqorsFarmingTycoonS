@@ -7,11 +7,6 @@ public class EnviarDatos : MonoBehaviour
 {
     public ObtenerDatos obtenerDatos;
 
-    private void Start()
-    {
-        Guardar();
-    }
-
     // Funcion Guardar() que envia los daros a la bae de datos se puede llamar desde cualqueir punto del juego
     public void Guardar()
     {
@@ -25,7 +20,7 @@ public class EnviarDatos : MonoBehaviour
         }
 
         // Crear el objeto JSON con los datos del usuario
-        string jsonData = CrearJSON(userId, obtenerDatos.progreso, obtenerDatos.semillas, obtenerDatos.cosechas, obtenerDatos.parcelas);
+        string jsonData = CrearJSON(userId, obtenerDatos.progreso, obtenerDatos.semillas, obtenerDatos.cosecha, obtenerDatos.parcela);
 
         // Enviar los datos a la base de datos
         StartCoroutine(EnviarDatosUsuario(jsonData));
@@ -72,7 +67,7 @@ public class EnviarDatos : MonoBehaviour
         return userId;
     }
 
-    private string CrearJSON(int userId, List<Progreso> progreso, List<Semilla> semillas, List<Cosecha> cosechas, List<Parcela> parcelas)
+    private string CrearJSON(int userId, List<Progreso> progreso, List<Semilla> semillas, List<Cosecha> cosecha, List<Parcela> parcela)
     {
         // Crear un objeto DatosUsuario con los datos del usuario
         DatosUsuario userData = new()
@@ -80,8 +75,8 @@ public class EnviarDatos : MonoBehaviour
             user_id = userId,
             progreso = progreso,
             semillas = semillas,
-            cosechas = cosechas,
-            parcelas = parcelas
+            cosecha = cosecha,
+            parcela = parcela
         };
 
         // Convertir el objeto a JSON

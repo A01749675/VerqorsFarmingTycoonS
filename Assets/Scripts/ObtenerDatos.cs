@@ -14,10 +14,12 @@ public class ObtenerDatos : MonoBehaviour
     public string tipo_usuario;
     public List<Progreso> progreso;
     public List<Semilla> semillas;
-    public List<Cosecha> cosechas;
-    public List<Parcela> parcelas;
+    public List<Cosecha> cosecha;
+    public List<Parcela> parcela;
 
     public List<List<int>> parcela_data = new List<List<int>>();
+
+    public MapManager mapManager;
     private void Awake()
     {
         StartCoroutine(ObtenerIdUsuario());
@@ -54,7 +56,7 @@ public class ObtenerDatos : MonoBehaviour
 
     private IEnumerator ObtenerDatosUsuario(int userId)
     {
-        string apiUrl = "http://localhost:3000/game-data?user_id=" + userId;
+        string apiUrl = "http://localhost:3000/game-data?user_id="+userId;
 
         UnityWebRequest www = UnityWebRequest.Get(apiUrl);
         yield return www.SendWebRequest();
@@ -62,6 +64,8 @@ public class ObtenerDatos : MonoBehaviour
         if (www.result == UnityWebRequest.Result.Success)
         {
             string jsonString = www.downloadHandler.text;
+            print("BBBBBBBBBBBB");
+            print(jsonString);
             DatosUsuario datosUsuario = JsonUtility.FromJson<DatosUsuario>(jsonString);
 
             success = datosUsuario.success;
@@ -70,8 +74,11 @@ public class ObtenerDatos : MonoBehaviour
             tipo_usuario = datosUsuario.tipo_usuario;
             progreso = datosUsuario.progreso;
             semillas = datosUsuario.semillas;
-            cosechas = datosUsuario.cosechas;
-            parcelas = datosUsuario.parcelas;
+            cosecha = datosUsuario.cosecha;
+            parcela = datosUsuario.parcela;
+            print("AAAAAAAAA");
+            print("Hola buenas soy MarzyParcela0 "+ String.Join(",", parcela));
+            print("Hola buenas soy MarzyParcela "+String.Join(",", parcela));
             
 
             if (success)
@@ -79,7 +86,11 @@ public class ObtenerDatos : MonoBehaviour
                 Debug.Log("Nombre de usuario: " + usuario);
                 Debug.Log("Tipo de usuario: " + tipo_usuario);
                 Debug.Log("Financiamiento: " + progreso[0].financiamiento);
-                GetParcelaData(parcelas);
+                Debug.Log("Maíz semillas: " + semillas[0].maiz);
+                Debug.Log("Parcela" + parcela[0]);
+                print("Hola buenas soy MarzyParcela2 "+parcela.ToString());
+                
+                GetParcelaData(parcela);
 
                 Debug.Log("Datos del usuario obtenidos correctamente.");
             }
@@ -105,6 +116,8 @@ public class ObtenerDatos : MonoBehaviour
             data.Add(p.agua);
             parcela.Add(data);
         }
+        print("Parcelas obtenidas: " +parcela.Count);
+        mapManager.LoadDataFromMap(parcela);
 
     }
 }
@@ -122,8 +135,8 @@ public class DatosUsuario
     public string tipo_usuario;
     public List<Progreso> progreso;
     public List<Semilla> semillas;
-    public List<Cosecha> cosechas;
-    public List<Parcela> parcelas;
+    public List<Cosecha> cosecha;
+    public List<Parcela> parcela;
 }
 
 [System.Serializable]
@@ -148,20 +161,21 @@ public class Semilla
     public int tomate;
     public int chile;
 }
-
+[System.Serializable]
 public class Cosecha
 {
     public int id;
     public int id_progreso;
-    public int maiz;
     public int trigo;
     public int tomate;
     public int chile;
+    public int maiz;
 }
 
 [System.Serializable]
 public class Parcela
 {
+    public int id;
     public int id_progreso;
     public int id_parcela;
     public int estado;

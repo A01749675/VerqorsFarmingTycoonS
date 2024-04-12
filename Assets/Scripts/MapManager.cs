@@ -56,7 +56,7 @@ public class MapManager : MonoBehaviour
     public CropManager cropManager;
     public UiControl ui;
     public ClimateManager climateManager;
-    public ObtenerDatos obtenerDatos;
+
     public GameObject herramienta;
     public GameObject regadera;
 
@@ -103,7 +103,7 @@ public class MapManager : MonoBehaviour
         CropsInLand = new Dictionary<int, int>();
         FindLand();
         UpdateUnlockedLands(new int[]{8,11,12,16,17});
-        LoadPredefinedMap(8, 0, 100, 30);
+        print("map manager finise¿hed configuration");
         InvokeRepeating("UpdateCycle", 0, 1f);
 
     }
@@ -159,9 +159,10 @@ public class MapManager : MonoBehaviour
     }
 
 
-    public void LoadDataFromMap(){
-        List<List<int>> parcelas = obtenerDatos.parcela_data;
+    public void LoadDataFromMap(List<List<int>> parcelas){
+        print("Loading data from map");
         foreach(var parcela in parcelas){
+            print("Parcela: "+parcela[0]+" estado "+parcela[1]+" cantidad "+parcela[2]+" agua"+parcela[3]);
             LoadPredefinedMap(parcela[0],parcela[1],parcela[2],parcela[3]);
         }
     }
