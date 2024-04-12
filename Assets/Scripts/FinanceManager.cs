@@ -25,12 +25,12 @@ public class FinanceManager : MonoBehaviour
     {
         _prices = new Dictionary<int, int>()
         {
-            {1, 60},
-            {2, 62},
-            {3, 70},
-            {4, 140},
-            {5, 61},
-            {6, 96}
+            {1, 30},
+            {2, 32},
+            {3, 40},
+            {4, 45},
+            {5, 31},
+            {6, 34}
         };
         VerqorFinanceData = new Dictionary<string, float>()
         {

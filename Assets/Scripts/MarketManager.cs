@@ -38,7 +38,7 @@ public class MarketManager : MonoBehaviour
     }
 
     public double GetTotal(int cropType){
-        return financeManager._prices[cropType] * GetCantidad(cropType) * 0.4;
+        return financeManager._prices[cropType] * GetCantidad(cropType) * 0.5;
     }
 
     public void UpdateCropQuantity(int cropType, int quantity){

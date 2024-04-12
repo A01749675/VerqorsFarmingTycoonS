@@ -867,4 +867,13 @@ public class UiControl : MonoBehaviour
     {
         Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
     }
+    public void SlowDownTime(){
+        Time.timeScale = 0.5f;
+    }
+    public void NormalTime(){
+        Time.timeScale = 1;
+    }
+    public void SpeedUpTime(){
+        Time.timeScale = 2;
+    }
 }
