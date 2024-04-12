@@ -12,6 +12,8 @@ public class MapManager : MonoBehaviour
     public TileBase soil;
     public TileBase soil2;
     public TileBase soil3;
+    public TileBase soil4;
+    public TileBase soil5;
     public TileBase soil6;
 
     
@@ -36,6 +38,7 @@ public class MapManager : MonoBehaviour
     private Dictionary<int,bool>  UnlockedLands;
     private Dictionary<int,int> Land_Crop_Assigned;
     private Dictionary<int,bool> LandIsPlanted;
+    private Dictionary<int,int> CropsInLand;
     private int numberOfLands = 0;
 
     
@@ -101,6 +104,7 @@ public class MapManager : MonoBehaviour
         UnlockedLands =new Dictionary<int, bool>();
         Land_Crop_Assigned = new Dictionary<int, int>();
         LandIsPlanted = new Dictionary<int, bool>();
+        CropsInLand = new Dictionary<int, int>();
         FindLand();
         UpdateUnlockedLands(new int[]{8,11,12,16,17});
         InvokeRepeating("UpdateCycle", 0, 1f);
@@ -135,15 +139,17 @@ public class MapManager : MonoBehaviour
             Vector3Int gridPos = tilemap.WorldToCell(mousePos);
             if(UnlockedLands.ContainsKey(CheckIfTileIsLand(gridPos))){
                 selected_land = CheckIfTileIsLand(gridPos);
+                PlantCrop(mousePos);
             }
-            PlantCrop(mousePos);
+            
             }
         if(Input.GetKeyDown("c")){
             Vector3Int gridPos = tilemap.WorldToCell(mousePos);
             if(UnlockedLands.ContainsKey(CheckIfTileIsLand(gridPos))){
                 selected_land = CheckIfTileIsLand(gridPos);
+                CollectLand();
             }
-            CollectLand();
+            
         }
     }
 
@@ -155,10 +161,10 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    public void FastForward(int value){
+    public void FastForward(){
         update_rate=10;
     }
-    public void SlowDown(int value){
+    public void SlowDown(){
         update_rate=1;
     }
 
@@ -357,6 +363,7 @@ public class MapManager : MonoBehaviour
                         {"water",30},
                         {"crop_type", selected_crop}
                     });
+                    CropsInLand[selected_land]++;
                 }
             }
         }
@@ -367,6 +374,7 @@ public class MapManager : MonoBehaviour
         if(!LandPosition.ContainsKey(land) || UnlockedLands[land]==false){
             return;
         }
+        plantedCrops[crop] = true;
         LandIsPlanted[land] = true;
         TileBase seed = seeds[crop-1];
         int[,] ranges = LandPosition[land];
@@ -382,7 +390,6 @@ public class MapManager : MonoBehaviour
                 dataFromTiles[tile].crop_type==-crop && CheckIfTileIsLand(gridPosition)!= -1 
                 && CheckIfTileIsLand(gridPosition) == land && UnlockedLands[CheckIfTileIsLand(gridPosition)]
                 &&!cropManager.cropCycleGrowth.ContainsKey(gridPosition)){
-                    print("Planting");
                     tilemap.SetTile(gridPosition, seed);
                     cropManager.UpdateCropSeeds(crop, -1);
                     cropManager.cropCycleGrowth.Add(gridPosition, new Dictionary<string,int>(){
@@ -391,6 +398,7 @@ public class MapManager : MonoBehaviour
                         {"water",30},
                         {"crop_type", selected_crop}
                     });
+                    CropsInLand[land]++;
                 }
             }
         }
@@ -416,6 +424,7 @@ public class MapManager : MonoBehaviour
                         plantedCrops[dataFromTiles[tile].crop_type] = false;
                         tilemap.SetTile(gridPosition, soilFromCrop[-dataFromTiles[tile].crop_type]);
                         cropManager.UpdateCropQuantity(dataFromTiles[tile].crop_type, dataFromTiles[tile].quantity);
+                        CropsInLand[selected_land]--;
                     }
                 }
             }
@@ -478,6 +487,7 @@ public class MapManager : MonoBehaviour
                         plantedCrops[dataFromTiles[tile].crop_type] = false;
                         tilemap.SetTile(gridPosition, soilFromCrop[-dataFromTiles[tile].crop_type]);
                         cropManager.UpdateCropQuantity(dataFromTiles[tile].crop_type, dataFromTiles[tile].quantity);
+                        CropsInLand[land]--;
                     }
                 }
             }
@@ -575,9 +585,21 @@ public class MapManager : MonoBehaviour
                 break;
             case 3:
                 ClimateWaterUpdate();
+                plantedCrops[1] = false;
+                plantedCrops[2] = false;
+                plantedCrops[3] = false;   
+                plantedCrops[4] = false;
+                plantedCrops[5] = false;
+                plantedCrops[6] = false;
                 break;
             case 4:
                 ClimateWaterUpdate();
+                plantedCrops[1] = false;
+                plantedCrops[2] = false;
+                plantedCrops[3] = false;   
+                plantedCrops[4] = false;
+                plantedCrops[5] = false;
+                plantedCrops[6] = false;
                 break;
         }
     }
@@ -699,6 +721,7 @@ public class MapManager : MonoBehaviour
                     UnlockedLands.Add(numberOfLands-1, false);
                     Land_Crop_Assigned[numberOfLands-1] = -dataFromTiles[tile].crop_type;
                     LandIsPlanted[numberOfLands-1] = false;
+                    CropsInLand[numberOfLands-1] = 0;
                 }
             }
         }
