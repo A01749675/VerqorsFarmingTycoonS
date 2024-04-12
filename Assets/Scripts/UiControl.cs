@@ -115,6 +115,9 @@ public class UiControl : MonoBehaviour
     //Al dar click al boton de opciones se abre el panel PanelOpciones
     public void OpenOpciones()
     {
+        Cursor.visible = true;
+        flagHerramienta=false; 
+        typecrop=0;
         flagCelular=false;
         Celular.SetActive(false);
         flagMercado=false;
@@ -287,6 +290,9 @@ public class UiControl : MonoBehaviour
 
     public void ShowCelular()
     {
+        Cursor.visible = true;
+        flagHerramienta=false; 
+        typecrop=0;
         flagMercado=false;
         Mercado.SetActive(false);
         flagInventario=false;
@@ -313,6 +319,9 @@ public class UiControl : MonoBehaviour
     }
     public void ShowMercado()
     {
+        Cursor.visible = true;
+        flagHerramienta=false;
+        typecrop=0; 
         flagCelular=false;
         Celular.SetActive(false);
         flagInventario=false;
@@ -339,6 +348,9 @@ public class UiControl : MonoBehaviour
     }
     public void ShowInventario()
     {
+        Cursor.visible = true;
+        flagHerramienta=false; 
+        typecrop=0;
         flagCelular=false;
         Celular.SetActive(false);
         flagMercado=false;
@@ -377,6 +389,9 @@ public class UiControl : MonoBehaviour
     }
     public void ShowDeuda()
     {
+        Cursor.visible = true;
+        flagHerramienta=false;
+        typecrop=0; 
         flagCelular=false;
         Celular.SetActive(false);
         flagMercado=false;
@@ -787,6 +802,9 @@ public class UiControl : MonoBehaviour
     }
 
     public void OpenBigPeriodico(){
+        Cursor.visible = true;
+        flagHerramienta=false; 
+        typecrop=0;
         flagInventario=false;
         Inventario.SetActive(false);
         flagDeuda=false;
@@ -813,6 +831,9 @@ public class UiControl : MonoBehaviour
     }
 
     public void ShowArbol(){
+        Cursor.visible = true;
+        flagHerramienta=false; 
+        typecrop=0;
         flagInventario=false;
         Inventario.SetActive(false);
         flagDeuda=false;
