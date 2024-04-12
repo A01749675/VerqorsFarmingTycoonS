@@ -109,6 +109,9 @@ public class UiControl : MonoBehaviour
 
     private bool flagAjustes=false;
 
+    //Movimiento camára
+
+    public CameraMovement cameraMovement;
     
     
 
@@ -139,6 +142,7 @@ public class UiControl : MonoBehaviour
         flagMenuPlantar=false;
         MenuPlantar.SetActive(false);
         Time.timeScale = 0;
+        cameraMovement.enabled = false;
     }
 
     public void CloseOpciones()
@@ -155,6 +159,7 @@ public class UiControl : MonoBehaviour
         flagAjustes=false;
         Ajustes.SetActive(false);
         Time.timeScale = 1;
+        cameraMovement.enabled = true;
     }
 
     public void Usuario()
@@ -724,10 +729,10 @@ public class UiControl : MonoBehaviour
     public void VenderTodo(){
         financeManager.SellItem(1,cropManager.GetCropQuantity(1));
         financeManager.SellItem(2,cropManager.GetCropQuantity(2));
-        financeManager.SellItem(6,cropManager.GetCropQuantity(3));
+        financeManager.SellItem(3,cropManager.GetCropQuantity(3));
         financeManager.SellItem(4,cropManager.GetCropQuantity(4));
         financeManager.SellItem(5,cropManager.GetCropQuantity(5));
-        financeManager.SellItem(3,cropManager.GetCropQuantity(6));
+        financeManager.SellItem(6,cropManager.GetCropQuantity(6));
         trigov=0;
         maizv=0;
         chilev=0;

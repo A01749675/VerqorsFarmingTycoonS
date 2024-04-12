@@ -116,7 +116,7 @@ public class TreeManager : MonoBehaviour
     public void ShowUpgrade3()
     {
         Arbol.transform.GetChild(0).gameObject.SetActive(true);
-        Texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te permitira contratar empleados y te ayudaran a cultivar en 3 parcelas. Costo: 3000";
+        Texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te permitirá contratar empleados y te ayudarán a cultivar en 3 de tus parcelas. Costo: 3000";
         Imagen.sprite = Empleado;
         if (Mejoras[2] && !Mejoras[3])
         {
@@ -161,7 +161,7 @@ public class TreeManager : MonoBehaviour
     public void ShowUpgrade6()
     {
         Arbol.transform.GetChild(0).gameObject.SetActive(true);
-        Texto.GetComponent<TextMeshProUGUI>().text = "Está mejora te permitirá comprar un seguro para tus cultivos. Si se mueren tus cultivos recibiras un 20% de su valor. Costo: 6000";
+        Texto.GetComponent<TextMeshProUGUI>().text = "Está mejora te permitirá comprar un seguro para tus cultivos. Si se mueren tus cultivos recibirás un 20% de su valor. Costo: 6000";
         Imagen.sprite = Seguro;
         if (Mejoras[2] && !Mejoras[6])
         {
@@ -175,7 +175,7 @@ public class TreeManager : MonoBehaviour
     public void ShowUpgrade7()
     {
         Arbol.transform.GetChild(0).gameObject.SetActive(true);
-        Texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te permitira tener riego automatico en 3 de tus parcelas. Esto será bastante útil en sequías. Costo: 7000";
+        Texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te permitirá tener riego automático en 3 de tus parcelas. Esto será bastante útil en sequías. Costo: 7000";
         Imagen.sprite = Aspersor;
         if (Mejoras[3] && Mejoras[4] && Mejoras[5] && !Mejoras[7])
         {
@@ -189,7 +189,7 @@ public class TreeManager : MonoBehaviour
     public void ShowUpgrade8()
     {
         Arbol.transform.GetChild(0).gameObject.SetActive(true);
-        Texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te dará los beneficios de la agricultura regenerativa. Dale click al boton para conocer sobre agricultura regenerativa. Costo: 8000";
+        Texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te dará los beneficios de la agricultura regenerativa. Dale click al botón para conocer sobre agricultura regenerativa. Costo: 8000";
         Imagen.sprite = IMRegen;
         if (Mejoras[3] && Mejoras[4] && Mejoras[5] && !Mejoras[8])
         {
@@ -203,7 +203,7 @@ public class TreeManager : MonoBehaviour
     public void ShowUpgrade9()
     {
         Arbol.transform.GetChild(0).gameObject.SetActive(true);
-        Texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te permitira contratar empleados y te ayudaran a cultivar en 2 parcelas más. Costo: 9000";
+        Texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te permitirá contratar empleados y te ayudarán a cultivar en 2 parcelas más. Costo: 9000";
         Imagen.sprite = Empleado;
         if (Mejoras[7] && Mejoras[8] && !Mejoras[9])
         {
@@ -245,7 +245,7 @@ public class TreeManager : MonoBehaviour
     public void ShowUpgrade12()
     {
         Arbol.transform.GetChild(0).gameObject.SetActive(true);
-        Texto.GetComponent<TextMeshProUGUI>().text = "Está mejora te permitirá comprar un mejor seguro para tus cultivos. Si se mueren tus cultivos recibiras un 35% de su valor. Costo: 12000";
+        Texto.GetComponent<TextMeshProUGUI>().text = "Está mejora te permitirá comprar un mejor seguro para tus cultivos. Si se mueren tus cultivos recibirás un 35% de su valor. Costo: 12000";
         Imagen.sprite = Seguro;
         if (Mejoras[7] && Mejoras[8] && Mejoras[6] && !Mejoras[12])
         {
@@ -273,7 +273,7 @@ public class TreeManager : MonoBehaviour
     public void ShowUpgrade14()
     {
         Arbol.transform.GetChild(0).gameObject.SetActive(true);
-        Texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te permitira tener riego automatico en 2 de tus parcelas. Esto será bastante útil en sequías. Costo: 14000";
+        Texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te permitirá tener riego automático en 2 de tus parcelas. Esto será bastante útil en sequías. Costo: 14000";
         Imagen.sprite = Aspersor;
         if (Mejoras[9] && Mejoras[10] && Mejoras[11] && !Mejoras[14])
         {
@@ -287,7 +287,7 @@ public class TreeManager : MonoBehaviour
     public void ShowUpgrade15()
     {
         Arbol.transform.GetChild(0).gameObject.SetActive(true);
-        Texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te dará los beneficios de la agricultura regenerativa. Dale click al boton para conocer sobre agricultura regenerativa. Costo: 15000";
+        Texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te dará los beneficios de la agricultura regenerativa. Dale click al botón para conocer sobre agricultura regenerativa. Costo: 15000";
         Imagen.sprite = IMRegen;
         if (Mejoras[9] && Mejoras[10] && Mejoras[11] && !Mejoras[15])
         {
@@ -301,7 +301,7 @@ public class TreeManager : MonoBehaviour
     public void ShowUpgrade16()
     {
         Arbol.transform.GetChild(0).gameObject.SetActive(true);
-        Texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te permitira contratar empleados y te ayudaran a cultivar en 4 parcelas más. Costo: 16000";
+        Texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te permitirá contratar empleados y te ayudarán a cultivar en 4 parcelas más. Costo: 16000";
         Imagen.sprite = Empleado;
         if (Mejoras[13] && Mejoras[14] && Mejoras[15] && !Mejoras[16])
         {
@@ -315,7 +315,7 @@ public class TreeManager : MonoBehaviour
     public void ShowUpgrade17()
     {
         Arbol.transform.GetChild(0).gameObject.SetActive(true);
-        Texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te permitirá comprar un tractor, el cual te ayudará a recoger los cultivos de 2 parcelas más. Costo: 17000";
+        Texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te permitirá comprar un tractor, el cual te ayudará a recoger los cultivos de 4 parcelas más. Costo: 17000";
         Imagen.sprite = Tractor;
         if (Mejoras[13] && Mejoras[14] && Mejoras[15] && !Mejoras[17])
         {
@@ -343,7 +343,7 @@ public class TreeManager : MonoBehaviour
     public void ShowUpgrade19()
     {
         Arbol.transform.GetChild(0).gameObject.SetActive(true);
-        Texto.GetComponent<TextMeshProUGUI>().text = "Está mejora te permitirá comprar un mejor seguro para tus cultivos. Si se mueren tus cultivos recibiras un 50% de su valor. Costo: 19000";
+        Texto.GetComponent<TextMeshProUGUI>().text = "Está mejora te permitirá comprar un mejor seguro para tus cultivos. Si se mueren tus cultivos recibirás un 50% de su valor. Costo: 19000";
         Imagen.sprite = Seguro;
         if (Mejoras[13] && Mejoras[14] && Mejoras[15] && Mejoras[12] && !Mejoras[19])
         {
@@ -371,7 +371,7 @@ public class TreeManager : MonoBehaviour
     public void ShowUpgrade21()
     {
         Arbol.transform.GetChild(0).gameObject.SetActive(true);
-        Texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te dará los beneficios de la agricultura regenerativa. Dale click al boton para conocer sobre agricultura regenerativa. Costo: 21000";
+        Texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te dará los beneficios de la agricultura regenerativa. Dale click al botón para conocer sobre agricultura regenerativa. Costo: 21000";
         Imagen.sprite = IMRegen;
         if (Mejoras[16] && Mejoras[17] && Mejoras[18] && !Mejoras[21])
         {
