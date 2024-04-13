@@ -667,6 +667,7 @@ public class MapManager : MonoBehaviour
         if(cropManager.cropCycleGrowth[gridPosition]["water"]<10 || cropManager.cropCycleGrowth[gridPosition]["water"]>110){
             tilemap.SetTile(gridPosition, soilFromCrop[-crop_type]);
             cropManager.cropCycleGrowth.Remove(gridPosition);
+            LandIsPlanted[CheckIfTileIsLand(gridPosition)] = false;
         }
     }
 
