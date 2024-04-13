@@ -23,6 +23,8 @@ public class TecManager : MonoBehaviour
     public GameObject tractor2;
     public GameObject tractor3;
     public GameObject tanque;
+    public GameObject aspersores1;
+    public GameObject aspersores2;
 
     private void ChangeSprite(int parcela){
         int water = mapManager.GetAverageWaterAtLand(parcela);
@@ -57,5 +59,7 @@ public class TecManager : MonoBehaviour
         tractor2.SetActive(treeManager.Mejoras[10]);
         tractor3.SetActive(treeManager.Mejoras[17]);
         tanque.SetActive(treeManager.Mejoras[5]);
+        aspersores1.SetActive(treeManager.Mejoras[7]);
+        aspersores2.SetActive(treeManager.Mejoras[14]);
     }
 }
