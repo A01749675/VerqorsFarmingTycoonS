@@ -47,7 +47,7 @@ public class MarketManager : MonoBehaviour
 
     private void Update(){
         int week1 = GetDate();
-        if(week1%2 == 0){
+        if(week1%2 == 0 && !flag1){
             flag1 = true;
             print("Cambiando cantidades");
             crop_quantity = new Dictionary<int, int>(){

@@ -10,7 +10,7 @@ public class TreeManager : MonoBehaviour
     
     public GameObject Arbol;
     private GameObject Texto;
-    private Dictionary<int,bool> Mejoras = new Dictionary<int, bool>();
+    public Dictionary<int,bool> Mejoras = new Dictionary<int, bool>();
     private GameObject BotonComprar;
     private GameObject BotonInfo;
     private int TFin;
@@ -387,6 +387,5 @@ public class TreeManager : MonoBehaviour
         Mejoras[seleccion] = true;
         BotonComprar.SetActive(false);
     }
-     
        
 }
