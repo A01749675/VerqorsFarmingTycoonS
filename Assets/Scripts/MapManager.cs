@@ -526,7 +526,6 @@ public class MapManager : MonoBehaviour
         if(!LandPosition.ContainsKey(land) || UnlockedLands[land]==false){
             return;
         }
-        LandIsPlanted[land] = false;
         int[,] ranges = LandPosition[land];
         int x = ranges[0,0];
         int y = ranges[0,1];
@@ -546,6 +545,9 @@ public class MapManager : MonoBehaviour
                     }
                 }
             }
+        }
+        if(CropsInLand[land]==0){
+            LandIsPlanted[land] = false;
         }
     }
     public void WaterAll(){
@@ -667,7 +669,11 @@ public class MapManager : MonoBehaviour
         if(cropManager.cropCycleGrowth[gridPosition]["water"]<10 || cropManager.cropCycleGrowth[gridPosition]["water"]>110){
             tilemap.SetTile(gridPosition, soilFromCrop[-crop_type]);
             cropManager.cropCycleGrowth.Remove(gridPosition);
-            LandIsPlanted[CheckIfTileIsLand(gridPosition)] = false;
+            if(CheckIfTileIsLand(gridPosition)!=-1){
+                LandIsPlanted[CheckIfTileIsLand(gridPosition)] = false;
+                CropsInLand[CheckIfTileIsLand(gridPosition)] = 0;
+            }
+
         }
     }
 
@@ -815,6 +821,10 @@ public class MapManager : MonoBehaviour
 
     public bool LandPlanted(int land){
         return LandIsPlanted[land];
+    }
+
+    public int GetCropsInLand(int land){
+        return CropsInLand[land];
     }
 
 }
