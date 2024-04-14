@@ -30,6 +30,7 @@ public class TreeManager : MonoBehaviour
     public Sprite Agua;
     public Sprite Seguro;
     public Sprite IMRegen;
+    public GameObject celular;
 
 
 
@@ -38,7 +39,8 @@ public class TreeManager : MonoBehaviour
         Texto=Arbol.transform.GetChild(0).GetChild(1).gameObject;
         BotonComprar = Arbol.transform.GetChild(0).GetChild(2).gameObject;
         BotonInfo = Arbol.transform.GetChild(0).GetChild(3).gameObject;
-        TFin = 1;
+        TFin = 0;
+
         if(false){
             print("Base de datos");
         } else{
@@ -58,6 +60,7 @@ public class TreeManager : MonoBehaviour
                 Seg1.SetActive(false);
                 Seg2.SetActive(false);
                 Seg3.SetActive(false);
+                celular.SetActive(true);
                 break;
             case 1:
                 Reg1.SetActive(false);
@@ -68,6 +71,7 @@ public class TreeManager : MonoBehaviour
                 Seg1.SetActive(true);
                 Seg2.SetActive(true);
                 Seg3.SetActive(true);
+                celular.SetActive(false);
                 break;
             case 2:
                 Reg1.SetActive(false);
@@ -78,6 +82,7 @@ public class TreeManager : MonoBehaviour
                 Seg1.SetActive(false);
                 Seg2.SetActive(false);
                 Seg3.SetActive(false);
+                celular.SetActive(false);
                 break;
         }
     }

@@ -110,6 +110,14 @@ public class FinanceManager : MonoBehaviour
             crop_manager.UpdateCropQuantity(cropType, -quantity);
         }
     }
+    public void SellItem2(int cropType, int quantity)
+    {
+        if (_prices.ContainsKey(cropType))
+        {
+            user_controller.UpdateCapital(_prices[cropType] * quantity * 2);
+            crop_manager.UpdateCropQuantity(cropType, -quantity);
+        }
+    }
 
     public int GetCropPrice(int cropType)
     {

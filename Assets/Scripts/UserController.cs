@@ -16,7 +16,7 @@ public class UserController : MonoBehaviour
             {"financiamiento", 0},
             {"capital",0},
             {"creditos",0},
-            {"deudas",0},
+            {"deudas",3000},
             {"cosechas",0},
             {"ventas",0},
             {"ganancias",0},
@@ -54,6 +54,7 @@ public class UserController : MonoBehaviour
         user_data["capital"]+=money;
     }
     public void PayDebt(int money){
+        user_data["capital"]-=money;
         user_data["deudas"]-=money;
     }
     public int GetCapital(){
