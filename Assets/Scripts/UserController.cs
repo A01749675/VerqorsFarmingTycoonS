@@ -46,8 +46,12 @@ public class UserController : MonoBehaviour
         };
     }
 
-    void SetParameter(string param,int value){
+    public void SetParameter(string param,int value){
         user_data[param] = value;
+    }
+
+    public int GetParameter(string param){
+        return user_data[param];
     }
 
     public void UpdateCapital(int money){

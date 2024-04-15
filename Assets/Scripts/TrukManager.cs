@@ -42,10 +42,10 @@ public class TrukManager : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         initial_position = transform.position;
-        AssignLandToTruk(12);
+        AssignLandToTruck(12);
     }
 
-    public void AssignLandToTruk(int land_id){
+    public void AssignLandToTruck(int land_id){
         if(mapManager.IsLandUnlocked(land_id)){
             assigned_land = land_id;
             assigned_crop = mapManager.GetCropAtLand(land_id);

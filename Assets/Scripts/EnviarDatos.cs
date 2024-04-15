@@ -7,7 +7,6 @@ public class EnviarDatos : MonoBehaviour
 {
     public ObtenerDatos obtenerDatos;
 
-    // Funcion Guardar() que envia los daros a la bae de datos se puede llamar desde cualqueir punto del juego
     public void Guardar()
     {
         string url = Application.absoluteURL;

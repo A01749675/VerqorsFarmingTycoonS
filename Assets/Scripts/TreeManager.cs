@@ -31,6 +31,8 @@ public class TreeManager : MonoBehaviour
     public Sprite Seguro;
     public Sprite IMRegen;
     public GameObject celular;
+    [SerializeField]
+    private UserController userController;
 
 
 
@@ -39,7 +41,7 @@ public class TreeManager : MonoBehaviour
         Texto=Arbol.transform.GetChild(0).GetChild(1).gameObject;
         BotonComprar = Arbol.transform.GetChild(0).GetChild(2).gameObject;
         BotonInfo = Arbol.transform.GetChild(0).GetChild(3).gameObject;
-        TFin = 0;
+        TFin = userController.GetParameter("financiamiento");
 
         if(false){
             print("Base de datos");
