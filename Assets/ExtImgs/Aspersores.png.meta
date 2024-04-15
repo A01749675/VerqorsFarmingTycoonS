@@ -1,0 +1,300 @@
+fileFormatVersion: 2
+guid: a25d187d41de6fe40923ef66a18e9371
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 400
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Aspersores_0
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 649
+        width: 166
+        height: 377
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ca663dd300431847809e8640066c6cd
+      internalID: -633864013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspersores_5
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 649
+        width: 157
+        height: 377
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee965dec864f4d94a9ce38b75db1ba6e
+      internalID: 832940057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspersores_6
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 652
+        width: 163
+        height: 377
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e23ae8704667ab4a81da4ebd55161b8
+      internalID: 816242534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspersores_8
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 191
+        width: 420
+        height: 375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d096a3f4eb3dcf84c8ceacdb6fc504c7
+      internalID: -1730990579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspersores_41
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 193
+        width: 340
+        height: 373
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fe1c246d75fe7941a51d6d8314d5342
+      internalID: 1062854749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Aspersores_0: -633864013
+      Aspersores_1: 11889137
+      Aspersores_10: 1658557644
+      Aspersores_11: -1367489429
+      Aspersores_12: 1117695790
+      Aspersores_13: -443957286
+      Aspersores_14: 723432528
+      Aspersores_15: -1955314927
+      Aspersores_16: -1656989036
+      Aspersores_17: 353930927
+      Aspersores_18: -2106339823
+      Aspersores_19: 492231854
+      Aspersores_2: -564564074
+      Aspersores_20: -153155072
+      Aspersores_21: -1389985830
+      Aspersores_22: 259399454
+      Aspersores_23: -994126346
+      Aspersores_24: -535770002
+      Aspersores_25: 1511405243
+      Aspersores_26: -369648658
+      Aspersores_27: 2083872886
+      Aspersores_28: 64628194
+      Aspersores_29: -1275476999
+      Aspersores_3: -2119358163
+      Aspersores_30: 28074143
+      Aspersores_31: 2030743542
+      Aspersores_32: 1749576490
+      Aspersores_33: 907696441
+      Aspersores_34: 616498441
+      Aspersores_35: -1457002287
+      Aspersores_36: 1513957468
+      Aspersores_37: 1458464181
+      Aspersores_38: -304228765
+      Aspersores_39: -859143413
+      Aspersores_4: -1310820698
+      Aspersores_40: 2017397495
+      Aspersores_41: 1062854749
+      Aspersores_42: -989318599
+      Aspersores_43: -571945143
+      Aspersores_44: -627690164
+      Aspersores_45: 905129285
+      Aspersores_46: 451043077
+      Aspersores_47: -2118404832
+      Aspersores_48: 574193518
+      Aspersores_49: -1530002485
+      Aspersores_5: 832940057
+      Aspersores_50: 1190421653
+      Aspersores_51: 737351195
+      Aspersores_52: -806630725
+      Aspersores_53: -108721130
+      Aspersores_54: 1047225888
+      Aspersores_6: 816242534
+      Aspersores_7: 882474781
+      Aspersores_8: -1730990579
+      Aspersores_9: 1565519505
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
