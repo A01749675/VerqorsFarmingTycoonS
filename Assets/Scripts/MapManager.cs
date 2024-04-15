@@ -587,7 +587,7 @@ public class MapManager : MonoBehaviour
         }
 
     }
-    private void WaterSpecificLand(int land){
+    public void WaterSpecificLand(int land){
         if(!LandPosition.ContainsKey(land) || UnlockedLands[land]==false){
             return;
         }
