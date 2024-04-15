@@ -64,7 +64,6 @@ public class ObtenerDatos : MonoBehaviour
         if (www.result == UnityWebRequest.Result.Success)
         {
             string jsonString = www.downloadHandler.text;
-            print("BBBBBBBBBBBB");
             print(jsonString);
             DatosUsuario datosUsuario = JsonUtility.FromJson<DatosUsuario>(jsonString);
 
@@ -75,11 +74,7 @@ public class ObtenerDatos : MonoBehaviour
             progreso = datosUsuario.progreso;
             semillas = datosUsuario.semillas;
             cosecha = datosUsuario.cosecha;
-            parcela = datosUsuario.parcela;
-            print("AAAAAAAAA");
-            print("Hola buenas soy MarzyParcela0 "+ String.Join(",", parcela));
-            print("Hola buenas soy MarzyParcela "+String.Join(",", parcela));
-            
+            parcela = datosUsuario.parcela;            
 
             if (success)
             {
