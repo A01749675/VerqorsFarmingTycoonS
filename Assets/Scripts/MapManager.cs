@@ -790,6 +790,28 @@ public class MapManager : MonoBehaviour
             }
         }
     }
+    public List<int> GetDifferentGrowthsInLand(int land){
+        //Declare a list with the items 0,1,2
+        List<int> crops = new List<int> {0, 0, 0};
+        if(!LandPosition.ContainsKey(land) || UnlockedLands[land]==false){
+            return crops;
+        }
+        int[,] ranges = LandPosition[land];
+        int x = ranges[0,0];
+        int y = ranges[0,1];
+        int x1 = ranges[1,0];
+        int y1 = ranges[1,1];
+        for(int i = x;i<x1+1;i++){
+            for(int j = y;j<y1+1;j++){
+                Vector3Int gridPosition = new Vector3Int(i, j, 0);
+                TileBase tile = tilemap.GetTile(gridPosition);
+                if(tile && cropManager.cropCycleGrowth.ContainsKey(gridPosition) && dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type>0){
+                    crops[cropManager.cropCycleGrowth[gridPosition]["growth"]]++;
+                }
+            }
+        }
+        return crops;
+    }
 
     private int CheckIfTileIsLand(Vector3Int gridPosition){
         foreach (KeyValuePair<int, int[,]> entry in LandPosition){
@@ -839,13 +861,16 @@ public class MapManager : MonoBehaviour
             if(UnlockedLands[entry.Key]==false){
                 continue;
             }
-            List<int> parcela = new List<int>();
-            parcela.Add(entry.Key);
-            parcela.Add(CropsInLand[entry.Key]);
-            parcela.Add(GetAverageWaterAtLand(entry.Key));
-            parcelas.Add(parcela);
+            List<int> crops = GetDifferentGrowthsInLand(entry.Key);
+            for(int i = 0;i<2;i++){
+                List<int> parcela = new List<int>();
+                parcela.Add(entry.Key);
+                parcela.Add(i);
+                parcela.Add(crops[i]);
+                parcela.Add(GetAverageWaterAtLand(entry.Key));
+                parcelas.Add(parcela);
+            }
         }
         return parcelas;
     }
-
 }

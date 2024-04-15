@@ -11,6 +11,11 @@ public class EnviarDatos : MonoBehaviour
     public MapManager mapManager;
     public CropManager cropManager;
 
+    private Cosecha cosecha;
+    private Semilla semilla;
+    private Progreso progreso;
+    private List<Parcela> parcelas_data;
+
     public void GetDataFromCodes(){
         int trigo = cropManager.GetCropQuantity(1);
         int maiz = cropManager.GetCropQuantity(2);
@@ -22,7 +27,37 @@ public class EnviarDatos : MonoBehaviour
         int chile_seed = cropManager.GetCropSeeds(6);
         int ciclo = mapManager.GetCurrentCycle();
         int capital = userController.GetParameter("capital");
-        List<List<int>> parcela = new List<List<int>>();
+
+        List<List<int>> parcelas_raw = mapManager.SaveDataFromMap();
+        parcelas_data = new List<Parcela>();
+
+        foreach(List<int> parcela in parcelas_raw){
+            Parcela parcela_data = new Parcela();
+            parcela_data.id = parcela[0];
+            parcela_data.estado = parcela[1];
+            parcela_data.cantidad = parcela[2];
+            parcela_data.agua = parcela[3];
+            parcelas_data.Add(parcela_data);
+        }
+
+        cosecha = new Cosecha();
+        cosecha.trigo = trigo;
+        cosecha.maiz = maiz;
+        cosecha.tomate = tomate;
+        cosecha.chile = chile;
+
+        semilla = new Semilla();
+        semilla.trigo = trigo_seed;
+        semilla.maiz = maiz_seed;
+        semilla.tomate = tomate_seed;
+        semilla.chile = chile_seed;
+
+        progreso = new Progreso();
+        progreso.id_usuario = userController.GetParameter("user_id");
+        progreso.dinero = capital;
+        progreso.ciclo = ciclo;
+        progreso.financiamiento = userController.GetParameter("financiamiento");
+
     }
 
     public void Guardar()
