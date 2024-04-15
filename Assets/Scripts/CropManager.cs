@@ -11,8 +11,9 @@ public class CropManager : MonoBehaviour
     public Dictionary<int, int> crop_seeds;
     public Dictionary<Vector3Int, Dictionary<string,int>> cropCycleGrowth = new Dictionary<Vector3Int, Dictionary<string,int>>();
     private void Awake(){
-        crop_quantity = new Dictionary<int, int>(){
-            {1,10},
+        print("CropManager Awake");
+        crop_quantity= new Dictionary<int, int>(){
+            {1,0},
             {2,0},
             {3,0},
             {4,0},
@@ -20,14 +21,14 @@ public class CropManager : MonoBehaviour
             {6,0}
         };
         crop_seeds = new Dictionary<int, int>(){
-            {1,500},
-            {2,500},
-            {3,500},
-            {4,500},
-            {5,500},
-            {6,500}
+            {1,0},
+            {2,0},
+            {3,0},
+            {4,0},
+            {5,0},
+            {6,0}
         };
-        }
+    }
 
     public void UpdateCropQuantity(int cropType, int quantity){
         crop_quantity[cropType] += quantity;

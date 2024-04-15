@@ -12,6 +12,8 @@ public class FinanceManager : MonoBehaviour
 
     public MapManager mapManager;
 
+    public UserController userController;
+
     private Dictionary<string, float> VerqorFinanceData;
     private Dictionary<string, float> BancoFinanceData;
     private Dictionary<string, float> CoyoteFinanceData;
@@ -64,7 +66,7 @@ public class FinanceManager : MonoBehaviour
         int cycle = mapManager.GetCurrentCycle();
         if(cycle%3650==0){
             print("Financiamiento actualizado");
-            int debt = CalculateDebt(current_finance);
+            int debt = user_controller.GetDebt();
 
             if(user_controller.GetCapital()>debt){
                 user_controller.PayDebt(debt);
@@ -80,7 +82,7 @@ public class FinanceManager : MonoBehaviour
         }
     }
 
-    private int CalculateDebt(int fin){
+    public int CalculateDebt(int fin){
         int debt = 0;
         switch(fin){
             case 1:

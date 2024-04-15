@@ -41,7 +41,13 @@ public class TreeManager : MonoBehaviour
         Texto=Arbol.transform.GetChild(0).GetChild(1).gameObject;
         BotonComprar = Arbol.transform.GetChild(0).GetChild(2).gameObject;
         BotonInfo = Arbol.transform.GetChild(0).GetChild(3).gameObject;
-        TFin = userController.GetParameter("financiamiento");
+        if(userController.user_data.ContainsKey("financiamiento")){
+            TFin = userController.GetParameter("financiamiento");
+        }
+        else{
+            TFin = 0;
+        }
+        
 
         if(false){
             print("Base de datos");

@@ -713,6 +713,8 @@ public class MapManager : MonoBehaviour
         
     }
 
+    
+
     public void UpdateVisualWater(int climate){
         int i = 0;
         for(i = -2*tilemap.size.x; i<2*tilemap.size.x; i++){
@@ -829,7 +831,21 @@ public class MapManager : MonoBehaviour
 
     public void SetCycle(int cycle){
         current_cycle = cycle;
-        
+    }
+
+    public List<List<int>> SaveDataFromMap(){
+        List<List<int>> parcelas = new List<List<int>>();
+        foreach (KeyValuePair<int, int[,]> entry in LandPosition){
+            if(UnlockedLands[entry.Key]==false){
+                continue;
+            }
+            List<int> parcela = new List<int>();
+            parcela.Add(entry.Key);
+            parcela.Add(CropsInLand[entry.Key]);
+            parcela.Add(GetAverageWaterAtLand(entry.Key));
+            parcelas.Add(parcela);
+        }
+        return parcelas;
     }
 
 }
