@@ -20,6 +20,9 @@ public class ObtenerDatos : MonoBehaviour
     public List<List<int>> parcela_data = new List<List<int>>();
 
     public MapManager mapManager;
+
+    [SerializeField]
+    private UserController userController;
     private void Awake()
     {
         StartCoroutine(ObtenerIdUsuario());
@@ -113,6 +116,13 @@ public class ObtenerDatos : MonoBehaviour
         }
         print("Parcelas obtenidas: " +parcela.Count);
         mapManager.LoadDataFromMap(parcela);
+
+    }
+    private void SetUserData(Progreso progreso){
+        userController.SetParameter("user_id",progreso.id_usuario);
+        userController.SetParameter("dinero",(int) progreso.dinero);
+        userController.SetParameter("financiamiento",progreso.financiamiento);
+
 
     }
 }

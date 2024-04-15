@@ -827,4 +827,9 @@ public class MapManager : MonoBehaviour
         return CropsInLand[land];
     }
 
+    public void SetCycle(int cycle){
+        current_cycle = cycle;
+        
+    }
+
 }
