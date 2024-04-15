@@ -22,7 +22,7 @@ public class EnviarDatos : MonoBehaviour
         int chile_seed = cropManager.GetCropSeeds(6);
         int ciclo = mapManager.GetCurrentCycle();
         int capital = userController.GetParameter("capital");
-        int deuda = userController.GetParameter("deuda");
+        List<List<int>> parcela = new List<List<int>>();
     }
 
     public void Guardar()
