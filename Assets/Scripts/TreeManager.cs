@@ -48,7 +48,6 @@ public class TreeManager : MonoBehaviour
             TFin = 0;
         }
         
-
         if(false){
             print("Base de datos");
         } else{

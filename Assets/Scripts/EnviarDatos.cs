@@ -11,6 +11,15 @@ public class EnviarDatos : MonoBehaviour
     public MapManager mapManager;
     public CropManager cropManager;
 
+    private Cosecha cosecha;
+    private Semilla semilla;
+    private Progreso progreso;
+    private List<Parcela> parcelas_data;
+
+    private List<Progreso> progreso_lista = new List<Progreso>();
+    private List<Semilla> semilla_lista= new List<Semilla>();
+    private List<Cosecha> cosecha_lista= new List<Cosecha>();
+
     public void GetDataFromCodes(){
         int trigo = cropManager.GetCropQuantity(1);
         int maiz = cropManager.GetCropQuantity(2);
@@ -22,7 +31,40 @@ public class EnviarDatos : MonoBehaviour
         int chile_seed = cropManager.GetCropSeeds(6);
         int ciclo = mapManager.GetCurrentCycle();
         int capital = userController.GetParameter("capital");
-        List<List<int>> parcela = new List<List<int>>();
+
+        List<List<int>> parcelas_raw = mapManager.SaveDataFromMap();
+        parcelas_data = new List<Parcela>();
+
+        foreach(List<int> parcela in parcelas_raw){
+            Parcela parcela_data = new Parcela();
+            parcela_data.id = parcela[0];
+            parcela_data.estado = parcela[1];
+            parcela_data.cantidad = parcela[2];
+            parcela_data.agua = parcela[3];
+            parcelas_data.Add(parcela_data);
+        }
+
+        cosecha = new Cosecha();
+        cosecha.trigo = trigo;
+        cosecha.maiz = maiz;
+        cosecha.tomate = tomate;
+        cosecha.chile = chile;
+        cosecha_lista.Add(cosecha);
+
+        semilla = new Semilla();
+        semilla.trigo = trigo_seed;
+        semilla.maiz = maiz_seed;
+        semilla.tomate = tomate_seed;
+        semilla.chile = chile_seed;
+        semilla_lista.Add(semilla);
+
+        progreso = new Progreso();
+        progreso.id_usuario = userController.GetParameter("user_id");
+        progreso.dinero = capital;
+        progreso.ciclo = ciclo;
+        progreso.financiamiento = userController.GetParameter("financiamiento");
+        progreso_lista.Add(progreso);
+
     }
 
     public void Guardar()
@@ -37,7 +79,7 @@ public class EnviarDatos : MonoBehaviour
         }
 
         // Crear el objeto JSON con los datos del usuario
-        string jsonData = CrearJSON(userId, obtenerDatos.progreso, obtenerDatos.semillas, obtenerDatos.cosecha, obtenerDatos.parcela);
+        string jsonData = CrearJSON(userId, progreso_lista, semilla_lista, cosecha_lista, parcelas_data);
 
         // Enviar los datos a la base de datos
         StartCoroutine(EnviarDatosUsuario(jsonData));
