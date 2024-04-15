@@ -57,10 +57,16 @@ public class MapManager : MonoBehaviour
     public UiControl ui;
     public ClimateManager climateManager;
 
+    public FinanceManager financeManager;
+    public UserController userController;
+
     public GameObject herramienta;
     public GameObject regadera;
 
     private int dryrate = 5;
+
+
+    private bool Disaster = false;
 
 
     private void Awake()
@@ -670,6 +676,10 @@ public class MapManager : MonoBehaviour
             tilemap.SetTile(gridPosition, soilFromCrop[-crop_type]);
             cropManager.cropCycleGrowth.Remove(gridPosition);
             if(CheckIfTileIsLand(gridPosition)!=-1){
+                if(Disaster && CropsInLand[CheckIfTileIsLand(gridPosition)] != 0){
+                    int price = financeManager.GetCropPrice(crop_type);
+                    userController.UpdateCapital(CropsInLand[CheckIfTileIsLand(gridPosition)]*price);
+                }
                 LandIsPlanted[CheckIfTileIsLand(gridPosition)] = false;
                 CropsInLand[CheckIfTileIsLand(gridPosition)] = 0;
             }
@@ -731,9 +741,6 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    public void FireAccidentTileUpdate(){
-
-    }
 
     private bool IsSoil(int crop_type){
         if(crop_type <= -1 && crop_type>=-6){
@@ -828,6 +835,15 @@ public class MapManager : MonoBehaviour
                 UnlockedLands[land] = true;
             }
             
+        }
+    }
+
+    public void SetDisaster(int climate){
+        if(climate == 0 || climate == 3 || climate ==4){
+            Disaster = true;
+        }
+        else{
+            Disaster = false;
         }
     }
 

@@ -26,6 +26,7 @@ public class TecManager : MonoBehaviour
     public GameObject aspersores1;
     public GameObject aspersores2;
 
+    public FinanceManager financeManager;
     private void ChangeSprite(int parcela){
         int water = mapManager.GetAverageWaterAtLand(parcela);
         if(water < 20){
@@ -45,21 +46,37 @@ public class TecManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for(int i = 0; i < 20; i++){
-            medidor1[i].SetActive(treeManager.Mejoras[1]);    
-            ChangeSprite(i);
+        if(treeManager.update){
+            for(int i = 0; i < 20; i++){
+                medidor1[i].SetActive(treeManager.Mejoras[1]);    
+                ChangeSprite(i);
+            }
+            medidores1.SetActive(treeManager.Mejoras[2]);
+            medidores2.SetActive(treeManager.Mejoras[13]);
+            medidores3.SetActive(treeManager.Mejoras[20]);
+            empleados1.SetActive(treeManager.Mejoras[3]);
+            empleados2.SetActive(treeManager.Mejoras[9]);
+            empleados3.SetActive(treeManager.Mejoras[16]);
+            tractor1.SetActive(treeManager.Mejoras[4]);
+            tractor2.SetActive(treeManager.Mejoras[10]);
+            tractor3.SetActive(treeManager.Mejoras[17]);
+            tanque.SetActive(treeManager.Mejoras[5]);
+            aspersores1.SetActive(treeManager.Mejoras[7]);
+            aspersores2.SetActive(treeManager.Mejoras[14]);
+            if(treeManager.Mejoras[6] && !(treeManager.Mejoras[12] || treeManager.Mejoras[19])){
+                financeManager.UpdateSeguro(6);
+            }
+            else if(treeManager.Mejoras[12] && treeManager.Mejoras[6] && !treeManager.Mejoras[19]){
+                financeManager.UpdateSeguro(12);
+            }
+            else if(treeManager.Mejoras[19] && treeManager.Mejoras[6] && treeManager.Mejoras[12]){
+                financeManager.UpdateSeguro(19);
+            }
+
+            
+            treeManager.update = false;
+
         }
-        medidores1.SetActive(treeManager.Mejoras[2]);
-        medidores2.SetActive(treeManager.Mejoras[13]);
-        medidores3.SetActive(treeManager.Mejoras[20]);
-        empleados1.SetActive(treeManager.Mejoras[3]);
-        empleados2.SetActive(treeManager.Mejoras[9]);
-        empleados3.SetActive(treeManager.Mejoras[16]);
-        tractor1.SetActive(treeManager.Mejoras[4]);
-        tractor2.SetActive(treeManager.Mejoras[10]);
-        tractor3.SetActive(treeManager.Mejoras[17]);
-        tanque.SetActive(treeManager.Mejoras[5]);
-        aspersores1.SetActive(treeManager.Mejoras[7]);
-        aspersores2.SetActive(treeManager.Mejoras[14]);
+       
     }
 }

@@ -14,6 +14,7 @@ public class FinanceManager : MonoBehaviour
 
     public UserController userController;
 
+    private Dictionary<int,int> financiamiento_seguro;
     private Dictionary<string, float> VerqorFinanceData;
     private Dictionary<string, float> BancoFinanceData;
     private Dictionary<string, float> CoyoteFinanceData;
@@ -23,6 +24,8 @@ public class FinanceManager : MonoBehaviour
     private bool RegenerativeAgriculture = false;
 
     int current_finance = -1;
+
+    private int seguro=0;
 
 
 
@@ -43,20 +46,24 @@ public class FinanceManager : MonoBehaviour
         {
             {"tasaInteres", 0.5f},
             {"plazo", 12},
-            {"montoMaximo", 300000}
+            {"montoMaximo", 300000},
+            {"seguro", 0.5f}
         };
         BancoFinanceData = new Dictionary<string, float>()
         {
             {"tasaInteres", 0.3f},
             {"plazo", 24},
-            {"montoMaximo", 200000}
+            {"montoMaximo", 200000},
+            {"seguro", 0.0f}
         };
         CoyoteFinanceData = new Dictionary<string, float>()
         {
             {"tasaInteres", 0.75f},
             {"plazo", 6},
-            {"montoMaximo", 50000}
+            {"montoMaximo", 50000},
+            {"seguro", 0.0f}
         };
+
 
 
         // ObtenerFinanciamiento();
@@ -97,6 +104,20 @@ public class FinanceManager : MonoBehaviour
                 
         }
         return debt;
+    }
+
+    public void UpdateSeguro(int mejora){
+        switch(mejora){
+            case 6:
+                BancoFinanceData["seguro"] = 0.2f;
+                break;
+            case 12:
+                BancoFinanceData["seguro"] = 0.3f;
+                break;
+            case 19:
+                BancoFinanceData["seguro"] = 0.5f;
+                break;
+        }
     }
     private void ObtenerFinanciamiento()
     {

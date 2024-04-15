@@ -21,12 +21,12 @@ public class CropManager : MonoBehaviour
             {6,0}
         };
         crop_seeds = new Dictionary<int, int>(){
-            {1,0},
-            {2,0},
-            {3,0},
+            {1,500},
+            {2,500},
+            {3,500},
             {4,0},
             {5,0},
-            {6,0}
+            {6,500}
         };
     }
 

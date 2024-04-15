@@ -124,6 +124,7 @@ public class ClimateManager : MonoBehaviour
                 mapManager.WaterRate(currentClimate);
                 mapManager.UpdateVisualWater(currentClimate);
             }
+            mapManager.SetDisaster(currentClimate);
         }
     }
 

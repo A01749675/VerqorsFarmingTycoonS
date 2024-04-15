@@ -34,6 +34,8 @@ public class TreeManager : MonoBehaviour
     [SerializeField]
     private UserController userController;
 
+    public bool update = false;
+
 
 
     public void Awake()
@@ -398,6 +400,8 @@ public class TreeManager : MonoBehaviour
     public void Comprar(){
         Mejoras[seleccion] = true;
         BotonComprar.SetActive(false);
+        update = true;
+
     }
        
 }
