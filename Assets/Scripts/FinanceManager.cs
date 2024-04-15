@@ -19,6 +19,11 @@ public class FinanceManager : MonoBehaviour
     private int loosingCondition = -1000000;
 
     private bool RegenerativeAgriculture = false;
+
+    int current_finance = -1;
+
+
+
     
 
     private void Awake()
@@ -51,6 +56,7 @@ public class FinanceManager : MonoBehaviour
             {"montoMaximo", 50000}
         };
 
+
         // ObtenerFinanciamiento();
     }
 
@@ -58,8 +64,7 @@ public class FinanceManager : MonoBehaviour
         int cycle = mapManager.GetCurrentCycle();
         if(cycle%3650==0){
             print("Financiamiento actualizado");
-            int fin = 1;
-            int debt = CalculateDebt(fin);
+            int debt = CalculateDebt(current_finance);
 
             if(user_controller.GetCapital()>debt){
                 user_controller.PayDebt(debt);
@@ -156,5 +161,13 @@ public class FinanceManager : MonoBehaviour
     public Dictionary<int, int> GetPrices()
     {
         return _prices;
+    }
+
+    public void SetFinanceParams(){
+
+    }
+
+    public void SetFinanceCurrent(int fin){
+        current_finance = fin;
     }
 }
