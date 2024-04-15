@@ -6,6 +6,9 @@ public class CameraMovement : MonoBehaviour
 {
     [SerializeField] 
     private Camera cam;
+
+    [SerializeField]
+    private float zoomStep, minCamSize, maxCamSize;
     private Vector3 dragOrigin;
     private void Update(){
         
@@ -27,6 +30,5 @@ public class CameraMovement : MonoBehaviour
         }
 
     }
-
 
 }
