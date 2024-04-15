@@ -16,6 +16,10 @@ public class EnviarDatos : MonoBehaviour
     private Progreso progreso;
     private List<Parcela> parcelas_data;
 
+    private List<Progreso> progreso_lista = new List<Progreso>();
+    private List<Semilla> semilla_lista= new List<Semilla>();
+    private List<Cosecha> cosecha_lista= new List<Cosecha>();
+
     public void GetDataFromCodes(){
         int trigo = cropManager.GetCropQuantity(1);
         int maiz = cropManager.GetCropQuantity(2);
@@ -45,18 +49,21 @@ public class EnviarDatos : MonoBehaviour
         cosecha.maiz = maiz;
         cosecha.tomate = tomate;
         cosecha.chile = chile;
+        cosecha_lista.Add(cosecha);
 
         semilla = new Semilla();
         semilla.trigo = trigo_seed;
         semilla.maiz = maiz_seed;
         semilla.tomate = tomate_seed;
         semilla.chile = chile_seed;
+        semilla_lista.Add(semilla);
 
         progreso = new Progreso();
         progreso.id_usuario = userController.GetParameter("user_id");
         progreso.dinero = capital;
         progreso.ciclo = ciclo;
         progreso.financiamiento = userController.GetParameter("financiamiento");
+        progreso_lista.Add(progreso);
 
     }
 
@@ -72,7 +79,7 @@ public class EnviarDatos : MonoBehaviour
         }
 
         // Crear el objeto JSON con los datos del usuario
-        string jsonData = CrearJSON(userId, obtenerDatos.progreso, obtenerDatos.semillas, obtenerDatos.cosecha, obtenerDatos.parcela);
+        string jsonData = CrearJSON(userId, progreso_lista, semilla_lista, cosecha_lista, parcelas_data);
 
         // Enviar los datos a la base de datos
         StartCoroutine(EnviarDatosUsuario(jsonData));
