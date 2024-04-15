@@ -122,6 +122,7 @@ public class EmployeeManager : MonoBehaviour
                 last_movement=0;
                 current_movement=0;
                 transform.position = initial_position;
+                //spriteRenderer.flipX = !flip;
             }
             
             if(cycle%show_emotion_cycle == 0){

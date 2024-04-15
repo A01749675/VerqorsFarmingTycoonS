@@ -7,6 +7,24 @@ public class EnviarDatos : MonoBehaviour
 {
     public ObtenerDatos obtenerDatos;
 
+    public UserController userController;
+    public MapManager mapManager;
+    public CropManager cropManager;
+
+    public void GetDataFromCodes(){
+        int trigo = cropManager.GetCropQuantity(1);
+        int maiz = cropManager.GetCropQuantity(2);
+        int tomate = cropManager.GetCropQuantity(3);
+        int chile = cropManager.GetCropQuantity(6);
+        int trigo_seed = cropManager.GetCropSeeds(1);
+        int maiz_seed = cropManager.GetCropSeeds(2);
+        int tomate_seed = cropManager.GetCropSeeds(3);
+        int chile_seed = cropManager.GetCropSeeds(6);
+        int ciclo = mapManager.GetCurrentCycle();
+        int capital = userController.GetParameter("capital");
+        int deuda = userController.GetParameter("deuda");
+    }
+
     public void Guardar()
     {
         string url = Application.absoluteURL;

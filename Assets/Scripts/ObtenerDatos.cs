@@ -23,6 +23,10 @@ public class ObtenerDatos : MonoBehaviour
 
     [SerializeField]
     private UserController userController;
+    [SerializeField]
+    private FinanceManager financeManager;
+    [SerializeField]
+    private CropManager cropManager;
     private void Awake()
     {
         StartCoroutine(ObtenerIdUsuario());
@@ -89,11 +93,19 @@ public class ObtenerDatos : MonoBehaviour
                 print("Hola buenas soy MarzyParcela2 "+parcela.ToString());
                 
                 GetParcelaData(parcela);
+                print("Dato usuario");
+                SetUserData(progreso[0]);
+                print("Progreso");
+                SetSemillas(semillas[0]);
+                print("Semillas");
+                SetCosecha(cosecha[0]);
+                print("Cosecha");
 
                 Debug.Log("Datos del usuario obtenidos correctamente.");
             }
             else
             {
+                SetToDefault();
                 Debug.Log("Error al obtener los datos del usuario: " + message);
             }
         }
@@ -119,11 +131,54 @@ public class ObtenerDatos : MonoBehaviour
 
     }
     private void SetUserData(Progreso progreso){
-        userController.SetParameter("user_id",progreso.id_usuario);
-        userController.SetParameter("dinero",(int) progreso.dinero);
-        userController.SetParameter("financiamiento",progreso.financiamiento);
+        userController.user_data["user_id"]=progreso.id_usuario;
+        userController.user_data["capital"]=(int) progreso.dinero;
+        userController.user_data["financiamiento"]=progreso.financiamiento;
+        userController.user_data["deuda"]=financeManager.CalculateDebt(progreso.financiamiento);
+        mapManager.SetCycle(progreso.ciclo);
+    }
 
+    private void SetSemillas(Semilla semilla){
+        cropManager.crop_seeds[1]=semilla.trigo;
+        cropManager.crop_seeds[2]=semilla.maiz;
+        cropManager.crop_seeds[3]=semilla.tomate;
+        cropManager.crop_seeds[6]=semilla.chile;
+        cropManager.crop_seeds[4]=0;
+        cropManager.crop_seeds[5]=0;
+        
+    }
 
+    private void SetToDefault(){
+        userController.user_data["user_id"]=-1;;
+        userController.user_data["capital"]=0;
+        userController.user_data["financiamiento"]=1;
+        userController.user_data["deuda"]=0;
+        cropManager.crop_quantity = new Dictionary<int, int>(){
+            {1,10},
+            {2,0},
+            {3,0},
+            {4,0},
+            {5,0},
+            {6,0}
+        };
+        cropManager.crop_seeds = new Dictionary<int, int>(){
+            {1,500},
+            {2,500},
+            {3,500},
+            {4,500},
+            {5,500},
+            {6,500}
+        };
+
+    }
+
+    private void SetCosecha(Cosecha cosecha){
+        cropManager.crop_quantity[1]=cosecha.trigo;
+        cropManager.crop_quantity[2]=cosecha.maiz;
+        cropManager.crop_quantity[3]=cosecha.tomate;
+        cropManager.crop_quantity[6]=cosecha.chile;
+        cropManager.crop_quantity[4]=0;
+        cropManager.crop_quantity[5]=0;
     }
 }
 
