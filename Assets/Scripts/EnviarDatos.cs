@@ -37,7 +37,7 @@ public class EnviarDatos : MonoBehaviour
 
         foreach(List<int> parcela in parcelas_raw){
             Parcela parcela_data = new Parcela();
-            parcela_data.id = parcela[0];
+            parcela_data.id_parcela = parcela[0];
             parcela_data.estado = parcela[1];
             parcela_data.cantidad = parcela[2];
             parcela_data.agua = parcela[3];
@@ -63,6 +63,8 @@ public class EnviarDatos : MonoBehaviour
         progreso.dinero = capital;
         progreso.ciclo = ciclo;
         progreso.financiamiento = userController.GetParameter("financiamiento");
+        progreso.practica = obtenerDatos.progreso[0].practica;
+        progreso.seguro = obtenerDatos.progreso[0].seguro;
         progreso_lista.Add(progreso);
 
     }
@@ -77,6 +79,8 @@ public class EnviarDatos : MonoBehaviour
             //Debug.LogError("No se encontró el parámetro 'user_id' en la URL.");
             return;
         }
+
+        GetDataFromCodes();
 
         // Crear el objeto JSON con los datos del usuario
         string jsonData = CrearJSON(userId, progreso_lista, semilla_lista, cosecha_lista, parcelas_data);
