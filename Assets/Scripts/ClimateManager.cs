@@ -78,16 +78,16 @@ public class ClimateManager : MonoBehaviour
             {4,new Dictionary<string,int>(){
                 {"type",4},
                 {"cost",-100000},
-                {"water",170},
+                {"water",130},
                 {"temperature",15}
             }}
         };
         probability = new Dictionary<int,int>(){
-        {0,50},
+        {0,80},
         {1,90},
         {2,60},
-        {3,20},
-        {4,5}
+        {3,90},
+        {4,95}
     };
     }
 
@@ -111,6 +111,7 @@ public class ClimateManager : MonoBehaviour
                 print("Climate changed to "+possibleClimate);
                 currentClimate = possibleClimate;
                 PrintClimate(currentClimate);
+                mapManager.SetDisaster(currentClimate);
                 mapManager.WaterRate(currentClimate);
                 mapManager.UpdateVisualWater(currentClimate);
             }
@@ -121,10 +122,10 @@ public class ClimateManager : MonoBehaviour
                     print("Change to normal climate as previous climate probability was not met");
                 }
                 PrintClimate(currentClimate);
+                mapManager.SetDisaster(currentClimate);
                 mapManager.WaterRate(currentClimate);
                 mapManager.UpdateVisualWater(currentClimate);
             }
-            mapManager.SetDisaster(currentClimate);
         }
     }
 

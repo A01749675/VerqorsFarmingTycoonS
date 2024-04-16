@@ -59,6 +59,7 @@ public class MapManager : MonoBehaviour
 
     public FinanceManager financeManager;
     public UserController userController;
+    public UiControl uiControl;
 
     public GameObject herramienta;
     public GameObject regadera;
@@ -677,8 +678,10 @@ public class MapManager : MonoBehaviour
             cropManager.cropCycleGrowth.Remove(gridPosition);
             if(CheckIfTileIsLand(gridPosition)!=-1){
                 if(Disaster && CropsInLand[CheckIfTileIsLand(gridPosition)] != 0){
+                    print("PAGAAAAAAAAAAAAANDO");
                     int price = financeManager.GetCropPrice(crop_type);
                     userController.UpdateCapital(CropsInLand[CheckIfTileIsLand(gridPosition)]*price);
+                    uiControl.ActualizarDinero();
                 }
                 LandIsPlanted[CheckIfTileIsLand(gridPosition)] = false;
                 CropsInLand[CheckIfTileIsLand(gridPosition)] = 0;
@@ -840,9 +843,11 @@ public class MapManager : MonoBehaviour
 
     public void SetDisaster(int climate){
         if(climate == 0 || climate == 3 || climate ==4){
+            print("ACTUALIZANDO DESASTRE");
             Disaster = true;
         }
         else{
+            print("SIN DESASTRE");
             Disaster = false;
         }
     }

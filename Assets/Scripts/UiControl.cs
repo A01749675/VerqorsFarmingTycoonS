@@ -1245,4 +1245,8 @@ public class UiControl : MonoBehaviour
             //Mutear efectos
         }
     }
+    public void ActualizarDinero(){
+        Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
+    }
+
 }
