@@ -680,7 +680,7 @@ public class MapManager : MonoBehaviour
                 if(Disaster && CropsInLand[CheckIfTileIsLand(gridPosition)] != 0){
                     print("PAGAAAAAAAAAAAAANDO");
                     int price = financeManager.GetCropPrice(crop_type);
-                    userController.UpdateCapital(CropsInLand[CheckIfTileIsLand(gridPosition)]*price);
+                    userController.UpdateCapital((int)(CropsInLand[CheckIfTileIsLand(gridPosition)]*(price)*financeManager.TasaInteres(1)));
                     uiControl.ActualizarDinero();
                 }
                 LandIsPlanted[CheckIfTileIsLand(gridPosition)] = false;

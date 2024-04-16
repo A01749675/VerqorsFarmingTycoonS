@@ -23,7 +23,7 @@ public class FinanceManager : MonoBehaviour
 
     private bool RegenerativeAgriculture = false;
 
-    int current_finance = -1;
+    int current_finance = 1;
 
     private int seguro=0;
 
@@ -104,6 +104,22 @@ public class FinanceManager : MonoBehaviour
                 
         }
         return debt;
+    }
+
+    public float TasaInteres(int fin){
+        float tasa = 0;
+        switch(fin){
+            case 1:
+                tasa = VerqorFinanceData["tasaInteres"];
+                break;
+            case 2:
+                tasa = BancoFinanceData["tasaInteres"];
+                break;
+            case 3:
+                tasa = CoyoteFinanceData["tasaInteres"];
+                break;
+        }
+        return tasa;
     }
 
     public void UpdateSeguro(int mejora){
