@@ -20,13 +20,14 @@ public class FinanceManager : MonoBehaviour
     private Dictionary<string, float> CoyoteFinanceData;
 
     private int loosingCondition = -1000000;
-
-    private bool RegenerativeAgriculture = false;
+   
+     private bool RegenerativeAgriculture = false;
 
     int current_finance = 1;
 
     private int seguro=0;
 
+    public float dinero = 1.0f;
 
 
     
@@ -150,7 +151,7 @@ public class FinanceManager : MonoBehaviour
     {
         if (_prices.ContainsKey(cropType))
         {
-            user_controller.UpdateCapital(_prices[cropType] * quantity);
+            user_controller.UpdateCapital((int)(_prices[cropType] * quantity*dinero));
             crop_manager.UpdateCropQuantity(cropType, -quantity);
         }
     }
@@ -158,7 +159,7 @@ public class FinanceManager : MonoBehaviour
     {
         if (_prices.ContainsKey(cropType))
         {
-            user_controller.UpdateCapital(_prices[cropType] * quantity * 2);
+            user_controller.UpdateCapital((int)(_prices[cropType] * quantity * 1.3*dinero));
             crop_manager.UpdateCropQuantity(cropType, -quantity);
         }
     }

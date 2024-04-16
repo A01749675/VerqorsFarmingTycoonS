@@ -72,6 +72,10 @@ public class TecManager : MonoBehaviour
             else if(treeManager.Mejoras[19] && treeManager.Mejoras[6] && treeManager.Mejoras[12]){
                 financeManager.UpdateSeguro(19);
             }
+            if(treeManager.Mejoras[8] && treeManager.Mejoras[15] && treeManager.Mejoras[21]){
+                financeManager.dinero = 1.2f;
+            }
+            
 
             
             treeManager.update = false;

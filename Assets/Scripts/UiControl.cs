@@ -156,6 +156,7 @@ public class UiControl : MonoBehaviour
     public CameraMovement cameraMovement;
     
     
+    
 
     //Al dar click al boton de opciones se abre el panel PanelOpciones
     public void OpenOpciones()
@@ -993,6 +994,7 @@ public class UiControl : MonoBehaviour
         Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
     }
     public void VenderTodo(){
+        
         financeManager.SellItem(1,cropManager.GetCropQuantity(1));
         financeManager.SellItem(2,cropManager.GetCropQuantity(2));
         financeManager.SellItem(3,cropManager.GetCropQuantity(3));
