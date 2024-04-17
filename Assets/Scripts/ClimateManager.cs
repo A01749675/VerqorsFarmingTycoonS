@@ -20,6 +20,8 @@ public class ClimateManager : MonoBehaviour
     private int currentClimate = 1;
 
     public MapManager mapManager;
+
+    public TankManager tankManager;
     
     public TextMeshProUGUI newsText;
 
@@ -163,6 +165,7 @@ public class ClimateManager : MonoBehaviour
                 bigPeriodicoImg1.sprite = bigPeriodicoSprite3;
                 bigPeriodicoText2.text = "Científicos alemanes sugieren descongelar a Hitler para combatir a Israel";
                 bigPeriodicoImg2.sprite = bigPeriodicoSprite4;
+                tankManager.FillTank();
                 break;
             case 2:
                 Debug.Log("Rain");
@@ -171,6 +174,7 @@ public class ClimateManager : MonoBehaviour
                 bigPeriodicoImg1.sprite = bigPeriodicoSprite5;
                 bigPeriodicoText2.text = "Mujer se casa con su perro";
                 bigPeriodicoImg2.sprite = bigPeriodicoSprite6;
+                tankManager.FillTank();
                 break;
             case 3:
                 Debug.Log("Flood");
@@ -179,6 +183,7 @@ public class ClimateManager : MonoBehaviour
                 bigPeriodicoImg1.sprite = bigPeriodicoSprite7;
                 bigPeriodicoText2.text = "Joe Biden se cae de su avión, otra vez";
                 bigPeriodicoImg2.sprite = bigPeriodicoSprite8;
+                tankManager.FillTank();
                 break;
             case 4:
                 Debug.Log("Hurricane");
@@ -187,6 +192,7 @@ public class ClimateManager : MonoBehaviour
                 bigPeriodicoImg1.sprite = bigPeriodicoSprite9;
                 bigPeriodicoText2.text = "Bandas Sinaloenses combaten la gentrificación en el norte del país";
                 bigPeriodicoImg2.sprite = bigPeriodicoSprite10;
+                
                 break;
         }
     }
