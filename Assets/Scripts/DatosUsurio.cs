@@ -7,14 +7,14 @@ public class DatosUsurio : MonoBehaviour
 {
     public GameObject NombreUsuario;
     public GameObject TipoFinanciamiento;
-    public ObtenerDatos obtenerDatos;
+    public UserController userController;
     private string nombreUsuario;
     private int financiamiento;
 
-    // Start is called before the first frame update
-   /*void Start(){
-        nombreUsuario = obtenerDatos.usuario;
-        financiamiento = obtenerDatos.progreso[0].financiamiento;
+    //Start is called before the first frame update
+    void Start(){
+        nombreUsuario = userController.GetParameter("user_id").ToString();
+        financiamiento = userController.GetParameter("financiamiento");
         switch (financiamiento){
             case 1:
                 TipoFinanciamiento.GetComponent<TextMeshProUGUI>().text = "Verqor";
@@ -30,5 +30,5 @@ public class DatosUsurio : MonoBehaviour
                 break;
         }
         NombreUsuario.GetComponent<TextMeshProUGUI>().text = nombreUsuario;
-    } */
+    } 
 }

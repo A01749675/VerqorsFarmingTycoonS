@@ -47,7 +47,7 @@ public class TreeManager : MonoBehaviour
             TFin = userController.GetParameter("financiamiento");
         }
         else{
-            TFin = 0;
+            TFin = 1;
         }
         
         if(false){
@@ -60,7 +60,7 @@ public class TreeManager : MonoBehaviour
             }
         }
         switch(TFin){
-            case 0:
+            case 1:
                 Reg1.SetActive(true);
                 Reg2.SetActive(false);
                 Reg3.SetActive(false);
@@ -71,7 +71,7 @@ public class TreeManager : MonoBehaviour
                 Seg3.SetActive(false);
                 celular.SetActive(true);
                 break;
-            case 1:
+            case 2:
                 Reg1.SetActive(false);
                 Reg2.SetActive(true);
                 Reg3.SetActive(false);
@@ -82,7 +82,7 @@ public class TreeManager : MonoBehaviour
                 Seg3.SetActive(true);
                 celular.SetActive(false);
                 break;
-            case 2:
+            case 3:
                 Reg1.SetActive(false);
                 Reg2.SetActive(false);
                 Reg3.SetActive(true);

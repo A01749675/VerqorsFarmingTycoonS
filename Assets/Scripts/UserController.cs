@@ -15,7 +15,7 @@ public class UserController : MonoBehaviour
             {"capital", 0},
             {"financiamiento", 1},
             {"deuda", 0},
-            {"user_id", -1}
+            {"user_id", -1},
         };
 
         achievements = new Dictionary<int, string>()
