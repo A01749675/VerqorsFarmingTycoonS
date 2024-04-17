@@ -163,7 +163,7 @@ public class ClimateManager : MonoBehaviour
                 newsText.text = "Un día normal en el país";
                 bigPeriodicoText1.text = "Clima normal en el país";
                 bigPeriodicoImg1.sprite = bigPeriodicoSprite3;
-                bigPeriodicoText2.text = "Científicos alemanes sugieren descongelar a Hitler para combatir a Israel";
+                bigPeriodicoText2.text = "Technoblade becomes the Potato King";
                 bigPeriodicoImg2.sprite = bigPeriodicoSprite4;
                 tankManager.FillTank();
                 break;
