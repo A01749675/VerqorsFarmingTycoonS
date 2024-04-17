@@ -11,7 +11,8 @@ public class TrukManager : MonoBehaviour
     [SerializeField]
     MapManager mapManager;
     private bool isMoving = false;
-    private int assigned_land = -1;
+    [SerializeField]
+    public int assigned_land = -1;
     private int assigned_crop = -1;
 
     private int crop_collection_constant = 20;
@@ -42,7 +43,9 @@ public class TrukManager : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         initial_position = transform.position;
-        AssignLandToTruck(12);
+        //AssignLandToTruck(12);
+        assigned_crop = mapManager.GetCropAtLand(assigned_land);
+
     }
 
     public void AssignLandToTruck(int land_id){
