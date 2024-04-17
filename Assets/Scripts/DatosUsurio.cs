@@ -12,8 +12,8 @@ public class DatosUsurio : MonoBehaviour
     private int financiamiento;
 
     // Start is called before the first frame update
-   /* void Start(){
-        nombreUsuario = obtenerDatos.usuario.usuario;
+   /*void Start(){
+        nombreUsuario = obtenerDatos.usuario;
         financiamiento = obtenerDatos.progreso[0].financiamiento;
         switch (financiamiento){
             case 1:

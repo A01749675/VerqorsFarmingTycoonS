@@ -19,6 +19,7 @@ public class EnviarDatos : MonoBehaviour
     private List<Progreso> progreso_lista = new List<Progreso>();
     private List<Semilla> semilla_lista= new List<Semilla>();
     private List<Cosecha> cosecha_lista= new List<Cosecha>();
+    private List<Mejoras> mejoras_lista = new List<Mejoras>();
 
     public void GetDataFromCodes(){
         int trigo = cropManager.GetCropQuantity(1);
@@ -37,7 +38,7 @@ public class EnviarDatos : MonoBehaviour
 
         foreach(List<int> parcela in parcelas_raw){
             Parcela parcela_data = new Parcela();
-            parcela_data.id = parcela[0];
+            parcela_data.id_parcela = parcela[0];
             parcela_data.estado = parcela[1];
             parcela_data.cantidad = parcela[2];
             parcela_data.agua = parcela[3];
@@ -63,6 +64,8 @@ public class EnviarDatos : MonoBehaviour
         progreso.dinero = capital;
         progreso.ciclo = ciclo;
         progreso.financiamiento = userController.GetParameter("financiamiento");
+        progreso.practica = obtenerDatos.progreso[0].practica;
+        progreso.seguro = obtenerDatos.progreso[0].seguro;
         progreso_lista.Add(progreso);
 
     }
@@ -78,8 +81,10 @@ public class EnviarDatos : MonoBehaviour
             return;
         }
 
+        GetDataFromCodes();
+
         // Crear el objeto JSON con los datos del usuario
-        string jsonData = CrearJSON(userId, progreso_lista, semilla_lista, cosecha_lista, parcelas_data);
+        string jsonData = CrearJSON(userId, progreso_lista, semilla_lista, cosecha_lista, parcelas_data, mejoras_lista);
 
         // Enviar los datos a la base de datos
         StartCoroutine(EnviarDatosUsuario(jsonData));
@@ -126,7 +131,7 @@ public class EnviarDatos : MonoBehaviour
         return userId;
     }
 
-    private string CrearJSON(int userId, List<Progreso> progreso, List<Semilla> semillas, List<Cosecha> cosecha, List<Parcela> parcela)
+    private string CrearJSON(int userId, List<Progreso> progreso, List<Semilla> semillas, List<Cosecha> cosecha, List<Parcela> parcela, List<Mejoras> mejoras)
     {
         // Crear un objeto DatosUsuario con los datos del usuario
         DatosUsuario userData = new()
@@ -135,7 +140,8 @@ public class EnviarDatos : MonoBehaviour
             progreso = progreso,
             semillas = semillas,
             cosecha = cosecha,
-            parcela = parcela
+            parcela = parcela,
+            mejoras = mejoras
         };
 
         // Convertir el objeto a JSON

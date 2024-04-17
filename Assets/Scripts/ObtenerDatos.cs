@@ -16,6 +16,7 @@ public class ObtenerDatos : MonoBehaviour
     public List<Semilla> semillas;
     public List<Cosecha> cosecha;
     public List<Parcela> parcela;
+    public List<Mejoras> mejoras;
 
     public List<List<int>> parcela_data = new List<List<int>>();
 
@@ -81,7 +82,9 @@ public class ObtenerDatos : MonoBehaviour
             progreso = datosUsuario.progreso;
             semillas = datosUsuario.semillas;
             cosecha = datosUsuario.cosecha;
-            parcela = datosUsuario.parcela;            
+            parcela = datosUsuario.parcela;  
+            mejoras = datosUsuario.mejoras;
+                      
 
             if (success)
             {
@@ -180,6 +183,7 @@ public class ObtenerDatos : MonoBehaviour
         cropManager.crop_quantity[4]=0;
         cropManager.crop_quantity[5]=0;
     }
+
 }
 
 
@@ -197,6 +201,7 @@ public class DatosUsuario
     public List<Semilla> semillas;
     public List<Cosecha> cosecha;
     public List<Parcela> parcela;
+    public List<Mejoras> mejoras;
 }
 
 [System.Serializable]
@@ -241,4 +246,12 @@ public class Parcela
     public int estado;
     public int cantidad;
     public int agua;
+}
+
+[System.Serializable]
+public class Mejoras{
+    public int id;
+    public int id_progreso;
+    public int id_mejora;
+    public bool estado;
 }
