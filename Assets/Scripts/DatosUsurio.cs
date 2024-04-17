@@ -8,12 +8,13 @@ public class DatosUsurio : MonoBehaviour
     public GameObject NombreUsuario;
     public GameObject TipoFinanciamiento;
     public UserController userController;
+    public ObtenerDatos obtenerDatos;
     private string nombreUsuario;
     private int financiamiento;
 
     //Start is called before the first frame update
     void Start(){
-        nombreUsuario = userController.GetParameter("user_id").ToString();
+        nombreUsuario = obtenerDatos.usuario;
         financiamiento = userController.GetParameter("financiamiento");
         switch (financiamiento){
             case 1:

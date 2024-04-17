@@ -38,7 +38,7 @@ public class TreeManager : MonoBehaviour
 
 
 
-    public void Awake()
+    public void Start()
     {
         Texto=Arbol.transform.GetChild(0).GetChild(1).gameObject;
         BotonComprar = Arbol.transform.GetChild(0).GetChild(2).gameObject;
