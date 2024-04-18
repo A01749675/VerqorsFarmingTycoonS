@@ -15,7 +15,7 @@ public class TrukManager : MonoBehaviour
     public int assigned_land = -1;
     private int assigned_crop = -1;
 
-    private int crop_collection_constant = 20;
+    private int crop_collection_constant = 21;
 
     private int last_collection = 0;
 
