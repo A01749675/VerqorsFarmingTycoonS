@@ -73,8 +73,6 @@ public class FinanceManager : MonoBehaviour
 
     private void Update(){
         int cycle = mapManager.GetCurrentCycle();
-        print(cycle);
-        print(plazo);
         if(cycle%plazo==0 && !flag){
             print("Financiamiento actualizado");
             int debt = user_controller.GetDebt();
