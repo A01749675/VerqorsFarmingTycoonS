@@ -51,21 +51,21 @@ public class FinanceManager : MonoBehaviour
         {
             {"tasaInteres", 0.5f},
             {"plazo", 2900},
-            {"montoMaximo", 300000},
+            {"montoMaximo", 1000000},
             {"seguro", 0.5f}
         };
         BancoFinanceData = new Dictionary<string, float>()
         {
             {"tasaInteres", 0.3f},
             {"plazo", 2900},
-            {"montoMaximo", 200000},
+            {"montoMaximo", 800000},
             {"seguro", 0.0f}
         };
         CoyoteFinanceData = new Dictionary<string, float>()
         {
             {"tasaInteres", 0.75f},
             {"plazo", 1450},
-            {"montoMaximo", 50000},
+            {"montoMaximo", 800000},
             {"seguro", 0.0f}
         };
 
