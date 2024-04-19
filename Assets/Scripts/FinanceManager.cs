@@ -31,6 +31,8 @@ public class FinanceManager : MonoBehaviour
     private bool flag=false;
     public int plazo = 1000;
 
+    public bool IsPaid = false;
+
 
     
 
@@ -73,13 +75,14 @@ public class FinanceManager : MonoBehaviour
 
     private void Update(){
         int cycle = mapManager.GetCurrentCycle();
-        if(cycle%plazo==0 && !flag){
+        if(cycle%plazo==0 && !flag &&!IsPaid){
             print("Financiamiento actualizado");
             int debt = user_controller.GetDebt();
             print("La deuda es:"+debt);
 
             if(user_controller.GetCapital()>debt){
                 user_controller.PayDebt(debt);
+                IsPaid = true;
             }
             else{
                 user_controller.PayDebt(debt);
