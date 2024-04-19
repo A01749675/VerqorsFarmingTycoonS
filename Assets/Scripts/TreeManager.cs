@@ -60,6 +60,7 @@ public class TreeManager : MonoBehaviour
             {
                 Mejoras.Add(i,false);
             }
+            print("HOLA");
         }
         switch(TFin){
             case 1:

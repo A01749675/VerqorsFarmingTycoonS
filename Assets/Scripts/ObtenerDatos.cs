@@ -17,7 +17,7 @@ public class ObtenerDatos : MonoBehaviour
     public List<Cosecha> cosecha;
     public List<Parcela> parcela;
     public List<Mejoras> mejoras;
-
+    public TreeManager treeManager;
     public List<List<int>> parcela_data = new List<List<int>>();
 
     public MapManager mapManager;
@@ -103,6 +103,8 @@ public class ObtenerDatos : MonoBehaviour
                 print("Semillas");
                 SetCosecha(cosecha[0]);
                 print("Cosecha");
+                setMejoras(mejoras);
+                print("Mejoras");
 
                 Debug.Log("Datos del usuario obtenidos correctamente.");
             }
@@ -151,7 +153,15 @@ public class ObtenerDatos : MonoBehaviour
         
     }
 
+    private void setMejoras(List<Mejoras> mejoras){
+        foreach(Mejoras m in mejoras){
+            treeManager.Mejoras[m.id_mejora]=m.estado;
+        }
+        
+    }
+
     private void SetToDefault(){
+        print("Datos por default");
         userController.user_data["user_id"]=-1;;
         userController.user_data["capital"]=0;
         userController.user_data["financiamiento"]=1;
