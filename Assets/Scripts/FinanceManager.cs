@@ -19,7 +19,7 @@ public class FinanceManager : MonoBehaviour
     private Dictionary<string, float> BancoFinanceData;
     private Dictionary<string, float> CoyoteFinanceData;
 
-    private int loosingCondition = -1000000;
+    private int loosingCondition = -1;
    
      private bool RegenerativeAgriculture = false;
 
@@ -28,6 +28,8 @@ public class FinanceManager : MonoBehaviour
     private int seguro=0;
 
     public float dinero = 1.0f;
+    private bool flag=false;
+    public int plazo = 1000;
 
 
     
@@ -46,25 +48,24 @@ public class FinanceManager : MonoBehaviour
         VerqorFinanceData = new Dictionary<string, float>()
         {
             {"tasaInteres", 0.5f},
-            {"plazo", 12},
+            {"plazo", 2900},
             {"montoMaximo", 300000},
             {"seguro", 0.5f}
         };
         BancoFinanceData = new Dictionary<string, float>()
         {
             {"tasaInteres", 0.3f},
-            {"plazo", 24},
+            {"plazo", 2900},
             {"montoMaximo", 200000},
             {"seguro", 0.0f}
         };
         CoyoteFinanceData = new Dictionary<string, float>()
         {
             {"tasaInteres", 0.75f},
-            {"plazo", 6},
+            {"plazo", 1450},
             {"montoMaximo", 50000},
             {"seguro", 0.0f}
         };
-
 
 
         // ObtenerFinanciamiento();
@@ -72,21 +73,26 @@ public class FinanceManager : MonoBehaviour
 
     private void Update(){
         int cycle = mapManager.GetCurrentCycle();
-        if(cycle%3650==0){
+        print(cycle);
+        print(plazo);
+        if(cycle%plazo==0 && !flag){
             print("Financiamiento actualizado");
             int debt = user_controller.GetDebt();
+            print("La deuda es:"+debt);
 
             if(user_controller.GetCapital()>debt){
                 user_controller.PayDebt(debt);
-                user_controller.UpdateCapital(-debt);
             }
             else{
-                user_controller.PayDebt(user_controller.GetCapital());
-                user_controller.UpdateCapital(-debt);
+                user_controller.PayDebt(debt);
                 if(user_controller.GetCapital()<loosingCondition){
                     print("GameOver");
                 }
             }
+            flag=true;
+        } 
+        if (cycle%100!=0){
+            flag=false;
         }
     }
 
@@ -105,6 +111,21 @@ public class FinanceManager : MonoBehaviour
                 
         }
         return debt;
+    }
+
+
+    public void SetPlazo(){
+        switch(user_controller.user_data["financiamiento"]){
+            case 1:
+                plazo = (int)VerqorFinanceData["plazo"];
+                break;
+            case 2:
+                plazo = (int)BancoFinanceData["plazo"];
+                break;
+            case 3:
+                plazo = (int)CoyoteFinanceData["plazo"];
+                break;
+        }
     }
 
     public float TasaInteres(int fin){

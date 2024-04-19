@@ -1228,7 +1228,7 @@ public class UiControl : MonoBehaviour
         Time.timeScale = 1;
     }
     public void SpeedUpTime(){
-        Time.timeScale = 2;
+        Time.timeScale = 5;
     }
 
     public void MusicMute(){
@@ -1249,6 +1249,10 @@ public class UiControl : MonoBehaviour
     }
     public void ActualizarDinero(){
         Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
+    }
+
+    void Update(){
+        ActualizarDinero();
     }
 
 }

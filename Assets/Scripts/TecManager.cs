@@ -75,9 +75,15 @@ public class TecManager : MonoBehaviour
             if(treeManager.Mejoras[8] && treeManager.Mejoras[15] && treeManager.Mejoras[21]){
                 financeManager.dinero = 1.2f;
             }
-            
-
-            
+            if(treeManager.Mejoras[2]){
+                mapManager.UpdateUnlockedLands(new int[]{11,12,16,17});
+            }
+            if(treeManager.Mejoras[13]){
+                mapManager.UpdateUnlockedLands(new int[]{0, 2, 4, 6, 9,13,18});
+            }
+            if(treeManager.Mejoras[20]){
+                mapManager.UpdateUnlockedLands(new int[]{1,3,5,7,8,10,14,15,19});
+            }
             treeManager.update = false;
             
         }

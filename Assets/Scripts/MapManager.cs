@@ -20,7 +20,7 @@ public class MapManager : MonoBehaviour
     private int selected_crop = 0;
     private int selected_land = -1;
     private int current_cycle = 0;
-    private int crop_cycle_constant = 20;
+    private int crop_cycle_constant = 60;
     private int update_rate = 1;
 
 
@@ -109,7 +109,7 @@ public class MapManager : MonoBehaviour
         LandIsPlanted = new Dictionary<int, bool>();
         CropsInLand = new Dictionary<int, int>();
         FindLand();
-        UpdateUnlockedLands(new int[]{8,11,12,16,17});
+        UpdateUnlockedLands(new int[]{8});
         print("map manager finise¿hed configuration");
         InvokeRepeating("UpdateCycle", 0, 1f);
 
@@ -678,7 +678,6 @@ public class MapManager : MonoBehaviour
             cropManager.cropCycleGrowth.Remove(gridPosition);
             if(CheckIfTileIsLand(gridPosition)!=-1){
                 if(Disaster && CropsInLand[CheckIfTileIsLand(gridPosition)] != 0){
-                    print("PAGAAAAAAAAAAAAANDO");
                     int price = financeManager.GetCropPrice(crop_type);
                     userController.UpdateCapital((int)(CropsInLand[CheckIfTileIsLand(gridPosition)]*(price)*financeManager.TasaInteres(1)));
                     uiControl.ActualizarDinero();
@@ -832,7 +831,7 @@ public class MapManager : MonoBehaviour
         return -1;
     }
 
-    private void UpdateUnlockedLands(int[] unlocked){
+    public void UpdateUnlockedLands(int[] unlocked){
         foreach(int land in unlocked){
             if(UnlockedLands.ContainsKey(land)){
                 UnlockedLands[land] = true;

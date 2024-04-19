@@ -18,7 +18,7 @@ public class EmployeeManager : MonoBehaviour
 
     private int current_movement = 0;
 
-    private int movement_constant = 5;
+    private int movement_constant = 6;
     private int planting_constant = 10;
 
     private int show_emotion_time = 10;
@@ -105,19 +105,19 @@ public class EmployeeManager : MonoBehaviour
                 animator.SetBool("ActivatedMovement",false);
                 last_plant = 0;
             }
-            if((cycle-last_movement)<movement_constant && last_movement != 0){
+            if((cycle-last_movement)<(movement_constant-1) && last_movement != 0){
                 transform.position += Vector3.right*Time.deltaTime;
                 current_movement = cycle;
                 
             }
             else if((cycle-current_movement)<movement_constant && current_movement != 0){
-                spriteRenderer.flipX = !flip;
+                spriteRenderer.flipX = true;
                 transform.position -= Vector3.right*Time.deltaTime;
             }
             else{
                 if(current_movement != 0){
                     flip = !flip;
-                    spriteRenderer.flipX = flip;
+                    spriteRenderer.flipX = false;
                 }
                 last_movement=0;
                 current_movement=0;

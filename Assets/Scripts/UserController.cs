@@ -8,13 +8,15 @@ public class UserController : MonoBehaviour
     public Dictionary<int,string> achievements;
     public Dictionary<int,bool> unlocked_achievements;
 
+    public FinanceManager financeManager;
+
     private void Awake()
     {
         print("UserController Awake");
         user_data = new Dictionary<string, int>(){
             {"capital", 0},
             {"financiamiento", 1},
-            {"deuda", 0},
+            {"deuda", 50000},
             {"user_id", -1},
         };
 
@@ -40,6 +42,7 @@ public class UserController : MonoBehaviour
             {7, false},
             {8, false}
         };
+        financeManager.SetPlazo();
     }
 
     public void SetParameter(string param,int value){
