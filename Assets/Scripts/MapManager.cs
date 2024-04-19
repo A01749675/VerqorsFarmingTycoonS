@@ -93,6 +93,8 @@ public class MapManager : MonoBehaviour
             {-1, soil},
             {-2,soil2},
             {-3,soil3},
+            {-4,soil4},
+            {-5,soil5},
             {-6,soil6}
         };
         CropSpriteCounter = new Dictionary<int, int>(){
