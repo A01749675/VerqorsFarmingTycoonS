@@ -35,7 +35,9 @@ public class TreeManager : MonoBehaviour
     private UserController userController;
 
     public bool update = false;
-
+    public bool getMejoras(int mejora){
+        return Mejoras[mejora];
+    }
 
 
     public void Start()

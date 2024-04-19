@@ -6,11 +6,11 @@ using System.Collections.Generic;
 public class EnviarDatos : MonoBehaviour
 {
     public ObtenerDatos obtenerDatos;
+    public TreeManager treeManager; 
 
     public UserController userController;
     public MapManager mapManager;
     public CropManager cropManager;
-
     private Cosecha cosecha;
     private Semilla semilla;
     private Progreso progreso;
@@ -36,6 +36,8 @@ public class EnviarDatos : MonoBehaviour
         int frijol_seed = cropManager.GetCropSeeds(5);
         int ciclo = mapManager.GetCurrentCycle();
         int capital = userController.GetParameter("capital");
+        
+
 
         List<List<int>> parcelas_raw = mapManager.SaveDataFromMap();
         parcelas_data = new List<Parcela>();
@@ -48,6 +50,15 @@ public class EnviarDatos : MonoBehaviour
             parcela_data.agua = parcela[3];
             parcelas_data.Add(parcela_data);
         }
+
+        Mejoras mejoras = new Mejoras();
+        for(int i = 1; i <= 21; i++){
+            mejoras.id_mejora = i;
+            mejoras.estado = treeManager.getMejoras(i);
+            print("Mejora "+i+" "+ treeManager.getMejoras(i));
+            mejoras_lista.Add(mejoras);
+        }
+        print("Mejoras lista  "+mejoras_lista);
 
         cosecha = new Cosecha();
         cosecha.trigo = trigo;
