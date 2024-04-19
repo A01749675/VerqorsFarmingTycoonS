@@ -225,6 +225,8 @@ public class Semilla
     public int trigo;
     public int tomate;
     public int chile;
+    public int aguacate;
+    public int frijol;
 }
 [System.Serializable]
 public class Cosecha
@@ -235,6 +237,8 @@ public class Cosecha
     public int tomate;
     public int chile;
     public int maiz;
+    public int aguacate;
+    public int frijol;
 }
 
 [System.Serializable]
