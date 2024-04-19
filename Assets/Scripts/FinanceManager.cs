@@ -31,6 +31,8 @@ public class FinanceManager : MonoBehaviour
     private bool flag=false;
     public int plazo = 1000;
 
+    public bool IsPaid = false;
+
 
     
 
@@ -49,21 +51,21 @@ public class FinanceManager : MonoBehaviour
         {
             {"tasaInteres", 0.5f},
             {"plazo", 2900},
-            {"montoMaximo", 300000},
+            {"montoMaximo", 1000000},
             {"seguro", 0.5f}
         };
         BancoFinanceData = new Dictionary<string, float>()
         {
             {"tasaInteres", 0.3f},
             {"plazo", 2900},
-            {"montoMaximo", 200000},
+            {"montoMaximo", 800000},
             {"seguro", 0.0f}
         };
         CoyoteFinanceData = new Dictionary<string, float>()
         {
             {"tasaInteres", 0.75f},
             {"plazo", 1450},
-            {"montoMaximo", 50000},
+            {"montoMaximo", 800000},
             {"seguro", 0.0f}
         };
 
@@ -73,15 +75,14 @@ public class FinanceManager : MonoBehaviour
 
     private void Update(){
         int cycle = mapManager.GetCurrentCycle();
-        print(cycle);
-        print(plazo);
-        if(cycle%plazo==0 && !flag){
+        if(cycle%plazo==0 && !flag &&!IsPaid){
             print("Financiamiento actualizado");
             int debt = user_controller.GetDebt();
             print("La deuda es:"+debt);
 
             if(user_controller.GetCapital()>debt){
                 user_controller.PayDebt(debt);
+                IsPaid = true;
             }
             else{
                 user_controller.PayDebt(debt);
