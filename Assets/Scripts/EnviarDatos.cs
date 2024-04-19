@@ -26,10 +26,14 @@ public class EnviarDatos : MonoBehaviour
         int maiz = cropManager.GetCropQuantity(2);
         int tomate = cropManager.GetCropQuantity(3);
         int chile = cropManager.GetCropQuantity(6);
+        int aguacate = cropManager.GetCropQuantity(4);
+        int frijol = cropManager.GetCropQuantity(5);
         int trigo_seed = cropManager.GetCropSeeds(1);
         int maiz_seed = cropManager.GetCropSeeds(2);
         int tomate_seed = cropManager.GetCropSeeds(3);
         int chile_seed = cropManager.GetCropSeeds(6);
+        int aguacate_seed = cropManager.GetCropSeeds(4);
+        int frijol_seed = cropManager.GetCropSeeds(5);
         int ciclo = mapManager.GetCurrentCycle();
         int capital = userController.GetParameter("capital");
 
@@ -50,6 +54,8 @@ public class EnviarDatos : MonoBehaviour
         cosecha.maiz = maiz;
         cosecha.tomate = tomate;
         cosecha.chile = chile;
+        cosecha.aguacate = aguacate;
+        cosecha.frijol = frijol;   
         cosecha_lista.Add(cosecha);
 
         semilla = new Semilla();
@@ -57,6 +63,8 @@ public class EnviarDatos : MonoBehaviour
         semilla.maiz = maiz_seed;
         semilla.tomate = tomate_seed;
         semilla.chile = chile_seed;
+        semilla.aguacate= aguacate_seed;
+        semilla.frijol = frijol_seed;
         semilla_lista.Add(semilla);
 
         progreso = new Progreso();
