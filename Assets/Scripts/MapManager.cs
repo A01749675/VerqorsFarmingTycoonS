@@ -137,9 +137,6 @@ public class MapManager : MonoBehaviour
             }
             
         }
-    if(Input.GetMouseButtonDown(1)){
-            SeeWater(mousePos);
-        }
 
         if(Input.GetKeyDown("p")){
             Vector3Int gridPos = tilemap.WorldToCell(mousePos);
@@ -492,41 +489,6 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    public void CollectAll(){
-        int i = 0;
-        for(i = -2*tilemap.size.x; i<2*tilemap.size.x; i++){
-            for(int j = -2*tilemap.size.y; j<2*tilemap.size.y; j++){
-                Vector3Int gridPosition = new Vector3Int(i, j, 0);
-                TileBase tile = tilemap.GetTile(gridPosition);
-                if(tile && dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type>0 && !dataFromTiles[tile].isBox){
-                    if(cropManager.cropCycleGrowth.ContainsKey(gridPosition) && cropManager.cropCycleGrowth[gridPosition]["growth"]>=2){
-                        cropManager.cropCycleGrowth.Remove(gridPosition);
-                        plantedCrops[dataFromTiles[tile].crop_type] = false;
-                        tilemap.SetTile(gridPosition, soilFromCrop[-dataFromTiles[tile].crop_type]);
-                        cropManager.UpdateCropQuantity(dataFromTiles[tile].crop_type, dataFromTiles[tile].quantity);
-                    }
-                }
-            }
-        }
-    }
-
-    public void CollectSpecificCrop(){
-        int i = 0;
-        for(i = -2*tilemap.size.x; i<2*tilemap.size.x; i++){
-            for(int j = -2*tilemap.size.y; j<2*tilemap.size.y; j++){
-                Vector3Int gridPosition = new Vector3Int(i, j, 0);
-                TileBase tile = tilemap.GetTile(gridPosition);
-                if(tile && dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type==selected_crop && !dataFromTiles[tile].isBox){
-                    if(cropManager.cropCycleGrowth.ContainsKey(gridPosition) && cropManager.cropCycleGrowth[gridPosition]["growth"]>=CropSpriteCounter[selected_crop]-1){
-                        cropManager.cropCycleGrowth.Remove(gridPosition);
-                        plantedCrops[dataFromTiles[tile].crop_type] = false;
-                        tilemap.SetTile(gridPosition, soilFromCrop[-dataFromTiles[tile].crop_type]);
-                        cropManager.UpdateCropQuantity(dataFromTiles[tile].crop_type, dataFromTiles[tile].quantity);
-                    }
-                }
-            }
-        }
-    }
 
     public void FarmerAutomaticCollection(int land){
         if(!LandPosition.ContainsKey(land) || UnlockedLands[land]==false){
@@ -556,35 +518,7 @@ public class MapManager : MonoBehaviour
             LandIsPlanted[land] = false;
         }
     }
-    public void WaterAll(){
-        
-        int i = 0;
-        for(i = -2*tilemap.size.x; i<2*tilemap.size.x; i++){
-            for(int j = -2*tilemap.size.y; j<2*tilemap.size.y; j++){
-                Vector3Int gridPosition = new Vector3Int(i, j, 0);
-                TileBase tile = tilemap.GetTile(gridPosition);
-                if(tile && dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type>0 && !dataFromTiles[tile].isBox){
-                    if(cropManager.cropCycleGrowth.ContainsKey(gridPosition) && cropManager.cropCycleGrowth[gridPosition]["water"]<100){
-                        cropManager.cropCycleGrowth[gridPosition]["water"] += 25;
-                    }
-                }
-            }
-        }
-    }
-    public void WaterSpecificCrop(){
-        int i = 0;
-        for(i = -2*tilemap.size.x; i<2*tilemap.size.x; i++){
-            for(int j = -2*tilemap.size.y; j<2*tilemap.size.y; j++){
-                Vector3Int gridPosition = new Vector3Int(i, j, 0);
-                TileBase tile = tilemap.GetTile(gridPosition);
-                if(tile && dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type==selected_crop && !dataFromTiles[tile].isBox){
-                    if(cropManager.cropCycleGrowth.ContainsKey(gridPosition) && cropManager.cropCycleGrowth[gridPosition]["water"]<100){
-                        cropManager.cropCycleGrowth[gridPosition]["water"] += 25;
-                    }
-                }
-            }
-        }
-    }
+
 
     public void WaterLand(Vector2 mousePos){
         Vector3Int gridPos = tilemap.WorldToCell(mousePos);
