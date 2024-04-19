@@ -53,12 +53,16 @@ public class EnviarDatos : MonoBehaviour
 
         Mejoras mejoras = new Mejoras();
         for(int i = 1; i <= 21; i++){
+            mejoras = new Mejoras();
             mejoras.id_mejora = i;
             mejoras.estado = treeManager.getMejoras(i);
             print("Mejora "+i+" "+ treeManager.getMejoras(i));
             mejoras_lista.Add(mejoras);
         }
-        print("Mejoras lista  "+mejoras_lista);
+        // imprimir la lista de mejoras
+        foreach(Mejoras m in mejoras_lista){
+            print("Mejora de Marzy "+m.id_mejora+" "+m.estado);
+        }
 
         cosecha = new Cosecha();
         cosecha.trigo = trigo;
