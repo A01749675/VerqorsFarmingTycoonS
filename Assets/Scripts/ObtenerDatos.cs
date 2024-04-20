@@ -157,7 +157,6 @@ public class ObtenerDatos : MonoBehaviour
         foreach(Mejoras m in mejoras){
             treeManager.Mejoras[m.id_mejora]=m.estado;
         }
-        
     }
 
     private void SetToDefault(){

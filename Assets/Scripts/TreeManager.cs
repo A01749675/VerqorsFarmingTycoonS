@@ -31,6 +31,7 @@ public class TreeManager : MonoBehaviour
     public Sprite Seguro;
     public Sprite IMRegen;
     public GameObject celular;
+    public ObtenerDatos obtenerDatos;
     [SerializeField]
     private UserController userController;
 
@@ -51,17 +52,25 @@ public class TreeManager : MonoBehaviour
         else{
             TFin = 1;
         }
-        
-        if(false){
-            print("Base de datos");
-        } else{
-            print("No hay base de datos");
+
+        if (obtenerDatos.success)
+        {
+            print("Datos obtenidos para el tree manajer");
+            foreach (Mejoras mejora in obtenerDatos.mejoras)
+            {
+                Mejoras[mejora.id_mejora] = mejora.estado;
+            }
+            print("Mejoras obtenidas");
+        }
+        else
+        {
+            print("Datos por default");
             for (int i = 1; i < 22; i++)
             {
-                Mejoras.Add(i,false);
+                Mejoras.Add(i, false);
             }
-            print("HOLA");
         }
+        
         switch(TFin){
             case 1:
                 Reg1.SetActive(true);
