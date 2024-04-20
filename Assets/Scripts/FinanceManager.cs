@@ -21,7 +21,7 @@ public class FinanceManager : MonoBehaviour
 
     private int loosingCondition = -1;
    
-     private bool RegenerativeAgriculture = false;
+    private bool RegenerativeAgriculture = false;
 
     int current_finance = 1;
 
