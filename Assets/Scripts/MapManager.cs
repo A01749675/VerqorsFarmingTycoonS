@@ -334,52 +334,22 @@ public class MapManager : MonoBehaviour
         int cycle = cropManager.cropCycleGrowth[gridPosition]["growth"];
         switch(cropType){
             case 1:
-                if(cycle==barley_grow_tiles.Count-1){
-                    cycle=barley_grow_tiles.Count-1;
-                }
-                else{
-                    cycle=(cycle+1)%barley_grow_tiles.Count;
-                }
+                cycle=(cycle+1)%barley_grow_tiles.Count;
                 break;
             case 2:
-                if(cycle==corn_grow_tiles.Count-1){
-                    cycle=corn_grow_tiles.Count-1;
-                }
-                else{
-                    cycle=(cycle+1)%corn_grow_tiles.Count;
-                }
+                cycle=(cycle+1)%corn_grow_tiles.Count;
                 break;
             case 3:
-                if(cycle==tomato_grow_tiles.Count-1){
-                    cycle=tomato_grow_tiles.Count-1;
-                }
-                else{
-                    cycle=(cycle+1)%tomato_grow_tiles.Count;
-                }
+                cycle=(cycle+1)%tomato_grow_tiles.Count;
                 break;
             case 4:
-                if(cycle==avocado_grow_tiles.Count-1){
-                    cycle=avocado_grow_tiles.Count-1;
-                }
-                else{
-                    cycle=(cycle+1)%avocado_grow_tiles.Count;
-                }
+                cycle=(cycle+1)%avocado_grow_tiles.Count;
                 break;
             case 5:
-                if(cycle==coffee_grow_tiles.Count-1){
-                    cycle=coffee_grow_tiles.Count-1;
-                }
-                else{
-                    cycle=(cycle+1)%coffee_grow_tiles.Count;
-                }
+                cycle=(cycle+1)%coffee_grow_tiles.Count;
                 break;
             case 6:
-                if(cycle==chilli_grow_tiles.Count-1){
-                    cycle=chilli_grow_tiles.Count-1;
-                }
-                else{
-                    cycle=(cycle+1)%chilli_grow_tiles.Count;
-                }
+                cycle=(cycle+1)%chilli_grow_tiles.Count;
                 break;
         }
         return cycle;
