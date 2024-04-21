@@ -622,13 +622,6 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    public void SeeWater(Vector2 mousePos){
-        Vector3Int gridPos = tilemap.WorldToCell(mousePos);
-        TileBase tile = tilemap.GetTile(gridPos);
-        if(tile && cropManager.cropCycleGrowth.ContainsKey(gridPos)){
-            print("The crop at: "+gridPos+" has this water: "+cropManager.cropCycleGrowth[gridPos]["water"]);
-        }
-    }
 
     public int GetAverageWaterAtLand(int land){
         if(!LandPosition.ContainsKey(land) || UnlockedLands[land]==false){
