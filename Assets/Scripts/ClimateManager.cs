@@ -165,7 +165,7 @@ public class ClimateManager : MonoBehaviour
                 bigPeriodicoImg1.sprite = bigPeriodicoSprite3;
                 bigPeriodicoText2.text = "Technoblade becomes the Potato King";
                 bigPeriodicoImg2.sprite = bigPeriodicoSprite4;
-                //tankManager.FillTank();
+                tankManager.FillTank();
                 break;
             case 2:
                 Debug.Log("Rain");
@@ -174,7 +174,7 @@ public class ClimateManager : MonoBehaviour
                 bigPeriodicoImg1.sprite = bigPeriodicoSprite5;
                 bigPeriodicoText2.text = "Mujer se casa con su perro";
                 bigPeriodicoImg2.sprite = bigPeriodicoSprite6;
-                //tankManager.FillTank();
+                tankManager.FillTank();
                 break;
             case 3:
                 Debug.Log("Flood");
@@ -183,7 +183,7 @@ public class ClimateManager : MonoBehaviour
                 bigPeriodicoImg1.sprite = bigPeriodicoSprite7;
                 bigPeriodicoText2.text = "Joe Biden se cae de su avión, otra vez";
                 bigPeriodicoImg2.sprite = bigPeriodicoSprite8;
-                //tankManager.FillTank();
+                tankManager.FillTank();
                 break;
             case 4:
                 Debug.Log("Hurricane");

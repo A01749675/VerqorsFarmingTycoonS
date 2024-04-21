@@ -11,6 +11,7 @@ public class SprinklerManager : MonoBehaviour
 
     [SerializeField]
     MapManager mapManager;
+    [SerializeField]
     TankManager tankManager;
     private bool isFull = false;
     private int assigned_land = -1;
