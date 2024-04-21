@@ -40,6 +40,13 @@ public class TreeManager : MonoBehaviour
         return Mejoras[mejora];
     }
 
+    public void Awake(){
+        for (int i = 1; i < 22; i++)
+            {
+                Mejoras.Add(i, false);
+            }
+        print("TreeManager awake");
+    }
 
     public void Start()
     {
@@ -55,20 +62,18 @@ public class TreeManager : MonoBehaviour
 
         if (obtenerDatos.success)
         {
-            print("Datos obtenidos para el tree manajer");
+            print("Datos obtenidos para el tree manager");
             foreach (Mejoras mejora in obtenerDatos.mejoras)
             {
                 Mejoras[mejora.id_mejora] = mejora.estado;
             }
+            update = true;
             print("Mejoras obtenidas");
         }
         else
         {
             print("Datos por default");
-            for (int i = 1; i < 22; i++)
-            {
-                Mejoras.Add(i, false);
-            }
+            
         }
         
         switch(TFin){

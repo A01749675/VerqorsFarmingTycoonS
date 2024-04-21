@@ -154,9 +154,16 @@ public class ObtenerDatos : MonoBehaviour
     }
 
     private void setMejoras(List<Mejoras> mejoras){
+        print("Mejoras de Set Mejoras");
         foreach(Mejoras m in mejoras){
             treeManager.Mejoras[m.id_mejora]=m.estado;
         }
+        // imprimir la lista de mejoras
+        foreach(Mejoras m in mejoras){
+            print("Mejora de Marzy "+m.id_mejora+" "+m.estado);
+        }
+        treeManager.update= true;
+        print("Fin de Set Mejoras");
     }
 
     private void SetToDefault(){
