@@ -296,28 +296,28 @@ public class MapManager : MonoBehaviour
                         if(tile && dataFromTiles.ContainsKey(tile) && !dataFromTiles[tile].isBox){  
                             switch(dataFromTiles[tile].crop_type){
                                 case 1:
-                                    tilemap.SetTile(gridPosition, barley_grow_tiles[cropManager.cropCycleGrowth[gridPosition]["growth"]]);
                                     cropManager.cropCycleGrowth[gridPosition]["growth"] = UpdateCropSpriteCycle(gridPosition,1);
+                                    tilemap.SetTile(gridPosition, barley_grow_tiles[cropManager.cropCycleGrowth[gridPosition]["growth"]]);
                                     break;
                                 case 2:
-                                    tilemap.SetTile(gridPosition, corn_grow_tiles[cropManager.cropCycleGrowth[gridPosition]["growth"]]);
                                     cropManager.cropCycleGrowth[gridPosition]["growth"] = UpdateCropSpriteCycle(gridPosition,2);
+                                    tilemap.SetTile(gridPosition, corn_grow_tiles[cropManager.cropCycleGrowth[gridPosition]["growth"]]);
                                     break;
                                 case 3:
-                                    tilemap.SetTile(gridPosition, tomato_grow_tiles[cropManager.cropCycleGrowth[gridPosition]["growth"]]);
                                     cropManager.cropCycleGrowth[gridPosition]["growth"] = UpdateCropSpriteCycle(gridPosition,3);
+                                    tilemap.SetTile(gridPosition, tomato_grow_tiles[cropManager.cropCycleGrowth[gridPosition]["growth"]]);
                                     break;
                                 case 4:
-                                    tilemap.SetTile(gridPosition, avocado_grow_tiles[cropManager.cropCycleGrowth[gridPosition]["growth"]]);
                                     cropManager.cropCycleGrowth[gridPosition]["growth"] = UpdateCropSpriteCycle(gridPosition,4);
+                                    tilemap.SetTile(gridPosition, avocado_grow_tiles[cropManager.cropCycleGrowth[gridPosition]["growth"]]);
                                     break;
                                 case 5:
-                                    tilemap.SetTile(gridPosition, coffee_grow_tiles[cropManager.cropCycleGrowth[gridPosition]["growth"]]);
                                     cropManager.cropCycleGrowth[gridPosition]["growth"] = UpdateCropSpriteCycle(gridPosition,5);
+                                    tilemap.SetTile(gridPosition, coffee_grow_tiles[cropManager.cropCycleGrowth[gridPosition]["growth"]]);
                                     break;
                                 case 6:
-                                    tilemap.SetTile(gridPosition, chilli_grow_tiles[cropManager.cropCycleGrowth[gridPosition]["growth"]]);
                                     cropManager.cropCycleGrowth[gridPosition]["growth"] = UpdateCropSpriteCycle(gridPosition,6);
+                                    tilemap.SetTile(gridPosition, chilli_grow_tiles[cropManager.cropCycleGrowth[gridPosition]["growth"]]);
                                     break;
                                 }
                         }
@@ -472,6 +472,7 @@ public class MapManager : MonoBehaviour
         int y = ranges[0,1];
         int x1 = ranges[1,0];
         int y1 = ranges[1,1];
+        
         for(int i = x;i<x1+1;i++){
             for(int j=y;j<y1+1;j++){
                 Vector3Int gridPosition = new Vector3Int(i, j, 0);
