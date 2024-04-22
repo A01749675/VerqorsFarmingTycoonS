@@ -14,6 +14,8 @@ public class SprinklerManager : MonoBehaviour
     [SerializeField]
     TankManager tankManager;
     private bool isFull = false;
+    [SerializeField]
+    private int land_id =  -1;
     private int assigned_land = -1;
     private int cycle = 0;
     private bool active = false;
@@ -42,6 +44,6 @@ public class SprinklerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        WaterCrops();
     }
 }
