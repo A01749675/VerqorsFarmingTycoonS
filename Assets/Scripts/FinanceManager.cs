@@ -14,6 +14,8 @@ public class FinanceManager : MonoBehaviour
 
     public UserController userController;
 
+    public EnviarDatos enviarDatos;
+
     private Dictionary<int,int> financiamiento_seguro;
     private Dictionary<string, float> VerqorFinanceData;
     private Dictionary<string, float> BancoFinanceData;
@@ -88,7 +90,7 @@ public class FinanceManager : MonoBehaviour
                 user_controller.PayDebt(debt);
                 if(user_controller.GetCapital()<loosingCondition){
                     print("GameOver");
-                    Application.Quit();
+                    enviarDatos.GuardarySalir();
                 }
             }
             flag=true;

@@ -413,6 +413,9 @@ public class TreeManager : MonoBehaviour
         seleccion = 21;
         BotonInfo.SetActive(true);
     }
+    public void MasInformacion(){
+        Application.OpenURL("https://verqor.com/blog/48/agricultura-regenerativa-que-es-y-cuales-son-sus-beneficios");
+    }
 
     public void Comprar(){
         Mejoras[seleccion] = true;
