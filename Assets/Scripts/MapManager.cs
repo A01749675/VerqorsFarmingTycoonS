@@ -121,13 +121,12 @@ public class MapManager : MonoBehaviour
     void Update()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-/*         if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(2))
         {
             Vector3Int gridPos = tilemap.WorldToCell(mousePos);
             TileBase clickedTile = tilemap.GetTile(gridPos);
             if(clickedTile && dataFromTiles.ContainsKey(clickedTile)){
-                selected_crop = dataFromTiles[clickedTile].crop_type;
-                print("Selected crop "+selected_crop +" at "+gridPos);
+                print("Selected crop "+dataFromTiles[clickedTile].crop_type +" at "+gridPos);
             }
             print("Tile is at the land " + CheckIfTileIsLand(gridPos));
             if(UnlockedLands.ContainsKey(CheckIfTileIsLand(gridPos))){
@@ -136,7 +135,7 @@ public class MapManager : MonoBehaviour
                 print("The crop is: "+Land_Crop_Assigned[CheckIfTileIsLand(gridPos)]);
             }
             
-        } */
+        }
 
         if(Input.GetMouseButtonDown(0)){
             Vector3Int gridPos = tilemap.WorldToCell(mousePos);
@@ -397,7 +396,6 @@ public class MapManager : MonoBehaviour
                 && CheckIfTileIsLand(gridPosition) == selected_land
                 && !cropManager.cropCycleGrowth.ContainsKey(gridPosition)){
                     tilemap.SetTile(gridPosition, seed);
-                    print("Changed sprite");
                     cropManager.UpdateCropSeeds(selected_crop, -1);
                     cropManager.cropCycleGrowth.Add(gridPosition, new Dictionary<string,int>(){
                         {"growth", 0},
