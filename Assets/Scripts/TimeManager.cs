@@ -27,7 +27,7 @@ public class TimeManager : MonoBehaviour
     private DateTime DateTime;
 
     [Header ("Tick Settings")]
-    public int TickMinutesIncrease = 0;
+    public int TickMinutesIncrease = 10;
     public float TimeBetweenTicks = 1;
     private float currentTimeBetweenTicks = 0;
     public static UnityAction<DateTime> OnDateTimeChanged; 
@@ -35,7 +35,6 @@ public class TimeManager : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        TickMinutesIncrease = mapManager.GetCurrentCycle();
         DateTime = new DateTime (dateInMonth, season - 1, year, hour, minutes * 10);
         Debug.Log($"Starting Date: {DateTime.NewYearsDay(2)}");
         Debug.Log($"Starting Date: {DateTime.SummerSolstice(4)}");
