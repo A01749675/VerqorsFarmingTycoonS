@@ -165,6 +165,10 @@ public class MapManager : MonoBehaviour
         }
     }
 
+    public int GetUpdateRate(){
+        return update_rate;
+    }
+
 
     public void LoadDataFromMap(List<List<int>> parcelas){
         print("Loading data from map");
@@ -334,21 +338,39 @@ public class MapManager : MonoBehaviour
         int cycle = cropManager.cropCycleGrowth[gridPosition]["growth"];
         switch(cropType){
             case 1:
+                if(cycle==barley_grow_tiles.Count-1){
+                    return cycle;
+                }
                 cycle=(cycle+1)%barley_grow_tiles.Count;
                 break;
             case 2:
+                if(cycle==corn_grow_tiles.Count-1){
+                    return cycle;
+                }
                 cycle=(cycle+1)%corn_grow_tiles.Count;
                 break;
             case 3:
+            if(cycle==tomato_grow_tiles.Count-1){
+                    return cycle;
+                }
                 cycle=(cycle+1)%tomato_grow_tiles.Count;
                 break;
             case 4:
+                if(cycle==avocado_grow_tiles.Count-1){
+                    return cycle;
+                }
                 cycle=(cycle+1)%avocado_grow_tiles.Count;
                 break;
             case 5:
+                if(cycle==coffee_grow_tiles.Count-1){
+                        return cycle;
+                }   
                 cycle=(cycle+1)%coffee_grow_tiles.Count;
                 break;
             case 6:
+                if(cycle==chilli_grow_tiles.Count-1){
+                    return cycle;
+                }
                 cycle=(cycle+1)%chilli_grow_tiles.Count;
                 break;
         }
@@ -366,18 +388,10 @@ public class MapManager : MonoBehaviour
         int x1 = ranges[1,0];
         int y1 = ranges[1,1];
         LandIsPlanted[selected_land] = true;
-        print("SELECTEEEEEEEED " +selected_crop);
-        print("LAND "+selected_land);
-
         for(int i = x;i<x1+1;i++){
             for(int j=y;j<y1+1;j++){
                 Vector3Int gridPosition = new Vector3Int(i, j, 0);
                 TileBase tile = tilemap.GetTile(gridPosition);
-                print("Data from tiles crop: "+dataFromTiles[tile].crop_type);
-                print("Select land "+CheckIfTileIsLand(gridPosition));
-                print("CropSeeds "+cropManager.GetCropSeeds(selected_crop));
-                print("Data from tiles contains key "+dataFromTiles.ContainsKey(tile));
-                print("Crop manager has tile "+cropManager.cropCycleGrowth.ContainsKey(gridPosition));
                 if(cropManager.GetCropSeeds(selected_crop)>0 && tile && dataFromTiles.ContainsKey(tile) && 
                 dataFromTiles[tile].crop_type==-selected_crop && CheckIfTileIsLand(gridPosition)!= -1 
                 && CheckIfTileIsLand(gridPosition) == selected_land
