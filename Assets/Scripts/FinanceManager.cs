@@ -88,6 +88,7 @@ public class FinanceManager : MonoBehaviour
                 user_controller.PayDebt(debt);
                 if(user_controller.GetCapital()<loosingCondition){
                     print("GameOver");
+                    Application.Quit();
                 }
             }
             flag=true;
@@ -95,6 +96,12 @@ public class FinanceManager : MonoBehaviour
         if (cycle%100!=0){
             flag=false;
         }
+    }
+
+    public int GetTimetoPay(){
+        int cycle = mapManager.GetCurrentCycle();
+        int time = (int)((plazo - cycle%plazo)/8);
+        return time;
     }
 
     public int CalculateDebt(int fin){
