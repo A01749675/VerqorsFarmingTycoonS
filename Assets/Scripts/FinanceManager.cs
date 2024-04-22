@@ -154,6 +154,20 @@ public class FinanceManager : MonoBehaviour
         return tasa;
     }
 
+    public float GetSeguro(int fin){
+        switch(fin){
+            case 1:
+                return VerqorFinanceData["seguro"];
+            case 2:
+                return BancoFinanceData["seguro"];
+            case 3:
+                return CoyoteFinanceData["seguro"];
+            default:
+                return 0f;
+        }
+        
+    }
+
     public void UpdateSeguro(int mejora){
         switch(mejora){
             case 6:
