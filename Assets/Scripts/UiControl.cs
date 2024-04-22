@@ -336,9 +336,8 @@ public class UiControl : MonoBehaviour
     public void CloseGame()
     {
         Debug.Log("Guardando...");
-        enviardatos.Guardar();
+        enviardatos.GuardarySalir();
         Debug.Log("Guardado exitoso.");
-        Application.Quit();
     }
 
     public void ShowCelular()

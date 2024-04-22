@@ -9,6 +9,9 @@ namespace DPUtils.Systems.DateTime{
 public class TimeManager : MonoBehaviour
 {
 
+    [SerializeField]
+    public MapManager mapManager;
+
     [Header("Date & Time Settings")]
     [Range (1, 28)]
     public int  dateInMonth;
@@ -24,7 +27,7 @@ public class TimeManager : MonoBehaviour
     private DateTime DateTime;
 
     [Header ("Tick Settings")]
-    public int TickMinutesIncrease = 10;
+    public int TickMinutesIncrease = 0;
     public float TimeBetweenTicks = 1;
     private float currentTimeBetweenTicks = 0;
     public static UnityAction<DateTime> OnDateTimeChanged; 
@@ -32,6 +35,7 @@ public class TimeManager : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+        TickMinutesIncrease = mapManager.GetCurrentCycle();
         DateTime = new DateTime (dateInMonth, season - 1, year, hour, minutes * 10);
         Debug.Log($"Starting Date: {DateTime.NewYearsDay(2)}");
         Debug.Log($"Starting Date: {DateTime.SummerSolstice(4)}");
