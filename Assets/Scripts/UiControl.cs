@@ -42,6 +42,7 @@ public class UiControl : MonoBehaviour
 
 //Deuda
     public GameObject DeudaTxt;
+    public GameObject DeudaTime;
 
 // Mercado 
 
@@ -483,6 +484,7 @@ public class UiControl : MonoBehaviour
             flagDeuda=true;
             Deuda.SetActive(true);
             DeudaTxt.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetDebt().ToString();
+            DeudaTime.GetComponent<TextMeshProUGUI>().text = financeManager.GetTimetoPay().ToString() + " días";
         }
     }
 
