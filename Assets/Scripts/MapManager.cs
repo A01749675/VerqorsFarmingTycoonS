@@ -281,6 +281,7 @@ public class MapManager : MonoBehaviour
                 ui.hoz();
             }
             print("Planted");
+            selected_crop=-1;
 
         }
         

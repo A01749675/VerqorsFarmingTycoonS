@@ -43,6 +43,8 @@ public class ClimateManager : MonoBehaviour
     public Sprite bigPeriodicoSprite10;
 
     public GameObject rain;
+    public GameObject flood;
+    public GameObject hurricane;
 
     public bool ClimateAlreadyExecuted = false;
     private Dictionary<int,int> probability;
@@ -160,6 +162,8 @@ public class ClimateManager : MonoBehaviour
                 bigPeriodicoText2.text = "Hombre afeita la cabeza de un gato en su casa";
                 bigPeriodicoImg2.sprite = bigPeriodicoSprite2;
                 rain.SetActive(false);
+                flood.SetActive(false);
+                hurricane.SetActive(false);
                 break;
             case 1:
                 Debug.Log("Normal");
@@ -170,6 +174,8 @@ public class ClimateManager : MonoBehaviour
                 bigPeriodicoImg2.sprite = bigPeriodicoSprite4;
                 tankManager.FillTank();
                 rain.SetActive(false);
+                flood.SetActive(false);
+                hurricane.SetActive(false);
                 break;
             case 2:
                 Debug.Log("Rain");
@@ -180,6 +186,8 @@ public class ClimateManager : MonoBehaviour
                 bigPeriodicoImg2.sprite = bigPeriodicoSprite6;
                 tankManager.FillTank();
                 rain.SetActive(true);
+                flood.SetActive(false);
+                hurricane.SetActive(false);
                 break;
             case 3:
                 Debug.Log("Flood");
@@ -190,6 +198,8 @@ public class ClimateManager : MonoBehaviour
                 bigPeriodicoImg2.sprite = bigPeriodicoSprite8;
                 tankManager.FillTank();
                 rain.SetActive(false);
+                flood.SetActive(true);
+                hurricane.SetActive(false);
                 break;
             case 4:
                 Debug.Log("Hurricane");
@@ -199,6 +209,8 @@ public class ClimateManager : MonoBehaviour
                 bigPeriodicoText2.text = "Bandas Sinaloenses combaten la gentrificación en el norte del país";
                 bigPeriodicoImg2.sprite = bigPeriodicoSprite10;
                 rain.SetActive(false);
+                flood.SetActive(false);
+                hurricane.SetActive(true);
                 break;
         }
     }

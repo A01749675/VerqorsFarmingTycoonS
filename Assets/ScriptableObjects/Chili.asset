@@ -20,7 +20,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 44434ecde60225f4499dbb80232e6764, type: 2}
   crop_type: 6
   crop_growth: 0
-  quantity: 2
+  quantity: 3
   water: 0
   isPlanted: 1
   isBox: 0

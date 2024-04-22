@@ -14,9 +14,9 @@ public class UserController : MonoBehaviour
     {
         print("UserController Awake");
         user_data = new Dictionary<string, int>(){
-            {"capital", 0},
+            {"capital", 1000000},
             {"financiamiento", 1},
-            {"deuda", 50000},
+            {"deuda", 1500000},
             {"user_id", -1},
         };
 
