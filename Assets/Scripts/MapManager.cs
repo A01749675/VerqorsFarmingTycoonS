@@ -121,7 +121,7 @@ public class MapManager : MonoBehaviour
     void Update()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    if(Input.GetMouseButtonDown(0))
+/*         if(Input.GetMouseButtonDown(0))
         {
             Vector3Int gridPos = tilemap.WorldToCell(mousePos);
             TileBase clickedTile = tilemap.GetTile(gridPos);
@@ -136,9 +136,9 @@ public class MapManager : MonoBehaviour
                 print("The crop is: "+Land_Crop_Assigned[CheckIfTileIsLand(gridPos)]);
             }
             
-        }
+        } */
 
-        if(Input.GetKeyDown("p")){
+        if(Input.GetMouseButtonDown(0)){
             Vector3Int gridPos = tilemap.WorldToCell(mousePos);
             if(UnlockedLands.ContainsKey(CheckIfTileIsLand(gridPos))){
                 print(selected_crop);
@@ -147,7 +147,7 @@ public class MapManager : MonoBehaviour
             }
             
             }
-        if(Input.GetKeyDown("c")){
+        if(Input.GetMouseButtonDown(1)){
             Vector3Int gridPos = tilemap.WorldToCell(mousePos);
             if(UnlockedLands.ContainsKey(CheckIfTileIsLand(gridPos))){
                 selected_land = CheckIfTileIsLand(gridPos);
@@ -583,13 +583,12 @@ public class MapManager : MonoBehaviour
             if(CheckIfTileIsLand(gridPosition)!=-1){
                 if(Disaster && CropsInLand[CheckIfTileIsLand(gridPosition)] != 0){
                     int price = financeManager.GetCropPrice(crop_type);
-                    userController.UpdateCapital((int)(CropsInLand[CheckIfTileIsLand(gridPosition)]*(price)*financeManager.TasaInteres(1)));
+                    userController.UpdateCapital((int)(CropsInLand[CheckIfTileIsLand(gridPosition)]*(price)*financeManager.TasaInteres(userController.GetParameter("financiamiento"))));
                     uiControl.ActualizarDinero();
                 }
                 LandIsPlanted[CheckIfTileIsLand(gridPosition)] = false;
                 CropsInLand[CheckIfTileIsLand(gridPosition)] = 0;
             }
-
         }
     }
 

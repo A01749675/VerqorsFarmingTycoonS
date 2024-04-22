@@ -42,6 +42,8 @@ public class ClimateManager : MonoBehaviour
     public Sprite bigPeriodicoSprite9;
     public Sprite bigPeriodicoSprite10;
 
+    public GameObject rain;
+
     public bool ClimateAlreadyExecuted = false;
     private Dictionary<int,int> probability;
     // Start is called before the first frame update
@@ -157,6 +159,7 @@ public class ClimateManager : MonoBehaviour
                 bigPeriodicoImg1.sprite = bigPeriodicoSprite1;
                 bigPeriodicoText2.text = "Hombre afeita la cabeza de un gato en su casa";
                 bigPeriodicoImg2.sprite = bigPeriodicoSprite2;
+                rain.SetActive(false);
                 break;
             case 1:
                 Debug.Log("Normal");
@@ -166,6 +169,7 @@ public class ClimateManager : MonoBehaviour
                 bigPeriodicoText2.text = "Technoblade becomes the Potato King";
                 bigPeriodicoImg2.sprite = bigPeriodicoSprite4;
                 tankManager.FillTank();
+                rain.SetActive(false);
                 break;
             case 2:
                 Debug.Log("Rain");
@@ -175,6 +179,7 @@ public class ClimateManager : MonoBehaviour
                 bigPeriodicoText2.text = "Mujer se casa con su perro";
                 bigPeriodicoImg2.sprite = bigPeriodicoSprite6;
                 tankManager.FillTank();
+                rain.SetActive(true);
                 break;
             case 3:
                 Debug.Log("Flood");
@@ -184,6 +189,7 @@ public class ClimateManager : MonoBehaviour
                 bigPeriodicoText2.text = "Joe Biden se cae de su avión, otra vez";
                 bigPeriodicoImg2.sprite = bigPeriodicoSprite8;
                 tankManager.FillTank();
+                rain.SetActive(false);
                 break;
             case 4:
                 Debug.Log("Hurricane");
@@ -192,7 +198,7 @@ public class ClimateManager : MonoBehaviour
                 bigPeriodicoImg1.sprite = bigPeriodicoSprite9;
                 bigPeriodicoText2.text = "Bandas Sinaloenses combaten la gentrificación en el norte del país";
                 bigPeriodicoImg2.sprite = bigPeriodicoSprite10;
-                
+                rain.SetActive(false);
                 break;
         }
     }
