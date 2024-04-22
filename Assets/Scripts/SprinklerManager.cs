@@ -33,6 +33,7 @@ public class SprinklerManager : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        AssignLandToSprinkler(land_id);
     }
 
     public void AssignLandToSprinkler(int land_id){
