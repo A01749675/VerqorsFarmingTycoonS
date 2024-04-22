@@ -179,7 +179,11 @@ public class EnviarDatos : MonoBehaviour
         else
         {
             Debug.Log("Datos enviados correctamente.");
-            Application.Quit();
+
+            // llamada get a /logout
+            string apiUrl2 = "http://localhost:3000/logout";
+            UnityWebRequest www2 = UnityWebRequest.Get(apiUrl2);
+            yield return www2.SendWebRequest();
         }
     }
     private int ObtenerUserIdDeURL(string url)
