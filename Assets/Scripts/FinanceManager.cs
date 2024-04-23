@@ -42,12 +42,12 @@ public class FinanceManager : MonoBehaviour
     {
         _prices = new Dictionary<int, int>()
         {
-            {1, 15},
-            {2, 17},
-            {3, 20},
-            {4, 22},
-            {5, 13},
-            {6, 25}
+            {1, 30},
+            {2, 34},
+            {3, 40},
+            {4, 44},
+            {5, 26},
+            {6, 50}
         };
         VerqorFinanceData = new Dictionary<string, float>()
         {
@@ -58,7 +58,7 @@ public class FinanceManager : MonoBehaviour
         };
         BancoFinanceData = new Dictionary<string, float>()
         {
-            {"tasaInteres", 0.3f},
+            {"tasaInteres", 0.35f},
             {"plazo", 2900},
             {"montoMaximo", 800000},
             {"seguro", 0.0f}
@@ -66,7 +66,7 @@ public class FinanceManager : MonoBehaviour
         CoyoteFinanceData = new Dictionary<string, float>()
         {
             {"tasaInteres", 0.75f},
-            {"plazo", 1450},
+            {"plazo", 2900},
             {"montoMaximo", 800000},
             {"seguro", 0.0f}
         };
@@ -152,6 +152,20 @@ public class FinanceManager : MonoBehaviour
                 break;
         }
         return tasa;
+    }
+
+    public float GetSeguro(int fin){
+        switch(fin){
+            case 1:
+                return VerqorFinanceData["seguro"];
+            case 2:
+                return BancoFinanceData["seguro"];
+            case 3:
+                return CoyoteFinanceData["seguro"];
+            default:
+                return 0f;
+        }
+        
     }
 
     public void UpdateSeguro(int mejora){

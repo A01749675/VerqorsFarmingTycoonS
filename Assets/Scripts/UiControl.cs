@@ -130,6 +130,9 @@ public class UiControl : MonoBehaviour
     public GameObject Dinero;
     public GameObject Arbol;
 
+    //TreeManager
+    public TreeManager treeManager;
+
     public CropManager cropManager;
     private bool flagUsuario=false;
     private bool flagFinanciamiento=false;
@@ -1216,6 +1219,7 @@ public class UiControl : MonoBehaviour
         }else{
             flagArbol=true;
             Arbol.SetActive(true);
+            treeManager.UpdateColors();
         }
     }
     private void Awake()

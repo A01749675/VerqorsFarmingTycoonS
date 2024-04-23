@@ -281,6 +281,7 @@ public class MapManager : MonoBehaviour
                 ui.hoz();
             }
             print("Planted");
+            selected_crop=-1;
 
         }
         
@@ -595,7 +596,7 @@ public class MapManager : MonoBehaviour
             if(CheckIfTileIsLand(gridPosition)!=-1){
                 if(Disaster && CropsInLand[CheckIfTileIsLand(gridPosition)] != 0){
                     int price = financeManager.GetCropPrice(crop_type);
-                    userController.UpdateCapital((int)(CropsInLand[CheckIfTileIsLand(gridPosition)]*(price)*financeManager.TasaInteres(userController.GetParameter("financiamiento"))));
+                    userController.UpdateCapital((int)(CropsInLand[CheckIfTileIsLand(gridPosition)]*(price)*financeManager.GetSeguro(userController.GetParameter("financiamiento"))));
                     uiControl.ActualizarDinero();
                 }
                 LandIsPlanted[CheckIfTileIsLand(gridPosition)] = false;
