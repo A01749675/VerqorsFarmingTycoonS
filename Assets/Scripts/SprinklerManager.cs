@@ -24,7 +24,7 @@ public class SprinklerManager : MonoBehaviour
         if(mapManager.GetCurrentCycle()%cycle==0){
             if(mapManager.GetAverageWaterAtLand(assigned_land) < 100 && tankManager.GetWaterLevel() > 0){
                 mapManager.WaterSpecificLand(assigned_land);
-                tankManager.SetWaterLevel(-1);
+                tankManager.SetWaterLevel(-5);
             }
         }
 
@@ -35,7 +35,7 @@ public class SprinklerManager : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        AssignLandToSprinkler(land_id);
+        //AssignLandToSprinkler(land_id);
     }
 
     public void AssignLandToSprinkler(int land_id){
