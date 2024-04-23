@@ -109,23 +109,23 @@ public class TecManager : MonoBehaviour
                 prodtrigo.GetComponent<TextMeshProUGUI>().text = "1 parcela";
                 prodmaiz.GetComponent<TextMeshProUGUI>().text = "1 parcela";
                 prodchile.GetComponent<TextMeshProUGUI>().text = "1 parcela";
-                prodtomate.GetComponent<TextMeshProUGUI>().text = "2 parcelas";
+                prodtomate.GetComponent<TextMeshProUGUI>().text = "1 parcelas";
                 prodfrijol.GetComponent<TextMeshProUGUI>().text = "0 parcelas";
-                prodaguacate.GetComponent<TextMeshProUGUI>().text = "0 parcelas";
+                prodaguacate.GetComponent<TextMeshProUGUI>().text = "1 parcelas";
             } else if (treeManager.Mejoras[2] & treeManager.Mejoras[13] & !treeManager.Mejoras[20]){
                 prodtrigo.GetComponent<TextMeshProUGUI>().text = "2 parcelas";
-                prodmaiz.GetComponent<TextMeshProUGUI>().text = "4 parcelas";
+                prodmaiz.GetComponent<TextMeshProUGUI>().text = "3 parcelas";
                 prodchile.GetComponent<TextMeshProUGUI>().text = "2 parcelas";
-                prodtomate.GetComponent<TextMeshProUGUI>().text = "3 parcelas";
+                prodtomate.GetComponent<TextMeshProUGUI>().text = "2 parcelas";
                 prodfrijol.GetComponent<TextMeshProUGUI>().text = "1 parcelas";
-                prodaguacate.GetComponent<TextMeshProUGUI>().text = "0 parcelas";
+                prodaguacate.GetComponent<TextMeshProUGUI>().text = "2 parcelas";
             } else{
-                prodtrigo.GetComponent<TextMeshProUGUI>().text = "4 parcelas";
-                prodmaiz.GetComponent<TextMeshProUGUI>().text = "5 parcelas";
-                prodchile.GetComponent<TextMeshProUGUI>().text = "4 parcelas";
-                prodtomate.GetComponent<TextMeshProUGUI>().text = "5 parcelas";
-                prodfrijol.GetComponent<TextMeshProUGUI>().text = "2 parcelas";
-                prodaguacate.GetComponent<TextMeshProUGUI>().text = "0 parcelas";
+                prodtrigo.GetComponent<TextMeshProUGUI>().text = "3 parcelas";
+                prodmaiz.GetComponent<TextMeshProUGUI>().text = "4 parcelas";
+                prodchile.GetComponent<TextMeshProUGUI>().text = "3 parcelas";
+                prodtomate.GetComponent<TextMeshProUGUI>().text = "3 parcelas";
+                prodfrijol.GetComponent<TextMeshProUGUI>().text = "4 parcelas";
+                prodaguacate.GetComponent<TextMeshProUGUI>().text = "3 parcelas";
             }
        
     }
