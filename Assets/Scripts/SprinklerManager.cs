@@ -21,11 +21,15 @@ public class SprinklerManager : MonoBehaviour
     private bool active = false;
 
     public void WaterCrops(){
-        for (int i = 0; i < 10; i++){
-            if(mapManager.GetAverageWaterAtLand(assigned_land) < 100 && tankManager.GetWaterLevel() > 0){
-                mapManager.WaterSpecificLand(assigned_land);
+        if(mapManager.GetCurrentCycle()%20==0){
+            for (int i = 0; i < 10; i++){
+                if(mapManager.GetAverageWaterAtLand(assigned_land) < 100 && tankManager.GetWaterLevel() > 0){
+                    mapManager.WaterSpecificLand(assigned_land);
+                    tankManager.SetWaterLevel(-5);
+                }
             }
         }
+
     
     }
     // Start is called before the first frame update

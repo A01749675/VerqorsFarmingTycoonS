@@ -326,7 +326,7 @@ public class MapManager : MonoBehaviour
                                 }
                         }
                     }
-                    if(tile && dataFromTiles.ContainsKey(tile) && cropManager.cropCycleGrowth.ContainsKey(gridPosition) && (current_cycle-cropManager.cropCycleGrowth[gridPosition]["cycle"])%30==0){
+                    if(tile && dataFromTiles.ContainsKey(tile) && cropManager.cropCycleGrowth.ContainsKey(gridPosition) && (current_cycle-cropManager.cropCycleGrowth[gridPosition]["cycle"])%35==0){
                         UpdateTileWater(gridPosition,dataFromTiles[tile].crop_type);
                     }
 
