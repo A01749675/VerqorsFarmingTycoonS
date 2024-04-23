@@ -313,7 +313,7 @@ public class TreeManager : MonoBehaviour
     public void ShowUpgrade10()
     {
         Arbol.transform.GetChild(0).gameObject.SetActive(true);
-        Texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te permitirá comprar unos tractor, los cuales te ayudarán a recoger los cultivos de 2 parcelas más. Costo: $400,000";
+        Texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te permitirá comprar unos tractores, los cuales te ayudarán a recoger los cultivos de 2 parcelas más. Costo: $400,000";
         Imagen.sprite = Tractor;
         if (Mejoras[7] && Mejoras[8] && !Mejoras[10])
         {
@@ -411,7 +411,7 @@ public class TreeManager : MonoBehaviour
     public void ShowUpgrade17()
     {
         Arbol.transform.GetChild(0).gameObject.SetActive(true);
-        Texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te permitirá comprar un tractor, el cual te ayudará a recoger los cultivos de 4 parcelas más. Costo: $500,000";
+        Texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te permitirá comprar unos tractores, los cuales te ayudará a recoger los cultivos de 4 parcelas más. Costo: $500,000";
         Imagen.sprite = Tractor;
         if (Mejoras[13] && Mejoras[14] && Mejoras[15] && !Mejoras[17])
         {

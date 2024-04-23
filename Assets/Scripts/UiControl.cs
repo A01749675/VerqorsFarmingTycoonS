@@ -717,7 +717,7 @@ public class UiControl : MonoBehaviour
                 }else{
                     trigov =cropManager.GetCropQuantity(1);
                 }
-                TrigoVcontador2.GetComponent<TextMeshProUGUI>().text = trigov.ToString();
+                TrigoVcontador2.GetComponent<TextMeshProUGUI>().text = trigov.ToString() +" kg";
                 break;
             case "2":
                 if(cropManager.GetCropQuantity(2)>maizv){
@@ -725,7 +725,7 @@ public class UiControl : MonoBehaviour
                 }else{
                     maizv =cropManager.GetCropQuantity(2);
                 }
-                MaizVcontador2.GetComponent<TextMeshProUGUI>().text = maizv.ToString();
+                MaizVcontador2.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
                 break;
             case "3":
                 if(cropManager.GetCropQuantity(3)>tomatev){
@@ -733,7 +733,7 @@ public class UiControl : MonoBehaviour
                 }else{
                     tomatev =cropManager.GetCropQuantity(3);
                 }
-                TomateVcontador2.GetComponent<TextMeshProUGUI>().text = tomatev.ToString();
+                TomateVcontador2.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
                 break;
             case "4":
                 if(cropManager.GetCropQuantity(4)>aguacatev){
@@ -741,7 +741,7 @@ public class UiControl : MonoBehaviour
                 }else{
                     aguacatev =cropManager.GetCropQuantity(4);
                 }
-                AguacateVcontador2.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString();
+                AguacateVcontador2.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
                 break;
             case "5":
                 if(cropManager.GetCropQuantity(5)>cafev){
@@ -749,7 +749,7 @@ public class UiControl : MonoBehaviour
                 }else{
                     cafev =cropManager.GetCropQuantity(5);
                 }
-                CafeVcontador2.GetComponent<TextMeshProUGUI>().text = cafev.ToString();
+                CafeVcontador2.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
                 break;
             case "6":
                 if(cropManager.GetCropQuantity(6)>chilev){
@@ -757,7 +757,7 @@ public class UiControl : MonoBehaviour
                 }else{
                     chilev =cropManager.GetCropQuantity(6);
                 }
-                ChileVcontador2.GetComponent<TextMeshProUGUI>().text = chilev.ToString();
+                ChileVcontador2.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
                 break;
         }
     }
@@ -769,7 +769,7 @@ public class UiControl : MonoBehaviour
                 } else{
                     trigov = 0;
                 }
-                TrigoVcontador2.GetComponent<TextMeshProUGUI>().text = trigov.ToString();
+                TrigoVcontador2.GetComponent<TextMeshProUGUI>().text = trigov.ToString()+" kg";
                 break;
             case "2":
                 if(maizv>0){
@@ -777,7 +777,7 @@ public class UiControl : MonoBehaviour
                 } else{
                     maizv = 0;
                 }
-                MaizVcontador2.GetComponent<TextMeshProUGUI>().text = maizv.ToString();
+                MaizVcontador2.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
                 break;
             case "3":
                 if(tomatev>0){
@@ -785,7 +785,7 @@ public class UiControl : MonoBehaviour
                 } else{
                     tomatev = 0;
                 }
-                TomateVcontador2.GetComponent<TextMeshProUGUI>().text = tomatev.ToString();
+                TomateVcontador2.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
                 break;
             case "4":
                 if(aguacatev>0){
@@ -793,7 +793,7 @@ public class UiControl : MonoBehaviour
                 }else{  
                     aguacatev = 0;
                 }
-                AguacateVcontador2.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString();
+                AguacateVcontador2.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
                 break;
             case "5":
                 if(cafev>0){
@@ -801,7 +801,7 @@ public class UiControl : MonoBehaviour
                 } else{
                     cafev = 0;
                 }
-                CafeVcontador2.GetComponent<TextMeshProUGUI>().text = cafev.ToString();
+                CafeVcontador2.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
                 break;
             case "6":
                 if(chilev>0){
@@ -809,7 +809,7 @@ public class UiControl : MonoBehaviour
                 } else{
                     chilev = 0;
                 }
-                ChileVcontador2.GetComponent<TextMeshProUGUI>().text = chilev.ToString();
+                ChileVcontador2.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
                 break;
         }
     }
@@ -867,7 +867,7 @@ public class UiControl : MonoBehaviour
         }else{
             trigov =cropManager.GetCropQuantity(1);
         }
-        TrigoVcontador.GetComponent<TextMeshProUGUI>().text = trigov.ToString();
+        TrigoVcontador.GetComponent<TextMeshProUGUI>().text = trigov.ToString()+" kg";
     }
     public void RestarTrigoV(){
         if(trigov>0){
@@ -875,7 +875,7 @@ public class UiControl : MonoBehaviour
         } else{
             trigov = 0;
         }
-        TrigoVcontador.GetComponent<TextMeshProUGUI>().text = trigov.ToString();
+        TrigoVcontador.GetComponent<TextMeshProUGUI>().text = trigov.ToString()+" kg";
     }
     public void SumarMaízV(){
         if(cropManager.GetCropQuantity(2)>maizv){
@@ -883,7 +883,7 @@ public class UiControl : MonoBehaviour
         }else{
             maizv =cropManager.GetCropQuantity(2); 
         }
-        MaizVcontador.GetComponent<TextMeshProUGUI>().text = maizv.ToString();
+        MaizVcontador.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
     }
     public void RestarMaízV(){
         if(maizv>0){
@@ -891,7 +891,7 @@ public class UiControl : MonoBehaviour
         } else{
             maizv = 0;
         }
-        MaizVcontador.GetComponent<TextMeshProUGUI>().text = maizv.ToString();
+        MaizVcontador.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
     }
     public void SumarChileV(){
         if(cropManager.GetCropQuantity(6)>chilev){
@@ -899,7 +899,7 @@ public class UiControl : MonoBehaviour
         }else{
             chilev =cropManager.GetCropQuantity(6);
         }
-        ChileVcontador.GetComponent<TextMeshProUGUI>().text = chilev.ToString();
+        ChileVcontador.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
     }
     public void RestarChileV(){
         if(chilev>0){
@@ -907,7 +907,7 @@ public class UiControl : MonoBehaviour
         } else{
             chilev = 0;
         }
-        ChileVcontador.GetComponent<TextMeshProUGUI>().text = chilev.ToString();
+        ChileVcontador.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
     }
     public void SumarAguacateV(){
         if(cropManager.GetCropQuantity(4)>aguacatev){
@@ -915,7 +915,7 @@ public class UiControl : MonoBehaviour
         }else{
             aguacatev =cropManager.GetCropQuantity(4);
         }
-        AguacateVcontador.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString();
+        AguacateVcontador.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
     }
     public void RestarAguacateV(){
         if(aguacatev>0){
@@ -923,7 +923,7 @@ public class UiControl : MonoBehaviour
         }else{  
             aguacatev = 0;
         }
-        AguacateVcontador.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString();
+        AguacateVcontador.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
     }
     public void SumarCafeV(){
         if(cropManager.GetCropQuantity(5)>cafev){
@@ -931,7 +931,7 @@ public class UiControl : MonoBehaviour
         } else{
             cafev =cropManager.GetCropQuantity(5);
         }
-        CafeVcontador.GetComponent<TextMeshProUGUI>().text = cafev.ToString();
+        CafeVcontador.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
     }
     public void RestarCafeV(){
         if(cafev>0){
@@ -939,7 +939,7 @@ public class UiControl : MonoBehaviour
         } else{
             cafev = 0;
         }
-        CafeVcontador.GetComponent<TextMeshProUGUI>().text = cafev.ToString();
+        CafeVcontador.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
     }
     public void SumarTomateV(){
         if(cropManager.GetCropQuantity(3)>tomatev){
@@ -947,7 +947,7 @@ public class UiControl : MonoBehaviour
         } else{
             tomatev =cropManager.GetCropQuantity(3);
         }
-        TomateVcontador.GetComponent<TextMeshProUGUI>().text = tomatev.ToString();
+        TomateVcontador.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
     }
     public void RestarTomateV(){
         if(tomatev>0){
@@ -955,7 +955,7 @@ public class UiControl : MonoBehaviour
         } else{
             tomatev = 0;
         }
-        TomateVcontador.GetComponent<TextMeshProUGUI>().text = tomatev.ToString();
+        TomateVcontador.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
     }
 
     public void Vender(){
@@ -971,13 +971,13 @@ public class UiControl : MonoBehaviour
         aguacatev=0;
         cafev=0;
         tomatev=0;
-        TrigoVcontador.GetComponent<TextMeshProUGUI>().text = trigov.ToString();
-        MaizVcontador.GetComponent<TextMeshProUGUI>().text = maizv.ToString();
-        ChileVcontador.GetComponent<TextMeshProUGUI>().text = chilev.ToString();
-        AguacateVcontador.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString();
-        CafeVcontador.GetComponent<TextMeshProUGUI>().text = cafev.ToString();
-        TomateVcontador.GetComponent<TextMeshProUGUI>().text = tomatev.ToString();
-        Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
+        TrigoVcontador.GetComponent<TextMeshProUGUI>().text = trigov.ToString()+" kg";
+        MaizVcontador.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
+        ChileVcontador.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
+        AguacateVcontador.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
+        CafeVcontador.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
+        TomateVcontador.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
+        Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString()+" kg";
     }
 
     public void Vender2(){
@@ -993,13 +993,13 @@ public class UiControl : MonoBehaviour
         aguacatev=0;
         cafev=0;
         tomatev=0;
-        TrigoVcontador2.GetComponent<TextMeshProUGUI>().text = trigov.ToString();
-        MaizVcontador2.GetComponent<TextMeshProUGUI>().text = maizv.ToString();
-        ChileVcontador2.GetComponent<TextMeshProUGUI>().text = chilev.ToString();
-        AguacateVcontador2.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString();
-        CafeVcontador2.GetComponent<TextMeshProUGUI>().text = cafev.ToString();
-        TomateVcontador2.GetComponent<TextMeshProUGUI>().text = tomatev.ToString();
-        Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
+        TrigoVcontador2.GetComponent<TextMeshProUGUI>().text = trigov.ToString()+" kg";
+        MaizVcontador2.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
+        ChileVcontador2.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
+        AguacateVcontador2.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
+        CafeVcontador2.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
+        TomateVcontador2.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
+        Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString()+" kg";
     }
     public void VenderTodo(){
         
@@ -1015,13 +1015,13 @@ public class UiControl : MonoBehaviour
         aguacatev=0;
         cafev=0;
         tomatev=0;
-        TrigoVcontador.GetComponent<TextMeshProUGUI>().text = trigov.ToString();
-        MaizVcontador.GetComponent<TextMeshProUGUI>().text = maizv.ToString();
-        ChileVcontador.GetComponent<TextMeshProUGUI>().text = chilev.ToString();
-        AguacateVcontador.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString();
-        CafeVcontador.GetComponent<TextMeshProUGUI>().text = cafev.ToString();
-        TomateVcontador.GetComponent<TextMeshProUGUI>().text = tomatev.ToString();
-        Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
+        TrigoVcontador.GetComponent<TextMeshProUGUI>().text = trigov.ToString()+" kg";
+        MaizVcontador.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
+        ChileVcontador.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
+        AguacateVcontador.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
+        CafeVcontador.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
+        TomateVcontador.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
+        Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString()+" kg";
     }
     public void VenderTodo2(){
         financeManager.SellItem2(1,cropManager.GetCropQuantity(1));
@@ -1036,13 +1036,13 @@ public class UiControl : MonoBehaviour
         aguacatev=0;
         cafev=0;
         tomatev=0;
-        TrigoVcontador2.GetComponent<TextMeshProUGUI>().text = trigov.ToString();
-        MaizVcontador2.GetComponent<TextMeshProUGUI>().text = maizv.ToString();
-        ChileVcontador2.GetComponent<TextMeshProUGUI>().text = chilev.ToString();
-        AguacateVcontador2.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString();
-        CafeVcontador2.GetComponent<TextMeshProUGUI>().text = cafev.ToString();
-        TomateVcontador2.GetComponent<TextMeshProUGUI>().text = tomatev.ToString();
-        Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
+        TrigoVcontador2.GetComponent<TextMeshProUGUI>().text = trigov.ToString()+" kg";
+        MaizVcontador2.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
+        ChileVcontador2.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
+        AguacateVcontador2.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
+        CafeVcontador2.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
+        TomateVcontador2.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
+        Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString()+" kg";
     }
 
     public void ComprarSemillas(string cropType){
@@ -1051,7 +1051,7 @@ public class UiControl : MonoBehaviour
                 UserController.UpdateCapital(-(int)marketManager.GetTotal(1));
                 cropManager.UpdateCropSeeds(1,marketManager.GetCantidad(1));
                 marketManager.UpdateCropQuantity(1,0);
-                trigoCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(1).ToString();
+                trigoCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(1).ToString() +" kg";
                 trigoPrice.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal(1)).ToString();
                 Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
             }
@@ -1060,7 +1060,7 @@ public class UiControl : MonoBehaviour
                 UserController.UpdateCapital(-(int)marketManager.GetTotal(2));
                 cropManager.UpdateCropSeeds(2,marketManager.GetCantidad(2));
                 marketManager.UpdateCropQuantity(2,0);
-                maizCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(2).ToString();
+                maizCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(2).ToString()+" kg";
                 maizPrice.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal(2)).ToString();
                 Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
             }
@@ -1069,7 +1069,7 @@ public class UiControl : MonoBehaviour
                 UserController.UpdateCapital(-(int)marketManager.GetTotal(3));
                 cropManager.UpdateCropSeeds(3,marketManager.GetCantidad(3));
                 marketManager.UpdateCropQuantity(3,0);
-                tomateCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(3).ToString();
+                tomateCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(3).ToString()+" kg";
                 tomatePrice.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal(3)).ToString();
                 Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
             }
@@ -1078,7 +1078,7 @@ public class UiControl : MonoBehaviour
                 UserController.UpdateCapital(-(int)marketManager.GetTotal(4));
                 cropManager.UpdateCropSeeds(4,marketManager.GetCantidad(4));
                 marketManager.UpdateCropQuantity(4,0);
-                aguacateCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(4).ToString();
+                aguacateCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(4).ToString()+" kg";
                 aguacatePrice.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal(4)).ToString();
                 Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
             }
@@ -1087,7 +1087,7 @@ public class UiControl : MonoBehaviour
                 UserController.UpdateCapital(-(int)marketManager.GetTotal(5));
                 cropManager.UpdateCropSeeds(5,marketManager.GetCantidad(5));
                 marketManager.UpdateCropQuantity(5,0);
-                cafeCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(5).ToString();
+                cafeCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(5).ToString()+" kg";
                 cafePrice.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal(5)).ToString();
                 Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
             }
@@ -1096,7 +1096,7 @@ public class UiControl : MonoBehaviour
                 UserController.UpdateCapital(-(int)marketManager.GetTotal(6));
                 cropManager.UpdateCropSeeds(6,marketManager.GetCantidad(6));
                 marketManager.UpdateCropQuantity(6,0);
-                chileCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(6).ToString();
+                chileCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(6).ToString()+" kg";
                 chilePrice.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal(6)).ToString();
                 Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
             }
@@ -1108,7 +1108,7 @@ public class UiControl : MonoBehaviour
                 UserController.UpdateCapital(-(int)marketManager.GetTotal2(1));
                 cropManager.UpdateCropSeeds(1,marketManager.GetCantidad2(1));
                 marketManager.UpdateCropQuantity2(1,0);
-                trigoCantidad2.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad2(1).ToString();
+                trigoCantidad2.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad2(1).ToString()+" kg";
                 trigoPrice2.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal2(1)).ToString();
                 Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
             }
@@ -1117,7 +1117,7 @@ public class UiControl : MonoBehaviour
                 UserController.UpdateCapital(-(int)marketManager.GetTotal2(2));
                 cropManager.UpdateCropSeeds(2,marketManager.GetCantidad2(2));
                 marketManager.UpdateCropQuantity2(2,0);
-                maizCantidad2.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad2(2).ToString();
+                maizCantidad2.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad2(2).ToString()+" kg";
                 maizPrice2.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal2(2)).ToString();
                 Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
             }
@@ -1126,7 +1126,7 @@ public class UiControl : MonoBehaviour
                 UserController.UpdateCapital(-(int)marketManager.GetTotal2(3));
                 cropManager.UpdateCropSeeds(3,marketManager.GetCantidad2(3));
                 marketManager.UpdateCropQuantity2(3,0);
-                tomateCantidad2.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad2(3).ToString();
+                tomateCantidad2.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad2(3).ToString()+" kg";
                 tomatePrice2.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal2(3)).ToString();
                 Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
             }
@@ -1135,7 +1135,7 @@ public class UiControl : MonoBehaviour
                 UserController.UpdateCapital(-(int)marketManager.GetTotal2(4));
                 cropManager.UpdateCropSeeds(4,marketManager.GetCantidad2(4));
                 marketManager.UpdateCropQuantity2(4,0);
-                aguacateCantidad2.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad2(4).ToString();
+                aguacateCantidad2.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad2(4).ToString()+" kg";
                 aguacatePrice2.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal2(4)).ToString();
                 Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
             }
@@ -1144,7 +1144,7 @@ public class UiControl : MonoBehaviour
                 UserController.UpdateCapital(-(int)marketManager.GetTotal2(5));
                 cropManager.UpdateCropSeeds(5,marketManager.GetCantidad2(5));
                 marketManager.UpdateCropQuantity2(5,0);
-                cafeCantidad2.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad2(5).ToString();
+                cafeCantidad2.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad2(5).ToString()+" kg";
                 cafePrice2.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal2(5)).ToString();
                 Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
             }
@@ -1153,7 +1153,7 @@ public class UiControl : MonoBehaviour
                 UserController.UpdateCapital(-(int)marketManager.GetTotal2(6));
                 cropManager.UpdateCropSeeds(6,marketManager.GetCantidad2(6));
                 marketManager.UpdateCropQuantity2(6,0);
-                chileCantidad2.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad2(6).ToString();
+                chileCantidad2.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad2(6).ToString()+" kg";
                 chilePrice2.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal2(6)).ToString();
                 Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
             }
