@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class EnviarDatos : MonoBehaviour
 {
     public ObtenerDatos obtenerDatos;
-    public TreeManager treeManager; 
+    public TreeManager treeManager;
 
     public UserController userController;
     public MapManager mapManager;
@@ -17,11 +17,12 @@ public class EnviarDatos : MonoBehaviour
     private List<Parcela> parcelas_data;
 
     private List<Progreso> progreso_lista = new List<Progreso>();
-    private List<Semilla> semilla_lista= new List<Semilla>();
-    private List<Cosecha> cosecha_lista= new List<Cosecha>();
+    private List<Semilla> semilla_lista = new List<Semilla>();
+    private List<Cosecha> cosecha_lista = new List<Cosecha>();
     private List<Mejoras> mejoras_lista = new List<Mejoras>();
 
-    public void GetDataFromCodes(){
+    public void GetDataFromCodes()
+    {
         int trigo = cropManager.GetCropQuantity(1);
         int maiz = cropManager.GetCropQuantity(2);
         int tomate = cropManager.GetCropQuantity(3);
@@ -36,13 +37,14 @@ public class EnviarDatos : MonoBehaviour
         int frijol_seed = cropManager.GetCropSeeds(5);
         int ciclo = mapManager.GetCurrentCycle();
         int capital = userController.GetParameter("capital");
-        
+
 
 
         List<List<int>> parcelas_raw = mapManager.SaveDataFromMap();
         parcelas_data = new List<Parcela>();
 
-        foreach(List<int> parcela in parcelas_raw){
+        foreach (List<int> parcela in parcelas_raw)
+        {
             Parcela parcela_data = new Parcela();
             parcela_data.id_parcela = parcela[0];
             parcela_data.estado = parcela[1];
@@ -52,16 +54,18 @@ public class EnviarDatos : MonoBehaviour
         }
 
         Mejoras mejoras = new Mejoras();
-        for(int i = 1; i <= 21; i++){
+        for (int i = 1; i <= 21; i++)
+        {
             mejoras = new Mejoras();
             mejoras.id_mejora = i;
             mejoras.estado = treeManager.getMejoras(i);
-            print("Mejora "+i+" "+ treeManager.getMejoras(i));
+            print("Mejora " + i + " " + treeManager.getMejoras(i));
             mejoras_lista.Add(mejoras);
         }
         // imprimir la lista de mejoras
-        foreach(Mejoras m in mejoras_lista){
-            print("Mejora de Marzy "+m.id_mejora+" "+m.estado);
+        foreach (Mejoras m in mejoras_lista)
+        {
+            print("Mejora de Marzy " + m.id_mejora + " " + m.estado);
         }
 
         cosecha = new Cosecha();
@@ -70,7 +74,7 @@ public class EnviarDatos : MonoBehaviour
         cosecha.tomate = tomate;
         cosecha.chile = chile;
         cosecha.aguacate = aguacate;
-        cosecha.frijol = frijol;   
+        cosecha.frijol = frijol;
         cosecha_lista.Add(cosecha);
 
         semilla = new Semilla();
@@ -78,7 +82,7 @@ public class EnviarDatos : MonoBehaviour
         semilla.maiz = maiz_seed;
         semilla.tomate = tomate_seed;
         semilla.chile = chile_seed;
-        semilla.aguacate= aguacate_seed;
+        semilla.aguacate = aguacate_seed;
         semilla.frijol = frijol_seed;
         semilla_lista.Add(semilla);
 
@@ -157,7 +161,7 @@ public class EnviarDatos : MonoBehaviour
             Debug.Log("Datos enviados correctamente.");
         }
     }
-     private IEnumerator EnviarDatosUsuario2(string jsonData)
+    private IEnumerator EnviarDatosUsuario2(string jsonData)
     {
         string apiUrl = "http://localhost:3000/game-data";
 
@@ -178,14 +182,15 @@ public class EnviarDatos : MonoBehaviour
         }
         else
         {
-            Debug.Log("Datos enviados correctamente.");
+            /* Debug.Log("Datos enviados correctamente.");
+            string redirectUrl = "http://localhost:3000/";
+            UnityWebRequest www3 = UnityWebRequest.Get(redirectUrl);
+            yield return www3.SendWebRequest(); */
 
-            // llamada get a /logout
-            string apiUrl2 = "http://localhost:3000/logout";
-            UnityWebRequest www2 = UnityWebRequest.Get(apiUrl2);
-            yield return www2.SendWebRequest();
+            Application.OpenURL("http://localhost:3000/");
         }
     }
+
     private int ObtenerUserIdDeURL(string url)
     {
         int userId = -1;
