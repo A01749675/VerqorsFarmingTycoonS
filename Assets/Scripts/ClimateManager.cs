@@ -15,7 +15,7 @@ public class ClimateManager : MonoBehaviour
 
     private Dictionary<int,Dictionary<string,int>> climates;
 
-    public int currentClimatecycle = 45;
+    public int currentClimatecycle = 50;
 
     private int currentClimate = 1;
 

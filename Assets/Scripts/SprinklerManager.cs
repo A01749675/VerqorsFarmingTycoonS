@@ -17,15 +17,17 @@ public class SprinklerManager : MonoBehaviour
     [SerializeField]
     private int land_id =  -1;
     private int assigned_land = -1;
-    private int cycle = 0;
+    private int cycle = 20;
     private bool active = false;
 
     public void WaterCrops(){
-        for (int i = 0; i < 10; i++){
+        if(mapManager.GetCurrentCycle()%cycle==0){
             if(mapManager.GetAverageWaterAtLand(assigned_land) < 100 && tankManager.GetWaterLevel() > 0){
                 mapManager.WaterSpecificLand(assigned_land);
+                tankManager.SetWaterLevel(-5);
             }
         }
+
     
     }
     // Start is called before the first frame update
@@ -33,7 +35,7 @@ public class SprinklerManager : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        AssignLandToSprinkler(land_id);
+        //AssignLandToSprinkler(land_id);
     }
 
     public void AssignLandToSprinkler(int land_id){
