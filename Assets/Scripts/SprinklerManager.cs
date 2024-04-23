@@ -17,16 +17,14 @@ public class SprinklerManager : MonoBehaviour
     [SerializeField]
     private int land_id =  -1;
     private int assigned_land = -1;
-    private int cycle = 0;
+    private int cycle = 20;
     private bool active = false;
 
     public void WaterCrops(){
-        if(mapManager.GetCurrentCycle()%20==0){
-            for (int i = 0; i < 10; i++){
-                if(mapManager.GetAverageWaterAtLand(assigned_land) < 100 && tankManager.GetWaterLevel() > 0){
-                    mapManager.WaterSpecificLand(assigned_land);
-                    tankManager.SetWaterLevel(-5);
-                }
+        if(mapManager.GetCurrentCycle()%cycle==0){
+            if(mapManager.GetAverageWaterAtLand(assigned_land) < 100 && tankManager.GetWaterLevel() > 0){
+                mapManager.WaterSpecificLand(assigned_land);
+                tankManager.SetWaterLevel(-1);
             }
         }
 
