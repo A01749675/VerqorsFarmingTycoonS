@@ -18,6 +18,9 @@ public class TankManager : MonoBehaviour
 
     public void FillTank(){
         switch(TankLevel){
+            case 0:
+                WaterLevel = 0;
+                break;
             case 1:
                 WaterLevel = 50;
                 break;
@@ -37,6 +40,7 @@ public class TankManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SetTankLevel(0);
         
     }
 
