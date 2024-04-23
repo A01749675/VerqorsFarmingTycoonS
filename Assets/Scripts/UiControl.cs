@@ -686,6 +686,8 @@ public class UiControl : MonoBehaviour
         }else{
             flagMenuVender2=true;
             MenuVender2.SetActive(true);
+            flagCelular=false;
+            Celular.SetActive(false);
             trigov=0;
             maizv=0;
             chilev=0;
@@ -843,6 +845,8 @@ public class UiControl : MonoBehaviour
         }else{
             flagMenuComprar2=true;
             MenuComprar2.SetActive(true);
+            flagCelular=false;
+            Celular.SetActive(false);
             trigoCantidad2.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad2(1).ToString();
             trigoPrice2.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal2(1)).ToString();
             maizCantidad2.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad2(2).ToString();
@@ -1254,6 +1258,10 @@ public class UiControl : MonoBehaviour
     }
     public void ActualizarDinero(){
         Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
+    }
+
+    public void ShowTutorial(){
+        Application.OpenURL("https://www.youtube.com/watch?v=J2X5mJ3HDYE&ab_channel=JavierL%C3%B3pez");
     }
 
     void Update(){
