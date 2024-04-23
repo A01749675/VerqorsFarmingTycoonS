@@ -37,6 +37,12 @@ public class TankManager : MonoBehaviour
         TankLevel = lvl;
     
     }
+
+    public void SetWaterLevel(int change){
+        if(WaterLevel>0){
+            WaterLevel += change;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
