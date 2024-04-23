@@ -6,7 +6,7 @@ public class TankManager : MonoBehaviour
 {
     private int WaterLevel;
 
-    private int CurrentWaterIntTank = 0;
+
     private int TankLevel;
 
 
