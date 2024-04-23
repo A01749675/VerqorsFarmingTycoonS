@@ -5,8 +5,6 @@ using UnityEngine;
 public class TankManager : MonoBehaviour
 {
     private int WaterLevel;
-
-
     private int TankLevel;
 
 
@@ -20,6 +18,9 @@ public class TankManager : MonoBehaviour
 
     public void FillTank(){
         switch(TankLevel){
+            case 0:
+                WaterLevel = 0;
+                break;
             case 1:
                 WaterLevel = 50;
                 break;
@@ -32,12 +33,6 @@ public class TankManager : MonoBehaviour
         }
     }
 
-    public void SetWaterLevel(int change){
-        if(WaterLevel>0){
-            WaterLevel += change;
-        }
-    }
-
     public void SetTankLevel(int lvl){
         TankLevel = lvl;
     
@@ -45,8 +40,8 @@ public class TankManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TankLevel = 1;
-        WaterLevel = 50;
+        SetTankLevel(0);
+        
     }
 
     // Update is called once per frame
