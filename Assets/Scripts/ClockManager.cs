@@ -23,10 +23,23 @@ public class ClockManager : MonoBehaviour
     public float dayIntensity;
     public AnimationCurve dayNightCurve;
 
+    private int day;
+    private int day_year;
+    private int week;
+    private int month;
+    private int year;
+    private bool banderaday=false;
+    private bool banderamonth =  false;
+
     //public int  ClimateID; 
 
     private void Awake(){
         startingRotation = ClockFace.localEulerAngles.z;
+        day = 1;
+        week = 1;
+        month = 1;
+        year = 2023;
+        day_year = 1;
     }
 
     private void OnEnable(){
@@ -39,9 +52,14 @@ public class ClockManager : MonoBehaviour
     }
 
     private int Dia(){
-        int day = 1;
-        if (mapManager.GetCurrentCycle()%8 == 0){
-            day = mapManager.GetCurrentCycle()/8;
+        if (mapManager.GetCurrentCycle()%8 == 0 && !banderaday){
+            day ++;   
+            day_year = mapManager.GetCurrentCycle()/8;
+            banderaday = true;
+            return day;
+        }
+        else if (mapManager.GetCurrentCycle()%8 != 0){
+            banderaday = false;
             return day;
         }
         else return day;
@@ -49,10 +67,9 @@ public class ClockManager : MonoBehaviour
     }
 
     private int Semana(){
-        int dayNum = Dia();
-        int week = 1;
+        int dayNum = day_year;
         if (dayNum%7 == 0){
-            week = dayNum/7;
+            week = day_year/7 + 1;
             return week;
         }
         else return week;
@@ -60,46 +77,106 @@ public class ClockManager : MonoBehaviour
 
     private string Mes(){ 
         int dayNum = Dia();
-        int month = 1;
-        if (dayNum%30 == 0){
-            month = dayNum/30;
+        if (dayNum%31 == 0 && !banderamonth){
+            banderamonth = true;
+            month += 1;
+            switch (month){
+            case 1:
+                day = 1;
+                return "Enero";
+            case 2:
+                day = 1; 
+                return "Febrero";
+            case 3:
+                day = 1; 
+                return "Marzo";
+            case 4:
+                day = 1;
+                return "Abril";
+            case 5:
+                day = 1;
+                return "Mayo";
+            case 6:
+                day = 1;
+                return "Junio";
+            case 7:
+                day = 1;
+                return "Julio";
+            case 8:
+                day = 1; 
+                return "Agosto";
+            case 9:
+                day = 1;
+                return "Septiembre";
+            case 10:
+                day = 1;
+                return "Octubre";
+            case 11:
+                day = 1;
+                return "Noviembre";
+            case 12:
+                day = 1;
+                return "Diciembre";
+            default:
+                day = 1;
+                return "Aquí debería de haber un mes";
+        }
+        
+        }
+        else {
+            banderamonth = false;
         }
 
         switch (month){
             case 1:
+                
                 return "Enero";
             case 2:
                 return "Febrero";
             case 3:
+                
                 return "Marzo";
             case 4:
+                
                 return "Abril";
             case 5:
+                
                 return "Mayo";
             case 6:
+                
                 return "Junio";
             case 7:
+                
                 return "Julio";
             case 8:
+                
                 return "Agosto";
             case 9:
+                
                 return "Septiembre";
             case 10:
+                
                 return "Octubre";
             case 11:
+                
                 return "Noviembre";
             case 12:
+                
                 return "Diciembre";
             default:
+                
                 return "Aquí debería de haber un mes";
         }
     }
 
     private int Año(){
-        int dayNum = Dia();
-        int year = 1;
+        int dayNum = day_year;
         if (dayNum%360 == 0){
-            year = dayNum/360;
+            year += 1;
+            day = 1;
+            day_year = 1;
+            month = 1;
+            week = 1;
             return year;
         }
         else return year;
