@@ -29,6 +29,8 @@ public class ObtenerDatos : MonoBehaviour
     private FinanceManager financeManager;
     [SerializeField]
     private CropManager cropManager;
+    [SerializeField]
+    private UiControl uiControl;
     private void Awake()
     {
         StartCoroutine(ObtenerIdUsuario());
@@ -150,7 +152,7 @@ public class ObtenerDatos : MonoBehaviour
             RankingsResponse rankingsResponse = JsonUtility.FromJson<RankingsResponse>(jsonString);
 
             rankings = rankingsResponse.rankings;
-            
+            SetRankings(rankings);
             // Imprimir los rankings por consola
             foreach (var ranking in rankings)
             {
@@ -229,6 +231,48 @@ public class ObtenerDatos : MonoBehaviour
         cropManager.crop_quantity[5]=0;
     }
 
+    private void SetRankings(List<RankingData> rankings)
+    {
+        uiControl.Ranking1NameData=rankings[1].usuario;
+        uiControl.Ranking1MoneyData=rankings[1].dinero.ToString();
+        uiControl.Ranking2NameData=rankings[2].usuario;
+        uiControl.Ranking2MoneyData=rankings[2].dinero.ToString();
+        uiControl.Ranking3NameData=rankings[3].usuario;
+        uiControl.Ranking3MoneyData=rankings[3].dinero.ToString();
+        switch(rankings[1].financiamiento){
+            case 1:
+                uiControl.Ranking1FinanceData="Verqor";
+                break;
+            case 2:
+                uiControl.Ranking1FinanceData="Banco";
+                break;
+            case 3:
+                uiControl.Ranking1FinanceData="Coyote";
+                break;
+        }
+        switch(rankings[2].financiamiento){
+            case 1:
+                uiControl.Ranking2FinanceData="Verqor";
+                break;
+            case 2:
+                uiControl.Ranking2FinanceData="Banco";
+                break;
+            case 3:
+                uiControl.Ranking2FinanceData="Coyote";
+                break;
+        }
+        switch(rankings[3].financiamiento){
+            case 1:
+                uiControl.Ranking3FinanceData="Verqor";
+                break;
+            case 2:
+                uiControl.Ranking3FinanceData="Banco";
+                break;
+            case 3:
+                uiControl.Ranking3FinanceData="Coyote";
+                break;
+        }
+    }
 }
 
 

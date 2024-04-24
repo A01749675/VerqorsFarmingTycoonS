@@ -32,6 +32,9 @@ public class TecManager : MonoBehaviour
     public GameObject prodchile;
      public GameObject prodaguacate;
     public GameObject prodfrijol;
+    public GameObject basura1;
+    public GameObject basura2;
+    public GameObject basura3;
    
 
     public FinanceManager financeManager;
@@ -62,6 +65,9 @@ public class TecManager : MonoBehaviour
             medidores1.SetActive(treeManager.Mejoras[2]);
             medidores2.SetActive(treeManager.Mejoras[13]);
             medidores3.SetActive(treeManager.Mejoras[20]);
+            basura1.SetActive(!treeManager.Mejoras[2]);
+            basura2.SetActive(!treeManager.Mejoras[13]);
+            basura3.SetActive(!treeManager.Mejoras[20]);
             empleados1.SetActive(treeManager.Mejoras[3]);
             empleados2.SetActive(treeManager.Mejoras[9]);
             empleados3.SetActive(treeManager.Mejoras[16]);
