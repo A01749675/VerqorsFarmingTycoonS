@@ -226,6 +226,7 @@ public class Progreso
     public int id;
     public int id_usuario;
     public float dinero;
+    public float deuda;
     public int ciclo;
     public int seguro;
     public string practica;

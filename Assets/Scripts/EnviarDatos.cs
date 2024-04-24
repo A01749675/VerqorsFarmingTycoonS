@@ -89,6 +89,7 @@ public class EnviarDatos : MonoBehaviour
         progreso = new Progreso();
         progreso.id_usuario = userController.GetParameter("user_id");
         progreso.dinero = capital;
+        progreso.deuda = userController.GetParameter("deuda");
         progreso.ciclo = ciclo;
         progreso.financiamiento = userController.GetParameter("financiamiento");
         progreso.practica = obtenerDatos.progreso[0].practica;
