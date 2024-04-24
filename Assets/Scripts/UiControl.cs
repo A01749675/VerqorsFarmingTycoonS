@@ -187,7 +187,17 @@ public class UiControl : MonoBehaviour
     public CameraMovement cameraMovement;
     
     
-    
+    void Start(){
+        Ranking1NameData="Jorge";
+        Ranking2NameData="Pedro";
+        Ranking3NameData="Juan";
+        Ranking1MoneyData="$ 1000000";
+        Ranking2MoneyData="$ 500000";
+        Ranking3MoneyData="$ 100000";
+        Ranking1FinanceData="Verqor";
+        Ranking2FinanceData="Banco";
+        Ranking3FinanceData="Verqor";
+    }
 
     //Al dar click al boton de opciones se abre el panel PanelOpciones
     public void OpenOpciones()
