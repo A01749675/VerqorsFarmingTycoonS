@@ -54,7 +54,7 @@ public class FinanceManager : MonoBehaviour
         {
             {"tasaInteres", 0.5f},
             {"plazo", 2900},
-            {"montoMaximo", 1000000},
+            {"montoMaximo", 100000000},
             {"seguro", 0.5f}
         };
         BancoFinanceData = new Dictionary<string, float>()

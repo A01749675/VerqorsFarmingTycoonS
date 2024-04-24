@@ -9,6 +9,8 @@ public class SprinklerManager : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    public Sprite initial;
+
     [SerializeField]
     MapManager mapManager;
     [SerializeField]
@@ -17,15 +19,28 @@ public class SprinklerManager : MonoBehaviour
     [SerializeField]
     private int land_id =  -1;
     private int assigned_land = -1;
-    private int cycle = 20;
+    private int cycle = 30;
     private bool active = false;
 
+    private bool flag = false;
     public void WaterCrops(){
-        if(mapManager.GetCurrentCycle()%cycle==0){
-            if(mapManager.GetAverageWaterAtLand(assigned_land) < 100 && tankManager.GetWaterLevel() > 0){
-                mapManager.WaterSpecificLand(assigned_land);
+        if(mapManager.GetCurrentCycle()%cycle==0 && !flag){
+            //print(tankManager.GetWaterLevel());
+            if(mapManager.GetAverageWaterAtLand(land_id) < 100 && tankManager.GetWaterLevel() > 0 && mapManager.LandPlanted(land_id)){
+                animator.enabled = true;
+                mapManager.WaterSpecificLand(land_id);
                 tankManager.SetWaterLevel(-5);
+                print("Yeet: The tank has: "+tankManager.GetWaterLevel());
+                flag = true;
             }
+        }
+        if(mapManager.GetCurrentCycle()%cycle!=0){
+            flag = false;
+            spriteRenderer.sprite = initial;
+        }
+        if(tankManager.GetWaterLevel() <= 0){
+            animator.enabled = false;
+            spriteRenderer.sprite = initial;
         }
 
     
@@ -35,6 +50,7 @@ public class SprinklerManager : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        gameObject.GetComponent<Animator>().enabled = false;
         //AssignLandToSprinkler(land_id);
     }
 

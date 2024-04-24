@@ -99,6 +99,15 @@ public class TecManager : MonoBehaviour
                 mapManager.UpdateUnlockedLands(new int[]{1,3,5,7,8,10,14,15,19});
             }
             treeManager.update = false;
+            if(treeManager.Mejoras[5] && !treeManager.Mejoras[11] && !treeManager.Mejoras[18]){
+                tanque.GetComponent<TankManager>().SetTankLevel(1);
+            }
+            else if(treeManager.Mejoras[11] && !treeManager.Mejoras[18]){
+                tanque.GetComponent<TankManager>().SetTankLevel(2);
+            }
+            else if(treeManager.Mejoras[18]){
+                tanque.GetComponent<TankManager>().SetTankLevel(3);
+            }
             
         }
         for(int i = 0; i < 20; i++){

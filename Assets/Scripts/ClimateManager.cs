@@ -178,7 +178,7 @@ public class ClimateManager : MonoBehaviour
                 bigPeriodicoImg1.sprite = bigPeriodicoSprite3;
                 bigPeriodicoText2.text = "Technoblade becomes the Potato King";
                 bigPeriodicoImg2.sprite = bigPeriodicoSprite4;
-                tankManager.FillTank();
+                //tankManager.FillTank();
                 rain.SetActive(false);
                 flood.SetActive(false);
                 hurricane.SetActive(false);
