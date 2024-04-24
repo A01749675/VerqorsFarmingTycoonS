@@ -20,6 +20,7 @@ public class FinanceManager : MonoBehaviour
     private Dictionary<string, float> VerqorFinanceData;
     private Dictionary<string, float> BancoFinanceData;
     private Dictionary<string, float> CoyoteFinanceData;
+    private AudioSource audioSourcemoney;
 
     private int loosingCondition = -1;
    
@@ -70,6 +71,7 @@ public class FinanceManager : MonoBehaviour
             {"montoMaximo", 800000},
             {"seguro", 0.0f}
         };
+        audioSourcemoney = GameObject.Find("CaChing").GetComponent<AudioSource>();
 
 
         // ObtenerFinanciamiento();
@@ -198,6 +200,7 @@ public class FinanceManager : MonoBehaviour
         {
             user_controller.UpdateCapital((int)(_prices[cropType] * quantity*dinero));
             crop_manager.UpdateCropQuantity(cropType, -quantity);
+            audioSourcemoney.Play();
         }
     }
     public void SellItem2(int cropType, int quantity)
@@ -206,6 +209,7 @@ public class FinanceManager : MonoBehaviour
         {
             user_controller.UpdateCapital((int)(_prices[cropType] * quantity * 1.3*dinero));
             crop_manager.UpdateCropQuantity(cropType, -quantity);
+            audioSourcemoney.Play();
         }
     }
 

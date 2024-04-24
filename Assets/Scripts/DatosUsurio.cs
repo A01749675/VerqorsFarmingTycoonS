@@ -9,8 +9,8 @@ public class DatosUsurio : MonoBehaviour
     public GameObject TipoFinanciamiento;
     public UserController userController;
     public ObtenerDatos obtenerDatos;
-    private string nombreUsuario;
-    private int financiamiento;
+    public string nombreUsuario;
+    public int financiamiento;
 
     //Start is called before the first frame update
     void Start(){
@@ -31,5 +31,11 @@ public class DatosUsurio : MonoBehaviour
                 break;
         }
         NombreUsuario.GetComponent<TextMeshProUGUI>().text = nombreUsuario;
+    }
+    public string GetNombreUsuario(){
+        return nombreUsuario;
     } 
+    public string GetTipoFinanciamiento(){
+        return TipoFinanciamiento.GetComponent<TextMeshProUGUI>().text;
+    }
 }

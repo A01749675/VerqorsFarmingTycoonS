@@ -9,6 +9,7 @@ public class UserController : MonoBehaviour
     public Dictionary<int,bool> unlocked_achievements;
 
     public FinanceManager financeManager;
+    private AudioSource audioSourcemoney;
 
     private void Awake()
     {
@@ -43,6 +44,7 @@ public class UserController : MonoBehaviour
             {8, false}
         };
         financeManager.SetPlazo();
+        audioSourcemoney = GameObject.Find("CaChing").GetComponent<AudioSource>();
     }
 
     public void SetParameter(string param,int value){
@@ -55,6 +57,7 @@ public class UserController : MonoBehaviour
 
     public void UpdateCapital(int money){
         user_data["capital"]+=money;
+        audioSourcemoney.Play();
     }
     public void PayDebt(int money){
         user_data["capital"]-=money;

@@ -45,6 +45,9 @@ public class ClimateManager : MonoBehaviour
     public GameObject rain;
     public GameObject flood;
     public GameObject hurricane;
+    private AudioSource audioSourceLluvia;
+    private AudioSource audioSourceFlood;
+    private AudioSource audioSourceHurricane;
 
     public bool ClimateAlreadyExecuted = false;
     private Dictionary<int,int> probability;
@@ -94,7 +97,10 @@ public class ClimateManager : MonoBehaviour
         {2,60},
         {3,30},
         {4,10}
-    };
+        };
+        audioSourceLluvia = GameObject.Find("Lluvia").GetComponent<AudioSource>();
+        audioSourceFlood = GameObject.Find("Inundacion").GetComponent<AudioSource>();
+        audioSourceHurricane = GameObject.Find("Huracan").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -176,6 +182,9 @@ public class ClimateManager : MonoBehaviour
                 rain.SetActive(false);
                 flood.SetActive(false);
                 hurricane.SetActive(false);
+                audioSourceLluvia.Stop();
+                audioSourceFlood.Stop();
+                audioSourceHurricane.Stop();
                 break;
             case 2:
                 Debug.Log("Rain");
@@ -188,6 +197,9 @@ public class ClimateManager : MonoBehaviour
                 rain.SetActive(true);
                 flood.SetActive(false);
                 hurricane.SetActive(false);
+                audioSourceLluvia.Play();
+                audioSourceFlood.Stop();
+                audioSourceHurricane.Stop();
                 break;
             case 3:
                 Debug.Log("Flood");
@@ -200,6 +212,9 @@ public class ClimateManager : MonoBehaviour
                 rain.SetActive(false);
                 flood.SetActive(true);
                 hurricane.SetActive(false);
+                audioSourceLluvia.Stop();
+                audioSourceFlood.Play();
+                audioSourceHurricane.Stop();
                 break;
             case 4:
                 Debug.Log("Hurricane");
@@ -211,6 +226,9 @@ public class ClimateManager : MonoBehaviour
                 rain.SetActive(false);
                 flood.SetActive(false);
                 hurricane.SetActive(true);
+                audioSourceLluvia.Stop();
+                audioSourceFlood.Stop();
+                audioSourceHurricane.Play();
                 break;
         }
     }

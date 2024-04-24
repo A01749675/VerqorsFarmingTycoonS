@@ -39,7 +39,7 @@ public class MapManager : MonoBehaviour
     private Dictionary<int,int> CropsInLand;
     private int numberOfLands = 0;
 
-    
+    private AudioSource audioSourcePlant;
 
     [SerializeField]
     public List<TileBase> chilli_grow_tiles;
@@ -114,6 +114,7 @@ public class MapManager : MonoBehaviour
         UpdateUnlockedLands(new int[]{8});
         print("map manager finise¿hed configuration");
         InvokeRepeating("UpdateCycle", 0, 1f);
+        audioSourcePlant = GameObject.Find("Plantar").GetComponent<AudioSource>();
 
     }
 
@@ -279,6 +280,7 @@ public class MapManager : MonoBehaviour
                             break;   
                     }
                 ui.hoz();
+                audioSourcePlant.Play();
             }
             print("Planted");
             selected_crop=-1000;
@@ -443,6 +445,7 @@ public class MapManager : MonoBehaviour
                 }
             }
         }
+        audioSourcePlant.Play();
 
     }
     public void CollectLand(){

@@ -8,6 +8,8 @@ using Image = UnityEngine.UI.Image;
 
 public class UiControl : MonoBehaviour
 {
+
+    public GameObject datosUsuario;
     public GameObject PanelOpciones;
     public GameObject UsuarioNombre;
     public GameObject Financiamiento;
@@ -129,6 +131,20 @@ public class UiControl : MonoBehaviour
 
     public GameObject Dinero;
     public GameObject Arbol;
+
+    //Rankings
+    public GameObject Ranking1Name;
+    public GameObject Ranking1Money;
+    public GameObject Ranking1Finance;
+    public GameObject Ranking2Name;
+    public GameObject Ranking2Money;
+    public GameObject Ranking2Finance;
+    public GameObject Ranking3Name;
+    public GameObject Ranking3Money;
+    public GameObject Ranking3Finance;
+    public GameObject PlayerName;
+    public GameObject PlayerMoney;
+    public GameObject PlayerFinance;
 
     //TreeManager
     public TreeManager treeManager;
@@ -304,7 +320,23 @@ public class UiControl : MonoBehaviour
         }else{
             flagRankings=true;
             Rankings.SetActive(true);
+            WriteRankings();
         }
+    }
+
+    private void WriteRankings(){
+        Ranking1Name.GetComponent<TextMeshProUGUI>().text = "Usuario 1";
+        Ranking1Money.GetComponent<TextMeshProUGUI>().text = "$ 1000";
+        Ranking1Finance.GetComponent<TextMeshProUGUI>().text = "Verqor";
+        Ranking2Name.GetComponent<TextMeshProUGUI>().text = "Usuario 2";
+        Ranking2Money.GetComponent<TextMeshProUGUI>().text = "$ 500";
+        Ranking2Finance.GetComponent<TextMeshProUGUI>().text = "Verqor";
+        Ranking3Name.GetComponent<TextMeshProUGUI>().text = "Usuario 3";
+        Ranking3Money.GetComponent<TextMeshProUGUI>().text = "$ 100";
+        Ranking3Finance.GetComponent<TextMeshProUGUI>().text = "Verqor";
+        PlayerName.GetComponent<TextMeshProUGUI>().text = datosUsuario.GetComponent<DatosUsurio>().GetNombreUsuario();
+        PlayerMoney.GetComponent<TextMeshProUGUI>().text = "$" +UserController.GetCapital().ToString();
+        PlayerFinance.GetComponent<TextMeshProUGUI>().text = datosUsuario.GetComponent<DatosUsurio>().GetTipoFinanciamiento();
     }
 
     public void ShowAjustes()
