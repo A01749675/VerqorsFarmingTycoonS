@@ -82,7 +82,6 @@ public class FinanceManager : MonoBehaviour
         if(cycle%plazo==0 && !flag &&!IsPaid){
             print("Financiamiento actualizado");
             int debt = user_controller.GetDebt();
-            print("La deuda es:"+debt);
 
             if(user_controller.GetCapital()>debt){
                 user_controller.PayDebt(debt);
