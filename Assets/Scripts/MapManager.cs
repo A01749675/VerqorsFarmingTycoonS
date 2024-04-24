@@ -178,7 +178,7 @@ public class MapManager : MonoBehaviour
         }
     }
     public void LoadPredefinedMap(int land, int estado, int cantidad,int agua){
-        if(!LandPosition.ContainsKey(land) || UnlockedLands[land]==false){
+        if(!LandPosition.ContainsKey(land)){
             return;
         }
         UnlockedLands[land] = true;

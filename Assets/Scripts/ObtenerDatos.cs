@@ -170,7 +170,7 @@ public class ObtenerDatos : MonoBehaviour
         userController.user_data["user_id"]=progreso.id_usuario;
         userController.user_data["capital"]=(int) progreso.dinero;
         userController.user_data["financiamiento"]=progreso.financiamiento;
-        userController.user_data["deuda"]=financeManager.CalculateDebt(progreso.financiamiento);
+        userController.user_data["deuda"]=(int)progreso.deuda;
         mapManager.SetCycle(progreso.ciclo);
     }
 
