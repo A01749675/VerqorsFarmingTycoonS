@@ -187,7 +187,8 @@ public class UiControl : MonoBehaviour
     public CameraMovement cameraMovement;
     
     
-    void Start(){
+    void Awake(){
+        Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
         Ranking1NameData="Jorge";
         Ranking2NameData="Pedro";
         Ranking3NameData="Juan";
@@ -348,13 +349,13 @@ public class UiControl : MonoBehaviour
 
     private void WriteRankings(){
         Ranking1Name.GetComponent<TextMeshProUGUI>().text = Ranking1NameData;
-        Ranking1Money.GetComponent<TextMeshProUGUI>().text = Ranking1MoneyData;
+        Ranking1Money.GetComponent<TextMeshProUGUI>().text = "$" +Ranking1MoneyData;
         Ranking1Finance.GetComponent<TextMeshProUGUI>().text = Ranking1FinanceData;
         Ranking2Name.GetComponent<TextMeshProUGUI>().text = Ranking2NameData;
-        Ranking2Money.GetComponent<TextMeshProUGUI>().text = Ranking2MoneyData;
+        Ranking2Money.GetComponent<TextMeshProUGUI>().text = "$"+Ranking2MoneyData;
         Ranking2Finance.GetComponent<TextMeshProUGUI>().text = Ranking2FinanceData;
         Ranking3Name.GetComponent<TextMeshProUGUI>().text = Ranking3NameData;
-        Ranking3Money.GetComponent<TextMeshProUGUI>().text = Ranking3MoneyData;
+        Ranking3Money.GetComponent<TextMeshProUGUI>().text = "$"+Ranking3MoneyData;
         Ranking3Finance.GetComponent<TextMeshProUGUI>().text = Ranking3FinanceData;
         PlayerName.GetComponent<TextMeshProUGUI>().text = datosUsuario.GetComponent<DatosUsurio>().GetNombreUsuario();
         PlayerMoney.GetComponent<TextMeshProUGUI>().text = "$" +UserController.GetCapital().ToString();
@@ -1280,10 +1281,7 @@ public class UiControl : MonoBehaviour
             treeManager.UpdateColors();
         }
     }
-    private void Awake()
-    {
-        Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
-    }
+    
     public void SlowDownTime(){
         Time.timeScale = 0.5f;
     }
