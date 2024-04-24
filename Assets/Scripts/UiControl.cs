@@ -1293,7 +1293,7 @@ public class UiControl : MonoBehaviour
     }
 
     public void ShowTutorial(){
-        Application.OpenURL("https://www.youtube.com/watch?v=J2X5mJ3HDYE&ab_channel=JavierL%C3%B3pez");
+        Application.OpenURL("http://localhost:3000/tutorialjuego");
     }
 
     void Update(){
