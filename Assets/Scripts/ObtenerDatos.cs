@@ -161,7 +161,7 @@ public class ObtenerDatos : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Error al obtener los rankings: " + www.error);
+            //Debug.LogError("Error al obtener los rankings: " + www.error);
         }
     }
     private void SetUserData(Progreso progreso){
