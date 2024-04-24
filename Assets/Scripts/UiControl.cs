@@ -6,6 +6,7 @@ using TMPro;
 using UnityEditor;
 using Image = UnityEngine.UI.Image;
 
+using UnityEngine.SceneManagement;
 public class UiControl : MonoBehaviour
 {
 
@@ -396,6 +397,7 @@ public class UiControl : MonoBehaviour
         Debug.Log("Guardando...");
         enviardatos.GuardarySalir();
         Debug.Log("Guardado exitoso.");
+        SceneManager.LoadScene("Exit");
     }
 
     public void ShowCelular()

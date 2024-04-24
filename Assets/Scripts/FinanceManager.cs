@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+
+using UnityEngine.SceneManagement;
 public class FinanceManager : MonoBehaviour
 {
     private int _userId;
@@ -92,6 +94,7 @@ public class FinanceManager : MonoBehaviour
                 if(user_controller.GetCapital()<loosingCondition){
                     print("GameOver");
                     enviarDatos.GuardarySalir();
+                    SceneManager.LoadScene("GameOver");
                 }
             }
             flag=true;
@@ -251,11 +254,58 @@ public class FinanceManager : MonoBehaviour
         return _prices;
     }
 
-    public void SetFinanceParams(){
 
+    public void PathWays(int debt,int cycle){
+        int financiamiento = user_controller.GetParameter("financiamiento");
+        switch(financiamiento){
+            case 1:
+                VerqorPathway(debt,cycle);
+                break;
+            case 2:
+                BankPathway(debt,cycle);
+                break;
+            case 3: 
+                CoyotePathway(debt,cycle);
+                break;
+        }
+    }
+    private void VerqorPathway(int debt,int cycle){
+        
+        if(user_controller.GetParameter("capital")>user_controller.GetParameter("deuda")){
+            user_controller.UpdateCapital(-user_controller.GetParameter("deuda"));
+        }
+        else if(user_controller.GetParameter("capital")>(user_controller.GetParameter("deuda"))/2){
+            user_controller.UpdateCapital(-user_controller.GetParameter("deuda"));
+            int new_debt = (int)(((user_controller.GetParameter("deuda"))/2)*(1+VerqorFinanceData["tasaInteres"])+user_controller.GetParameter("deuda"));
+        }
+        else{
+            print("GameOver");
+        }
+            
+    }
+    private void BankPathway(int debt,int cycle){
+        if(user_controller.GetParameter("capital")>user_controller.GetParameter("deuda")){
+            user_controller.UpdateCapital(-user_controller.GetParameter("deuda"));
+        }
+        else if(user_controller.GetParameter("capital")>(user_controller.GetParameter("deuda"))/2){
+            user_controller.UpdateCapital(-user_controller.GetParameter("deuda"));
+            int new_debt = (int)(((user_controller.GetParameter("deuda"))/2)*(1+BancoFinanceData["tasaInteres"])+user_controller.GetParameter("deuda"));
+        }
+        else{
+            print("GameOver");
+        }
+    }
+    private void CoyotePathway(int debt,int cycle){
+        if(user_controller.GetParameter("capital")>user_controller.GetParameter("deuda")){
+            user_controller.UpdateCapital(-user_controller.GetParameter("deuda"));
+        }
+        else if(user_controller.GetParameter("capital")>(user_controller.GetParameter("deuda"))/2){
+            user_controller.UpdateCapital(-user_controller.GetParameter("deuda"));
+            int new_debt = (int)(((user_controller.GetParameter("deuda"))/2)*(1+CoyoteFinanceData["tasaInteres"])+user_controller.GetParameter("deuda"));
+        }
+        else{
+            print("GameOver");
+        }
     }
 
-    public void SetFinanceCurrent(int fin){
-        current_finance = fin;
-    }
 }
