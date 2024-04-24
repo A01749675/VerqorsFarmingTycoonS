@@ -18,6 +18,7 @@ public class ObtenerDatos : MonoBehaviour
     public List<Parcela> parcela;
     public List<Mejoras> mejoras;
     public TreeManager treeManager;
+    private List<RankingData> rankings;
     public List<List<int>> parcela_data = new List<List<int>>();
 
     public MapManager mapManager;
@@ -31,6 +32,7 @@ public class ObtenerDatos : MonoBehaviour
     private void Awake()
     {
         StartCoroutine(ObtenerIdUsuario());
+        StartCoroutine(ObtenerRankings());
     }
 
     private IEnumerator ObtenerIdUsuario()
@@ -134,6 +136,33 @@ public class ObtenerDatos : MonoBehaviour
         print("Parcelas obtenidas: " +parcela.Count);
         mapManager.LoadDataFromMap(parcela);
 
+    }
+    private IEnumerator ObtenerRankings()
+    {
+        string apiUrl = "http://localhost:3000/rankings";
+
+        UnityWebRequest www = UnityWebRequest.Get(apiUrl);
+        yield return www.SendWebRequest();
+
+        if (www.result == UnityWebRequest.Result.Success)
+        {
+            string jsonString = www.downloadHandler.text;
+            RankingsResponse rankingsResponse = JsonUtility.FromJson<RankingsResponse>(jsonString);
+
+            rankings = rankingsResponse.rankings;
+            
+            // Imprimir los rankings por consola
+            foreach (var ranking in rankings)
+            {
+                Debug.Log("Usuario: " + ranking.usuario + ", Dinero: " + ranking.dinero + ", Financiamiento: " + ranking.financiamiento);
+            }
+
+            Debug.Log("Rankings obtenidos correctamente.");
+        }
+        else
+        {
+            Debug.LogError("Error al obtener los rankings: " + www.error);
+        }
     }
     private void SetUserData(Progreso progreso){
         userController.user_data["user_id"]=progreso.id_usuario;
@@ -275,4 +304,18 @@ public class Mejoras{
     public int id_progreso;
     public int id_mejora;
     public bool estado;
+}
+[System.Serializable]
+public class RankingData
+{
+    public int id_usuario;
+    public string usuario;
+    public float dinero;
+    public int financiamiento;
+}
+
+[System.Serializable]
+public class RankingsResponse
+{
+    public List<RankingData> rankings;
 }
