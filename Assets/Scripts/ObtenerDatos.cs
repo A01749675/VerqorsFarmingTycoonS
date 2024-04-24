@@ -233,13 +233,13 @@ public class ObtenerDatos : MonoBehaviour
 
     private void SetRankings(List<RankingData> rankings)
     {
-        uiControl.Ranking1NameData=rankings[1].usuario;
-        uiControl.Ranking1MoneyData=rankings[1].dinero.ToString();
-        uiControl.Ranking2NameData=rankings[2].usuario;
-        uiControl.Ranking2MoneyData=rankings[2].dinero.ToString();
-        uiControl.Ranking3NameData=rankings[3].usuario;
-        uiControl.Ranking3MoneyData=rankings[3].dinero.ToString();
-        switch(rankings[1].financiamiento){
+        uiControl.Ranking1NameData=rankings[0].usuario;
+        uiControl.Ranking1MoneyData=rankings[0].dinero.ToString();
+        uiControl.Ranking2NameData=rankings[1].usuario;
+        uiControl.Ranking2MoneyData=rankings[1].dinero.ToString();
+        uiControl.Ranking3NameData=rankings[2].usuario;
+        uiControl.Ranking3MoneyData=rankings[2].dinero.ToString();
+        switch(rankings[0].financiamiento){
             case 1:
                 uiControl.Ranking1FinanceData="Verqor";
                 break;
@@ -250,7 +250,7 @@ public class ObtenerDatos : MonoBehaviour
                 uiControl.Ranking1FinanceData="Coyote";
                 break;
         }
-        switch(rankings[2].financiamiento){
+        switch(rankings[1].financiamiento){
             case 1:
                 uiControl.Ranking2FinanceData="Verqor";
                 break;
@@ -261,7 +261,7 @@ public class ObtenerDatos : MonoBehaviour
                 uiControl.Ranking2FinanceData="Coyote";
                 break;
         }
-        switch(rankings[3].financiamiento){
+        switch(rankings[2].financiamiento){
             case 1:
                 uiControl.Ranking3FinanceData="Verqor";
                 break;
