@@ -41,6 +41,9 @@ public class ClockManager : MonoBehaviour
         year = 2023;
         day_year = 1;
     }
+    public void Start(){
+        SetDate(mapManager.GetCurrentCycle());
+    }
 
     private void OnEnable(){
         TimeManager.OnDateTimeChanged += UpdateDateTime;
@@ -51,10 +54,22 @@ public class ClockManager : MonoBehaviour
         TimeManager.OnDateTimeChanged -= UpdateDateTime;
     }
 
+    public void SetDate(int cycle){
+        cycle = (int) (cycle/8);
+        year = (int)(cycle/360+2024);
+        month = (cycle%360)/30;
+        week = (int)((cycle%360)/7);
+        day = (cycle%360)%30;
+        print("year: "+year+" month: "+month+" week: "+week+" day: "+day);
+
+
+
+    }
+
     private int Dia(){
         if (mapManager.GetCurrentCycle()%8 == 0 && !banderaday){
             day ++;   
-            day_year = mapManager.GetCurrentCycle()/8;
+            day_year = (mapManager.GetCurrentCycle()/8)%361;
             banderaday = true;
             return day;
         }

@@ -114,13 +114,10 @@ public class ClimateManager : MonoBehaviour
     private void UpdateClimate(int cycle){
         if(!ClimateAlreadyExecuted){
             ClimateAlreadyExecuted = true;
-            print("_________Climate update__________");
-            print("Current climate: "+currentClimate);
             int possibleClimate = random.Next(0,5);
             int odds = probability[possibleClimate];
             int climate_probability = random.Next(1,100);
             if(climate_probability < odds){
-                print("Climate changed to "+possibleClimate);
                 currentClimate = possibleClimate;
                 PrintClimate(currentClimate);
                 mapManager.SetDisaster(currentClimate);
@@ -128,10 +125,8 @@ public class ClimateManager : MonoBehaviour
                 mapManager.UpdateVisualWater(currentClimate);
             }
             else{
-                print("Climate did not change, checking probability again");
                 if(!(climate_probability<probability[currentClimate])){
                     currentClimate = 1;
-                    print("Change to normal climate as previous climate probability was not met");
                 }
                 PrintClimate(currentClimate);
                 mapManager.SetDisaster(currentClimate);
