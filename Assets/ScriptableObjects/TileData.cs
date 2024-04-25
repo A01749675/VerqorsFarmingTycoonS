@@ -9,8 +9,8 @@ public class TileData : ScriptableObject
     public Sprite sprite;
     public TileBase[] tiles;
 
-    public int crop_type, crop_growth, quantity,water;
-    public bool isPlanted,isBox;
+    public int crop_type, quantity;
+    
 
 
 }

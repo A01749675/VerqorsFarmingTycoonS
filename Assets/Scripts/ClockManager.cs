@@ -197,8 +197,6 @@ public class ClockManager : MonoBehaviour
         else return year;
     }
 
-    bool lerUp = true;
-
     private void UpdateDateTime (DateTime dateTime){
         Day.text = Dia().ToString();
         Time.text = dateTime.TimeToString();

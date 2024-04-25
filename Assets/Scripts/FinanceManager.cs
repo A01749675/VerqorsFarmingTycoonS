@@ -14,8 +14,6 @@ public class FinanceManager : MonoBehaviour
 
     public MapManager mapManager;
 
-    public UserController userController;
-
     public EnviarDatos enviarDatos;
 
     private Dictionary<int,int> financiamiento_seguro;
@@ -26,11 +24,6 @@ public class FinanceManager : MonoBehaviour
 
     private int loosingCondition = -1;
    
-    private bool RegenerativeAgriculture = false;
-
-    int current_finance = 1;
-
-    private int seguro=0;
 
     public float dinero = 1.0f;
     private bool flag=false;
@@ -220,11 +213,6 @@ public class FinanceManager : MonoBehaviour
         return _prices.ContainsKey(cropType) ? _prices[cropType] : 0;
     }
 
-    public int GetFinanciamiento()
-    {
-        return _financiamiento;
-    }
-
     public void UpdateFinanciamiento(int financiamiento)
     {
         print("Financiamiento: " + financiamiento);
@@ -247,11 +235,6 @@ public class FinanceManager : MonoBehaviour
                 Debug.Log("Financiamiento desconocido");
                 break;
         }
-    }
-
-    public Dictionary<int, int> GetPrices()
-    {
-        return _prices;
     }
 
 

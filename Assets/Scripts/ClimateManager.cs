@@ -143,9 +143,6 @@ public class ClimateManager : MonoBehaviour
     public Dictionary<string,int> GetCurrentClimate(){
         return climates[currentClimate];
     }
-    public void SetCurrentClimate(int climate){
-        currentClimate = climate;
-    }
 
     public void PrintClimate(int climate){
         switch(climate){

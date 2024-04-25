@@ -301,7 +301,7 @@ public class MapManager : MonoBehaviour
                         return;
                     }
                     if(cropManager.cropCycleGrowth.ContainsKey(gridPosition) && (current_cycle-cropManager.cropCycleGrowth[gridPosition]["cycle"])%crop_cycle_constant==0){
-                        if(tile && dataFromTiles.ContainsKey(tile) && !dataFromTiles[tile].isBox){  
+                        if(tile && dataFromTiles.ContainsKey(tile)){  
                             switch(dataFromTiles[tile].crop_type){
                                 case 1:
                                     cropManager.cropCycleGrowth[gridPosition]["growth"] = UpdateCropSpriteCycle(gridPosition,1);
@@ -550,7 +550,7 @@ public class MapManager : MonoBehaviour
             for(int j = -2*tilemap.size.y; j<2*tilemap.size.y; j++){
                 Vector3Int gridPosition = new Vector3Int(i, j, 0);
                 TileBase tile = tilemap.GetTile(gridPosition);
-                if(tile && dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type>0 && !dataFromTiles[tile].isBox){
+                if(tile && dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type>0){
                     if(cropManager.cropCycleGrowth.ContainsKey(gridPosition) && cropManager.cropCycleGrowth[gridPosition]["water"]<100){
                         cropManager.cropCycleGrowth[gridPosition]["water"] = climateManager.GetCurrentClimate()["water"];
                         UpdateTileWater(gridPosition,dataFromTiles[tile].crop_type);
