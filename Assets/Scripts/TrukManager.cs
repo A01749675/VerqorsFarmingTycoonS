@@ -9,7 +9,7 @@ public class TrukManager : MonoBehaviour
     private Animator animator;
     private SpriteRenderer spriteRenderer;
 
-    public Sprite initial;
+
     [SerializeField]
     MapManager mapManager;
     private bool isMoving = false;
