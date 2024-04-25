@@ -37,6 +37,10 @@ public class UiControl : MonoBehaviour
     public GameObject CafeN;
     public GameObject TomateN;
 
+// Menu Créditos
+    public GameObject Creditos;
+    private bool flagCreditos=false;
+
 //FinanceManager
     public FinanceManager financeManager;
 
@@ -240,6 +244,8 @@ public class UiControl : MonoBehaviour
         PanelOpciones.SetActive(false);
         flagAjustes=false;
         Ajustes.SetActive(false);
+        flagCreditos=false;
+        Creditos.SetActive(false);
         Time.timeScale = 1;
         cameraMovement.enabled = true;
     }
@@ -258,6 +264,8 @@ public class UiControl : MonoBehaviour
         MenuVender.SetActive(false);
         flagAjustes=false;
         Ajustes.SetActive(false);
+        flagCreditos=false;
+        Creditos.SetActive(false);
         if(flagUsuario){
             flagUsuario=false;
             UsuarioNombre.SetActive(false);
@@ -280,6 +288,8 @@ public class UiControl : MonoBehaviour
         flagMenuVender=false;
         MenuVender.SetActive(false);
         flagAjustes=false;
+        flagCreditos=false;
+        Creditos.SetActive(false);
         Ajustes.SetActive(false);
         if(flagFinanciamiento){
             flagFinanciamiento=false;
@@ -304,6 +314,8 @@ public class UiControl : MonoBehaviour
         MenuVender.SetActive(false);
         flagAjustes=false;
         Ajustes.SetActive(false);
+        flagCreditos=false;
+        Creditos.SetActive(false);
         if(flagProduccion){
             flagProduccion=false;
             Produccion.SetActive(false);
@@ -329,6 +341,8 @@ public class UiControl : MonoBehaviour
         MenuVender.SetActive(false);
         flagAjustes=false;
         Ajustes.SetActive(false);
+        flagCreditos=false;
+        Creditos.SetActive(false);
         if(flagRankings){
             flagRankings=false;
             Rankings.SetActive(false);
@@ -369,6 +383,8 @@ public class UiControl : MonoBehaviour
         MenuComprar.SetActive(false);
         flagMenuVender=false;
         MenuVender.SetActive(false);
+        flagCreditos=false;
+        Creditos.SetActive(false);
         if(flagAjustes){
             flagAjustes=false;
             Ajustes.SetActive(false);
@@ -390,6 +406,32 @@ public class UiControl : MonoBehaviour
         enviardatos.GuardarySalir();
         Debug.Log("Guardado exitoso.");
         SceneManager.LoadScene("Exit");
+    }
+
+    public void ShowCreditos(){
+        flagUsuario=false;
+        UsuarioNombre.SetActive(false);
+        flagFinanciamiento=false;
+        Financiamiento.SetActive(false);
+        flagProduccion=false;
+        Produccion.SetActive(false);
+        flagProduccion=false;
+        Produccion.SetActive(false);
+        flagMenuComprar=false;
+        MenuComprar.SetActive(false);
+        flagMenuVender=false;
+        MenuVender.SetActive(false);
+        flagAjustes=false;
+        Ajustes.SetActive(false);
+        flagRankings=false;
+        Rankings.SetActive(false);
+        if(flagCreditos){
+            flagCreditos=false;
+            Creditos.SetActive(false);
+        }else{
+            flagCreditos=true;
+            Creditos.SetActive(true);
+        }
     }
 
     public void ShowCelular()

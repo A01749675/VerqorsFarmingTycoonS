@@ -19,6 +19,7 @@ public class AudioControl : MonoBehaviour
     public AudioSource audioSourceFlood;
     public AudioSource audioSourceHurricane;
     public AudioSource audioSourcePlant;
+    public AudioSource audioSourceTractor;
     
     // Update is called once per frame
     void Update()
@@ -29,6 +30,7 @@ public class AudioControl : MonoBehaviour
         audioSourceFlood.volume = efectosControl.GetComponent<Scrollbar>().value;
         audioSourceHurricane.volume = efectosControl.GetComponent<Scrollbar>().value;
         audioSourcePlant.volume = efectosControl.GetComponent<Scrollbar>().value;
+        audioSourceTractor.volume = efectosControl.GetComponent<Scrollbar>().value;
         
     }
     public void Mute()
@@ -50,6 +52,7 @@ public class AudioControl : MonoBehaviour
         audioSourceFlood.mute = isMuted2;
         audioSourceHurricane.mute = isMuted2;
         audioSourcePlant.mute = isMuted2;
+        audioSourceTractor.mute = isMuted2;
         if(!isMuted2)
         {
             muteEfectsButton.GetComponent<Image>().sprite = unmuted;
