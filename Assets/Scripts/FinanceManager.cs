@@ -277,6 +277,7 @@ public class FinanceManager : MonoBehaviour
         else if(user_controller.GetParameter("capital")>(user_controller.GetParameter("deuda"))/2){
             user_controller.UpdateCapital(-user_controller.GetParameter("deuda"));
             int new_debt = (int)(((user_controller.GetParameter("deuda"))/2)*(1+VerqorFinanceData["tasaInteres"])+user_controller.GetParameter("deuda"));
+            user_controller.SetParameter("deuda",new_debt);
         }
         else{
             print("GameOver");
@@ -290,6 +291,7 @@ public class FinanceManager : MonoBehaviour
         else if(user_controller.GetParameter("capital")>(user_controller.GetParameter("deuda"))/2){
             user_controller.UpdateCapital(-user_controller.GetParameter("deuda"));
             int new_debt = (int)(((user_controller.GetParameter("deuda"))/2)*(1+BancoFinanceData["tasaInteres"])+user_controller.GetParameter("deuda"));
+            user_controller.SetParameter("deuda",new_debt);
         }
         else{
             print("GameOver");
@@ -302,6 +304,7 @@ public class FinanceManager : MonoBehaviour
         else if(user_controller.GetParameter("capital")>(user_controller.GetParameter("deuda"))/2){
             user_controller.UpdateCapital(-user_controller.GetParameter("deuda"));
             int new_debt = (int)(((user_controller.GetParameter("deuda"))/2)*(1+CoyoteFinanceData["tasaInteres"])+user_controller.GetParameter("deuda"));
+            user_controller.SetParameter("deuda",new_debt);
         }
         else{
             print("GameOver");
