@@ -108,7 +108,6 @@ public class ClimateManager : MonoBehaviour
     {
         int cycle = mapManager.GetCurrentCycle();
         UpdateClimate(cycle);
-        UpdateCurrentDay(cycle);
     }
 
     private void UpdateClimate(int cycle){
@@ -140,11 +139,6 @@ public class ClimateManager : MonoBehaviour
         return currentClimate;
     }
 
-    private void UpdateCurrentDay(int cycle){
-        if(cycle%10==0){
-            
-        }
-    }
 
     public Dictionary<string,int> GetCurrentClimate(){
         return climates[currentClimate];
