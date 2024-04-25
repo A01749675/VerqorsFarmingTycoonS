@@ -75,14 +75,6 @@ public class UiControl : MonoBehaviour
     public GameObject MenuPlantar;
     public int typecrop=0;
 
-// Objeto Sonido y efectos
-    public GameObject musicMute;
-    public GameObject efectMute;
-    public GameObject musicSlidebar;
-    public GameObject efectSlidebar;
-    public Sprite On;
-    public Sprite Off;
-
 // Objeto EviarDatos
     public EnviarDatos enviardatos;
 
@@ -1294,22 +1286,6 @@ public class UiControl : MonoBehaviour
         Time.timeScale = 5;
     }
 
-    public void MusicMute(){
-        if(musicMute.GetComponent<Image>().sprite == On){
-            musicMute.GetComponent<Image>().sprite = Off;
-        }else{
-            musicMute.GetComponent<Image>().sprite = On;
-            //Mutear musica
-        }
-    }
-    public void EfectMute(){
-        if(efectMute.GetComponent<Image>().sprite == On){
-            efectMute.GetComponent<Image>().sprite = Off;
-        }else{
-            efectMute.GetComponent<Image>().sprite = On;
-            //Mutear efectos
-        }
-    }
     public void ActualizarDinero(){
         Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
     }
