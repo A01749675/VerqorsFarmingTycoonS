@@ -499,11 +499,12 @@ public class MapManager : MonoBehaviour
                         tilemap.SetTile(gridPosition, soilFromCrop[-dataFromTiles[tile].crop_type]);
                         cropManager.UpdateCropQuantity(dataFromTiles[tile].crop_type, dataFromTiles[tile].quantity);
                         CropsInLand[land]--;
+                        audioSourceTractor.Play();
                     }
                 }
             }
         }
-        audioSourceTractor.Play();
+        
         if(CropsInLand[land]==0){
             LandIsPlanted[land] = false;
         }
