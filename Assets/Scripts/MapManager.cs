@@ -279,7 +279,7 @@ public class MapManager : MonoBehaviour
                             PlantLand(seeds[selected_crop-1]);
                             break;   
                     }
-                ui.hoz();
+                uiControl.hoz();
                 audioSourcePlant.Play();
             }
             print("Planted");

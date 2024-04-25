@@ -58,7 +58,7 @@ public class ClockManager : MonoBehaviour
         cycle = (int) (cycle/8);
         year = (int)(cycle/360+2024);
         month = (cycle%360)/30;
-        week = (int)((cycle%360)/7);
+        week = (int)((cycle%360)/7)+1;
         day = (cycle%360)%30;
         print("year: "+year+" month: "+month+" week: "+week+" day: "+day);
 
