@@ -17,7 +17,7 @@ public class TankManager : MonoBehaviour
     }
 
     public void FillTank(){
-        print("Filling tank");
+        
         switch(TankLevel){
             case 0:
                 WaterLevel = 0;

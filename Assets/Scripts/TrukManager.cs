@@ -12,7 +12,7 @@ public class TrukManager : MonoBehaviour
 
     [SerializeField]
     MapManager mapManager;
-    private bool isMoving = false;
+
     [SerializeField]
     public int assigned_land = -1;
     private int assigned_crop = -1;

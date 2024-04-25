@@ -13,7 +13,7 @@ public class UserController : MonoBehaviour
     {
         print("UserController Awake");
         user_data = new Dictionary<string, int>(){
-            {"capital", 10000000},
+            {"capital", 100000000},
             {"financiamiento", 1},
             {"deuda", 1500000},
             {"user_id", -1},

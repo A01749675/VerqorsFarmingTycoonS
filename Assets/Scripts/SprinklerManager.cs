@@ -15,18 +15,16 @@ public class SprinklerManager : MonoBehaviour
     MapManager mapManager;
     [SerializeField]
     TankManager tankManager;
-    private bool isFull = false;
+
     [SerializeField]
     private int land_id =  -1;
-    private int assigned_land = -1;
     private int cycle = 30;
-    private bool active = false;
 
     private bool flag = false;
     public void WaterCrops(){
         if(mapManager.GetCurrentCycle()%cycle==0 && !flag){
             //print(tankManager.GetWaterLevel());
-            if(mapManager.GetAverageWaterAtLand(land_id) < 100 && tankManager.GetWaterLevel() > 0 && mapManager.LandPlanted(land_id)){
+            if(mapManager.GetAverageWaterAtLand(land_id) < 75 && tankManager.GetWaterLevel() > 0 && mapManager.LandPlanted(land_id)){
                 animator.enabled = true;
                 mapManager.WaterSpecificLand(land_id);
                 tankManager.SetWaterLevel(-5);
@@ -51,13 +49,7 @@ public class SprinklerManager : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         gameObject.GetComponent<Animator>().enabled = false;
-        //AssignLandToSprinkler(land_id);
-    }
-
-    public void AssignLandToSprinkler(int land_id){
-        if(mapManager.IsLandUnlocked(land_id)){
-            assigned_land = land_id;
-        }
+  
     }
 
     // Update is called once per frame
