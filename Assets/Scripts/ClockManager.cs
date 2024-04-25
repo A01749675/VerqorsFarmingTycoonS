@@ -57,7 +57,7 @@ public class ClockManager : MonoBehaviour
     public void SetDate(int cycle){
         cycle = (int) (cycle/8);
         year = (int)(cycle/360+2024);
-        month = (cycle%360)/30;
+        month = ((cycle%360)/30) ;
         week = (int)((cycle%360)/7)+1;
         day = (cycle%360)%30;
         print("year: "+year+" month: "+month+" week: "+week+" day: "+day);
@@ -69,7 +69,7 @@ public class ClockManager : MonoBehaviour
     private int Dia(){
         if (mapManager.GetCurrentCycle()%8 == 0 && !banderaday){
             day ++;   
-            day_year = (mapManager.GetCurrentCycle()/8)%361;
+            day_year = (mapManager.GetCurrentCycle()/8)%360;
             banderaday = true;
             return day;
         }

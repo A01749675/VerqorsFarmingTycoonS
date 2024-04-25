@@ -19,7 +19,7 @@ public class MapManager : MonoBehaviour
     
     private int selected_crop = 0;
     private int selected_land = -1;
-    private int current_cycle = 1;
+    private int current_cycle = 2900;
     private int crop_cycle_constant = 60;
     private int update_rate = 1;
 
