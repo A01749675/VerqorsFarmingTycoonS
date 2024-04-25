@@ -272,7 +272,7 @@ public class FinanceManager : MonoBehaviour
     private void VerqorPathway(int debt,int cycle){
         
         if(user_controller.GetParameter("capital")>user_controller.GetParameter("deuda")){
-            user_controller.UpdateCapital(-user_controller.GetParameter("deuda"));
+            user_controller.PayDebt(user_controller.GetParameter("deuda"));
         }
         else if(user_controller.GetParameter("capital")>(user_controller.GetParameter("deuda"))/2){
             user_controller.UpdateCapital(-user_controller.GetParameter("deuda"));
@@ -286,7 +286,7 @@ public class FinanceManager : MonoBehaviour
     }
     private void BankPathway(int debt,int cycle){
         if(user_controller.GetParameter("capital")>user_controller.GetParameter("deuda")){
-            user_controller.UpdateCapital(-user_controller.GetParameter("deuda"));
+            user_controller.PayDebt(user_controller.GetParameter("deuda"));
         }
         else if(user_controller.GetParameter("capital")>(user_controller.GetParameter("deuda"))/2){
             user_controller.UpdateCapital(-user_controller.GetParameter("deuda"));
@@ -299,7 +299,7 @@ public class FinanceManager : MonoBehaviour
     }
     private void CoyotePathway(int debt,int cycle){
         if(user_controller.GetParameter("capital")>user_controller.GetParameter("deuda")){
-            user_controller.UpdateCapital(-user_controller.GetParameter("deuda"));
+            user_controller.PayDebt(user_controller.GetParameter("deuda"));
         }
         else if(user_controller.GetParameter("capital")>(user_controller.GetParameter("deuda"))/2){
             user_controller.UpdateCapital(-user_controller.GetParameter("deuda"));
