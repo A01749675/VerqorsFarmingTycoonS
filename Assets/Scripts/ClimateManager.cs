@@ -171,7 +171,7 @@ public class ClimateManager : MonoBehaviour
                 newsText.text = "Un día normal en el país";
                 bigPeriodicoText1.text = "Clima normal en el país";
                 bigPeriodicoImg1.sprite = bigPeriodicoSprite3;
-                bigPeriodicoText2.text = "Technoblade becomes the Potato King";
+                bigPeriodicoText2.text = "Quantum Robotics gana primer lugar en URC";
                 bigPeriodicoImg2.sprite = bigPeriodicoSprite4;
                 //tankManager.FillTank();
                 rain.SetActive(false);
@@ -186,7 +186,7 @@ public class ClimateManager : MonoBehaviour
                 newsText.text = "Lluvias moderadas en el país";
                 bigPeriodicoText1.text = "Se espera lluvia moderada en el país";
                 bigPeriodicoImg1.sprite = bigPeriodicoSprite5;
-                bigPeriodicoText2.text = "Mujer se casa con su perro";
+                bigPeriodicoText2.text = "Santiago Chevez gana la lotería";
                 bigPeriodicoImg2.sprite = bigPeriodicoSprite6;
                 tankManager.FillTank();
                 rain.SetActive(true);
@@ -199,9 +199,9 @@ public class ClimateManager : MonoBehaviour
             case 3:
                 Debug.Log("Flood");
                 newsText.text = "Inundación daña negocios locales";
-                bigPeriodicoText1.text = "Inundación en los estados del norte o algo así";
+                bigPeriodicoText1.text = "Inundación en los estados del norte";
                 bigPeriodicoImg1.sprite = bigPeriodicoSprite7;
-                bigPeriodicoText2.text = "Joe Biden se cae de su avión, otra vez";
+                bigPeriodicoText2.text = "Se celebra competencia de cocina a nivel mundial";
                 bigPeriodicoImg2.sprite = bigPeriodicoSprite8;
                 tankManager.FillTank();
                 rain.SetActive(false);
@@ -216,7 +216,7 @@ public class ClimateManager : MonoBehaviour
                 newsText.text = "Alerta de huracán";
                 bigPeriodicoText1.text = "Huracán categoría 5 azota los cultivos, se estiman 690000 muertos y desaparecidos";
                 bigPeriodicoImg1.sprite = bigPeriodicoSprite9;
-                bigPeriodicoText2.text = "Bandas Sinaloenses combaten la gentrificación en el norte del país";
+                bigPeriodicoText2.text = "Se encuentran fósiles de dinosaurios en México";
                 bigPeriodicoImg2.sprite = bigPeriodicoSprite10;
                 rain.SetActive(false);
                 flood.SetActive(false);
