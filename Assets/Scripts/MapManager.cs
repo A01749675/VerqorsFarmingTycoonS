@@ -40,6 +40,7 @@ public class MapManager : MonoBehaviour
     private int numberOfLands = 0;
 
     private AudioSource audioSourcePlant;
+    private AudioSource audioSourceTractor;
 
     [SerializeField]
     public List<TileBase> chilli_grow_tiles;
@@ -115,6 +116,7 @@ public class MapManager : MonoBehaviour
         print("map manager finise¿hed configuration");
         InvokeRepeating("UpdateCycle", 0, 1f);
         audioSourcePlant = GameObject.Find("Plantar").GetComponent<AudioSource>();
+        audioSourceTractor = GameObject.Find("Tractor").GetComponent<AudioSource>();
 
     }
 
@@ -501,6 +503,7 @@ public class MapManager : MonoBehaviour
                 }
             }
         }
+        audioSourceTractor.Play();
         if(CropsInLand[land]==0){
             LandIsPlanted[land] = false;
         }
