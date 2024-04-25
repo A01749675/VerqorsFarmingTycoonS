@@ -63,13 +63,6 @@ public class EmployeeManager : MonoBehaviour
 
     }
 
-    public void CollectLand(){
-        if(assigned_land != -1){
-            mapManager.FarmerAutomaticCollection(assigned_land);
-            animator.SetBool("ActivatedMovement",true);
-        }
-    }
-
     public void PlantLand(){
         if(assigned_land != -1 && !mapManager.LandPlanted(assigned_land) && cropManager.GetCropSeeds(assigned_crop) > 0){
             mapManager.FarmerAutomaticPlanting(assigned_land,assigned_crop);
