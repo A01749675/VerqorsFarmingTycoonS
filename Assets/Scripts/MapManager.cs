@@ -579,6 +579,7 @@ public class MapManager : MonoBehaviour
                 plantedCrops[4] = false;
                 plantedCrops[5] = false;
                 plantedCrops[6] = false;
+                dryrate = -100;
                 break;
             case 4:
                 ClimateWaterUpdate();

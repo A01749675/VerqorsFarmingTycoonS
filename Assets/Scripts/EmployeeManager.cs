@@ -36,6 +36,8 @@ public class EmployeeManager : MonoBehaviour
     private MapManager mapManager;
     [SerializeField]
     private CropManager cropManager;
+    [SerializeField]
+    private ClimateManager climateManager;
 
     private Animator animator;
     private SpriteRenderer spriteRenderer;
@@ -64,7 +66,7 @@ public class EmployeeManager : MonoBehaviour
     }
 
     public void PlantLand(){
-        if(assigned_land != -1 && !mapManager.LandPlanted(assigned_land) && cropManager.GetCropSeeds(assigned_crop) > 0){
+        if(assigned_land != -1 && !mapManager.LandPlanted(assigned_land) && cropManager.GetCropSeeds(assigned_crop) > 0 && climateManager.GetCurrentClimateId()!=3){
             mapManager.FarmerAutomaticPlanting(assigned_land,assigned_crop);
             animator.SetBool("ActivatedMovement",true);
         }

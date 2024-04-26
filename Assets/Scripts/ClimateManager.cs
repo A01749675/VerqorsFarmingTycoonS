@@ -135,13 +135,12 @@ public class ClimateManager : MonoBehaviour
         }
     }
 
-    public int GetClimateID(){
-        return currentClimate;
-    }
-
-
     public Dictionary<string,int> GetCurrentClimate(){
         return climates[currentClimate];
+    }
+
+    public int GetCurrentClimateId(){
+        return currentClimate;
     }
 
     public void PrintClimate(int climate){
