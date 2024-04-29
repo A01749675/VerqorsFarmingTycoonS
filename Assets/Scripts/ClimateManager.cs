@@ -150,7 +150,7 @@ public class ClimateManager : MonoBehaviour
                 newsText.text = "Sequía daña los cultivos";
                 bigPeriodicoText1.text = "Sequía azota el país y mata las cosechas";
                 bigPeriodicoImg1.sprite = bigPeriodicoSprite1;
-                bigPeriodicoText2.text = "Hombre afeita la cabeza de un gato en su casa";
+                bigPeriodicoText2.text = "Cambio climático genera sequías en todo el mundo";
                 bigPeriodicoImg2.sprite = bigPeriodicoSprite2;
                 rain.SetActive(false);
                 flood.SetActive(false);
