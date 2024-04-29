@@ -17,6 +17,7 @@ public class UiControl : MonoBehaviour
     public GameObject Produccion;
     public GameObject Rankings;
     public GameObject Ajustes;
+    public AudioControl audioControl;
     public GameObject Celular;
     public GameObject Mercado;
     public GameObject Inventario;
@@ -195,6 +196,7 @@ public class UiControl : MonoBehaviour
         Ranking1FinanceData="Verqor";
         Ranking2FinanceData="Banco";
         Ranking3FinanceData="Verqor";
+        audioControl = GetComponent<AudioControl>();
     }
 
     //Al dar click al boton de opciones se abre el panel PanelOpciones
@@ -402,6 +404,7 @@ public class UiControl : MonoBehaviour
         }
     public void CloseGame()
     {
+        audioControl.Save();
         Debug.Log("Guardando...");
         enviardatos.GuardarySalir();
         Debug.Log("Guardado exitoso.");
@@ -610,6 +613,7 @@ public class UiControl : MonoBehaviour
         flagBigPeriodico=false;
         BigPeriodico.SetActive(false);
         flagArbol=false;
+        Cursor.visible = true;
         Arbol.SetActive(false);
         if(flagMenuPlantar){
             flagMenuPlantar=false;
