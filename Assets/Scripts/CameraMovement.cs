@@ -11,6 +11,7 @@ public class CameraMovement : MonoBehaviour
     [SerializeField]
     private SpriteRenderer mapRenderer;
 
+    public float speed = 5.0f;
     private float mapMinX, mapMaxX, mapMinY, mapMaxY;
     private Vector3 dragOrigin;
 
@@ -25,6 +26,27 @@ public class CameraMovement : MonoBehaviour
         
         PanCamera();
 
+
+    if(Input.GetKey(KeyCode.RightArrow))
+	{
+		transform.Translate(new Vector3(speed * Time.deltaTime,0,0));
+        cam.transform.position = ClampCamera(cam.transform.position);
+	}
+	if(Input.GetKey(KeyCode.LeftArrow))
+	{
+		transform.Translate(new Vector3(-speed * Time.deltaTime,0,0));
+        cam.transform.position = ClampCamera(cam.transform.position);
+	}
+	if(Input.GetKey(KeyCode.DownArrow))
+	{
+		transform.Translate(new Vector3(0,-speed * Time.deltaTime,0));
+        cam.transform.position = ClampCamera(cam.transform.position);
+	}
+	if(Input.GetKey(KeyCode.UpArrow))
+	{
+		transform.Translate(new Vector3(0,speed * Time.deltaTime,0));
+        cam.transform.position = ClampCamera(cam.transform.position);
+	}
     }
 
     private void PanCamera(){
@@ -38,7 +60,6 @@ public class CameraMovement : MonoBehaviour
             
             cam.transform.position = ClampCamera(cam.transform.position + difference);
         }
-
     }
 
     private Vector3 ClampCamera(Vector3 targetPosition){
