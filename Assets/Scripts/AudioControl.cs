@@ -106,5 +106,6 @@ public class AudioControl : MonoBehaviour
         PlayerPrefs.SetInt("isMuted", isMuted ? 1 : 0);
         PlayerPrefs.SetFloat("volumenEfectos", efectosControl.GetComponent<Scrollbar>().value);
         PlayerPrefs.SetInt("isMuted2", isMuted2 ? 1 : 0);
+        PlayerPrefs.Save();
     }
 }
