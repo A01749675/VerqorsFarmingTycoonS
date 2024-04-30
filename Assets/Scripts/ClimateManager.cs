@@ -204,7 +204,7 @@ public class ClimateManager : MonoBehaviour
             case 4:
                 Debug.Log("Hurricane");
                 newsText.text = "Alerta de huracán";
-                bigPeriodicoText1.text = "Huracán categoría 5 azota los cultivos, se estiman 690000 muertos y desaparecidos";
+                bigPeriodicoText1.text = "Huracán categoría 4 azota los cultivos";
                 bigPeriodicoImg1.sprite = bigPeriodicoSprite9;
                 bigPeriodicoText2.text = "Se encuentran fósiles de dinosaurios en México";
                 bigPeriodicoImg2.sprite = bigPeriodicoSprite10;
