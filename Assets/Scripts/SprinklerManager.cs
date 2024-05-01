@@ -15,7 +15,8 @@ public class SprinklerManager : MonoBehaviour
     MapManager mapManager;
     [SerializeField]
     TankManager tankManager;
-
+    [SerializeField]
+    ClimateManager climateManager;
     [SerializeField]
     private int land_id =  -1;
     private int cycle = 30;
@@ -23,7 +24,7 @@ public class SprinklerManager : MonoBehaviour
     private bool flag = false;
     public void WaterCrops(){
         
-        if(mapManager.GetCurrentCycle()%cycle==0 && !flag && mapManager.GetCropsInLand(land_id)>0){
+        if(mapManager.GetCurrentCycle()%cycle==0 && !flag && mapManager.GetCropsInLand(land_id)>0 && climateManager.GetCurrentClimateId() != 2){
             //print(tankManager.GetWaterLevel());
             if(mapManager.GetAverageWaterAtLand(land_id) < 75 && tankManager.GetWaterLevel() > 0 && mapManager.LandPlanted(land_id)){
                 animator.enabled = true;
