@@ -408,7 +408,10 @@ public class UiControl : MonoBehaviour
         Debug.Log("Guardando...");
         enviardatos.GuardarySalir();
         Debug.Log("Guardado exitoso.");
+        Application.OpenURL("http://52.5.57.146:8080/");
         SceneManager.LoadScene("Exit");
+        
+
     }
 
     public void ShowCreditos(){
