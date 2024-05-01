@@ -87,6 +87,7 @@ public class FinanceManager : MonoBehaviour
                 if(user_controller.GetCapital()<loosingCondition){
                     print("GameOver");
                     enviarDatos.GuardarySalir();
+                    Application.OpenURL("https://verqor.com/");
                     SceneManager.LoadScene("GameOver");
                 }
             }
