@@ -1337,7 +1337,7 @@ public class UiControl : MonoBehaviour
     }
 
     public void ShowTutorial(){
-        Application.OpenURL("http://localhost:3000/tutorialjuego");
+        Application.OpenURL("http://52.5.57.146:8080/tutorialjuego");
     }
 
     void Update(){

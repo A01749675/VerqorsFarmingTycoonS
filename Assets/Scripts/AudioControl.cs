@@ -27,7 +27,7 @@ public class AudioControl : MonoBehaviour
     void Start()
     {
         volumenMusica = PlayerPrefs.GetFloat("volumenMusica", 0.5f);
-        isMuted = PlayerPrefs.GetInt("isMuted", 0) == 1;
+        isMuted = PlayerPrefs.GetInt("isMuted", 1) == 1;
         volumeControl.GetComponent<Scrollbar>().value = volumenMusica;
         audioSource.mute = !isMuted;
         if(isMuted)
@@ -39,7 +39,7 @@ public class AudioControl : MonoBehaviour
             muteVolumeButton.GetComponent<Image>().sprite = muted;
         }
         volumenEfectos = PlayerPrefs.GetFloat("volumenEfectos", 0.5f);
-        isMuted2 = PlayerPrefs.GetInt("isMuted2", 0) == 1;
+        isMuted2 = PlayerPrefs.GetInt("isMuted2", 1) == 1;
         efectosControl.GetComponent<Scrollbar>().value = volumenEfectos;
         audioSourcemoney.mute = !isMuted2;
         audioSourceLluvia.mute = !isMuted2;
