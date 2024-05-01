@@ -68,7 +68,7 @@ public class ObtenerDatos : MonoBehaviour
 
     private IEnumerator ObtenerDatosUsuario(int userId)
     {
-        string apiUrl = "http://52.5.57.146:8080/game-data?user_id="+userId;
+        string apiUrl = "http://localhost:3000/game-data?user_id="+userId;
 
         UnityWebRequest www = UnityWebRequest.Get(apiUrl);
         yield return www.SendWebRequest();
@@ -141,7 +141,7 @@ public class ObtenerDatos : MonoBehaviour
     }
     private IEnumerator ObtenerRankings()
     {
-        string apiUrl = "http://52.5.57.146:8080/rankings";
+        string apiUrl = "http://localhost:3000/rankings";
 
         UnityWebRequest www = UnityWebRequest.Get(apiUrl);
         yield return www.SendWebRequest();

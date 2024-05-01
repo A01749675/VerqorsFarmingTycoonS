@@ -140,7 +140,7 @@ public class EnviarDatos : MonoBehaviour
     // corrutina de enviar datos
     private IEnumerator EnviarDatosUsuario(string jsonData)
     {
-        string apiUrl = "http://52.5.57.146:8080/game-data";
+        string apiUrl = "http://localhost:3000/game-data";
 
         // Crear un objeto UnityWebRequest para enviar los datos
         UnityWebRequest www = new UnityWebRequest(apiUrl, "POST");
@@ -164,7 +164,7 @@ public class EnviarDatos : MonoBehaviour
     }
     private IEnumerator EnviarDatosUsuario2(string jsonData)
     {
-        string apiUrl = "hhttp://52.5.57.146:8080/game-data";
+        string apiUrl = "hhttp://localhost:3000/game-data";
 
         // Crear un objeto UnityWebRequest para enviar los datos
         UnityWebRequest www = new UnityWebRequest(apiUrl, "POST");
@@ -188,7 +188,7 @@ public class EnviarDatos : MonoBehaviour
             UnityWebRequest www3 = UnityWebRequest.Get(redirectUrl);
             yield return www3.SendWebRequest(); */
 
-            Application.OpenURL("http://52.5.57.146:8080/");
+            Application.OpenURL("http://localhost:3000/");
         }
     }
 
