@@ -80,11 +80,13 @@ public class TreeManager : MonoBehaviour
     private Dictionary<int,int> Costos = new Dictionary<int, int>();
 
     public bool update = false;
+    // Regresa el valor de las mejoras
     public bool getMejoras(int mejora){
         return Mejoras[mejora];
     }
 
     public void Awake(){
+        // Inicializa el diccionario de mejoras
         for (int i = 1; i < 22; i++)
             {
                 Mejoras.Add(i, false);
@@ -94,9 +96,11 @@ public class TreeManager : MonoBehaviour
 
     public void Start()
     {
+        // Se obtienen los objetos de la escena
         Texto=Arbol.transform.GetChild(0).GetChild(1).gameObject;
         BotonComprar = Arbol.transform.GetChild(0).GetChild(2).gameObject;
         BotonInfo = Arbol.transform.GetChild(0).GetChild(3).gameObject;
+        // Se inicializan los costos de las mejoras
         Costos.Add(1,300000);
         Costos.Add(2,400000);
         Costos.Add(3,225000);
@@ -118,6 +122,7 @@ public class TreeManager : MonoBehaviour
         Costos.Add(19,450000);
         Costos.Add(20,800000);
         Costos.Add(21,500000);
+        // Se pone el arbol del financimiento del usuario
         if(userController.user_data.ContainsKey("financiamiento")){
             TFin = userController.GetParameter("financiamiento");
         }
@@ -177,7 +182,7 @@ public class TreeManager : MonoBehaviour
                 break;
         }
     }
-
+    // A continuación se definen los métodos para mostrar las  distintas mejoras
     public void ShowUpgrade1()
     {
         Arbol.transform.GetChild(0).gameObject.SetActive(true);
@@ -590,6 +595,8 @@ public class TreeManager : MonoBehaviour
         }
         
     }
+
+    //Se compra la mejora y se actualiza el capital
     public void Comprar(){
         if(userController.GetCapital() >= Costos[seleccion]){
             Mejoras[seleccion] = true;
