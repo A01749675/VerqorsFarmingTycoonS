@@ -58,7 +58,6 @@ public class SprinklerManager : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         gameObject.GetComponent<Animator>().enabled = false;
-  
     }
 
     // Update is called once per frame
