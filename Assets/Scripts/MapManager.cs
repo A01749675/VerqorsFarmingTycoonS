@@ -36,12 +36,12 @@ public class MapManager : MonoBehaviour
     private Dictionary<TileBase, TileData> dataFromTiles; //Dicionario que relaciona cada tile presente con su tildata
     private Dictionary<int,TileBase> soilFromCrop; //Dicionario que relaciona cada cultivo con su tipo de suelo
     private Dictionary<int,bool> plantedCrops; //Dicionario que indica si un cultivo está plantado
-    private Dictionary<int,int> CropSpriteCounter;  //Dicionario que indica el número de sprites de crecimiento de cada cultivo
-    private Dictionary<int,int[,]> LandPosition; //Dicionario que indica la posición de cada parcela (sus rangos)
-    private Dictionary<int,bool>  UnlockedLands; //Dicionario que indica si una parcela está desbloqueada
-    private Dictionary<int,int> Land_Crop_Assigned; //Dicionario que indica el cultivo asignado a cada parcela
-    private Dictionary<int,bool> LandIsPlanted; //Dicionario que indica si una parcela está plantada
-    private Dictionary<int,int> CropsInLand; //Dicionario que indica la cantidad de cultivos en una parcela
+    private Dictionary<int,int> cropSpriteCounter;  //Dicionario que indica el número de sprites de crecimiento de cada cultivo
+    private Dictionary<int,int[,]> landPosition; //Dicionario que indica la posición de cada parcela (sus rangos)
+    private Dictionary<int,bool>  unlockedLands; //Dicionario que indica si una parcela está desbloqueada
+    private Dictionary<int,int> landCropAssigned; //Dicionario que indica el cultivo asignado a cada parcela
+    private Dictionary<int,bool> landIsPlanted; //Dicionario que indica si una parcela está plantada
+    private Dictionary<int,int> cropsInLand; //Dicionario que indica la cantidad de cultivos en una parcela
     private int numberOfLands = 0; //Variable que indica el número de parcelas
 
     private AudioSource audioSourcePlant; 
@@ -103,7 +103,7 @@ public class MapManager : MonoBehaviour
             {-5,soil5},
             {-6,soil6}
         };
-        CropSpriteCounter = new Dictionary<int, int>(){
+        cropSpriteCounter = new Dictionary<int, int>(){
             {1,barley_grow_tiles.Count},
             {2,corn_grow_tiles.Count},
             {3,tomato_grow_tiles.Count},
@@ -111,11 +111,11 @@ public class MapManager : MonoBehaviour
             {5,coffee_grow_tiles.Count},
             {6,chilli_grow_tiles.Count}
         };
-        LandPosition = new Dictionary<int, int[,]>();
-        UnlockedLands =new Dictionary<int, bool>();
-        Land_Crop_Assigned = new Dictionary<int, int>();
-        LandIsPlanted = new Dictionary<int, bool>();
-        CropsInLand = new Dictionary<int, int>();
+        landPosition = new Dictionary<int, int[,]>();
+        unlockedLands =new Dictionary<int, bool>();
+        landCropAssigned = new Dictionary<int, int>();
+        landIsPlanted = new Dictionary<int, bool>();
+        cropsInLand = new Dictionary<int, int>();
         FindLand(); //Se busca las parcelas en el mapa
         UpdateUnlockedLands(new int[]{8}); //Se desbloquea la parcela 8
         InvokeRepeating("UpdateCycle", 0, 1f);
@@ -137,17 +137,18 @@ public class MapManager : MonoBehaviour
                 print("Selected crop "+dataFromTiles[clickedTile].crop_type +" at "+gridPos);
             }
             print("Tile is at the land " + CheckIfTileIsLand(gridPos));
-            if(UnlockedLands.ContainsKey(CheckIfTileIsLand(gridPos))){
-                print("The Land is unlocked? "+UnlockedLands[CheckIfTileIsLand(gridPos)]);
+            if(unlockedLands.ContainsKey(CheckIfTileIsLand(gridPos))){
+                print("The Land is unlocked? "+unlockedLands[CheckIfTileIsLand(gridPos)]);
                 print("Average water " + GetAverageWaterAtLand(CheckIfTileIsLand(gridPos)));
-                print("The crop is: "+Land_Crop_Assigned[CheckIfTileIsLand(gridPos)]);
+                print("The crop is: "+landCropAssigned[CheckIfTileIsLand(gridPos)]);
+                print("Crops at land " + cropsInLand[CheckIfTileIsLand(gridPos)]);
             }
             
         }
         //Método para plantar cultivos
         if(Input.GetMouseButtonDown(0)){
             Vector3Int gridPos = tilemap.WorldToCell(mousePos);
-            if(UnlockedLands.ContainsKey(CheckIfTileIsLand(gridPos))){
+            if(unlockedLands.ContainsKey(CheckIfTileIsLand(gridPos))){
                 print(selected_crop);
                 selected_land = CheckIfTileIsLand(gridPos);
                 PlantCrop(mousePos);
@@ -157,7 +158,7 @@ public class MapManager : MonoBehaviour
         //Método para regar recolectar cultivos
         if(Input.GetMouseButtonDown(1)){
             Vector3Int gridPos = tilemap.WorldToCell(mousePos);
-            if(UnlockedLands.ContainsKey(CheckIfTileIsLand(gridPos))){
+            if(unlockedLands.ContainsKey(CheckIfTileIsLand(gridPos))){
                 selected_land = CheckIfTileIsLand(gridPos);
                 CollectLand();
             }
@@ -169,7 +170,7 @@ public class MapManager : MonoBehaviour
         current_cycle+=update_rate;
         ChangeCropSprite();
         if(current_cycle%climateManager.currentClimatecycle==0){
-            climateManager.ClimateAlreadyExecuted = false;
+            climateManager.climateAlreadyExecuted = false;
         }
     }
     //Método que obtiene el ciclo actual
@@ -187,20 +188,20 @@ public class MapManager : MonoBehaviour
     }
     //Método que carga los datos de una parcela al inicio del juego
     public void LoadPredefinedMap(int land, int estado, int cantidad,int agua){
-        if(!LandPosition.ContainsKey(land)){
+        if(!landPosition.ContainsKey(land)){
             return;
         }
-        UnlockedLands[land] = true;
-        CropsInLand[land] = cantidad;
-        int[,] ranges = LandPosition[land];
+        unlockedLands[land] = true;
+        cropsInLand[land] = cantidad;
+        int[,] ranges = landPosition[land];
         int x = ranges[0,0];
         int y = ranges[0,1];
         int x1 = ranges[1,0];
         int y1 = ranges[1,1];
         if(cantidad>0){
-            LandIsPlanted[land] = true;
+            landIsPlanted[land] = true;
         }
-        int crop = Land_Crop_Assigned[land];
+        int crop = landCropAssigned[land];
         plantedCrops[crop] = true;
         for(int i = x;i<x1+1;i++){
             for(int j=y;j<y1+1;j++){
@@ -398,15 +399,15 @@ public class MapManager : MonoBehaviour
 
     //Método que planta un cultivo en una parcela en particular
     public void PlantLand(TileBase seed){
-        if(!LandPosition.ContainsKey(selected_land) || UnlockedLands[selected_land]==false){
+        if(!landPosition.ContainsKey(selected_land) || unlockedLands[selected_land]==false){
             return;
         }
-        int[,] ranges = LandPosition[selected_land];
+        int[,] ranges = landPosition[selected_land];
         int x = ranges[0,0];
         int y = ranges[0,1];
         int x1 = ranges[1,0];
         int y1 = ranges[1,1];
-        LandIsPlanted[selected_land] = true;
+        landIsPlanted[selected_land] = true;
         //Para los rangos de la parcela, se recorre cada tile y se planta la semilla
         for(int i = x;i<x1+1;i++){
             for(int j=y;j<y1+1;j++){
@@ -424,7 +425,7 @@ public class MapManager : MonoBehaviour
                         {"water",30},
                         {"crop_type", selected_crop}
                     });
-                    CropsInLand[selected_land]++;
+                    cropsInLand[selected_land]++;
                 }
             }
         }
@@ -433,13 +434,13 @@ public class MapManager : MonoBehaviour
 
     //Método llamado por el EmployeeManager para plantar cultivos 
     public void FarmerAutomaticPlanting(int land, int crop){
-        if(!LandPosition.ContainsKey(land) || UnlockedLands[land]==false){
+        if(!landPosition.ContainsKey(land) || unlockedLands[land]==false){
             return;
         }
         plantedCrops[crop] = true;
-        LandIsPlanted[land] = true;
+        landIsPlanted[land] = true;
         TileBase seed = seeds[crop-1];
-        int[,] ranges = LandPosition[land];
+        int[,] ranges = landPosition[land];
         int x = ranges[0,0];
         int y = ranges[0,1];
         int x1 = ranges[1,0];
@@ -450,7 +451,7 @@ public class MapManager : MonoBehaviour
                 TileBase tile = tilemap.GetTile(gridPosition);
                 if(cropManager.GetCropSeeds(crop)>0 && tile && dataFromTiles.ContainsKey(tile) && 
                 dataFromTiles[tile].crop_type==-crop && CheckIfTileIsLand(gridPosition)!= -1 
-                && CheckIfTileIsLand(gridPosition) == land && UnlockedLands[CheckIfTileIsLand(gridPosition)]
+                && CheckIfTileIsLand(gridPosition) == land && unlockedLands[CheckIfTileIsLand(gridPosition)]
                 &&!cropManager.cropCycleGrowth.ContainsKey(gridPosition)){
                     tilemap.SetTile(gridPosition, seed);
                     cropManager.UpdateCropSeeds(crop, -1);
@@ -460,7 +461,7 @@ public class MapManager : MonoBehaviour
                         {"water",30},
                         {"crop_type", selected_crop}
                     });
-                    CropsInLand[land]++;
+                    cropsInLand[land]++;
                 }
             }
         }
@@ -469,11 +470,11 @@ public class MapManager : MonoBehaviour
     }
     //Método para recolectar cultivos en una parcela en particular
     public void CollectLand(){
-        if(!LandPosition.ContainsKey(selected_land) || UnlockedLands[selected_land]==false){
+        if(!landPosition.ContainsKey(selected_land) || unlockedLands[selected_land]==false){
             return;
         }
-        LandIsPlanted[selected_land] = false;
-        int[,] ranges = LandPosition[selected_land];
+        landIsPlanted[selected_land] = false;
+        int[,] ranges = landPosition[selected_land];
         int x = ranges[0,0];
         int y = ranges[0,1];
         int x1 = ranges[1,0];
@@ -484,12 +485,12 @@ public class MapManager : MonoBehaviour
                 Vector3Int gridPosition = new Vector3Int(i, j, 0);
                 TileBase tile = tilemap.GetTile(gridPosition);
                 if(tile && dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type>0){
-                    if(cropManager.cropCycleGrowth.ContainsKey(gridPosition) && cropManager.cropCycleGrowth[gridPosition]["growth"]>=CropSpriteCounter[dataFromTiles[tile].crop_type]-1){
+                    if(cropManager.cropCycleGrowth.ContainsKey(gridPosition) && cropManager.cropCycleGrowth[gridPosition]["growth"]>=cropSpriteCounter[dataFromTiles[tile].crop_type]-1){
                         cropManager.cropCycleGrowth.Remove(gridPosition);
                         plantedCrops[dataFromTiles[tile].crop_type] = false;
                         tilemap.SetTile(gridPosition, soilFromCrop[-dataFromTiles[tile].crop_type]);
                         cropManager.UpdateCropQuantity(dataFromTiles[tile].crop_type, dataFromTiles[tile].quantity);
-                        CropsInLand[selected_land]--;
+                        cropsInLand[selected_land]--;
                     }
                 }
             }
@@ -498,10 +499,10 @@ public class MapManager : MonoBehaviour
 
     //Método llamado por el TruckManager para recolectar cultivos
     public void FarmerAutomaticCollection(int land){
-        if(!LandPosition.ContainsKey(land) || UnlockedLands[land]==false){
+        if(!landPosition.ContainsKey(land) || unlockedLands[land]==false){
             return;
         }
-        int[,] ranges = LandPosition[land];
+        int[,] ranges = landPosition[land];
         int x = ranges[0,0];
         int y = ranges[0,1];
         int x1 = ranges[1,0];
@@ -511,37 +512,37 @@ public class MapManager : MonoBehaviour
                 Vector3Int gridPosition = new Vector3Int(i, j, 0);
                 TileBase tile = tilemap.GetTile(gridPosition);
                 if(tile && dataFromTiles.ContainsKey(tile) && dataFromTiles[tile].crop_type>0){
-                    if(cropManager.cropCycleGrowth.ContainsKey(gridPosition) && cropManager.cropCycleGrowth[gridPosition]["growth"]>=CropSpriteCounter[dataFromTiles[tile].crop_type]-1){
+                    if(cropManager.cropCycleGrowth.ContainsKey(gridPosition) && cropManager.cropCycleGrowth[gridPosition]["growth"]>=cropSpriteCounter[dataFromTiles[tile].crop_type]-1){
                         cropManager.cropCycleGrowth.Remove(gridPosition);
                         plantedCrops[dataFromTiles[tile].crop_type] = false;
                         tilemap.SetTile(gridPosition, soilFromCrop[-dataFromTiles[tile].crop_type]);
                         cropManager.UpdateCropQuantity(dataFromTiles[tile].crop_type, dataFromTiles[tile].quantity);
-                        CropsInLand[land]--;
+                        cropsInLand[land]--;
                         audioSourceTractor.Play();
                     }
                 }
             }
         }
         
-        if(CropsInLand[land]==0){
-            LandIsPlanted[land] = false;
+        if(cropsInLand[land]==0){
+            landIsPlanted[land] = false;
         }
     }
 
     //Método que actualiza el agua de una parcela en particular, y es llamado por el controlmanager
     public void WaterLand(Vector2 mousePos){
         Vector3Int gridPos = tilemap.WorldToCell(mousePos);
-        if(LandPosition.ContainsKey(CheckIfTileIsLand(gridPos))){
+        if(landPosition.ContainsKey(CheckIfTileIsLand(gridPos))){
             WaterSpecificLand(CheckIfTileIsLand(gridPos));
         }
 
     }
     //Método que actualiza el agua de una parcela en particular
     public void WaterSpecificLand(int land){
-        if(!LandPosition.ContainsKey(land) || UnlockedLands[land]==false){
+        if(!landPosition.ContainsKey(land) || unlockedLands[land]==false){
             return;
         }
-        int[,] ranges = LandPosition[land];
+        int[,] ranges = landPosition[land];
         int x = ranges[0,0];
         int y = ranges[0,1];
         int x1 = ranges[1,0];
@@ -621,23 +622,23 @@ public class MapManager : MonoBehaviour
             tilemap.SetTile(gridPosition, soilFromCrop[-crop_type]);
             cropManager.cropCycleGrowth.Remove(gridPosition);
             if(CheckIfTileIsLand(gridPosition)!=-1){
-                if(Disaster && CropsInLand[CheckIfTileIsLand(gridPosition)] != 0){
+                if(Disaster && cropsInLand[CheckIfTileIsLand(gridPosition)] != 0){
                     int price = financeManager.GetCropPrice(crop_type);
-                    userController.UpdateCapital((int)(CropsInLand[CheckIfTileIsLand(gridPosition)]*(price)*financeManager.GetSeguro(userController.GetParameter("financiamiento"))));
+                    userController.UpdateCapital((int)(cropsInLand[CheckIfTileIsLand(gridPosition)]*(price)*financeManager.GetSeguro(userController.GetParameter("financiamiento"))));
                     uiControl.ActualizarDinero();
                 }
-                LandIsPlanted[CheckIfTileIsLand(gridPosition)] = false;
-                CropsInLand[CheckIfTileIsLand(gridPosition)] = 0;
+                landIsPlanted[CheckIfTileIsLand(gridPosition)] = false;
+                cropsInLand[CheckIfTileIsLand(gridPosition)] = 0;
             }
         }
     }
 
     //Método que calcula el promedio del nivel de agua en una parcela en particular
     public int GetAverageWaterAtLand(int land){
-        if(!LandPosition.ContainsKey(land) || UnlockedLands[land]==false){
+        if(!landPosition.ContainsKey(land) || unlockedLands[land]==false){
             return 0;
         }
-        int[,] ranges = LandPosition[land];
+        int[,] ranges = landPosition[land];
         int x = ranges[0,0];
         int y = ranges[0,1];
         int x1 = ranges[1,0];
@@ -728,11 +729,11 @@ public class MapManager : MonoBehaviour
                 Vector3Int gridPosition = new Vector3Int(i, j, 0);
                 TileBase tile = tilemap.GetTile(gridPosition);
                 if(tile && dataFromTiles.ContainsKey(tile) && IsSoil(dataFromTiles[tile].crop_type) && CheckIfTileIsLand(gridPosition)==-1){
-                    LandPosition.Add(numberOfLands,GetLand(i,j));
-                    UnlockedLands.Add(numberOfLands-1, false);
-                    Land_Crop_Assigned[numberOfLands-1] = -dataFromTiles[tile].crop_type;
-                    LandIsPlanted[numberOfLands-1] = false;
-                    CropsInLand[numberOfLands-1] = 0;
+                    landPosition.Add(numberOfLands,GetLand(i,j));
+                    unlockedLands.Add(numberOfLands-1, false);
+                    landCropAssigned[numberOfLands-1] = -dataFromTiles[tile].crop_type;
+                    landIsPlanted[numberOfLands-1] = false;
+                    cropsInLand[numberOfLands-1] = 0;
                 }
             }
         }
@@ -741,10 +742,10 @@ public class MapManager : MonoBehaviour
     public List<int> GetDifferentGrowthsInLand(int land){
         //Declare a list with the items 0,1,2
         List<int> crops = new List<int> {0, 0, 0};
-        if(!LandPosition.ContainsKey(land) || UnlockedLands[land]==false){
+        if(!landPosition.ContainsKey(land) || unlockedLands[land]==false){
             return crops;
         }
-        int[,] ranges = LandPosition[land];
+        int[,] ranges = landPosition[land];
         int x = ranges[0,0];
         int y = ranges[0,1];
         int x1 = ranges[1,0];
@@ -761,9 +762,9 @@ public class MapManager : MonoBehaviour
         return crops;
     }
 
-    //Método que revisa si la posición de un tile es una parcela
+    //Método que revisa checa tile es una parcela
     private int CheckIfTileIsLand(Vector3Int gridPosition){
-        foreach (KeyValuePair<int, int[,]> entry in LandPosition){
+        foreach (KeyValuePair<int, int[,]> entry in landPosition){
             if(gridPosition.x>=entry.Value[0,0] && gridPosition.x<=entry.Value[1,0] && gridPosition.y>=entry.Value[0,1] && gridPosition.y<=entry.Value[1,1]){
                 return entry.Key;
             }
@@ -773,8 +774,8 @@ public class MapManager : MonoBehaviour
     //Método que actualiza las parcelas desbloqueadas
     public void UpdateUnlockedLands(int[] unlocked){
         foreach(int land in unlocked){
-            if(UnlockedLands.ContainsKey(land)){
-                UnlockedLands[land] = true;
+            if(unlockedLands.ContainsKey(land)){
+                unlockedLands[land] = true;
             }
             
         }
@@ -792,24 +793,24 @@ public class MapManager : MonoBehaviour
     }
     //Método que desbloque una tierra
     public void UnlockLand(int land){
-        UnlockedLands[land] = true;
+        unlockedLands[land] = true;
     }
     //Método que regresa si una tierra está desbloqueada
     public bool IsLandUnlocked(int land){
-        return UnlockedLands[land];
+        return unlockedLands[land];
     }
     //Método que regresa el cultivo de la parcela
     public int GetCropAtLand(int land){
-        return Land_Crop_Assigned[land];
+        return landCropAssigned[land];
     }
 
     //Método que regresa si una parcela está plantada
     public bool LandPlanted(int land){
-        return LandIsPlanted[land];
+        return landIsPlanted[land];
     }
     //Método que cuenta cuantoss cultivos hay en la parcela 
     public int GetCropsInLand(int land){
-        return CropsInLand[land];
+        return cropsInLand[land];
     }
     //Método que actualiza el ciclo actual
     public void SetCycle(int cycle){
@@ -818,8 +819,8 @@ public class MapManager : MonoBehaviour
     //Método que almacena la información de las parcelas en una lista de listas
     public List<List<int>> SaveDataFromMap(){
         List<List<int>> parcelas = new List<List<int>>();
-        foreach (KeyValuePair<int, int[,]> entry in LandPosition){
-            if(UnlockedLands[entry.Key]==false){
+        foreach (KeyValuePair<int, int[,]> entry in landPosition){
+            if(unlockedLands[entry.Key]==false){
                 continue;
             }
             List<int> crops = GetDifferentGrowthsInLand(entry.Key);

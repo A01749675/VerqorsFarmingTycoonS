@@ -17,9 +17,9 @@ public class FinanceManager : MonoBehaviour
     public EnviarDatos enviarDatos; //Referencia al EnviarDatos
 
     
-    private Dictionary<string, float> VerqorFinanceData; //Datos de financiamiento de Verqor
-    private Dictionary<string, float> BancoFinanceData; //Datos de financiamiento de Banco
-    private Dictionary<string, float> CoyoteFinanceData; //Datos de financiamiento de Coyote
+    private Dictionary<string, float> verqorFinanceData; //Datos de financiamiento de Verqor
+    private Dictionary<string, float> bancoFinanceData; //Datos de financiamiento de Banco
+    private Dictionary<string, float> coyoteFinanceData; //Datos de financiamiento de Coyote
     private AudioSource audioSourcemoney; //Sonido de dinero
 
     private int loosingCondition = -1;
@@ -43,21 +43,21 @@ public class FinanceManager : MonoBehaviour
             {5, 26},
             {6, 50}
         };
-        VerqorFinanceData = new Dictionary<string, float>()
+        verqorFinanceData = new Dictionary<string, float>()
         {
             {"tasaInteres", 0.5f},
             {"plazo", 2900},
             {"montoMaximo", 100000000},
             {"seguro", 0.5f}
         };
-        BancoFinanceData = new Dictionary<string, float>()
+        bancoFinanceData = new Dictionary<string, float>()
         {
             {"tasaInteres", 0.35f},
             {"plazo", 2900},
             {"montoMaximo", 800000},
             {"seguro", 0.0f}
         };
-        CoyoteFinanceData = new Dictionary<string, float>()
+        coyoteFinanceData = new Dictionary<string, float>()
         {
             {"tasaInteres", 0.75f},
             {"plazo", 2900},
@@ -111,13 +111,13 @@ public class FinanceManager : MonoBehaviour
         int debt = 0;
         switch(fin){
             case 1:
-                debt = (int) (VerqorFinanceData["montoMaximo"]*VerqorFinanceData["tasaInteres"]+VerqorFinanceData["montoMaximo"]);
+                debt = (int) (verqorFinanceData["montoMaximo"]*verqorFinanceData["tasaInteres"]+verqorFinanceData["montoMaximo"]);
                 break;
             case 2:
-                debt = (int) (BancoFinanceData["montoMaximo"]*BancoFinanceData["tasaInteres"]+BancoFinanceData["montoMaximo"]);
+                debt = (int) (bancoFinanceData["montoMaximo"]*bancoFinanceData["tasaInteres"]+bancoFinanceData["montoMaximo"]);
                 break;
             case 3:
-                debt = (int) (CoyoteFinanceData["montoMaximo"]*CoyoteFinanceData["tasaInteres"]+CoyoteFinanceData["montoMaximo"]);
+                debt = (int) (coyoteFinanceData["montoMaximo"]*coyoteFinanceData["tasaInteres"]+coyoteFinanceData["montoMaximo"]);
                 break;
                 
         }
@@ -128,13 +128,13 @@ public class FinanceManager : MonoBehaviour
     public void SetPlazo(){
         switch(user_controller.user_data["financiamiento"]){
             case 1:
-                plazo = (int)VerqorFinanceData["plazo"];
+                plazo = (int)verqorFinanceData["plazo"];
                 break;
             case 2:
-                plazo = (int)BancoFinanceData["plazo"];
+                plazo = (int)bancoFinanceData["plazo"];
                 break;
             case 3:
-                plazo = (int)CoyoteFinanceData["plazo"];
+                plazo = (int)coyoteFinanceData["plazo"];
                 break;
         }
     }
@@ -144,11 +144,11 @@ public class FinanceManager : MonoBehaviour
     public float GetSeguro(int fin){
         switch(fin){
             case 1:
-                return VerqorFinanceData["seguro"];
+                return verqorFinanceData["seguro"];
             case 2:
-                return BancoFinanceData["seguro"];
+                return bancoFinanceData["seguro"];
             case 3:
-                return CoyoteFinanceData["seguro"];
+                return coyoteFinanceData["seguro"];
             default:
                 return 0f;
         }
@@ -158,13 +158,13 @@ public class FinanceManager : MonoBehaviour
     public void UpdateSeguro(int mejora){
         switch(mejora){
             case 6:
-                BancoFinanceData["seguro"] = 0.2f;
+                bancoFinanceData["seguro"] = 0.2f;
                 break;
             case 12:
-                BancoFinanceData["seguro"] = 0.3f;
+                bancoFinanceData["seguro"] = 0.3f;
                 break;
             case 19:
-                BancoFinanceData["seguro"] = 0.5f;
+                bancoFinanceData["seguro"] = 0.5f;
                 break;
         }
     }
@@ -252,7 +252,7 @@ public class FinanceManager : MonoBehaviour
         }
         else if(user_controller.GetParameter("capital")>(user_controller.GetParameter("deuda"))/2){
             user_controller.UpdateCapital(-user_controller.GetParameter("deuda"));
-            int new_debt = (int)(((user_controller.GetParameter("deuda"))/2)*(1+VerqorFinanceData["tasaInteres"])+user_controller.GetParameter("deuda"));
+            int new_debt = (int)(((user_controller.GetParameter("deuda"))/2)*(1+verqorFinanceData["tasaInteres"])+user_controller.GetParameter("deuda"));
             user_controller.SetParameter("deuda",new_debt);
         }
         else{
@@ -266,7 +266,7 @@ public class FinanceManager : MonoBehaviour
         }
         else if(user_controller.GetParameter("capital")>(user_controller.GetParameter("deuda"))/2){
             user_controller.UpdateCapital(-user_controller.GetParameter("deuda"));
-            int new_debt = (int)(((user_controller.GetParameter("deuda"))/2)*(1+BancoFinanceData["tasaInteres"])+user_controller.GetParameter("deuda"));
+            int new_debt = (int)(((user_controller.GetParameter("deuda"))/2)*(1+bancoFinanceData["tasaInteres"])+user_controller.GetParameter("deuda"));
             user_controller.SetParameter("deuda",new_debt);
         }
         else{
@@ -279,7 +279,7 @@ public class FinanceManager : MonoBehaviour
         }
         else if(user_controller.GetParameter("capital")>(user_controller.GetParameter("deuda"))/2){
             user_controller.UpdateCapital(-user_controller.GetParameter("deuda"));
-            int new_debt = (int)(((user_controller.GetParameter("deuda"))/2)*(1+CoyoteFinanceData["tasaInteres"])+user_controller.GetParameter("deuda"));
+            int new_debt = (int)(((user_controller.GetParameter("deuda"))/2)*(1+coyoteFinanceData["tasaInteres"])+user_controller.GetParameter("deuda"));
             user_controller.SetParameter("deuda",new_debt);
         }
         else{

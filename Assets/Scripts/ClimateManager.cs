@@ -49,7 +49,7 @@ public class ClimateManager : MonoBehaviour
     private AudioSource audioSourceFlood;
     private AudioSource audioSourceHurricane;
 
-    public bool ClimateAlreadyExecuted = false;
+    public bool climateAlreadyExecuted = false;
     private Dictionary<int,int> probability;
     // Start is called before the first frame update
     void Awake()
@@ -111,8 +111,8 @@ public class ClimateManager : MonoBehaviour
     }
 
     private void UpdateClimate(int cycle){
-        if(!ClimateAlreadyExecuted){
-            ClimateAlreadyExecuted = true;
+        if(!climateAlreadyExecuted){
+            climateAlreadyExecuted = true;
             int possibleClimate = random.Next(0,5);
             int odds = probability[possibleClimate];
             int climate_probability = random.Next(1,100);
