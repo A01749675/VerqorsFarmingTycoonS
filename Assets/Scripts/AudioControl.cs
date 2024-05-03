@@ -5,23 +5,23 @@ using UnityEngine.UI;
 
 public class AudioControl : MonoBehaviour
 {
-    public AudioSource audioSource;
-    public GameObject volumeControl;
-    public GameObject efectosControl;
-    private bool isMuted = true;
-    private bool isMuted2 = true;
-    public Sprite unmuted;
-    public Sprite muted;
-    public Button muteVolumeButton;
-    public Button muteEfectsButton;
-    public AudioSource audioSourcemoney;
-    public AudioSource audioSourceLluvia;
-    public AudioSource audioSourceFlood;
-    public AudioSource audioSourceHurricane;
-    public AudioSource audioSourcePlant;
-    public AudioSource audioSourceTractor;
-    private float volumenMusica;
-    private float volumenEfectos;
+    public AudioSource audioSource; //AudioSource de la música de fondo
+    public GameObject volumeControl; //Scrollbar para controlar el volumen de la música
+    public GameObject efectosControl; //Scrollbar para controlar el volumen de los efectos de sonido
+    private bool isMuted = true; //Variable para saber si la música está silenciada
+    private bool isMuted2 = true; //Variable para saber si los efectos de sonido están silenciados
+    public Sprite unmuted; //Sprite para el botón de desilenciar
+    public Sprite muted;   //Sprite para el botón de silenciar
+    public Button muteVolumeButton; //Botón para silenciar/desilenciar la música
+    public Button muteEfectsButton; //Botón para silenciar/desilenciar los efectos de sonido
+    public AudioSource audioSourcemoney; //AudioSource para los efectos de sonido
+    public AudioSource audioSourceLluvia; //AudioSource para efectos de sonido
+    public AudioSource audioSourceFlood; //AudioSource para efectos de sonido
+    public AudioSource audioSourceHurricane; //AudioSource para efectos de sonido
+    public AudioSource audioSourcePlant; //AudioSource para efectos de sonido
+    public AudioSource audioSourceTractor; //AudioSource para efectos de sonido
+    private float volumenMusica; //Variable para guardar el volumen de la música
+    private float volumenEfectos; //Variable para guardar el volumen de los efectos de sonido
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +60,7 @@ public class AudioControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Controlar el volumen de la música y los efectos de sonido
         audioSource.volume = volumeControl.GetComponent<Scrollbar>().value;
         audioSourcemoney.volume = efectosControl.GetComponent<Scrollbar>().value;
         audioSourceLluvia.volume = efectosControl.GetComponent<Scrollbar>().value;
@@ -71,6 +72,7 @@ public class AudioControl : MonoBehaviour
     }
     public void Mute()
     {
+        //Silenciar/desilenciar la música
         audioSource.mute = isMuted;
         if(!isMuted)
         {
@@ -83,6 +85,7 @@ public class AudioControl : MonoBehaviour
         isMuted=!isMuted;
     }
     public void MuteE(){
+        //Silenciar/desilenciar los efectos de sonido
         audioSourcemoney.mute = isMuted2;
         audioSourceLluvia.mute = isMuted2;
         audioSourceFlood.mute = isMuted2;
@@ -102,6 +105,7 @@ public class AudioControl : MonoBehaviour
 
     public void Save()
     {
+        //Guardar los valores de los volumenes y si están silenciados o no
         PlayerPrefs.SetFloat("volumenMusica", volumeControl.GetComponent<Scrollbar>().value);
         PlayerPrefs.SetInt("isMuted", isMuted ? 1 : 0);
         PlayerPrefs.SetFloat("volumenEfectos", efectosControl.GetComponent<Scrollbar>().value);
