@@ -234,7 +234,7 @@ public class UiControl : MonoBehaviour
         Time.timeScale = 0;
         cameraMovement.enabled = false;
     }
-
+    // Al dar click al boton de opciones que esta en el PanelOpciones se cierra el panel PanelOpciones
     public void CloseOpciones()
     {
         flagUsuario=false;
@@ -253,7 +253,7 @@ public class UiControl : MonoBehaviour
         Time.timeScale = 1;
         cameraMovement.enabled = true;
     }
-
+    //Al dar click al boton de usuario se abre el menú con el Nombre de Usuario
     public void Usuario()
     {
         flagFinanciamiento=false;
@@ -279,6 +279,7 @@ public class UiControl : MonoBehaviour
         }
         
     }
+    //Al dar click al boton de crédito se abre el menú de financiamiento
     public void ShowFinanciamiento()
     {
         flagUsuario=false;
@@ -304,6 +305,7 @@ public class UiControl : MonoBehaviour
         }
         
     }
+    //Al dar click al boton de producción se abre el menú de producción
     public void ShowProduccion()
     {
         flagUsuario=false;
@@ -329,6 +331,7 @@ public class UiControl : MonoBehaviour
         }
         
     }
+    //Al dar click al boton de rankings se abre el menú de rankings
     public void ShowRankings()
     {
         flagUsuario=false;
@@ -357,7 +360,7 @@ public class UiControl : MonoBehaviour
         }
     }
 
-
+    //Escribe los rankings en el menú de rankings
     private void WriteRankings(){
         Ranking1Name.GetComponent<TextMeshProUGUI>().text = Ranking1NameData;
         Ranking1Money.GetComponent<TextMeshProUGUI>().text = "$" +Ranking1MoneyData;
@@ -373,6 +376,7 @@ public class UiControl : MonoBehaviour
         PlayerFinance.GetComponent<TextMeshProUGUI>().text = datosUsuario.GetComponent<DatosUsurio>().GetTipoFinanciamiento();
     }
 
+    //Al dar click al boton de ajustes se abre el menú de ajustes
     public void ShowAjustes()
     {
         flagUsuario=false;
@@ -397,13 +401,14 @@ public class UiControl : MonoBehaviour
             Ajustes.SetActive(true);
         }
     }
-
+    //Al dar click al boton de guardar se guarda la partida
     public void SaveGame()
     {
         Debug.Log("Guardando...");
         enviardatos.Guardar();
         Debug.Log("Guardado exitoso.");
-        }
+    }
+    //Al dar click al boton de salir se guarda la partida y se cierra el juego
     public void CloseGame()
     {
         audioControl.Save();
@@ -415,7 +420,7 @@ public class UiControl : MonoBehaviour
         
 
     }
-
+    //Al dar click al boton de créditos se abre el menú de créditos
     public void ShowCreditos(){
         flagUsuario=false;
         UsuarioNombre.SetActive(false);
@@ -442,6 +447,7 @@ public class UiControl : MonoBehaviour
         }
     }
 
+    //Al dar click al boton de celular se abre el menú de celular
     public void ShowCelular()
     {
         flagMenuVender2=false;
@@ -475,6 +481,7 @@ public class UiControl : MonoBehaviour
             Celular.SetActive(true);
         }
     }
+    //Al dar click al boton de mercado se abre el menú de mercado
     public void ShowMercado()
     {
         flagMenuVender2=false;
@@ -508,6 +515,7 @@ public class UiControl : MonoBehaviour
             Mercado.SetActive(true);
         }
     }
+    //Al dar click al boton de inventario se abre el menú de inventario
     public void ShowInventario()
     {
         flagMenuVender2=false;
@@ -553,6 +561,7 @@ public class UiControl : MonoBehaviour
             TomateN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropQuantity(3).ToString()+" kg";
         }
     }
+    //Al dar click al boton de deuda se abre el menú de deuda
     public void ShowDeuda()
     {
         flagMenuVender2=false;
@@ -589,6 +598,7 @@ public class UiControl : MonoBehaviour
         }
     }
 
+    //Al dar click al boton de plantar se abre el menú de plantar
     public void pagarDeuda(){
         if(UserController.GetCapital()>=UserController.GetDebt()){
             UserController.PayDebt(UserController.GetDebt());
@@ -596,7 +606,8 @@ public class UiControl : MonoBehaviour
             Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
         }
     }
-
+    
+    //Al dar click al boton de plantar se abre el menú de plantar
     public void hoz(){
         flagMenuVender2=false;
         MenuVender2.SetActive(false);
@@ -633,6 +644,7 @@ public class UiControl : MonoBehaviour
         }
     }
 
+    //Al dar click al boton de plantar se aparece la hoz con el cultivo seleccionado
     public void SelectCrop(string cropType){
         switch(cropType){
             case "1":
@@ -715,6 +727,8 @@ public class UiControl : MonoBehaviour
                 break;
         }
     }
+
+    //Al dar click al boton de plantar aparece la regadera
     public void regadera(){
         flagCelular=false;
         Celular.SetActive(false);
@@ -748,7 +762,7 @@ public class UiControl : MonoBehaviour
         }
     }
 
-    // Mercado
+    // Al dar click al boton de plantar se abre el menú de vender
     public void ShowMenuVender()
     {
         flagMenuComprar=false;
@@ -779,6 +793,7 @@ public class UiControl : MonoBehaviour
             TomateVcontador.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
         }
     }
+    // Al dar click al boton de plantar se abre el menú de vender del celular
     public void ShowMenuVender2(){
         if(flagMenuVender2){
             flagMenuVender2=false;
@@ -808,7 +823,7 @@ public class UiControl : MonoBehaviour
             TomateVcontador2.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
         }
     }
-
+    //Al dar click se suma en 5 la cantidad de cultivo a vender
     public void Sumar(string cropType){
         switch(cropType){
             case "1":
@@ -861,6 +876,7 @@ public class UiControl : MonoBehaviour
                 break;
         }
     }
+    //Al dar click se resta en 5 la cantidad de cultivo a vender
     public void Restar(string cropType){
         switch(cropType){
             case "1":
@@ -913,6 +929,7 @@ public class UiControl : MonoBehaviour
                 break;
         }
     }
+    //Al dar click muestra el menú de comprar
     public void ShowMenuComprar()
     {
         flagMenuVender=false;
@@ -937,7 +954,7 @@ public class UiControl : MonoBehaviour
             tomatePrice.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal(3)).ToString();
         }
     }
-
+    //Al dar click muestra el menú de comprar del celular
     public void ShowMenuComprar2(){
         if(flagMenuComprar2){
             flagMenuComprar2=false;
@@ -961,6 +978,7 @@ public class UiControl : MonoBehaviour
             tomatePrice2.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal2(3)).ToString();
         }
     }
+    //Al dar click suma 5 kg de cultivo a comprar
     public void SumarTrigoV(){
         if(cropManager.GetCropQuantity(1)>trigov){
             trigov+=5;
@@ -969,6 +987,7 @@ public class UiControl : MonoBehaviour
         }
         TrigoVcontador.GetComponent<TextMeshProUGUI>().text = trigov.ToString()+" kg";
     }
+    //Al dar click suma 5 kg de cultivo a comprar
     public void RestarTrigoV(){
         if(trigov>0){
             trigov-=5;
@@ -977,6 +996,7 @@ public class UiControl : MonoBehaviour
         }
         TrigoVcontador.GetComponent<TextMeshProUGUI>().text = trigov.ToString()+" kg";
     }
+    //Al dar click suma 5 kg de cultivo a comprar
     public void SumarMaízV(){
         if(cropManager.GetCropQuantity(2)>maizv){
             maizv+=5;
@@ -985,6 +1005,7 @@ public class UiControl : MonoBehaviour
         }
         MaizVcontador.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
     }
+    //Al dar click suma 5 kg de cultivo a comprar
     public void RestarMaízV(){
         if(maizv>0){
             maizv-=5;
@@ -993,6 +1014,7 @@ public class UiControl : MonoBehaviour
         }
         MaizVcontador.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
     }
+    //Al dar click suma 5 kg de cultivo a comprar
     public void SumarChileV(){
         if(cropManager.GetCropQuantity(6)>chilev){
             chilev+=5;
@@ -1001,6 +1023,7 @@ public class UiControl : MonoBehaviour
         }
         ChileVcontador.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
     }
+    //Al dar click suma 5 kg de cultivo a comprar
     public void RestarChileV(){
         if(chilev>0){
             chilev-=5;
@@ -1009,6 +1032,7 @@ public class UiControl : MonoBehaviour
         }
         ChileVcontador.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
     }
+    //Al dar click suma 5 kg de cultivo a comprar
     public void SumarAguacateV(){
         if(cropManager.GetCropQuantity(4)>aguacatev){
             aguacatev+=5;
@@ -1017,6 +1041,7 @@ public class UiControl : MonoBehaviour
         }
         AguacateVcontador.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
     }
+    //Al dar click suma 5 kg de cultivo a comprar
     public void RestarAguacateV(){
         if(aguacatev>0){
             aguacatev-=5;
@@ -1025,6 +1050,7 @@ public class UiControl : MonoBehaviour
         }
         AguacateVcontador.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
     }
+    //Al dar click suma 5 kg de cultivo a comprar
     public void SumarCafeV(){
         if(cropManager.GetCropQuantity(5)>cafev){
             cafev+=5;
@@ -1033,6 +1059,7 @@ public class UiControl : MonoBehaviour
         }
         CafeVcontador.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
     }
+    //Al dar click suma 5 kg de cultivo a comprar
     public void RestarCafeV(){
         if(cafev>0){
             cafev-=5;
@@ -1041,6 +1068,7 @@ public class UiControl : MonoBehaviour
         }
         CafeVcontador.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
     }
+    //Al dar click suma 5 kg de cultivo a comprar
     public void SumarTomateV(){
         if(cropManager.GetCropQuantity(3)>tomatev){
             tomatev+=5;
@@ -1049,6 +1077,7 @@ public class UiControl : MonoBehaviour
         }
         TomateVcontador.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
     }
+    //Al dar click suma 5 kg de cultivo a comprar
     public void RestarTomateV(){
         if(tomatev>0){
             tomatev-=5;
@@ -1057,7 +1086,7 @@ public class UiControl : MonoBehaviour
         }
         TomateVcontador.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
     }
-
+    //Al dar click se venden los cultivos seleccionados en las cantidades seleccionadas
     public void Vender(){
         financeManager.SellItem(1,trigov);
         financeManager.SellItem(2,maizv);
@@ -1080,6 +1109,7 @@ public class UiControl : MonoBehaviour
         Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString()+" kg";
     }
 
+    //Al dar click se venden los cultivos seleccionados en las cantidades seleccionadas en el celular
     public void Vender2(){
         financeManager.SellItem2(1,trigov);
         financeManager.SellItem2(2,maizv);
@@ -1101,6 +1131,7 @@ public class UiControl : MonoBehaviour
         TomateVcontador2.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
         Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString()+" kg";
     }
+    //Al dar click se venden todos los cultivos en tu inventario
     public void VenderTodo(){
         
         financeManager.SellItem(1,cropManager.GetCropQuantity(1));
@@ -1123,6 +1154,7 @@ public class UiControl : MonoBehaviour
         TomateVcontador.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
         Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString()+" kg";
     }
+    //Al dar click se venden todos los cultivos en tu inventario en el celular
     public void VenderTodo2(){
         financeManager.SellItem2(1,cropManager.GetCropQuantity(1));
         financeManager.SellItem2(2,cropManager.GetCropQuantity(2));
@@ -1145,6 +1177,7 @@ public class UiControl : MonoBehaviour
         Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString()+" kg";
     }
 
+    //Al dar click se compran los cultivos seleccionados en las cantidades que aparecen en el mercado
     public void ComprarSemillas(string cropType){
         if(cropType=="1"){
             if(UserController.GetCapital()>=marketManager.GetTotal(1)){
@@ -1259,7 +1292,7 @@ public class UiControl : MonoBehaviour
             }
         }
     }
-
+    //Al dar click se muestra el periódico 
     public void OpenBigPeriodico(){
         flagMenuVender2=false;
         MenuVender2.SetActive(false);
@@ -1293,6 +1326,7 @@ public class UiControl : MonoBehaviour
         }
     }
 
+    //Se muestra el árbol de mejoras
     public void ShowArbol(){
         flagMenuVender2=false;
         MenuVender2.SetActive(false);
@@ -1327,24 +1361,28 @@ public class UiControl : MonoBehaviour
         }
     }
     
+    //Se relantiza el tiempo
     public void SlowDownTime(){
         Time.timeScale = 0.5f;
     }
+    //Se regresa al tiempo normal
     public void NormalTime(){
         Time.timeScale = 1;
     }
+    //Se acelera el tiempo
     public void SpeedUpTime(){
         Time.timeScale = 5;
     }
-
+    //Se actualiza el dinero mostrado
     public void ActualizarDinero(){
         Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
     }
-
+    //Te redirige a la página del tutuorial del juego
     public void ShowTutorial(){
         Application.OpenURL(url + "tutorialjuego");
     }
 
+    //Se llama a actualizar el dinero todo el tiempo
     void Update(){
         ActualizarDinero();
     }
