@@ -261,7 +261,7 @@ public class MapManager : MonoBehaviour
         TileBase tile = tilemap.GetTile(gridPosition);
         if(tile && dataFromTiles.ContainsKey(tile)){
             //print("Key found");
-            if(dataFromTiles[tile].crop_type==-selected_crop){
+            if(dataFromTiles[tile].crop_type==-selected_crop){ //checa que el tile seleccionado sea del tipo del crop seleccionado
                 //print("Selecting crop");
                 switch(selected_crop){
                         case 1:
@@ -303,6 +303,7 @@ public class MapManager : MonoBehaviour
     public void ChangeCropSprite(){
         if(plantedCrops[1] || plantedCrops[2] || plantedCrops[3] || plantedCrops[4] || plantedCrops[5] || plantedCrops[6]){
             int i;
+            //recorre todo el mapa y actualiza los sprites de crecimiento de los cultivos
             for(i = -2*tilemap.size.x; i<2*tilemap.size.x; i++){
                 for(int j = -2*tilemap.size.y; j<2*tilemap.size.y; j++){
                     Vector3Int gridPosition = new Vector3Int(i, j, 0);
@@ -310,8 +311,10 @@ public class MapManager : MonoBehaviour
                     if(tileDatas==null){
                         return;
                     }
+                    //Si el tile es un tile de cultivo, se actualiza su sprite de crecimiento
                     if(cropManager.cropCycleGrowth.ContainsKey(gridPosition) && (current_cycle-cropManager.cropCycleGrowth[gridPosition]["cycle"])%crop_cycle_constant==0){
                         if(tile && dataFromTiles.ContainsKey(tile)){  
+                            //se actualiza el sprite dependiendo del tipo de cultivo
                             switch(dataFromTiles[tile].crop_type){
                                 case 1:
                                     cropManager.cropCycleGrowth[gridPosition]["growth"] = UpdateCropSpriteCycle(gridPosition,1);
@@ -340,6 +343,7 @@ public class MapManager : MonoBehaviour
                                 }
                         }
                     }
+                    //Actualiza la cantidad de agua en cada tile de cultivo
                     if(tile && dataFromTiles.ContainsKey(tile) && cropManager.cropCycleGrowth.ContainsKey(gridPosition) && (current_cycle-cropManager.cropCycleGrowth[gridPosition]["cycle"])%35==0){
                         UpdateTileWater(gridPosition,dataFromTiles[tile].crop_type);
                     }
@@ -403,6 +407,7 @@ public class MapManager : MonoBehaviour
         int x1 = ranges[1,0];
         int y1 = ranges[1,1];
         LandIsPlanted[selected_land] = true;
+        //Para los rangos de la parcela, se recorre cada tile y se planta la semilla
         for(int i = x;i<x1+1;i++){
             for(int j=y;j<y1+1;j++){
                 Vector3Int gridPosition = new Vector3Int(i, j, 0);
@@ -688,6 +693,7 @@ public class MapManager : MonoBehaviour
         int x1 = x;
         int y1 = y;
             TileBase tile = tilemap.GetTile(new Vector3Int(x, y, 0));
+            //va checando si el tile revisado es suelo y cuando termina resta 1 y pasa a revisar la y
             while(xTrue){
                 tile = tilemap.GetTile(new Vector3Int(x, y, 0));
                 if(tile && dataFromTiles.ContainsKey(tile) && IsSoil(dataFromTiles[tile].crop_type) && xTrue){
@@ -731,7 +737,7 @@ public class MapManager : MonoBehaviour
             }
         }
     }
-    //Método que regresa los rangos de crecimiento una parcela en particular
+    //Método que regresa un contador de crecimiento para los cultivos en cada parcela
     public List<int> GetDifferentGrowthsInLand(int land){
         //Declare a list with the items 0,1,2
         List<int> crops = new List<int> {0, 0, 0};
