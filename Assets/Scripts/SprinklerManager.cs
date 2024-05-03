@@ -19,13 +19,14 @@ public class SprinklerManager : MonoBehaviour
     ClimateManager climateManager;
     [SerializeField]
     private int land_id =  -1;
-    private int cycle = 30;
+    private int cycle = 30; //Ciclo de regado
 
     private bool flag = false;
     public void WaterCrops(){
-        
+        //Riega si el ciclo es múltiplo de 30, si hay cultivos y si no está lloviendo
         if(mapManager.GetCurrentCycle()%cycle==0 && !flag && mapManager.GetCropsInLand(land_id)>0 && climateManager.GetCurrentClimateId() != 2){
             //print(tankManager.GetWaterLevel());
+            //riega si el nivel del agua en la tierra está en ciertos rangos
             if(mapManager.GetAverageWaterAtLand(land_id) < 75 && tankManager.GetWaterLevel() > 0 && mapManager.LandPlanted(land_id)){
                 animator.enabled = true;
                 mapManager.WaterSpecificLand(land_id);
@@ -33,14 +34,17 @@ public class SprinklerManager : MonoBehaviour
                 flag = true;
             }
         }
+        //Desactiva la animación si no se cumple la condición
         if(mapManager.GetCurrentCycle()%cycle!=0){
             flag = false;
             spriteRenderer.sprite = initial;
         }
+        //desactiva la animación si no hay agua en el tanque
         if(tankManager.GetWaterLevel() <= 0){
             animator.enabled = false;
             spriteRenderer.sprite = initial;
         }
+        //Desactiva la animación si no hay cultivos en la tierra
         if(mapManager.GetCropsInLand(land_id)==0){
             animator.enabled = false;
             spriteRenderer.sprite = initial;

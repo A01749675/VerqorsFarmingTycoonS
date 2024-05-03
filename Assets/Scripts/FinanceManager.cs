@@ -8,19 +8,19 @@ public class FinanceManager : MonoBehaviour
     public Dictionary<int, int> _prices;
     private int _financiamiento;
 
-    public UserController user_controller;
-    public CropManager crop_manager;
-    public ObtenerDatos obtener_datos;
+    public UserController user_controller; //Referencia al UserController
+    public CropManager crop_manager; //Referencia al CropManager
+    public ObtenerDatos obtener_datos; //Referencia al ObtenerDatos
 
-    public MapManager mapManager;
+    public MapManager mapManager; //Referencia al MapManager
 
-    public EnviarDatos enviarDatos;
+    public EnviarDatos enviarDatos; //Referencia al EnviarDatos
 
-    private Dictionary<int,int> financiamiento_seguro;
-    private Dictionary<string, float> VerqorFinanceData;
-    private Dictionary<string, float> BancoFinanceData;
-    private Dictionary<string, float> CoyoteFinanceData;
-    private AudioSource audioSourcemoney;
+    
+    private Dictionary<string, float> VerqorFinanceData; //Datos de financiamiento de Verqor
+    private Dictionary<string, float> BancoFinanceData; //Datos de financiamiento de Banco
+    private Dictionary<string, float> CoyoteFinanceData; //Datos de financiamiento de Coyote
+    private AudioSource audioSourcemoney; //Sonido de dinero
 
     private int loosingCondition = -1;
    
@@ -31,8 +31,6 @@ public class FinanceManager : MonoBehaviour
 
     public bool IsPaid = false;
 
-
-    
 
     private void Awake()
     {
@@ -74,15 +72,19 @@ public class FinanceManager : MonoBehaviour
 
     private void Update(){
         int cycle = mapManager.GetCurrentCycle();
+        //Si ya ha pasado el plazo y no se ha pagado con anterioridad 
         if(cycle%plazo==0 && !flag &&!IsPaid){
-            print("Financiamiento actualizado");
-            int debt = user_controller.GetDebt();
+            //print("Financiamiento actualizado");
 
+            int debt = user_controller.GetDebt(); //Obtiene la deuda del user controller
+
+            //Checa si puede pagar la deuda
             if(user_controller.GetCapital()>debt){
-                user_controller.PayDebt(debt);
+                user_controller.PayDebt(debt); 
                 IsPaid = true;
             }
             else{
+                //Termina el juego
                 user_controller.PayDebt(debt);
                 if(user_controller.GetCapital()<loosingCondition){
                     print("GameOver");
@@ -98,12 +100,13 @@ public class FinanceManager : MonoBehaviour
         }
     }
 
+    //Método que regresa cuando se tiene que pagar
     public int GetTimetoPay(){
         int cycle = mapManager.GetCurrentCycle();
         int time = (int)((plazo - cycle%plazo)/8);
         return time;
     }
-
+    //Método que calcula la deuda
     public int CalculateDebt(int fin){
         int debt = 0;
         switch(fin){
@@ -121,7 +124,7 @@ public class FinanceManager : MonoBehaviour
         return debt;
     }
 
-
+    //Método que establece el plazo de pago
     public void SetPlazo(){
         switch(user_controller.user_data["financiamiento"]){
             case 1:
@@ -135,23 +138,9 @@ public class FinanceManager : MonoBehaviour
                 break;
         }
     }
+    
 
-    public float TasaInteres(int fin){
-        float tasa = 0;
-        switch(fin){
-            case 1:
-                tasa = VerqorFinanceData["tasaInteres"];
-                break;
-            case 2:
-                tasa = BancoFinanceData["tasaInteres"];
-                break;
-            case 3:
-                tasa = CoyoteFinanceData["tasaInteres"];
-                break;
-        }
-        return tasa;
-    }
-
+    //Método regresa el seguro del financiamiento
     public float GetSeguro(int fin){
         switch(fin){
             case 1:
@@ -165,7 +154,7 @@ public class FinanceManager : MonoBehaviour
         }
         
     }
-
+    //Método que actualiza el seguro del banco
     public void UpdateSeguro(int mejora){
         switch(mejora){
             case 6:
@@ -190,6 +179,7 @@ public class FinanceManager : MonoBehaviour
             UpdateFinanciamiento(_financiamiento);
         }
     }
+    //Método que vende un cultivo
     public void SellItem(int cropType, int quantity)
     {
         if (_prices.ContainsKey(cropType))
@@ -199,6 +189,7 @@ public class FinanceManager : MonoBehaviour
             audioSourcemoney.Play();
         }
     }
+    //Método que vende un cultivo
     public void SellItem2(int cropType, int quantity)
     {
         if (_prices.ContainsKey(cropType))
@@ -208,15 +199,16 @@ public class FinanceManager : MonoBehaviour
             audioSourcemoney.Play();
         }
     }
-
+    //Método que obtiene el precio de un cultivo
     public int GetCropPrice(int cropType)
     {
         return _prices.ContainsKey(cropType) ? _prices[cropType] : 0;
     }
 
+    //Método para mostrar el financiamiento
     public void UpdateFinanciamiento(int financiamiento)
     {
-        print("Financiamiento: " + financiamiento);
+        //print("Financiamiento: " + financiamiento);
         switch (financiamiento)
         {
             case 1:
