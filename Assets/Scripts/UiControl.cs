@@ -1238,6 +1238,7 @@ public class UiControl : MonoBehaviour
             }
         }
     }
+    //Al dar click se compran los cultivos seleccionados en las cantidades que aparecen en el mercado del celular
     public void ComprarSemillas2(string cropType){
         if(cropType=="1"){
             if(userController.GetCapital()>=marketManager.GetTotal2(1)){

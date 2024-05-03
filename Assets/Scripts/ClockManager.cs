@@ -204,7 +204,7 @@ public class ClockManager : MonoBehaviour
     }
 
     //Función que actualiza la fecha y la hora en el reloj y hace que gire la rueda del calendario.
-    private void UpdateDateTime (DateTime dateTime){
+    private void UpdateDateTime(DateTime dateTime){
         dayT.text = Dia().ToString();
         timeT.text = dateTime.TimeToString();
         seasonT.text = Mes();

@@ -292,7 +292,7 @@ public class MapManager : MonoBehaviour
                             PlantLand(seeds[selected_crop-1]);
                             break;   
                     }
-                uiControl.hoz();
+                uiControl.Hoz();
                 audioSourcePlant.Play();
             }
             //print("Planted");
