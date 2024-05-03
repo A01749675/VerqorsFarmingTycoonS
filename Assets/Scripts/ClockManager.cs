@@ -14,7 +14,7 @@ public class ClockManager : MonoBehaviour
     MapManager mapManager;
 
     public RectTransform ClockFace;
-    public TextMeshProUGUI Day, Year, Time, Season, Week;
+    public TextMeshProUGUI dayT, yearT, timeT, seasonT, weekT;
     //public Image weatherImg1;
     //public Sprite[] weatherSprites;
     private float startingRotation;
@@ -54,6 +54,7 @@ public class ClockManager : MonoBehaviour
         TimeManager.OnDateTimeChanged -= UpdateDateTime;
     }
 
+    //función que establece la fecha dependiendo del ciclo de MapManager
     public void SetDate(int cycle){
         cycle = (int) (cycle/8);
         year = (int)(cycle/360+2024);
@@ -67,6 +68,7 @@ public class ClockManager : MonoBehaviour
 
     }
 
+    //Función que actualiza el día conforme van pasando los ciclos
     private int Dia(){
         if (mapManager.GetCurrentCycle()%8 == 0 && !banderaday){
             day ++;   
@@ -82,6 +84,7 @@ public class ClockManager : MonoBehaviour
         
     }
 
+    //Función que actualiza la semana conforme van pasando los días
     private int Semana(){
         int dayNum = day_year;
         if (dayNum%7 == 0){
@@ -91,6 +94,7 @@ public class ClockManager : MonoBehaviour
         else return week;
     }
 
+    //Función que actualiza el mes conforme van pasando los días
     private string Mes(){ 
         int dayNum = Dia();
         if (dayNum%31 == 0 && !banderamonth){
@@ -185,6 +189,7 @@ public class ClockManager : MonoBehaviour
         }
     }
 
+    //Función que actualiza el año conforme van pasando los días (cada 360 días)
     private int Año(){
         int dayNum = day_year;
         if (dayNum%360 == 0){
@@ -198,12 +203,13 @@ public class ClockManager : MonoBehaviour
         else return year;
     }
 
+    //Función que actualiza la fecha y la hora en el reloj y hace que gire la rueda del calendario.
     private void UpdateDateTime (DateTime dateTime){
-        Day.text = Dia().ToString();
-        Time.text = dateTime.TimeToString();
-        Season.text = Mes();
-        Year.text = Año().ToString();
-        Week.text = Semana().ToString();
+        dayT.text = Dia().ToString();
+        timeT.text = dateTime.TimeToString();
+        seasonT.text = Mes();
+        yearT.text = Año().ToString();
+        weekT.text = Semana().ToString();
         //weatherImg1.sprite = weatherSprites[ClimateID];
         float t =  (float)dateTime.Hour/24f;
         float newRotation = Mathf.Lerp(0,360,t);
