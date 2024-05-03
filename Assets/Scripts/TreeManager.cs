@@ -606,5 +606,4 @@ public class TreeManager : MonoBehaviour
             UpdateColors();
         }
     }
-       
 }
