@@ -7,8 +7,8 @@ public class DatosUsurio : MonoBehaviour
 {
     public GameObject NombreUsuario;
     public GameObject TipoFinanciamiento;
-    public UserController userController;
-    public ObtenerDatos obtenerDatos;
+    public UserController userController; // Referencia al script UserController
+    public ObtenerDatos obtenerDatos; // Referencia al script ObtenerDatos
     public string nombreUsuario;
     public int financiamiento;
 
@@ -32,9 +32,11 @@ public class DatosUsurio : MonoBehaviour
         }
         NombreUsuario.GetComponent<TextMeshProUGUI>().text = nombreUsuario;
     }
+    //Recupera el nombre del usuario
     public string GetNombreUsuario(){
         return nombreUsuario;
     } 
+    //Recupera el tipo de financiamiento
     public string GetTipoFinanciamiento(){
         return TipoFinanciamiento.GetComponent<TextMeshProUGUI>().text;
     }

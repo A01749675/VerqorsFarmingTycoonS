@@ -32,6 +32,7 @@ public class ControlManager : MonoBehaviour
         ShowTool(ui.flagHerramienta,mousePos);
         ShowRegadera(ui.flagRegadera,mousePos);  
     }
+    //Método que muestra la hoz con el respectivo cultivo seleccionado
     private void ShowTool(bool tool,Vector2 mousePos){
         if(tool){
             herramienta.SetActive(true);
@@ -112,6 +113,7 @@ public class ControlManager : MonoBehaviour
             Caféhoz.SetActive(false);
         }
     }
+    //Método que muestra la regadera y riega el cultivo seleccionado (llamando al map manager)
     private void ShowRegadera(bool tool,Vector2 mousePos){
         if(tool){
             regadera.SetActive(true);

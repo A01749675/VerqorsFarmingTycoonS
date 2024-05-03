@@ -12,25 +12,25 @@ public class ObtenerDatos : MonoBehaviour
     public int user_id;
     public string usuario;
     public string tipo_usuario;
-    public List<Progreso> progreso;
-    public List<Semilla> semillas;
-    public List<Cosecha> cosecha;
-    public List<Parcela> parcela;
-    public List<Mejoras> mejoras;
-    public TreeManager treeManager;
-    private List<RankingData> rankings;
-    public List<List<int>> parcela_data = new List<List<int>>();
+    public List<Progreso> progreso; // Lista de la estructura progreso
+    public List<Semilla> semillas; // Lista de la estructura semilla
+    public List<Cosecha> cosecha; // Lista de la estructura cosecha
+    public List<Parcela> parcela; // Lista de la estructura parcela
+    public List<Mejoras> mejoras; // Lista de la estructura mejoras
+    public TreeManager treeManager; // Referencia al TreeManager
+    private List<RankingData> rankings; // Lista de los rankings
+    public List<List<int>> parcela_data = new List<List<int>>(); // Lista de parcelas
 
-    public MapManager mapManager;
+    public MapManager mapManager; // Referencia al MapManager
 
     [SerializeField]
-    private UserController userController;
+    private UserController userController; // Referencia al UserController
     [SerializeField]
-    private FinanceManager financeManager;
+    private FinanceManager financeManager; // Referencia al FinanceManager
     [SerializeField]
-    private CropManager cropManager;
+    private CropManager cropManager; // Referencia al CropManager
     [SerializeField]
-    private UiControl uiControl;
+    private UiControl uiControl; // Referencia al UiControl
     private void Awake()
     {
         StartCoroutine(ObtenerIdUsuario());
@@ -77,8 +77,9 @@ public class ObtenerDatos : MonoBehaviour
         {
             string jsonString = www.downloadHandler.text;
             print(jsonString);
+            // Deserializar la respuesta JSON
             DatosUsuario datosUsuario = JsonUtility.FromJson<DatosUsuario>(jsonString);
-
+            // Asignar los datos del usuario a las variables públicas
             success = datosUsuario.success;
             message = datosUsuario.message;
             usuario = datosUsuario.usuario;
@@ -88,7 +89,7 @@ public class ObtenerDatos : MonoBehaviour
             cosecha = datosUsuario.cosecha;
             parcela = datosUsuario.parcela;  
             mejoras = datosUsuario.mejoras;
-                      
+
 
             if (success)
             {
@@ -97,20 +98,17 @@ public class ObtenerDatos : MonoBehaviour
                 Debug.Log("Financiamiento: " + progreso[0].financiamiento);
                 Debug.Log("Maíz semillas: " + semillas[0].maiz);
                 Debug.Log("Parcela" + parcela[0]);
-                print("Hola buenas soy MarzyParcela2 "+parcela.ToString());
-                
+                //Manda los datos al mapmanager
                 GetParcelaData(parcela);
-                print("Dato usuario");
+                //Manda los datos al UserController
                 SetUserData(progreso[0]);
-                print("Progreso");
+                //Manda los datos al cropmanager
                 SetSemillas(semillas[0]);
-                print("Semillas");
+                //Manda los datos al cropmanager
                 SetCosecha(cosecha[0]);
-                print("Cosecha");
+                //Manda los datos al treeManager
                 setMejoras(mejoras);
-                print("Mejoras");
-
-                Debug.Log("Datos del usuario obtenidos correctamente.");
+                
             }
             else
             {
@@ -135,7 +133,7 @@ public class ObtenerDatos : MonoBehaviour
             data.Add(p.agua);
             parcela.Add(data);
         }
-        print("Parcelas obtenidas: " +parcela.Count);
+        //print("Parcelas obtenidas: " +parcela.Count);
         mapManager.LoadDataFromMap(parcela);
 
     }
@@ -166,6 +164,7 @@ public class ObtenerDatos : MonoBehaviour
             //Debug.LogError("Error al obtener los rankings: " + www.error);
         }
     }
+    //establece la información del usuario y el ciclo
     private void SetUserData(Progreso progreso){
         userController.user_data["user_id"]=progreso.id_usuario;
         userController.user_data["capital"]=(int) progreso.dinero;
@@ -173,7 +172,7 @@ public class ObtenerDatos : MonoBehaviour
         userController.user_data["deuda"]=(int)progreso.deuda;
         mapManager.SetCycle(progreso.ciclo);
     }
-
+    //establece las semillas
     private void SetSemillas(Semilla semilla){
         cropManager.crop_seeds[1]=semilla.trigo;
         cropManager.crop_seeds[2]=semilla.maiz;
@@ -183,22 +182,19 @@ public class ObtenerDatos : MonoBehaviour
         cropManager.crop_seeds[5]=0;
         
     }
-
+    //Carga las mejoras desbloqueadas
     private void setMejoras(List<Mejoras> mejoras){
-        print("Mejoras de Set Mejoras");
+        //print("Mejoras de Set Mejoras");
         foreach(Mejoras m in mejoras){
             treeManager.Mejoras[m.id_mejora]=m.estado;
         }
-        // imprimir la lista de mejoras
-        foreach(Mejoras m in mejoras){
-            print("Mejora de Marzy "+m.id_mejora+" "+m.estado);
-        }
         treeManager.update= true;
-        print("Fin de Set Mejoras");
+        //print("Fin de Set Mejoras");
     }
 
+    //Datos default
     private void SetToDefault(){
-        print("Datos por default");
+        //print("Datos por default");
         userController.user_data["user_id"]=-1;;
         userController.user_data["capital"]=0;
         userController.user_data["financiamiento"]=1;
@@ -230,7 +226,7 @@ public class ObtenerDatos : MonoBehaviour
         cropManager.crop_quantity[4]=0;
         cropManager.crop_quantity[5]=0;
     }
-
+    //Establece los rankings
     private void SetRankings(List<RankingData> rankings)
     {
         uiControl.Ranking1NameData=rankings[0].usuario;

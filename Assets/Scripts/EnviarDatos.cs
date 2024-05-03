@@ -5,24 +5,25 @@ using System.Collections.Generic;
 
 public class EnviarDatos : MonoBehaviour
 {
-    public ObtenerDatos obtenerDatos;
-    public TreeManager treeManager;
+    public ObtenerDatos obtenerDatos; // Referencia al script ObtenerDatos
+    public TreeManager treeManager; // Referencia al script TreeManager
 
-    public UserController userController;
-    public MapManager mapManager;
-    public CropManager cropManager;
-    private Cosecha cosecha;
-    private Semilla semilla;
-    private Progreso progreso;
-    private List<Parcela> parcelas_data;
+    public UserController userController; // Referencia al script UserController
+    public MapManager mapManager; // Referencia al script MapManager
+    public CropManager cropManager; // Referencia al script CropManager
+    private Cosecha cosecha; // Estructura cosecha
+    private Semilla semilla;  //Estructura semilla
+    private Progreso progreso; //Estructura progreso
+    private List<Parcela> parcelas_data; // Lista de la estructura parcela
 
-    private List<Progreso> progreso_lista = new List<Progreso>();
-    private List<Semilla> semilla_lista = new List<Semilla>();
-    private List<Cosecha> cosecha_lista = new List<Cosecha>();
-    private List<Mejoras> mejoras_lista = new List<Mejoras>();
+    private List<Progreso> progreso_lista = new List<Progreso>(); // Lista de la estructura progreso
+    private List<Semilla> semilla_lista = new List<Semilla>(); // Lista de la estructura semilla
+    private List<Cosecha> cosecha_lista = new List<Cosecha>(); // Lista de la estructura cosecha
+    private List<Mejoras> mejoras_lista = new List<Mejoras>(); // Lista de la estructura mejoras
 
     public void GetDataFromCodes()
     {
+        //Obtiene mejoras
         int trigo = cropManager.GetCropQuantity(1);
         int maiz = cropManager.GetCropQuantity(2);
         int tomate = cropManager.GetCropQuantity(3);
@@ -39,10 +40,11 @@ public class EnviarDatos : MonoBehaviour
         int capital = userController.GetParameter("capital");
 
 
-
+        //Obtiene datos de las parcelas desde map manager
         List<List<int>> parcelas_raw = mapManager.SaveDataFromMap();
+        //una lista de parcelas
         parcelas_data = new List<Parcela>();
-
+        //Guarda los datos del mapmanager en la lista de parcelas
         foreach (List<int> parcela in parcelas_raw)
         {
             Parcela parcela_data = new Parcela();
@@ -52,22 +54,18 @@ public class EnviarDatos : MonoBehaviour
             parcela_data.agua = parcela[3];
             parcelas_data.Add(parcela_data);
         }
-
+        //guarda las mejoras
         Mejoras mejoras = new Mejoras();
         for (int i = 1; i <= 21; i++)
         {
             mejoras = new Mejoras();
             mejoras.id_mejora = i;
             mejoras.estado = treeManager.getMejoras(i);
-            print("Mejora " + i + " " + treeManager.getMejoras(i));
+            //print("Mejora " + i + " " + treeManager.getMejoras(i));
             mejoras_lista.Add(mejoras);
         }
-        // imprimir la lista de mejoras
-        foreach (Mejoras m in mejoras_lista)
-        {
-            print("Mejora de Marzy " + m.id_mejora + " " + m.estado);
-        }
 
+        //Guarda los datos de la cosecha y semilla
         cosecha = new Cosecha();
         cosecha.trigo = trigo;
         cosecha.maiz = maiz;
@@ -76,7 +74,7 @@ public class EnviarDatos : MonoBehaviour
         cosecha.aguacate = aguacate;
         cosecha.frijol = frijol;
         cosecha_lista.Add(cosecha);
-
+        
         semilla = new Semilla();
         semilla.trigo = trigo_seed;
         semilla.maiz = maiz_seed;
@@ -85,7 +83,7 @@ public class EnviarDatos : MonoBehaviour
         semilla.aguacate = aguacate_seed;
         semilla.frijol = frijol_seed;
         semilla_lista.Add(semilla);
-
+        //Guarda los datos del progreso
         progreso = new Progreso();
         progreso.id_usuario = userController.GetParameter("user_id");
         progreso.dinero = capital;
@@ -100,7 +98,9 @@ public class EnviarDatos : MonoBehaviour
 
     public void Guardar()
     {
+        //Establece la URL de la página
         string url = Application.absoluteURL;
+        //Obtiene el id del usuario
         int userId = ObtenerUserIdDeURL(url);
 
         if (userId == -1)
@@ -108,7 +108,7 @@ public class EnviarDatos : MonoBehaviour
             //Debug.LogError("No se encontró el parámetro 'user_id' en la URL.");
             return;
         }
-
+        //llama la función para obtener los datos
         GetDataFromCodes();
 
         // Crear el objeto JSON con los datos del usuario
