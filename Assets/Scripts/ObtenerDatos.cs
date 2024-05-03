@@ -231,43 +231,43 @@ public class ObtenerDatos : MonoBehaviour
     //Establece los rankings
     private void SetRankings(List<RankingData> rankings)
     {
-        uiControl.Ranking1NameData=rankings[0].usuario;
-        uiControl.Ranking1MoneyData=rankings[0].dinero.ToString();
-        uiControl.Ranking2NameData=rankings[1].usuario;
-        uiControl.Ranking2MoneyData=rankings[1].dinero.ToString();
-        uiControl.Ranking3NameData=rankings[2].usuario;
-        uiControl.Ranking3MoneyData=rankings[2].dinero.ToString();
+        uiControl.ranking1NameData=rankings[0].usuario;
+        uiControl.ranking1MoneyData=rankings[0].dinero.ToString();
+        uiControl.ranking2NameData=rankings[1].usuario;
+        uiControl.ranking2MoneyData=rankings[1].dinero.ToString();
+        uiControl.ranking3NameData=rankings[2].usuario;
+        uiControl.ranking3MoneyData=rankings[2].dinero.ToString();
         switch(rankings[0].financiamiento){
             case 1:
-                uiControl.Ranking1FinanceData="Verqor";
+                uiControl.ranking1FinanceData="Verqor";
                 break;
             case 2:
-                uiControl.Ranking1FinanceData="Banco";
+                uiControl.ranking1FinanceData="Banco";
                 break;
             case 3:
-                uiControl.Ranking1FinanceData="Coyote";
+                uiControl.ranking1FinanceData="Coyote";
                 break;
         }
         switch(rankings[1].financiamiento){
             case 1:
-                uiControl.Ranking2FinanceData="Verqor";
+                uiControl.ranking2FinanceData="Verqor";
                 break;
             case 2:
-                uiControl.Ranking2FinanceData="Banco";
+                uiControl.ranking2FinanceData="Banco";
                 break;
             case 3:
-                uiControl.Ranking2FinanceData="Coyote";
+                uiControl.ranking2FinanceData="Coyote";
                 break;
         }
         switch(rankings[2].financiamiento){
             case 1:
-                uiControl.Ranking3FinanceData="Verqor";
+                uiControl.ranking3FinanceData="Verqor";
                 break;
             case 2:
-                uiControl.Ranking3FinanceData="Banco";
+                uiControl.ranking3FinanceData="Banco";
                 break;
             case 3:
-                uiControl.Ranking3FinanceData="Coyote";
+                uiControl.ranking3FinanceData="Coyote";
                 break;
         }
     }

@@ -12,63 +12,65 @@ public class UiControl : MonoBehaviour
 
     private String url = "http://52.5.57.146:8080/";
     public GameObject datosUsuario;
-    public GameObject PanelOpciones;
-    public GameObject UsuarioNombre;
-    public GameObject Financiamiento;
-    public GameObject Produccion;
-    public GameObject Rankings;
-    public GameObject Ajustes;
-    public AudioControl audioControl;
-    public GameObject Celular;
-    public GameObject Mercado;
-    public GameObject Inventario;
-    public GameObject Deuda;
+    public GameObject panelOpciones;
+    public GameObject usuarioNombre;
+    public GameObject financiamiento;
+    public GameObject produccion;
+    public GameObject rankings;
+    public GameObject ajustes;
+    private AudioControl audioControl;
+    public GameObject celular;
+    public GameObject mercado;
+    public GameObject inventario;
+    public GameObject deuda;
+    public GameObject dinero;
+    public GameObject arbol;
 
-//Inventario
-    public GameObject STrigoN;
-    public GameObject SMaizN;
-    public GameObject SChileN;
-    public GameObject SAguacateN;
-    public GameObject SCafeN;
-    public GameObject STomateN;
+//inventario
+    public GameObject sTrigoN;
+    public GameObject sMaizN;
+    public GameObject sChileN;
+    public GameObject sAguacateN;
+    public GameObject sCafeN;
+    public GameObject sTomateN;
 
-    public GameObject TrigoN;
-    public GameObject MaizN;
-    public GameObject ChileN;
-    public GameObject AguacateN;
-    public GameObject CafeN;
-    public GameObject TomateN;
+    public GameObject trigoN;
+    public GameObject maizN;
+    public GameObject chileN;
+    public GameObject aguacateN;
+    public GameObject cafeN;
+    public GameObject tomateN;
 
 // Menu Créditos
-    public GameObject Creditos;
+    public GameObject creditos;
     private bool flagCreditos=false;
 
 //FinanceManager
     public FinanceManager financeManager;
 
 //User Controller
-    public UserController UserController;
+    public UserController userController;
 
-//Deuda
-    public GameObject DeudaTxt;
-    public GameObject DeudaTime;
+//deuda
+    public GameObject deudaTxt;
+    public GameObject deudaTime;
 
-// Mercado 
+// mercado 
 
-    public GameObject MenuVender;
-    public GameObject MenuComprar;
+    public GameObject menuVender;
+    public GameObject menuComprar;
     private int maizv=0;
-    public GameObject MaizVcontador;
+    public GameObject maizVcontador;
     private int trigov=0;
-    public GameObject TrigoVcontador;
+    public GameObject trigoVcontador;
     private int chilev=0;
-    public GameObject ChileVcontador;
+    public GameObject chileVcontador;
     private int aguacatev=0;
-    public GameObject AguacateVcontador;
+    public GameObject aguacateVcontador;
     private int cafev=0;
-    public GameObject CafeVcontador;
+    public GameObject cafeVcontador;
     private int tomatev=0;
-    public GameObject TomateVcontador;
+    public GameObject tomateVcontador;
     public GameObject precioTrigo;
     public GameObject precioMaiz;
     public GameObject precioChile;
@@ -76,15 +78,15 @@ public class UiControl : MonoBehaviour
     public GameObject precioCafe;
     public GameObject precioTomate;
 
-    public GameObject BigPeriodico;
+    public GameObject bigPeriodico;
 
-    public GameObject MenuPlantar;
+    public GameObject menuPlantar;
     public int typecrop=0;
 
 // Objeto EviarDatos
     public EnviarDatos enviardatos;
 
-// Mercado Comprar
+// mercado Comprar
 
     public MarketManager marketManager;
     public GameObject trigoPrice;
@@ -100,21 +102,21 @@ public class UiControl : MonoBehaviour
     public GameObject cafeCantidad;
     public GameObject tomateCantidad;
 
-// Mercado Vender 2
-    public GameObject MenuVender2;
-    public GameObject MenuComprar2;
+// mercado 2
+    public GameObject menuVender2;
+    public GameObject menuComprar2;
     public GameObject precioTrigo2;
     public GameObject precioMaiz2;
     public GameObject precioChile2;
     public GameObject precioAguacate2;
     public GameObject precioCafe2;
     public GameObject precioTomate2;
-    public GameObject TrigoVcontador2;
-    public GameObject MaizVcontador2;
-    public GameObject ChileVcontador2;
-    public GameObject AguacateVcontador2;
-    public GameObject CafeVcontador2;
-    public GameObject TomateVcontador2;
+    public GameObject trigoVcontador2;
+    public GameObject maizVcontador2;
+    public GameObject chileVcontador2;
+    public GameObject aguacateVcontador2;
+    public GameObject cafeVcontador2;
+    public GameObject tomateVcontador2;
     public GameObject trigoPrice2;
     public GameObject maizPrice2;
     public GameObject chilePrice2;
@@ -128,38 +130,38 @@ public class UiControl : MonoBehaviour
     public GameObject cafeCantidad2;
     public GameObject tomateCantidad2;
 
-    public GameObject Dinero;
-    public GameObject Arbol;
 
-    //Rankings
-    public GameObject Ranking1Name;
-    public GameObject Ranking1Money;
-    public GameObject Ranking1Finance;
-    public GameObject Ranking2Name;
-    public GameObject Ranking2Money;
-    public GameObject Ranking2Finance;
-    public GameObject Ranking3Name;
-    public GameObject Ranking3Money;
-    public GameObject Ranking3Finance;
-    public GameObject PlayerName;
-    public GameObject PlayerMoney;
-    public GameObject PlayerFinance;
+    //rankings
+    public GameObject ranking1Name;
+    public GameObject ranking1Money;
+    public GameObject ranking1Finance;
+    public GameObject ranking2Name;
+    public GameObject ranking2Money;
+    public GameObject ranking2Finance;
+    public GameObject ranking3Name;
+    public GameObject ranking3Money;
+    public GameObject ranking3Finance;
+    public GameObject playerName;
+    public GameObject playerMoney;
+    public GameObject playerFinance;
 
-    public string Ranking1NameData;
-    public string Ranking2NameData;
-    public string Ranking3NameData;
-    public string Ranking1MoneyData;
-    public string Ranking2MoneyData;
-    public string Ranking3MoneyData;
-    public string Ranking1FinanceData;
-    public string Ranking2FinanceData;
-    public string Ranking3FinanceData;
+    public string ranking1NameData;
+    public string ranking2NameData;
+    public string ranking3NameData;
+    public string ranking1MoneyData;
+    public string ranking2MoneyData;
+    public string ranking3MoneyData;
+    public string ranking1FinanceData;
+    public string ranking2FinanceData;
+    public string ranking3FinanceData;
 
 
     //TreeManager
-    public TreeManager treeManager;
+    private TreeManager treeManager;
+    //CropManager
 
     public CropManager cropManager;
+    //Banderas
     private bool flagUsuario=false;
     private bool flagFinanciamiento=false;
     private bool flagProduccion=false;
@@ -188,49 +190,50 @@ public class UiControl : MonoBehaviour
     
     void Awake(){
         //Establece valores dommy para los rankings y pone el dinero del usuario en su posición
-        Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
-        Ranking1NameData="Jorge";
-        Ranking2NameData="Pedro";
-        Ranking3NameData="Juan";
-        Ranking1MoneyData="$ 1000000";
-        Ranking2MoneyData="$ 500000";
-        Ranking3MoneyData="$ 100000";
-        Ranking1FinanceData="Verqor";
-        Ranking2FinanceData="Banco";
-        Ranking3FinanceData="Verqor";
+        dinero.GetComponent<TextMeshProUGUI>().text = "$ " + userController.GetCapital().ToString();
+        ranking1NameData="Jorge";
+        ranking2NameData="Pedro";
+        ranking3NameData="Juan";
+        ranking1MoneyData="$ 1000000";
+        ranking2MoneyData="$ 500000";
+        ranking3MoneyData="$ 100000";
+        ranking1FinanceData="Verqor";
+        ranking2FinanceData="Banco";
+        ranking3FinanceData="Verqor";
         audioControl = GetComponent<AudioControl>();
+        treeManager = GetComponent<TreeManager>();
     }
 
     //Al dar click al boton de opciones se abre el panel PanelOpciones
     public void OpenOpciones()
     {
         flagMenuVender2=false;
-        MenuVender2.SetActive(false);
+        menuVender2.SetActive(false);
         flagMenuComprar2=false;
-        MenuComprar2.SetActive(false);
+        menuComprar2.SetActive(false);
         Cursor.visible = true;
         flagHerramienta=false; 
         typecrop=0;
         flagCelular=false;
-        Celular.SetActive(false);
+        celular.SetActive(false);
         flagMercado=false;
-        Mercado.SetActive(false);
+        mercado.SetActive(false);
         flagInventario=false;
-        Inventario.SetActive(false);
+        inventario.SetActive(false);
         flagDeuda=false;
-        Deuda.SetActive(false);
+        deuda.SetActive(false);
         flagHerramienta=false;
-        PanelOpciones.SetActive(true);
+        panelOpciones.SetActive(true);
         flagMenuComprar=false;
-        MenuComprar.SetActive(false);
+        menuComprar.SetActive(false);
         flagMenuVender=false;
-        MenuVender.SetActive(false);
+        menuVender.SetActive(false);
         flagBigPeriodico=false;
-        BigPeriodico.SetActive(false);
+        bigPeriodico.SetActive(false);
         flagArbol=false;
-        Arbol.SetActive(false);
+        arbol.SetActive(false);
         flagMenuPlantar=false;
-        MenuPlantar.SetActive(false);
+        menuPlantar.SetActive(false);
         Time.timeScale = 0;
         cameraMovement.enabled = false;
     }
@@ -238,18 +241,18 @@ public class UiControl : MonoBehaviour
     public void CloseOpciones()
     {
         flagUsuario=false;
-        UsuarioNombre.SetActive(false);
+        usuarioNombre.SetActive(false);
         flagFinanciamiento=false;
-        Financiamiento.SetActive(false);
+        financiamiento.SetActive(false);
         flagProduccion=false;
-        Produccion.SetActive(false);
+        produccion.SetActive(false);
         flagRankings=false;
-        Rankings.SetActive(false);
-        PanelOpciones.SetActive(false);
+        rankings.SetActive(false);
+        panelOpciones.SetActive(false);
         flagAjustes=false;
-        Ajustes.SetActive(false);
+        ajustes.SetActive(false);
         flagCreditos=false;
-        Creditos.SetActive(false);
+        creditos.SetActive(false);
         Time.timeScale = 1;
         cameraMovement.enabled = true;
     }
@@ -257,25 +260,25 @@ public class UiControl : MonoBehaviour
     public void Usuario()
     {
         flagFinanciamiento=false;
-        Financiamiento.SetActive(false);
+        financiamiento.SetActive(false);
         flagRankings=false;
-        Rankings.SetActive(false);
+        rankings.SetActive(false);
         flagProduccion=false;
-        Produccion.SetActive(false);
+        produccion.SetActive(false);
         flagMenuComprar=false;
-        MenuComprar.SetActive(false);
+        menuComprar.SetActive(false);
         flagMenuVender=false;
-        MenuVender.SetActive(false);
+        menuVender.SetActive(false);
         flagAjustes=false;
-        Ajustes.SetActive(false);
+        ajustes.SetActive(false);
         flagCreditos=false;
-        Creditos.SetActive(false);
+        creditos.SetActive(false);
         if(flagUsuario){
             flagUsuario=false;
-            UsuarioNombre.SetActive(false);
+            usuarioNombre.SetActive(false);
         }else{
             flagUsuario=true;
-            UsuarioNombre.SetActive(true);
+            usuarioNombre.SetActive(true);
         }
         
     }
@@ -283,25 +286,25 @@ public class UiControl : MonoBehaviour
     public void ShowFinanciamiento()
     {
         flagUsuario=false;
-        UsuarioNombre.SetActive(false);
+        usuarioNombre.SetActive(false);
         flagProduccion=false;
-        Produccion.SetActive(false);
+        produccion.SetActive(false);
         flagRankings=false;
-        Rankings.SetActive(false);
+        rankings.SetActive(false);
         flagMenuComprar=false;
-        MenuComprar.SetActive(false);
+        menuComprar.SetActive(false);
         flagMenuVender=false;
-        MenuVender.SetActive(false);
+        menuVender.SetActive(false);
         flagAjustes=false;
         flagCreditos=false;
-        Creditos.SetActive(false);
-        Ajustes.SetActive(false);
+        creditos.SetActive(false);
+        ajustes.SetActive(false);
         if(flagFinanciamiento){
             flagFinanciamiento=false;
-            Financiamiento.SetActive(false);
+            financiamiento.SetActive(false);
         }else{
             flagFinanciamiento=true;
-            Financiamiento.SetActive(true);
+            financiamiento.SetActive(true);
         }
         
     }
@@ -309,25 +312,25 @@ public class UiControl : MonoBehaviour
     public void ShowProduccion()
     {
         flagUsuario=false;
-        UsuarioNombre.SetActive(false);
+        usuarioNombre.SetActive(false);
         flagFinanciamiento=false;
-        Financiamiento.SetActive(false);
+        financiamiento.SetActive(false);
         flagRankings=false;
-        Rankings.SetActive(false);
+        rankings.SetActive(false);
         flagMenuComprar=false;
-        MenuComprar.SetActive(false);
+        menuComprar.SetActive(false);
         flagMenuVender=false;
-        MenuVender.SetActive(false);
+        menuVender.SetActive(false);
         flagAjustes=false;
-        Ajustes.SetActive(false);
+        ajustes.SetActive(false);
         flagCreditos=false;
-        Creditos.SetActive(false);
+        creditos.SetActive(false);
         if(flagProduccion){
             flagProduccion=false;
-            Produccion.SetActive(false);
+            produccion.SetActive(false);
         }else{
             flagProduccion=true;
-            Produccion.SetActive(true);
+            produccion.SetActive(true);
         }
         
     }
@@ -335,70 +338,70 @@ public class UiControl : MonoBehaviour
     public void ShowRankings()
     {
         flagUsuario=false;
-        UsuarioNombre.SetActive(false);
+        usuarioNombre.SetActive(false);
         flagFinanciamiento=false;
-        Financiamiento.SetActive(false);
+        financiamiento.SetActive(false);
         flagProduccion=false;
-        Produccion.SetActive(false);
+        produccion.SetActive(false);
         flagProduccion=false;
-        Produccion.SetActive(false);
+        produccion.SetActive(false);
         flagMenuComprar=false;
-        MenuComprar.SetActive(false);
+        menuComprar.SetActive(false);
         flagMenuVender=false;
-        MenuVender.SetActive(false);
+        menuVender.SetActive(false);
         flagAjustes=false;
-        Ajustes.SetActive(false);
+        ajustes.SetActive(false);
         flagCreditos=false;
-        Creditos.SetActive(false);
+        creditos.SetActive(false);
         if(flagRankings){
             flagRankings=false;
-            Rankings.SetActive(false);
+            rankings.SetActive(false);
         }else{
             flagRankings=true;
-            Rankings.SetActive(true);
-            WriteRankings();
+            rankings.SetActive(true);
+            Writerankings();
         }
     }
 
     //Escribe los rankings en el menú de rankings
-    private void WriteRankings(){
-        Ranking1Name.GetComponent<TextMeshProUGUI>().text = Ranking1NameData;
-        Ranking1Money.GetComponent<TextMeshProUGUI>().text = "$" +Ranking1MoneyData;
-        Ranking1Finance.GetComponent<TextMeshProUGUI>().text = Ranking1FinanceData;
-        Ranking2Name.GetComponent<TextMeshProUGUI>().text = Ranking2NameData;
-        Ranking2Money.GetComponent<TextMeshProUGUI>().text = "$"+Ranking2MoneyData;
-        Ranking2Finance.GetComponent<TextMeshProUGUI>().text = Ranking2FinanceData;
-        Ranking3Name.GetComponent<TextMeshProUGUI>().text = Ranking3NameData;
-        Ranking3Money.GetComponent<TextMeshProUGUI>().text = "$"+Ranking3MoneyData;
-        Ranking3Finance.GetComponent<TextMeshProUGUI>().text = Ranking3FinanceData;
-        PlayerName.GetComponent<TextMeshProUGUI>().text = datosUsuario.GetComponent<DatosUsurio>().GetNombreUsuario();
-        PlayerMoney.GetComponent<TextMeshProUGUI>().text = "$" +UserController.GetCapital().ToString();
-        PlayerFinance.GetComponent<TextMeshProUGUI>().text = datosUsuario.GetComponent<DatosUsurio>().GetTipoFinanciamiento();
+    private void Writerankings(){
+        ranking1Name.GetComponent<TextMeshProUGUI>().text = ranking1NameData;
+        ranking1Money.GetComponent<TextMeshProUGUI>().text = "$" +ranking1MoneyData;
+        ranking1Finance.GetComponent<TextMeshProUGUI>().text = ranking1FinanceData;
+        ranking2Name.GetComponent<TextMeshProUGUI>().text = ranking2NameData;
+        ranking2Money.GetComponent<TextMeshProUGUI>().text = "$"+ranking2MoneyData;
+        ranking2Finance.GetComponent<TextMeshProUGUI>().text = ranking2FinanceData;
+        ranking3Name.GetComponent<TextMeshProUGUI>().text = ranking3NameData;
+        ranking3Money.GetComponent<TextMeshProUGUI>().text = "$"+ranking3MoneyData;
+        ranking3Finance.GetComponent<TextMeshProUGUI>().text = ranking3FinanceData;
+        playerName.GetComponent<TextMeshProUGUI>().text = datosUsuario.GetComponent<DatosUsurio>().GetNombreUsuario();
+        playerMoney.GetComponent<TextMeshProUGUI>().text = "$" +userController.GetCapital().ToString();
+        playerFinance.GetComponent<TextMeshProUGUI>().text = datosUsuario.GetComponent<DatosUsurio>().GetTipoFinanciamiento();
     }
 
     //Al dar click al boton de ajustes se abre el menú de ajustes
     public void ShowAjustes()
     {
         flagUsuario=false;
-        UsuarioNombre.SetActive(false);
+        usuarioNombre.SetActive(false);
         flagFinanciamiento=false;
-        Financiamiento.SetActive(false);
+        financiamiento.SetActive(false);
         flagProduccion=false;
-        Produccion.SetActive(false);
+        produccion.SetActive(false);
         flagRankings=false;
-        Rankings.SetActive(false);
+        rankings.SetActive(false);
         flagMenuComprar=false;
-        MenuComprar.SetActive(false);
+        menuComprar.SetActive(false);
         flagMenuVender=false;
-        MenuVender.SetActive(false);
+        menuVender.SetActive(false);
         flagCreditos=false;
-        Creditos.SetActive(false);
+        creditos.SetActive(false);
         if(flagAjustes){
             flagAjustes=false;
-            Ajustes.SetActive(false);
+            ajustes.SetActive(false);
         }else{
             flagAjustes=true;
-            Ajustes.SetActive(true);
+            ajustes.SetActive(true);
         }
     }
     //Al dar click al boton de guardar se guarda la partida
@@ -423,27 +426,27 @@ public class UiControl : MonoBehaviour
     //Al dar click al boton de créditos se abre el menú de créditos
     public void ShowCreditos(){
         flagUsuario=false;
-        UsuarioNombre.SetActive(false);
+        usuarioNombre.SetActive(false);
         flagFinanciamiento=false;
-        Financiamiento.SetActive(false);
+        financiamiento.SetActive(false);
         flagProduccion=false;
-        Produccion.SetActive(false);
+        produccion.SetActive(false);
         flagProduccion=false;
-        Produccion.SetActive(false);
+        produccion.SetActive(false);
         flagMenuComprar=false;
-        MenuComprar.SetActive(false);
+        menuComprar.SetActive(false);
         flagMenuVender=false;
-        MenuVender.SetActive(false);
+        menuVender.SetActive(false);
         flagAjustes=false;
-        Ajustes.SetActive(false);
+        ajustes.SetActive(false);
         flagRankings=false;
-        Rankings.SetActive(false);
+        rankings.SetActive(false);
         if(flagCreditos){
             flagCreditos=false;
-            Creditos.SetActive(false);
+            creditos.SetActive(false);
         }else{
             flagCreditos=true;
-            Creditos.SetActive(true);
+            creditos.SetActive(true);
         }
     }
 
@@ -451,195 +454,195 @@ public class UiControl : MonoBehaviour
     public void ShowCelular()
     {
         flagMenuVender2=false;
-        MenuVender2.SetActive(false);
+        menuVender2.SetActive(false);
         flagMenuComprar2=false;
-        MenuComprar2.SetActive(false);
+        menuComprar2.SetActive(false);
         Cursor.visible = true;
         flagHerramienta=false; 
         typecrop=0;
         flagMercado=false;
-        Mercado.SetActive(false);
+        mercado.SetActive(false);
         flagInventario=false;
-        Inventario.SetActive(false);
+        inventario.SetActive(false);
         flagDeuda=false;
-        Deuda.SetActive(false);
+        deuda.SetActive(false);
         flagMenuComprar=false;
-        MenuComprar.SetActive(false);
+        menuComprar.SetActive(false);
         flagMenuVender=false;
-        MenuVender.SetActive(false);
+        menuVender.SetActive(false);
         flagBigPeriodico=false;
-        BigPeriodico.SetActive(false);
+        bigPeriodico.SetActive(false);
         flagArbol=false;
-        Arbol.SetActive(false);
+        arbol.SetActive(false);
         flagMenuPlantar=false;
-        MenuPlantar.SetActive(false);
+        menuPlantar.SetActive(false);
         if(flagCelular){
             flagCelular=false;
-            Celular.SetActive(false);
+            celular.SetActive(false);
         }else{
             flagCelular=true;
-            Celular.SetActive(true);
+            celular.SetActive(true);
         }
     }
     //Al dar click al boton de mercado se abre el menú de mercado
     public void ShowMercado()
     {
         flagMenuVender2=false;
-        MenuVender2.SetActive(false);
+        menuVender2.SetActive(false);
         flagMenuComprar2=false;
-        MenuComprar2.SetActive(false);
+        menuComprar2.SetActive(false);
         Cursor.visible = true;
         flagHerramienta=false;
         typecrop=0; 
         flagCelular=false;
-        Celular.SetActive(false);
+        celular.SetActive(false);
         flagInventario=false;
-        Inventario.SetActive(false);
+        inventario.SetActive(false);
         flagDeuda=false;
-        Deuda.SetActive(false);
+        deuda.SetActive(false);
         flagMenuComprar=false;
-        MenuComprar.SetActive(false);
+        menuComprar.SetActive(false);
         flagMenuVender=false;
-        MenuVender.SetActive(false);
+        menuVender.SetActive(false);
         flagBigPeriodico=false;
-        BigPeriodico.SetActive(false);
+        bigPeriodico.SetActive(false);
         flagArbol=false;
-        Arbol.SetActive(false);
+        arbol.SetActive(false);
         flagMenuPlantar=false;
-        MenuPlantar.SetActive(false);
+        menuPlantar.SetActive(false);
         if(flagMercado){
             flagMercado=false;
-            Mercado.SetActive(false);
+            mercado.SetActive(false);
         }else{
             flagMercado=true;
-            Mercado.SetActive(true);
+            mercado.SetActive(true);
         }
     }
     //Al dar click al boton de inventario se abre el menú de inventario
     public void ShowInventario()
     {
         flagMenuVender2=false;
-        MenuVender2.SetActive(false);
+        menuVender2.SetActive(false);
         flagMenuComprar2=false;
-        MenuComprar2.SetActive(false);
+        menuComprar2.SetActive(false);
         Cursor.visible = true;
         flagHerramienta=false; 
         typecrop=0;
         flagCelular=false;
-        Celular.SetActive(false);
+        celular.SetActive(false);
         flagMercado=false;
-        Mercado.SetActive(false);
+        mercado.SetActive(false);
         flagDeuda=false;
-        Deuda.SetActive(false);
+        deuda.SetActive(false);
         flagMenuComprar=false;
-        MenuComprar.SetActive(false);
+        menuComprar.SetActive(false);
         flagMenuVender=false;
-        MenuVender.SetActive(false);
+        menuVender.SetActive(false);
         flagBigPeriodico=false;
-        BigPeriodico.SetActive(false);
+        bigPeriodico.SetActive(false);
         flagArbol=false;
-        Arbol.SetActive(false);
+        arbol.SetActive(false);
         flagMenuPlantar=false;
-        MenuPlantar.SetActive(false);
+        menuPlantar.SetActive(false);
         if(flagInventario){
             flagInventario=false;
-            Inventario.SetActive(false);
+            inventario.SetActive(false);
         }else{
             flagInventario=true;
-            Inventario.SetActive(true);
-            STrigoN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropSeeds(1).ToString()+" kg";
-            SMaizN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropSeeds(2).ToString()+" kg";
-            SChileN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropSeeds(6).ToString()+" kg";
-            SAguacateN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropSeeds(4).ToString()+" kg";
-            SCafeN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropSeeds(5).ToString()+" kg";
-            STomateN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropSeeds(3).ToString()+" kg";
-            TrigoN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropQuantity(1).ToString()+" kg";
-            MaizN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropQuantity(2).ToString()+" kg";
-            ChileN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropQuantity(6).ToString()+" kg";
-            AguacateN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropQuantity(4).ToString()+" kg";
-            CafeN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropQuantity(5).ToString()+" kg";
-            TomateN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropQuantity(3).ToString()+" kg";
+            inventario.SetActive(true);
+            sTrigoN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropSeeds(1).ToString()+" kg";
+            sMaizN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropSeeds(2).ToString()+" kg";
+            sChileN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropSeeds(6).ToString()+" kg";
+            sAguacateN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropSeeds(4).ToString()+" kg";
+            sCafeN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropSeeds(5).ToString()+" kg";
+            sTomateN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropSeeds(3).ToString()+" kg";
+            trigoN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropQuantity(1).ToString()+" kg";
+            maizN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropQuantity(2).ToString()+" kg";
+            chileN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropQuantity(6).ToString()+" kg";
+            aguacateN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropQuantity(4).ToString()+" kg";
+            cafeN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropQuantity(5).ToString()+" kg";
+            tomateN.GetComponent<TextMeshProUGUI>().text = cropManager.GetCropQuantity(3).ToString()+" kg";
         }
     }
     //Al dar click al boton de deuda se abre el menú de deuda
     public void ShowDeuda()
     {
         flagMenuVender2=false;
-        MenuVender2.SetActive(false);
+        menuVender2.SetActive(false);
         flagMenuComprar2=false;
-        MenuComprar2.SetActive(false);
+        menuComprar2.SetActive(false);
         Cursor.visible = true;
         flagHerramienta=false;
         typecrop=0; 
         flagCelular=false;
-        Celular.SetActive(false);
+        celular.SetActive(false);
         flagMercado=false;
-        Mercado.SetActive(false);
+        mercado.SetActive(false);
         flagInventario=false;
-        Inventario.SetActive(false);
+        inventario.SetActive(false);
         flagMenuComprar=false;
-        MenuComprar.SetActive(false);
+        menuComprar.SetActive(false);
         flagMenuVender=false;
-        MenuVender.SetActive(false);
+        menuVender.SetActive(false);
         flagBigPeriodico=false;
-        BigPeriodico.SetActive(false);
+        bigPeriodico.SetActive(false);
         flagArbol=false;
         flagMenuPlantar=false;
-        MenuPlantar.SetActive(false);
-        Arbol.SetActive(false);
+        menuPlantar.SetActive(false);
+        arbol.SetActive(false);
         if(flagDeuda){
             flagDeuda=false;
-            Deuda.SetActive(false);
+            deuda.SetActive(false);
         }else{
             flagDeuda=true;
-            Deuda.SetActive(true);
-            DeudaTxt.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetDebt().ToString();
-            DeudaTime.GetComponent<TextMeshProUGUI>().text = financeManager.GetTimetoPay().ToString() + " días";
+            deuda.SetActive(true);
+            deudaTxt.GetComponent<TextMeshProUGUI>().text = "$ " + userController.GetDebt().ToString();
+            deudaTime.GetComponent<TextMeshProUGUI>().text = financeManager.GetTimetoPay().ToString() + " días";
         }
     }
 
     //Al dar click al boton de plantar se abre el menú de plantar
-    public void pagarDeuda(){
-        if(UserController.GetCapital()>=UserController.GetDebt()){
-            UserController.PayDebt(UserController.GetDebt());
-            DeudaTxt.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetDebt().ToString();
-            Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
+    public void PagarDeuda(){
+        if(userController.GetCapital()>=userController.GetDebt()){
+            userController.PayDebt(userController.GetDebt());
+            deudaTxt.GetComponent<TextMeshProUGUI>().text = "$ " + userController.GetDebt().ToString();
+            dinero.GetComponent<TextMeshProUGUI>().text = "$ " + userController.GetCapital().ToString();
         }
     }
     
     //Al dar click al boton de plantar se abre el menú de plantar
-    public void hoz(){
+    public void Hoz(){
         flagMenuVender2=false;
-        MenuVender2.SetActive(false);
+        menuVender2.SetActive(false);
         flagMenuComprar2=false;
-        MenuComprar2.SetActive(false);
+        menuComprar2.SetActive(false);
         flagCelular=false;
-        Celular.SetActive(false);
+        celular.SetActive(false);
         flagMercado=false;
-        Mercado.SetActive(false);
+        mercado.SetActive(false);
         flagInventario=false;
-        Inventario.SetActive(false);
+        inventario.SetActive(false);
         flagDeuda=false;
-        Deuda.SetActive(false);
+        deuda.SetActive(false);
         flagRegadera=false;
         flagMenuComprar=false;
-        MenuComprar.SetActive(false);
+        menuComprar.SetActive(false);
         flagMenuVender=false;
-        MenuVender.SetActive(false);
+        menuVender.SetActive(false);
         flagBigPeriodico=false;
-        BigPeriodico.SetActive(false);
+        bigPeriodico.SetActive(false);
         flagArbol=false;
         Cursor.visible = true;
-        Arbol.SetActive(false);
+        arbol.SetActive(false);
         if(flagMenuPlantar){
             flagMenuPlantar=false;
-            MenuPlantar.SetActive(false);
+            menuPlantar.SetActive(false);
             flagHerramienta=false; 
             Cursor.visible = true;
             typecrop=0;
         }else{
             flagMenuPlantar=true;
-            MenuPlantar.SetActive(true);
+            menuPlantar.SetActive(true);
             //Cursor.visible = false;
         }
     }
@@ -729,30 +732,30 @@ public class UiControl : MonoBehaviour
     }
 
     //Al dar click al boton de plantar aparece la regadera
-    public void regadera(){
+    public void Regadera(){
         flagCelular=false;
-        Celular.SetActive(false);
+        celular.SetActive(false);
         flagMercado=false;
-        Mercado.SetActive(false);
+        mercado.SetActive(false);
         flagInventario=false;
-        Inventario.SetActive(false);
+        inventario.SetActive(false);
         flagDeuda=false;
-        Deuda.SetActive(false);
+        deuda.SetActive(false);
         flagHerramienta=false;
         flagMenuComprar=false;
-        MenuComprar.SetActive(false);
+        menuComprar.SetActive(false);
         flagMenuVender=false;
-        MenuVender.SetActive(false);
+        menuVender.SetActive(false);
         flagBigPeriodico=false;
-        BigPeriodico.SetActive(false);
+        bigPeriodico.SetActive(false);
         flagArbol=false;
-        Arbol.SetActive(false);
+        arbol.SetActive(false);
         flagMenuPlantar=false;
-        MenuPlantar.SetActive(false);
+        menuPlantar.SetActive(false);
         flagMenuVender2=false;
-        MenuVender2.SetActive(false);
+        menuVender2.SetActive(false);
         flagMenuComprar2=false;
-        MenuComprar2.SetActive(false);
+        menuComprar2.SetActive(false);
         if(flagRegadera){
             flagRegadera=false;
             Cursor.visible = true;    
@@ -766,13 +769,13 @@ public class UiControl : MonoBehaviour
     public void ShowMenuVender()
     {
         flagMenuComprar=false;
-        MenuComprar.SetActive(false);
+        menuComprar.SetActive(false);
         if(flagMenuVender){
             flagMenuVender=false;
-            MenuVender.SetActive(false);
+            menuVender.SetActive(false);
         }else{
             flagMenuVender=true;
-            MenuVender.SetActive(true);
+            menuVender.SetActive(true);
             trigov=0;
             maizv=0;
             chilev=0;
@@ -785,24 +788,24 @@ public class UiControl : MonoBehaviour
             precioAguacate.GetComponent<TextMeshProUGUI>().text = "$ " + financeManager.GetCropPrice(4).ToString();
             precioCafe.GetComponent<TextMeshProUGUI>().text = "$ " + financeManager.GetCropPrice(5).ToString();
             precioTomate.GetComponent<TextMeshProUGUI>().text = "$ " + financeManager.GetCropPrice(3).ToString();
-            TrigoVcontador.GetComponent<TextMeshProUGUI>().text = trigov.ToString()+" kg";
-            MaizVcontador.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
-            ChileVcontador.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
-            AguacateVcontador.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
-            CafeVcontador.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
-            TomateVcontador.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
+            trigoVcontador.GetComponent<TextMeshProUGUI>().text = trigov.ToString()+" kg";
+            maizVcontador.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
+            chileVcontador.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
+            aguacateVcontador.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
+            cafeVcontador.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
+            tomateVcontador.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
         }
     }
     // Al dar click al boton de plantar se abre el menú de vender del celular
     public void ShowMenuVender2(){
         if(flagMenuVender2){
             flagMenuVender2=false;
-            MenuVender2.SetActive(false);
+            menuVender2.SetActive(false);
         }else{
             flagMenuVender2=true;
-            MenuVender2.SetActive(true);
+            menuVender2.SetActive(true);
             flagCelular=false;
-            Celular.SetActive(false);
+            celular.SetActive(false);
             trigov=0;
             maizv=0;
             chilev=0;
@@ -815,12 +818,12 @@ public class UiControl : MonoBehaviour
             precioAguacate2.GetComponent<TextMeshProUGUI>().text = "$ " + ((int)(financeManager.GetCropPrice(4)*1.3)).ToString();
             precioCafe2.GetComponent<TextMeshProUGUI>().text = "$ " + ((int)(financeManager.GetCropPrice(5)*1.3)).ToString();
             precioTomate2.GetComponent<TextMeshProUGUI>().text = "$ " + ((int)(financeManager.GetCropPrice(3)*1.3)).ToString();
-            TrigoVcontador2.GetComponent<TextMeshProUGUI>().text = trigov.ToString()+" kg";
-            MaizVcontador2.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
-            ChileVcontador2.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
-            AguacateVcontador2.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
-            CafeVcontador2.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
-            TomateVcontador2.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
+            trigoVcontador2.GetComponent<TextMeshProUGUI>().text = trigov.ToString()+" kg";
+            maizVcontador2.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
+            chileVcontador2.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
+            aguacateVcontador2.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
+            cafeVcontador2.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
+            tomateVcontador2.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
         }
     }
     //Al dar click se suma en 5 la cantidad de cultivo a vender
@@ -832,7 +835,7 @@ public class UiControl : MonoBehaviour
                 }else{
                     trigov =cropManager.GetCropQuantity(1);
                 }
-                TrigoVcontador2.GetComponent<TextMeshProUGUI>().text = trigov.ToString() +" kg";
+                trigoVcontador2.GetComponent<TextMeshProUGUI>().text = trigov.ToString() +" kg";
                 break;
             case "2":
                 if(cropManager.GetCropQuantity(2)>maizv){
@@ -840,7 +843,7 @@ public class UiControl : MonoBehaviour
                 }else{
                     maizv =cropManager.GetCropQuantity(2);
                 }
-                MaizVcontador2.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
+                maizVcontador2.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
                 break;
             case "3":
                 if(cropManager.GetCropQuantity(3)>tomatev){
@@ -848,7 +851,7 @@ public class UiControl : MonoBehaviour
                 }else{
                     tomatev =cropManager.GetCropQuantity(3);
                 }
-                TomateVcontador2.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
+                tomateVcontador2.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
                 break;
             case "4":
                 if(cropManager.GetCropQuantity(4)>aguacatev){
@@ -856,7 +859,7 @@ public class UiControl : MonoBehaviour
                 }else{
                     aguacatev =cropManager.GetCropQuantity(4);
                 }
-                AguacateVcontador2.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
+                aguacateVcontador2.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
                 break;
             case "5":
                 if(cropManager.GetCropQuantity(5)>cafev){
@@ -864,7 +867,7 @@ public class UiControl : MonoBehaviour
                 }else{
                     cafev =cropManager.GetCropQuantity(5);
                 }
-                CafeVcontador2.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
+                cafeVcontador2.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
                 break;
             case "6":
                 if(cropManager.GetCropQuantity(6)>chilev){
@@ -872,7 +875,7 @@ public class UiControl : MonoBehaviour
                 }else{
                     chilev =cropManager.GetCropQuantity(6);
                 }
-                ChileVcontador2.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
+                chileVcontador2.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
                 break;
         }
     }
@@ -885,7 +888,7 @@ public class UiControl : MonoBehaviour
                 } else{
                     trigov = 0;
                 }
-                TrigoVcontador2.GetComponent<TextMeshProUGUI>().text = trigov.ToString()+" kg";
+                trigoVcontador2.GetComponent<TextMeshProUGUI>().text = trigov.ToString()+" kg";
                 break;
             case "2":
                 if(maizv>0){
@@ -893,7 +896,7 @@ public class UiControl : MonoBehaviour
                 } else{
                     maizv = 0;
                 }
-                MaizVcontador2.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
+                maizVcontador2.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
                 break;
             case "3":
                 if(tomatev>0){
@@ -901,7 +904,7 @@ public class UiControl : MonoBehaviour
                 } else{
                     tomatev = 0;
                 }
-                TomateVcontador2.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
+                tomateVcontador2.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
                 break;
             case "4":
                 if(aguacatev>0){
@@ -909,7 +912,7 @@ public class UiControl : MonoBehaviour
                 }else{  
                     aguacatev = 0;
                 }
-                AguacateVcontador2.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
+                aguacateVcontador2.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
                 break;
             case "5":
                 if(cafev>0){
@@ -917,7 +920,7 @@ public class UiControl : MonoBehaviour
                 } else{
                     cafev = 0;
                 }
-                CafeVcontador2.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
+                cafeVcontador2.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
                 break;
             case "6":
                 if(chilev>0){
@@ -925,7 +928,7 @@ public class UiControl : MonoBehaviour
                 } else{
                     chilev = 0;
                 }
-                ChileVcontador2.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
+                chileVcontador2.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
                 break;
         }
     }
@@ -933,13 +936,13 @@ public class UiControl : MonoBehaviour
     public void ShowMenuComprar()
     {
         flagMenuVender=false;
-        MenuVender.SetActive(false);
+        menuVender.SetActive(false);
         if(flagMenuComprar){
             flagMenuComprar=false;
-            MenuComprar.SetActive(false);
+            menuComprar.SetActive(false);
         }else{
             flagMenuComprar=true;
-            MenuComprar.SetActive(true);
+            menuComprar.SetActive(true);
             trigoCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(1).ToString()+" kg";
             trigoPrice.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal(1)).ToString();
             maizCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(2).ToString()+" kg";
@@ -958,12 +961,12 @@ public class UiControl : MonoBehaviour
     public void ShowMenuComprar2(){
         if(flagMenuComprar2){
             flagMenuComprar2=false;
-            MenuComprar2.SetActive(false);
+            menuComprar2.SetActive(false);
         }else{
             flagMenuComprar2=true;
-            MenuComprar2.SetActive(true);
+            menuComprar2.SetActive(true);
             flagCelular=false;
-            Celular.SetActive(false);
+            celular.SetActive(false);
             trigoCantidad2.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad2(1).ToString() + " kg";
             trigoPrice2.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal2(1)).ToString();
             maizCantidad2.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad2(2).ToString() +" kg";
@@ -985,7 +988,7 @@ public class UiControl : MonoBehaviour
         }else{
             trigov =cropManager.GetCropQuantity(1);
         }
-        TrigoVcontador.GetComponent<TextMeshProUGUI>().text = trigov.ToString()+" kg";
+        trigoVcontador.GetComponent<TextMeshProUGUI>().text = trigov.ToString()+" kg";
     }
     //Al dar click suma 5 kg de cultivo a comprar
     public void RestarTrigoV(){
@@ -994,7 +997,7 @@ public class UiControl : MonoBehaviour
         } else{
             trigov = 0;
         }
-        TrigoVcontador.GetComponent<TextMeshProUGUI>().text = trigov.ToString()+" kg";
+        trigoVcontador.GetComponent<TextMeshProUGUI>().text = trigov.ToString()+" kg";
     }
     //Al dar click suma 5 kg de cultivo a comprar
     public void SumarMaízV(){
@@ -1003,7 +1006,7 @@ public class UiControl : MonoBehaviour
         }else{
             maizv =cropManager.GetCropQuantity(2); 
         }
-        MaizVcontador.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
+        maizVcontador.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
     }
     //Al dar click suma 5 kg de cultivo a comprar
     public void RestarMaízV(){
@@ -1012,7 +1015,7 @@ public class UiControl : MonoBehaviour
         } else{
             maizv = 0;
         }
-        MaizVcontador.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
+        maizVcontador.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
     }
     //Al dar click suma 5 kg de cultivo a comprar
     public void SumarChileV(){
@@ -1021,7 +1024,7 @@ public class UiControl : MonoBehaviour
         }else{
             chilev =cropManager.GetCropQuantity(6);
         }
-        ChileVcontador.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
+        chileVcontador.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
     }
     //Al dar click suma 5 kg de cultivo a comprar
     public void RestarChileV(){
@@ -1030,7 +1033,7 @@ public class UiControl : MonoBehaviour
         } else{
             chilev = 0;
         }
-        ChileVcontador.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
+        chileVcontador.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
     }
     //Al dar click suma 5 kg de cultivo a comprar
     public void SumarAguacateV(){
@@ -1039,7 +1042,7 @@ public class UiControl : MonoBehaviour
         }else{
             aguacatev =cropManager.GetCropQuantity(4);
         }
-        AguacateVcontador.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
+        aguacateVcontador.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
     }
     //Al dar click suma 5 kg de cultivo a comprar
     public void RestarAguacateV(){
@@ -1048,7 +1051,7 @@ public class UiControl : MonoBehaviour
         }else{  
             aguacatev = 0;
         }
-        AguacateVcontador.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
+        aguacateVcontador.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
     }
     //Al dar click suma 5 kg de cultivo a comprar
     public void SumarCafeV(){
@@ -1057,7 +1060,7 @@ public class UiControl : MonoBehaviour
         } else{
             cafev =cropManager.GetCropQuantity(5);
         }
-        CafeVcontador.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
+        cafeVcontador.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
     }
     //Al dar click suma 5 kg de cultivo a comprar
     public void RestarCafeV(){
@@ -1066,7 +1069,7 @@ public class UiControl : MonoBehaviour
         } else{
             cafev = 0;
         }
-        CafeVcontador.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
+        cafeVcontador.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
     }
     //Al dar click suma 5 kg de cultivo a comprar
     public void SumarTomateV(){
@@ -1075,7 +1078,7 @@ public class UiControl : MonoBehaviour
         } else{
             tomatev =cropManager.GetCropQuantity(3);
         }
-        TomateVcontador.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
+        tomateVcontador.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
     }
     //Al dar click suma 5 kg de cultivo a comprar
     public void RestarTomateV(){
@@ -1084,7 +1087,7 @@ public class UiControl : MonoBehaviour
         } else{
             tomatev = 0;
         }
-        TomateVcontador.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
+        tomateVcontador.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
     }
     //Al dar click se venden los cultivos seleccionados en las cantidades seleccionadas
     public void Vender(){
@@ -1100,13 +1103,13 @@ public class UiControl : MonoBehaviour
         aguacatev=0;
         cafev=0;
         tomatev=0;
-        TrigoVcontador.GetComponent<TextMeshProUGUI>().text = trigov.ToString()+" kg";
-        MaizVcontador.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
-        ChileVcontador.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
-        AguacateVcontador.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
-        CafeVcontador.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
-        TomateVcontador.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
-        Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString()+" kg";
+        trigoVcontador.GetComponent<TextMeshProUGUI>().text = trigov.ToString()+" kg";
+        maizVcontador.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
+        chileVcontador.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
+        aguacateVcontador.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
+        cafeVcontador.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
+        tomateVcontador.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
+        dinero.GetComponent<TextMeshProUGUI>().text = "$ " + userController.GetCapital().ToString()+" kg";
     }
 
     //Al dar click se venden los cultivos seleccionados en las cantidades seleccionadas en el celular
@@ -1123,13 +1126,13 @@ public class UiControl : MonoBehaviour
         aguacatev=0;
         cafev=0;
         tomatev=0;
-        TrigoVcontador2.GetComponent<TextMeshProUGUI>().text = trigov.ToString()+" kg";
-        MaizVcontador2.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
-        ChileVcontador2.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
-        AguacateVcontador2.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
-        CafeVcontador2.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
-        TomateVcontador2.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
-        Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString()+" kg";
+        trigoVcontador2.GetComponent<TextMeshProUGUI>().text = trigov.ToString()+" kg";
+        maizVcontador2.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
+        chileVcontador2.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
+        aguacateVcontador2.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
+        cafeVcontador2.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
+        tomateVcontador2.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
+        dinero.GetComponent<TextMeshProUGUI>().text = "$ " + userController.GetCapital().ToString()+" kg";
     }
     //Al dar click se venden todos los cultivos en tu inventario
     public void VenderTodo(){
@@ -1146,13 +1149,13 @@ public class UiControl : MonoBehaviour
         aguacatev=0;
         cafev=0;
         tomatev=0;
-        TrigoVcontador.GetComponent<TextMeshProUGUI>().text = trigov.ToString()+" kg";
-        MaizVcontador.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
-        ChileVcontador.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
-        AguacateVcontador.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
-        CafeVcontador.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
-        TomateVcontador.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
-        Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString()+" kg";
+        trigoVcontador.GetComponent<TextMeshProUGUI>().text = trigov.ToString()+" kg";
+        maizVcontador.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
+        chileVcontador.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
+        aguacateVcontador.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
+        cafeVcontador.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
+        tomateVcontador.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
+        dinero.GetComponent<TextMeshProUGUI>().text = "$ " + userController.GetCapital().ToString()+" kg";
     }
     //Al dar click se venden todos los cultivos en tu inventario en el celular
     public void VenderTodo2(){
@@ -1168,195 +1171,195 @@ public class UiControl : MonoBehaviour
         aguacatev=0;
         cafev=0;
         tomatev=0;
-        TrigoVcontador2.GetComponent<TextMeshProUGUI>().text = trigov.ToString()+" kg";
-        MaizVcontador2.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
-        ChileVcontador2.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
-        AguacateVcontador2.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
-        CafeVcontador2.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
-        TomateVcontador2.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
-        Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString()+" kg";
+        trigoVcontador2.GetComponent<TextMeshProUGUI>().text = trigov.ToString()+" kg";
+        maizVcontador2.GetComponent<TextMeshProUGUI>().text = maizv.ToString()+" kg";
+        chileVcontador2.GetComponent<TextMeshProUGUI>().text = chilev.ToString()+" kg";
+        aguacateVcontador2.GetComponent<TextMeshProUGUI>().text = aguacatev.ToString()+" kg";
+        cafeVcontador2.GetComponent<TextMeshProUGUI>().text = cafev.ToString()+" kg";
+        tomateVcontador2.GetComponent<TextMeshProUGUI>().text = tomatev.ToString()+" kg";
+        dinero.GetComponent<TextMeshProUGUI>().text = "$ " + userController.GetCapital().ToString()+" kg";
     }
 
     //Al dar click se compran los cultivos seleccionados en las cantidades que aparecen en el mercado
     public void ComprarSemillas(string cropType){
         if(cropType=="1"){
-            if(UserController.GetCapital()>=marketManager.GetTotal(1)){
-                UserController.UpdateCapital(-(int)marketManager.GetTotal(1));
+            if(userController.GetCapital()>=marketManager.GetTotal(1)){
+                userController.UpdateCapital(-(int)marketManager.GetTotal(1));
                 cropManager.UpdateCropSeeds(1,marketManager.GetCantidad(1));
                 marketManager.UpdateCropQuantity(1,0);
                 trigoCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(1).ToString() +" kg";
                 trigoPrice.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal(1)).ToString();
-                Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
+                dinero.GetComponent<TextMeshProUGUI>().text = "$ " + userController.GetCapital().ToString();
             }
         } else if (cropType=="2"){
-            if(UserController.GetCapital()>=marketManager.GetTotal(2)){
-                UserController.UpdateCapital(-(int)marketManager.GetTotal(2));
+            if(userController.GetCapital()>=marketManager.GetTotal(2)){
+                userController.UpdateCapital(-(int)marketManager.GetTotal(2));
                 cropManager.UpdateCropSeeds(2,marketManager.GetCantidad(2));
                 marketManager.UpdateCropQuantity(2,0);
                 maizCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(2).ToString()+" kg";
                 maizPrice.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal(2)).ToString();
-                Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
+                dinero.GetComponent<TextMeshProUGUI>().text = "$ " + userController.GetCapital().ToString();
             }
         } else if (cropType=="3"){ 
-            if(UserController.GetCapital()>=marketManager.GetTotal(3)){
-                UserController.UpdateCapital(-(int)marketManager.GetTotal(3));
+            if(userController.GetCapital()>=marketManager.GetTotal(3)){
+                userController.UpdateCapital(-(int)marketManager.GetTotal(3));
                 cropManager.UpdateCropSeeds(3,marketManager.GetCantidad(3));
                 marketManager.UpdateCropQuantity(3,0);
                 tomateCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(3).ToString()+" kg";
                 tomatePrice.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal(3)).ToString();
-                Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
+                dinero.GetComponent<TextMeshProUGUI>().text = "$ " + userController.GetCapital().ToString();
             }
         } else if (cropType=="4"){
-            if(UserController.GetCapital()>=marketManager.GetTotal(4)){
-                UserController.UpdateCapital(-(int)marketManager.GetTotal(4));
+            if(userController.GetCapital()>=marketManager.GetTotal(4)){
+                userController.UpdateCapital(-(int)marketManager.GetTotal(4));
                 cropManager.UpdateCropSeeds(4,marketManager.GetCantidad(4));
                 marketManager.UpdateCropQuantity(4,0);
                 aguacateCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(4).ToString()+" kg";
                 aguacatePrice.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal(4)).ToString();
-                Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
+                dinero.GetComponent<TextMeshProUGUI>().text = "$ " + userController.GetCapital().ToString();
             }
         } else if (cropType=="5"){
-            if(UserController.GetCapital()>=marketManager.GetTotal(5)){
-                UserController.UpdateCapital(-(int)marketManager.GetTotal(5));
+            if(userController.GetCapital()>=marketManager.GetTotal(5)){
+                userController.UpdateCapital(-(int)marketManager.GetTotal(5));
                 cropManager.UpdateCropSeeds(5,marketManager.GetCantidad(5));
                 marketManager.UpdateCropQuantity(5,0);
                 cafeCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(5).ToString()+" kg";
                 cafePrice.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal(5)).ToString();
-                Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
+                dinero.GetComponent<TextMeshProUGUI>().text = "$ " + userController.GetCapital().ToString();
             }
         } else if (cropType=="6"){
-            if(UserController.GetCapital()>=marketManager.GetTotal(6)){
-                UserController.UpdateCapital(-(int)marketManager.GetTotal(6));
+            if(userController.GetCapital()>=marketManager.GetTotal(6)){
+                userController.UpdateCapital(-(int)marketManager.GetTotal(6));
                 cropManager.UpdateCropSeeds(6,marketManager.GetCantidad(6));
                 marketManager.UpdateCropQuantity(6,0);
                 chileCantidad.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad(6).ToString()+" kg";
                 chilePrice.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal(6)).ToString();
-                Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
+                dinero.GetComponent<TextMeshProUGUI>().text = "$ " + userController.GetCapital().ToString();
             }
         }
     }
     public void ComprarSemillas2(string cropType){
         if(cropType=="1"){
-            if(UserController.GetCapital()>=marketManager.GetTotal2(1)){
-                UserController.UpdateCapital(-(int)marketManager.GetTotal2(1));
+            if(userController.GetCapital()>=marketManager.GetTotal2(1)){
+                userController.UpdateCapital(-(int)marketManager.GetTotal2(1));
                 cropManager.UpdateCropSeeds(1,marketManager.GetCantidad2(1));
                 marketManager.UpdateCropQuantity2(1,0);
                 trigoCantidad2.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad2(1).ToString()+" kg";
                 trigoPrice2.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal2(1)).ToString();
-                Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
+                dinero.GetComponent<TextMeshProUGUI>().text = "$ " + userController.GetCapital().ToString();
             }
         } else if (cropType=="2"){
-            if(UserController.GetCapital()>=marketManager.GetTotal2(2)){
-                UserController.UpdateCapital(-(int)marketManager.GetTotal2(2));
+            if(userController.GetCapital()>=marketManager.GetTotal2(2)){
+                userController.UpdateCapital(-(int)marketManager.GetTotal2(2));
                 cropManager.UpdateCropSeeds(2,marketManager.GetCantidad2(2));
                 marketManager.UpdateCropQuantity2(2,0);
                 maizCantidad2.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad2(2).ToString()+" kg";
                 maizPrice2.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal2(2)).ToString();
-                Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
+                dinero.GetComponent<TextMeshProUGUI>().text = "$ " + userController.GetCapital().ToString();
             }
         } else if (cropType=="3"){ 
-            if(UserController.GetCapital()>=marketManager.GetTotal2(3)){
-                UserController.UpdateCapital(-(int)marketManager.GetTotal2(3));
+            if(userController.GetCapital()>=marketManager.GetTotal2(3)){
+                userController.UpdateCapital(-(int)marketManager.GetTotal2(3));
                 cropManager.UpdateCropSeeds(3,marketManager.GetCantidad2(3));
                 marketManager.UpdateCropQuantity2(3,0);
                 tomateCantidad2.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad2(3).ToString()+" kg";
                 tomatePrice2.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal2(3)).ToString();
-                Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
+                dinero.GetComponent<TextMeshProUGUI>().text = "$ " + userController.GetCapital().ToString();
             }
         } else if (cropType=="4"){
-            if(UserController.GetCapital()>=marketManager.GetTotal2(4)){
-                UserController.UpdateCapital(-(int)marketManager.GetTotal2(4));
+            if(userController.GetCapital()>=marketManager.GetTotal2(4)){
+                userController.UpdateCapital(-(int)marketManager.GetTotal2(4));
                 cropManager.UpdateCropSeeds(4,marketManager.GetCantidad2(4));
                 marketManager.UpdateCropQuantity2(4,0);
                 aguacateCantidad2.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad2(4).ToString()+" kg";
                 aguacatePrice2.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal2(4)).ToString();
-                Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
+                dinero.GetComponent<TextMeshProUGUI>().text = "$ " + userController.GetCapital().ToString();
             }
         } else if (cropType=="5"){
-            if(UserController.GetCapital()>=marketManager.GetTotal2(5)){
-                UserController.UpdateCapital(-(int)marketManager.GetTotal2(5));
+            if(userController.GetCapital()>=marketManager.GetTotal2(5)){
+                userController.UpdateCapital(-(int)marketManager.GetTotal2(5));
                 cropManager.UpdateCropSeeds(5,marketManager.GetCantidad2(5));
                 marketManager.UpdateCropQuantity2(5,0);
                 cafeCantidad2.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad2(5).ToString()+" kg";
                 cafePrice2.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal2(5)).ToString();
-                Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
+                dinero.GetComponent<TextMeshProUGUI>().text = "$ " + userController.GetCapital().ToString();
             }
         } else if (cropType=="6"){
-            if(UserController.GetCapital()>=marketManager.GetTotal2(6)){
-                UserController.UpdateCapital(-(int)marketManager.GetTotal2(6));
+            if(userController.GetCapital()>=marketManager.GetTotal2(6)){
+                userController.UpdateCapital(-(int)marketManager.GetTotal2(6));
                 cropManager.UpdateCropSeeds(6,marketManager.GetCantidad2(6));
                 marketManager.UpdateCropQuantity2(6,0);
                 chileCantidad2.GetComponent<TextMeshProUGUI>().text = marketManager.GetCantidad2(6).ToString()+" kg";
                 chilePrice2.GetComponent<TextMeshProUGUI>().text = "$ " + Math.Round(marketManager.GetTotal2(6)).ToString();
-                Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
+                dinero.GetComponent<TextMeshProUGUI>().text = "$ " + userController.GetCapital().ToString();
             }
         }
     }
     //Al dar click se muestra el periódico 
     public void OpenBigPeriodico(){
         flagMenuVender2=false;
-        MenuVender2.SetActive(false);
+        menuVender2.SetActive(false);
         flagMenuComprar2=false;
-        MenuComprar2.SetActive(false);
+        menuComprar2.SetActive(false);
         Cursor.visible = true;
         flagHerramienta=false; 
         typecrop=0;
         flagInventario=false;
-        Inventario.SetActive(false);
+        inventario.SetActive(false);
         flagDeuda=false;
-        Deuda.SetActive(false);
+        deuda.SetActive(false);
         flagMenuComprar=false;
-        MenuComprar.SetActive(false);
+        menuComprar.SetActive(false);
         flagMenuVender=false;
-        MenuVender.SetActive(false);
+        menuVender.SetActive(false);
         flagCelular=false;
-        Celular.SetActive(false);
+        celular.SetActive(false);
         flagMercado=false;
-        Mercado.SetActive(false);
+        mercado.SetActive(false);
         flagArbol=false;
-        Arbol.SetActive(false);
+        arbol.SetActive(false);
         flagMenuPlantar=false;
-        MenuPlantar.SetActive(false);
+        menuPlantar.SetActive(false);
         if(flagBigPeriodico){
             flagBigPeriodico=false;
-            BigPeriodico.SetActive(false);
+            bigPeriodico.SetActive(false);
         }else{
             flagBigPeriodico=true;
-            BigPeriodico.SetActive(true);
+            bigPeriodico.SetActive(true);
         }
     }
 
     //Se muestra el árbol de mejoras
     public void ShowArbol(){
         flagMenuVender2=false;
-        MenuVender2.SetActive(false);
+        menuVender2.SetActive(false);
         flagMenuComprar2=false;
-        MenuComprar2.SetActive(false);
+        menuComprar2.SetActive(false);
         Cursor.visible = true;
         flagHerramienta=false; 
         typecrop=0;
         flagInventario=false;
-        Inventario.SetActive(false);
+        inventario.SetActive(false);
         flagDeuda=false;
-        Deuda.SetActive(false);
+        deuda.SetActive(false);
         flagMenuComprar=false;
-        MenuComprar.SetActive(false);
+        menuComprar.SetActive(false);
         flagMenuVender=false;
-        MenuVender.SetActive(false);
+        menuVender.SetActive(false);
         flagCelular=false;
-        Celular.SetActive(false);
+        celular.SetActive(false);
         flagMercado=false;
-        Mercado.SetActive(false);
+        mercado.SetActive(false);
         flagBigPeriodico=false;
-        BigPeriodico.SetActive(false);
+        bigPeriodico.SetActive(false);
         flagMenuPlantar=false;
-        MenuPlantar.SetActive(false);
+        menuPlantar.SetActive(false);
         if(flagArbol){
             flagArbol=false;
-            Arbol.SetActive(false);
+            arbol.SetActive(false);
         }else{
             flagArbol=true;
-            Arbol.SetActive(true);
+            arbol.SetActive(true);
             treeManager.UpdateColors();
         }
     }
@@ -1375,7 +1378,7 @@ public class UiControl : MonoBehaviour
     }
     //Se actualiza el dinero mostrado
     public void ActualizarDinero(){
-        Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
+        dinero.GetComponent<TextMeshProUGUI>().text = "$ " + userController.GetCapital().ToString();
     }
     //Te redirige a la página del tutuorial del juego
     public void ShowTutorial(){
