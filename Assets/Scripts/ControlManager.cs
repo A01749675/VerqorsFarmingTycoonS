@@ -6,12 +6,12 @@ public class ControlManager : MonoBehaviour
 {
     public GameObject herramienta;
     public GameObject regadera;
-    public GameObject Maízhoz;
-    public GameObject Trigohoz;
-    public GameObject Tomatehoz;
-    public GameObject Chilehoz;
-    public GameObject Aguacatehoz;
-    public GameObject Caféhoz;
+    public GameObject maizHoz;
+    public GameObject trigoHoz;
+    public GameObject tomateHoz;
+    public GameObject chileHoz;
+    public GameObject aguacateHoz;
+    public GameObject cafeHoz;
     
     public UiControl ui;
     public MapManager mapManager;
@@ -39,78 +39,78 @@ public class ControlManager : MonoBehaviour
             herramienta.transform.position = mousePos;
             switch(ui.typecrop){
                 case 0:
-                    Maízhoz.SetActive(false);
-                    Trigohoz.SetActive(false);
-                    Tomatehoz.SetActive(false);
-                    Chilehoz.SetActive(false);
-                    Aguacatehoz.SetActive(false);
-                    Caféhoz.SetActive(false);
+                    maizHoz.SetActive(false);
+                    trigoHoz.SetActive(false);
+                    tomateHoz.SetActive(false);
+                    chileHoz.SetActive(false);
+                    aguacateHoz.SetActive(false);
+                    cafeHoz.SetActive(false);
                     mapManager.SetSelectedCrop(0);
                     break;
                 case 1:
-                    Trigohoz.SetActive(true);
-                    Maízhoz.SetActive(false);
-                    Tomatehoz.SetActive(false);
-                    Chilehoz.SetActive(false);
-                    Aguacatehoz.SetActive(false);
-                    Caféhoz.SetActive(false);
+                    trigoHoz.SetActive(true);
+                    maizHoz.SetActive(false);
+                    tomateHoz.SetActive(false);
+                    chileHoz.SetActive(false);
+                    aguacateHoz.SetActive(false);
+                    cafeHoz.SetActive(false);
                     mapManager.SetSelectedCrop(1);
                     break;
                 case 2:
-                    Maízhoz.SetActive(true);
-                    Trigohoz.SetActive(false);
-                    Tomatehoz.SetActive(false);
-                    Chilehoz.SetActive(false);
-                    Aguacatehoz.SetActive(false);
-                    Caféhoz.SetActive(false);
+                    maizHoz.SetActive(true);
+                    trigoHoz.SetActive(false);
+                    tomateHoz.SetActive(false);
+                    chileHoz.SetActive(false);
+                    aguacateHoz.SetActive(false);
+                    cafeHoz.SetActive(false);
                     mapManager.SetSelectedCrop(2);
                     break;
                 case 3:
-                    Tomatehoz.SetActive(true);
-                    Maízhoz.SetActive(false);
-                    Trigohoz.SetActive(false);
-                    Chilehoz.SetActive(false);
-                    Aguacatehoz.SetActive(false);
-                    Caféhoz.SetActive(false);
+                    tomateHoz.SetActive(true);
+                    maizHoz.SetActive(false);
+                    trigoHoz.SetActive(false);
+                    chileHoz.SetActive(false);
+                    aguacateHoz.SetActive(false);
+                    cafeHoz.SetActive(false);
                     mapManager.SetSelectedCrop(3);
                     break;
                 case 4: 
-                    Chilehoz.SetActive(true);
-                    Maízhoz.SetActive(false);
-                    Trigohoz.SetActive(false);
-                    Tomatehoz.SetActive(false);
-                    Aguacatehoz.SetActive(false);
-                    Caféhoz.SetActive(false);
+                    chileHoz.SetActive(true);
+                    maizHoz.SetActive(false);
+                    trigoHoz.SetActive(false);
+                    tomateHoz.SetActive(false);
+                    aguacateHoz.SetActive(false);
+                    cafeHoz.SetActive(false);
                     mapManager.SetSelectedCrop(6);
                     break;
                 case 5:
-                    Aguacatehoz.SetActive(true);
-                    Maízhoz.SetActive(false);
-                    Trigohoz.SetActive(false);
-                    Tomatehoz.SetActive(false);
-                    Chilehoz.SetActive(false);
-                    Caféhoz.SetActive(false);
+                    aguacateHoz.SetActive(true);
+                    maizHoz.SetActive(false);
+                    trigoHoz.SetActive(false);
+                    tomateHoz.SetActive(false);
+                    chileHoz.SetActive(false);
+                    cafeHoz.SetActive(false);
                     mapManager.SetSelectedCrop(4);
                     break;
                 case 6:
-                    Caféhoz.SetActive(true);
-                    Maízhoz.SetActive(false);
-                    Trigohoz.SetActive(false);
-                    Tomatehoz.SetActive(false);
-                    Chilehoz.SetActive(false);
-                    Aguacatehoz.SetActive(false);
+                    cafeHoz.SetActive(true);
+                    maizHoz.SetActive(false);
+                    trigoHoz.SetActive(false);
+                    tomateHoz.SetActive(false);
+                    chileHoz.SetActive(false);
+                    aguacateHoz.SetActive(false);
                     mapManager.SetSelectedCrop(5);
                     break;
             }
         }
         else{
             herramienta.SetActive(false);
-            Maízhoz.SetActive(false);
-            Trigohoz.SetActive(false);
-            Tomatehoz.SetActive(false);
-            Chilehoz.SetActive(false);
-            Aguacatehoz.SetActive(false);
-            Caféhoz.SetActive(false);
+            maizHoz.SetActive(false);
+            trigoHoz.SetActive(false);
+            tomateHoz.SetActive(false);
+            chileHoz.SetActive(false);
+            aguacateHoz.SetActive(false);
+            cafeHoz.SetActive(false);
         }
     }
     //Método que muestra la regadera y riega el cultivo seleccionado (llamando al map manager)

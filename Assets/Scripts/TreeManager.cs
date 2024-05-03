@@ -77,7 +77,7 @@ public class TreeManager : MonoBehaviour
     private GameObject boton20;
     [SerializeField]
     private GameObject boton21;
-    private Dictionary<int,int> Costos = new Dictionary<int, int>();
+    private Dictionary<int,int> costos = new Dictionary<int, int>();
 
     public bool update = false;
     // Regresa el valor de las mejoras
@@ -101,27 +101,27 @@ public class TreeManager : MonoBehaviour
         BotonComprar = Arbol.transform.GetChild(0).GetChild(2).gameObject;
         BotonInfo = Arbol.transform.GetChild(0).GetChild(3).gameObject;
         // Se inicializan los costos de las mejoras
-        Costos.Add(1,300000);
-        Costos.Add(2,400000);
-        Costos.Add(3,225000);
-        Costos.Add(4,350000);
-        Costos.Add(5,100000);
-        Costos.Add(6,200000);
-        Costos.Add(7,500000);
-        Costos.Add(8,300000);
-        Costos.Add(9,300000);
-        Costos.Add(10,400000);
-        Costos.Add(11,200000);
-        Costos.Add(12,300000);
-        Costos.Add(13,700000);
-        Costos.Add(14,500000);
-        Costos.Add(15,400000);
-        Costos.Add(16,400000);
-        Costos.Add(17,500000);
-        Costos.Add(18,250000);
-        Costos.Add(19,450000);
-        Costos.Add(20,800000);
-        Costos.Add(21,500000);
+        costos.Add(1,300000);
+        costos.Add(2,400000);
+        costos.Add(3,225000);
+        costos.Add(4,350000);
+        costos.Add(5,100000);
+        costos.Add(6,200000);
+        costos.Add(7,500000);
+        costos.Add(8,300000);
+        costos.Add(9,300000);
+        costos.Add(10,400000);
+        costos.Add(11,200000);
+        costos.Add(12,300000);
+        costos.Add(13,700000);
+        costos.Add(14,500000);
+        costos.Add(15,400000);
+        costos.Add(16,400000);
+        costos.Add(17,500000);
+        costos.Add(18,250000);
+        costos.Add(19,450000);
+        costos.Add(20,800000);
+        costos.Add(21,500000);
         // Se pone el arbol del financimiento del usuario
         if(userController.user_data.ContainsKey("financiamiento")){
             TFin = userController.GetParameter("financiamiento");
@@ -598,9 +598,9 @@ public class TreeManager : MonoBehaviour
 
     //Se compra la mejora y se actualiza el capital
     public void Comprar(){
-        if(userController.GetCapital() >= Costos[seleccion]){
+        if(userController.GetCapital() >= costos[seleccion]){
             Mejoras[seleccion] = true;
-            userController.UpdateCapital(-Costos[seleccion]);
+            userController.UpdateCapital(-costos[seleccion]);
             BotonComprar.SetActive(false);
             update = true;
             UpdateColors();

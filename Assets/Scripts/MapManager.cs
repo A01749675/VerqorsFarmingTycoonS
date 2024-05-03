@@ -183,11 +183,12 @@ public class MapManager : MonoBehaviour
         //print("Loading data from map");
         foreach(var parcela in parcelas){
             //print("Parcela: "+parcela[0]+" estado "+parcela[1]+" cantidad "+parcela[2]+" agua"+parcela[3]);
-            LoadPredefinedMap(parcela[0],parcela[1],parcela[2],parcela[3]);
+            LoadPredefinedMap(parcela[0],parcela[1],parcela[2],parcela[3]); //Para cada dato mandado, se cargan los valores al mapa
         }
     }
     //Método que carga los datos de una parcela al inicio del juego
     public void LoadPredefinedMap(int land, int estado, int cantidad,int agua){
+        //Checa si está desbloqueada la parcela
         if(!landPosition.ContainsKey(land)){
             return;
         }
