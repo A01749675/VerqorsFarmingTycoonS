@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class TankManager : MonoBehaviour
 {
-    private int waterLevel;
-    private int tankLevel;
+    private int waterLevel; //nivel de agua del tanque
+    private int tankLevel; //nivel del tanque
 
-
+    //obtener el nivel del tanque 
     public int GetTankLevel(){
         return tankLevel;
     }
-
+    //Obtener cuanta agua hay en el tanque
     public int GetWaterLevel(){
         return waterLevel;
     }
-
+    //Llenar el tanque dependiendo de su nivel 
     public void FillTank(){
         
         switch(tankLevel){
@@ -33,11 +33,11 @@ public class TankManager : MonoBehaviour
                 break;
         }
     }
-
+    //Cambiar el nivel del tanque
     public void SetTankLevel(int lvl){
         tankLevel = lvl;
     }
-
+    //Cambiar el nivel de agua del tanque
     public void SetWaterLevel(int change){
         if(waterLevel>0){
             waterLevel += change;
