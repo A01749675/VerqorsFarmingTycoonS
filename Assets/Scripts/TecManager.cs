@@ -59,53 +59,53 @@ public class TecManager : MonoBehaviour
     {
         if(treeManager.update){
             for(int i = 0; i < 20; i++){
-                medidor1[i].SetActive(treeManager.Mejoras[1]);    
+                medidor1[i].SetActive(treeManager.mejoras[1]);    
                 ChangeSprite(i);
             }
-            medidores1.SetActive(treeManager.Mejoras[2]);
-            medidores2.SetActive(treeManager.Mejoras[13]);
-            medidores3.SetActive(treeManager.Mejoras[20]);
-            basura1.SetActive(!treeManager.Mejoras[2]);
-            basura2.SetActive(!treeManager.Mejoras[13]);
-            basura3.SetActive(!treeManager.Mejoras[20]);
-            empleados1.SetActive(treeManager.Mejoras[3]);
-            empleados2.SetActive(treeManager.Mejoras[9]);
-            empleados3.SetActive(treeManager.Mejoras[16]);
-            tractor1.SetActive(treeManager.Mejoras[4]);
-            tractor2.SetActive(treeManager.Mejoras[10]);
-            tractor3.SetActive(treeManager.Mejoras[17]);
-            tanque.SetActive(treeManager.Mejoras[5]);
-            aspersores1.SetActive(treeManager.Mejoras[7]);
-            aspersores2.SetActive(treeManager.Mejoras[14]);
-            if(treeManager.Mejoras[6] && !(treeManager.Mejoras[12] || treeManager.Mejoras[19])){
+            medidores1.SetActive(treeManager.mejoras[2]);
+            medidores2.SetActive(treeManager.mejoras[13]);
+            medidores3.SetActive(treeManager.mejoras[20]);
+            basura1.SetActive(!treeManager.mejoras[2]);
+            basura2.SetActive(!treeManager.mejoras[13]);
+            basura3.SetActive(!treeManager.mejoras[20]);
+            empleados1.SetActive(treeManager.mejoras[3]);
+            empleados2.SetActive(treeManager.mejoras[9]);
+            empleados3.SetActive(treeManager.mejoras[16]);
+            tractor1.SetActive(treeManager.mejoras[4]);
+            tractor2.SetActive(treeManager.mejoras[10]);
+            tractor3.SetActive(treeManager.mejoras[17]);
+            tanque.SetActive(treeManager.mejoras[5]);
+            aspersores1.SetActive(treeManager.mejoras[7]);
+            aspersores2.SetActive(treeManager.mejoras[14]);
+            if(treeManager.mejoras[6] && !(treeManager.mejoras[12] || treeManager.mejoras[19])){
                 financeManager.UpdateSeguro(6);
             }
-            else if(treeManager.Mejoras[12] && treeManager.Mejoras[6] && !treeManager.Mejoras[19]){
+            else if(treeManager.mejoras[12] && treeManager.mejoras[6] && !treeManager.mejoras[19]){
                 financeManager.UpdateSeguro(12);
             }
-            else if(treeManager.Mejoras[19] && treeManager.Mejoras[6] && treeManager.Mejoras[12]){
+            else if(treeManager.mejoras[19] && treeManager.mejoras[6] && treeManager.mejoras[12]){
                 financeManager.UpdateSeguro(19);
             }
-            if(treeManager.Mejoras[8] && treeManager.Mejoras[15] && treeManager.Mejoras[21]){
+            if(treeManager.mejoras[8] && treeManager.mejoras[15] && treeManager.mejoras[21]){
                 financeManager.dinero = 1.2f;
             }
-            if(treeManager.Mejoras[2]){
+            if(treeManager.mejoras[2]){
                 mapManager.UpdateUnlockedLands(new int[]{11,12,16,17});
             }
-            if(treeManager.Mejoras[13]){
+            if(treeManager.mejoras[13]){
                 mapManager.UpdateUnlockedLands(new int[]{0, 2, 4, 6, 9,13,18});
             }
-            if(treeManager.Mejoras[20]){
+            if(treeManager.mejoras[20]){
                 mapManager.UpdateUnlockedLands(new int[]{1,3,5,7,8,10,14,15,19});
             }
             treeManager.update = false;
-            if(treeManager.Mejoras[5] && !treeManager.Mejoras[11] && !treeManager.Mejoras[18]){
+            if(treeManager.mejoras[5] && !treeManager.mejoras[11] && !treeManager.mejoras[18]){
                 tanque.GetComponent<TankManager>().SetTankLevel(1);
             }
-            else if(treeManager.Mejoras[11] && !treeManager.Mejoras[18]){
+            else if(treeManager.mejoras[11] && !treeManager.mejoras[18]){
                 tanque.GetComponent<TankManager>().SetTankLevel(2);
             }
-            else if(treeManager.Mejoras[18]){
+            else if(treeManager.mejoras[18]){
                 tanque.GetComponent<TankManager>().SetTankLevel(3);
             }
             
@@ -113,21 +113,21 @@ public class TecManager : MonoBehaviour
         for(int i = 0; i < 20; i++){
                 ChangeSprite(i);
             }
-        if(!treeManager.Mejoras[2] & !treeManager.Mejoras[13] &!treeManager.Mejoras[20]){
+        if(!treeManager.mejoras[2] & !treeManager.mejoras[13] &!treeManager.mejoras[20]){
                 prodtrigo.GetComponent<TextMeshProUGUI>().text = "1 parcela";
                 prodmaiz.GetComponent<TextMeshProUGUI>().text = "0 parcelas";
                 prodchile.GetComponent<TextMeshProUGUI>().text = "0 parcelas";
                 prodtomate.GetComponent<TextMeshProUGUI>().text = "0 parcelas";
                 prodfrijol.GetComponent<TextMeshProUGUI>().text = "0 parcelas";
                 prodaguacate.GetComponent<TextMeshProUGUI>().text = "0 parcelas";
-            } else if (treeManager.Mejoras[2] & !treeManager.Mejoras[13] & !treeManager.Mejoras[20]){
+            } else if (treeManager.mejoras[2] & !treeManager.mejoras[13] & !treeManager.mejoras[20]){
                 prodtrigo.GetComponent<TextMeshProUGUI>().text = "1 parcela";
                 prodmaiz.GetComponent<TextMeshProUGUI>().text = "1 parcela";
                 prodchile.GetComponent<TextMeshProUGUI>().text = "1 parcela";
                 prodtomate.GetComponent<TextMeshProUGUI>().text = "1 parcelas";
                 prodfrijol.GetComponent<TextMeshProUGUI>().text = "0 parcelas";
                 prodaguacate.GetComponent<TextMeshProUGUI>().text = "1 parcelas";
-            } else if (treeManager.Mejoras[2] & treeManager.Mejoras[13] & !treeManager.Mejoras[20]){
+            } else if (treeManager.mejoras[2] & treeManager.mejoras[13] & !treeManager.mejoras[20]){
                 prodtrigo.GetComponent<TextMeshProUGUI>().text = "2 parcelas";
                 prodmaiz.GetComponent<TextMeshProUGUI>().text = "3 parcelas";
                 prodchile.GetComponent<TextMeshProUGUI>().text = "2 parcelas";

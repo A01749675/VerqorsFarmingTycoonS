@@ -186,12 +186,12 @@ public class ObtenerDatos : MonoBehaviour
     }
     //Carga las mejoras desbloqueadas
     private void setMejoras(List<Mejoras> mejoras){
-        //print("Mejoras de Set Mejoras");
+        //print("mejoras de Set mejoras");
         foreach(Mejoras m in mejoras){
-            treeManager.Mejoras[m.id_mejora]=m.estado;
+            treeManager.mejoras[m.id_mejora]=m.estado;
         }
         treeManager.update= true;
-        //print("Fin de Set Mejoras");
+        //print("Fin de Set mejoras");
     }
 
     //Datos default
