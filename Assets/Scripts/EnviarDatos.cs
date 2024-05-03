@@ -2,11 +2,14 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class EnviarDatos : MonoBehaviour
 {
     public ObtenerDatos obtenerDatos;
     public TreeManager treeManager;
+
+    private String url = "http://52.5.57.146:8080/";
 
     public UserController userController;
     public MapManager mapManager;
@@ -140,7 +143,7 @@ public class EnviarDatos : MonoBehaviour
     // corrutina de enviar datos
     private IEnumerator EnviarDatosUsuario(string jsonData)
     {
-        string apiUrl = "http://52.5.57.146:8080/game-data";
+        string apiUrl = url +  "game-data";
 
         // Crear un objeto UnityWebRequest para enviar los datos
         UnityWebRequest www = new UnityWebRequest(apiUrl, "POST");
@@ -164,7 +167,7 @@ public class EnviarDatos : MonoBehaviour
     }
     private IEnumerator EnviarDatosUsuario2(string jsonData)
     {
-        string apiUrl = "hhttp://52.5.57.146:8080/game-data";
+        string apiUrl = url + "game-data";
 
         // Crear un objeto UnityWebRequest para enviar los datos
         UnityWebRequest www = new UnityWebRequest(apiUrl, "POST");
@@ -184,11 +187,11 @@ public class EnviarDatos : MonoBehaviour
         else
         {
             /* Debug.Log("Datos enviados correctamente.");
-            string redirectUrl = "http://52.5.57.146:8080/";
+            string redirectUrl = url;
             UnityWebRequest www3 = UnityWebRequest.Get(redirectUrl);
             yield return www3.SendWebRequest(); */
 
-            Application.OpenURL("http://52.5.57.146:8080/");
+            Application.OpenURL(url);
         }
     }
 

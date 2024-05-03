@@ -64,7 +64,9 @@ public class MarketManager : MonoBehaviour
     }
 
     private void Update(){
+        //llamar la fecha de TimeManager y asignar la semana a una variable
         int week1 = GetDate();
+        // Actualiza las cantidades de los productos si el módulo de dos del número de semana es = a 0
         if(week1%2 == 0 && !flag1){
             flag1 = true;
             print("Cambiando cantidades");
