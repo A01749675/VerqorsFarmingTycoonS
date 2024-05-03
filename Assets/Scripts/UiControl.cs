@@ -187,6 +187,7 @@ public class UiControl : MonoBehaviour
     
     
     void Awake(){
+        //Establece valores dommy para los rankings y pone el dinero del usuario en su posición
         Dinero.GetComponent<TextMeshProUGUI>().text = "$ " + UserController.GetCapital().ToString();
         Ranking1NameData="Jorge";
         Ranking2NameData="Pedro";
@@ -409,7 +410,7 @@ public class UiControl : MonoBehaviour
         Debug.Log("Guardando...");
         enviardatos.GuardarySalir();
         Debug.Log("Guardado exitoso.");
-        Application.OpenURL("http://52.5.57.146:8080/");
+        Application.OpenURL(url);
         SceneManager.LoadScene("Exit");
         
 
