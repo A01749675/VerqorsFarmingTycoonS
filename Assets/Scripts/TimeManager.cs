@@ -32,9 +32,10 @@ public class TimeManager : MonoBehaviour
     private float currentTimeBetweenTicks = 0;
     public static UnityAction<DateTime> OnDateTimeChanged; 
 
-    // Start is called before the first frame update
+
     private void Awake()
     {
+        // 
         DateTime = new DateTime (dateInMonth, season - 1, year, hour, minutes * 10);
         Debug.Log($"Starting Date: {DateTime.NewYearsDay(2)}");
         Debug.Log($"Starting Date: {DateTime.SummerSolstice(4)}");
@@ -47,7 +48,6 @@ public class TimeManager : MonoBehaviour
         OnDateTimeChanged?.Invoke(DateTime);
     }
 
-    // Update is called once per frame
     void Update()
     {
         currentTimeBetweenTicks += Time.deltaTime;
@@ -102,6 +102,7 @@ public struct DateTime{
 
     #region Constructors
 
+    //Constructor para poner los valores iniciales del struct DateTime 
     public DateTime(int date, int season, int year, int hour, int minutes){
         this.day = (Days)(date % 7);
         if (day == 0) day = (Days)7;
@@ -121,6 +122,7 @@ public struct DateTime{
 
     #region Time Advancement
 
+    //función que avanza los minutos y llama a la función de AdvanceHour() si los minutos son mayores a 60
     public void AdvanceMinutes(int SecondsToAdvanceBy){
         if (minutes + SecondsToAdvanceBy >= 60){
             minutes = (minutes + SecondsToAdvanceBy) % 60;
@@ -130,6 +132,7 @@ public struct DateTime{
         }
     }
 
+    //función que avanza las horas y llama a la función de AdvanceDay() si las horas son mayores a 24
     private void AdvanceHour(){
         if((hour + 1) == 24){
             hour = 0;
@@ -139,6 +142,7 @@ public struct DateTime{
         } 
     }
 
+    //función que avanza los días y llama a la función de AdvanceSeason() si los días son mayores a 29
     private void AdvanceDay(){
         
         day++;
@@ -156,6 +160,7 @@ public struct DateTime{
         totalNumDays++;
     }
 
+    //función que avanza las estaciones y llama a la función de AdvanceYear() si las estaciones son mayores a 4
     private void AdvanceSeason(){
         if (season == Season.Invierno){
             season = Season.Primavera;
@@ -164,6 +169,7 @@ public struct DateTime{
         else season++;
     }
 
+    //función que avanza los años y resetea la fecha a 1
     private void AdvanceYear(){
         this.date = 1;
         year ++;
@@ -174,6 +180,7 @@ public struct DateTime{
 
     #region Bool Checks
 
+    //Bool Ckecks para saber si es de noche, mañana, tarde, fin de semana o un día en particular (en desuso)
     public bool IsNight(){
         return hour >18 || hour < 6;
     }
@@ -198,6 +205,7 @@ public struct DateTime{
 
 #region Key Dates
 
+// Instancias de DateTime para las fechas clave del juego (en desuso)
 public DateTime NewYearsDay(int year){
     if (year == 0) year = 1;
     return new DateTime(1, 0, year, 6, 0);

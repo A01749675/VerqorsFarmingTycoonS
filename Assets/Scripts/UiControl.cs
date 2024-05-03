@@ -10,6 +10,7 @@ using UnityEngine.SceneManagement;
 public class UiControl : MonoBehaviour
 {
 
+    private String url = "http://52.5.57.146:8080/";
     public GameObject datosUsuario;
     public GameObject PanelOpciones;
     public GameObject UsuarioNombre;
@@ -1340,7 +1341,7 @@ public class UiControl : MonoBehaviour
     }
 
     public void ShowTutorial(){
-        Application.OpenURL("http://52.5.57.146:8080/tutorialjuego");
+        Application.OpenURL(url + "tutorialjuego");
     }
 
     void Update(){

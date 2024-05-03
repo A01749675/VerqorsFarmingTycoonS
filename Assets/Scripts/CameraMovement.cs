@@ -16,6 +16,7 @@ public class CameraMovement : MonoBehaviour
     private Vector3 dragOrigin;
 
     private void Awake(){
+        //Limites del mapa con un sprite que se queda en el fondo del código.
         mapMinX = mapRenderer.transform.position.x - mapRenderer.bounds.size.x/2f;
         mapMaxX = mapRenderer.transform.position.x + mapRenderer.bounds.size.x/2f;
         mapMinY = mapRenderer.transform.position.y - mapRenderer.bounds.size.y/2f;
@@ -23,13 +24,15 @@ public class CameraMovement : MonoBehaviour
 
     }
     private void Update(){
-        
+        //llamada a la función PanCamera
         PanCamera();
 
-
+    //Detección de si el usuario presiona alguna de las flechas o las teclas WASD para mover la cámara.
     if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
 	{
-		transform.Translate(new Vector3(speed * Time.deltaTime,0,0));
+		//movimiento de la cámara
+        transform.Translate(new Vector3(speed * Time.deltaTime,0,0));
+        //llamada a la función ClampCamera
         cam.transform.position = ClampCamera(cam.transform.position);
 	}
 	if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
@@ -49,6 +52,7 @@ public class CameraMovement : MonoBehaviour
 	}
     }
 
+    //Función que permite mover la cámara haciendo click y arrastrando el mouse.
     private void PanCamera(){
         if (Input.GetMouseButtonDown(0)){
             dragOrigin = cam.ScreenToWorldPoint(Input.mousePosition);
@@ -62,6 +66,8 @@ public class CameraMovement : MonoBehaviour
         }
     }
 
+    
+    //Funcion que checa la posición de los límites de la cámara respecto a los límites del mapa y aplica la función Clamp para evitar que se siga moviendo la cámara en caso de llegar a los límites.
     private Vector3 ClampCamera(Vector3 targetPosition){
         float camHeight = cam.orthographicSize;
         float camWidth = cam.orthographicSize * cam.aspect;

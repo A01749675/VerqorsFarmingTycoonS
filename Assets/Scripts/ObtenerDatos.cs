@@ -8,6 +8,8 @@ public class ObtenerDatos : MonoBehaviour
 {
     // Variables públicas para guardar los datos del usuario
     public bool success;
+
+    private String url = "http://52.5.57.146:8080/";
     public string message;
     public int user_id;
     public string usuario;
@@ -68,7 +70,7 @@ public class ObtenerDatos : MonoBehaviour
 
     private IEnumerator ObtenerDatosUsuario(int userId)
     {
-        string apiUrl = "http://52.5.57.146:8080/game-data?user_id="+userId;
+        string apiUrl = url + "game-data?user_id="+userId;
 
         UnityWebRequest www = UnityWebRequest.Get(apiUrl);
         yield return www.SendWebRequest();
@@ -139,7 +141,7 @@ public class ObtenerDatos : MonoBehaviour
     }
     private IEnumerator ObtenerRankings()
     {
-        string apiUrl = "http://52.5.57.146:8080/rankings";
+        string apiUrl =  url + "rankings";
 
         UnityWebRequest www = UnityWebRequest.Get(apiUrl);
         yield return www.SendWebRequest();

@@ -147,10 +147,15 @@ public class ClimateManager : MonoBehaviour
         switch(climate){
             case 0:
                 Debug.Log("Drought");
+                //"newsText.text = " Actualiza el texto de la barra de noticias
                 newsText.text = "Sequía daña los cultivos";
+                // "bigPeriodicoText1.text =" Actualiza el texto de la primer noticia del periódico
                 bigPeriodicoText1.text = "Sequía azota el país y mata las cosechas";
+                // "bigPeriodicoImg1.sprite =" Actualiza la imagen de la primer noticia del periódico
                 bigPeriodicoImg1.sprite = bigPeriodicoSprite1;
+                // "bigPeriodicoText2.text =" Actualiza el texto de la segunda noticia del periódico
                 bigPeriodicoText2.text = "Cambio climático genera sequías en todo el mundo";
+                // "bigPeriodicoImg2.sprite =" Actualiza la imagen de la segunda noticia del periódico
                 bigPeriodicoImg2.sprite = bigPeriodicoSprite2;
                 rain.SetActive(false);
                 flood.SetActive(false);
