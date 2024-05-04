@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+/* Controla las mejoras que se compran y actualiza el MapManager para que se activen las ventajas de las mejoras.
+Autores:  Santiago Chevez Trejo, Carlos Iker Fuentes Reyes, 
+          Alma Teresa Carpio Revilla, Mariana Marzyani Hernandez Jurado, 
+          y Alan Rodrigo Vega Reza */
 public class TecManager : MonoBehaviour
 {
     public MapManager mapManager;
@@ -16,7 +20,9 @@ public class TecManager : MonoBehaviour
     public Sprite  medidor3_5;
     public Sprite  medidor4_5;
     public Sprite  medidor5_5;
+    //Referencia al TreeManager
     public TreeManager treeManager;
+    //Referencia a los objetos que se van a modificar
     public GameObject empleados1;
     public GameObject empleados2;
     public GameObject empleados3;
@@ -38,6 +44,7 @@ public class TecManager : MonoBehaviour
    
 
     public FinanceManager financeManager;
+    //Actualiza el estado de los medidores dependiendo del nivel del agua
     private void ChangeSprite(int parcela){
         int water = mapManager.GetAverageWaterAtLand(parcela);
         if(water < 20){
@@ -57,6 +64,7 @@ public class TecManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Si se compro algo del arbol y se actualizo cambia el estado de los objetos
         if(treeManager.update){
             for(int i = 0; i < 20; i++){
                 medidor1[i].SetActive(treeManager.mejoras[1]);    
@@ -110,9 +118,11 @@ public class TecManager : MonoBehaviour
             }
             
         }
+        //Se llama a la función de cambiar el sprite de los medidores
         for(int i = 0; i < 20; i++){
                 ChangeSprite(i);
             }
+        //Se checa la producción de los cultivos	
         if(!treeManager.mejoras[2] & !treeManager.mejoras[13] &!treeManager.mejoras[20]){
                 prodtrigo.GetComponent<TextMeshProUGUI>().text = "1 parcela";
                 prodmaiz.GetComponent<TextMeshProUGUI>().text = "0 parcelas";

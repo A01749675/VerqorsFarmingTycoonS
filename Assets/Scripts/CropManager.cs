@@ -2,7 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/* Controla el inventario de semillas y de cosechas del jugador, también maneja qué tiles 
+están plantadas y qué tiles no.
+Autores:  Santiago Chevez Trejo, Carlos Iker Fuentes Reyes, 
+          Alma Teresa Carpio Revilla, Mariana Marzyani Hernandez Jurado, 
+          y Alan Rodrigo Vega Reza */
 public class CropManager : MonoBehaviour
 {
     // Start is called before the first frame update

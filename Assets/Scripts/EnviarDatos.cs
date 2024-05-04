@@ -3,6 +3,11 @@ using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
 
+/* Envía los datos del progreso del usuario a la base de datos a partir de métodos get.
+Autores:  Santiago Chevez Trejo, Carlos Iker Fuentes Reyes, 
+          Alma Teresa Carpio Revilla, Mariana Marzyani Hernandez Jurado, 
+          y Alan Rodrigo Vega Reza */
+
 public class EnviarDatos : MonoBehaviour
 {
     public ObtenerDatos obtenerDatos; // Referencia al script ObtenerDatos

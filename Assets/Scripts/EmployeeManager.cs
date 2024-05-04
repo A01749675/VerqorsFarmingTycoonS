@@ -3,7 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/* Maneja las animaciones de los empleados y llama a los métodos del MapManager para plantar cultivos.
+Autores:  Santiago Chevez Trejo, Carlos Iker Fuentes Reyes, 
+          Alma Teresa Carpio Revilla, Mariana Marzyani Hernandez Jurado, 
+          y Alan Rodrigo Vega Reza */
 public class EmployeeManager : MonoBehaviour
 {
     public static System.Random random = new System.Random();

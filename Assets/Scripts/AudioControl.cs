@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*Este código se controla el volumen de la música de fondo y los efectos de sonido, además de silenciarlos o desilenciarlos
+  dependiendo de la preferencia del usuario. Se guardan los valores de los volumenes y si están silenciados o no en PlayerPrefs
+  para que se mantengan guardados al cerrar el juego y volver a abrirlo.
+Autores:  Santiago Chevez Trejo, Carlos Iker Fuentes Reyes, 
+          Alma Teresa Carpio Revilla, Mariana Marzyani Hernandez Jurado, 
+          y Alan Rodrigo Vega Reza */
+
 public class AudioControl : MonoBehaviour
 {
     public AudioSource audioSource; //AudioSource de la música de fondo

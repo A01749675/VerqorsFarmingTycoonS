@@ -4,6 +4,11 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+/*Controla la información y estados de todos los tiles del tilemap, tiene funciones que permiten plantar, regar y cosechar, 
+controla todos los sprites que aparecen en el mapa, lleva el contador del ciclo.
+Autores:  Santiago Chevez Trejo, Carlos Iker Fuentes Reyes, 
+          Alma Teresa Carpio Revilla, Mariana Marzyani Hernandez Jurado, 
+          y Alan Rodrigo Vega Reza */
 public class MapManager : MonoBehaviour
 {
     [SerializeField]

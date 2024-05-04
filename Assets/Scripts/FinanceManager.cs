@@ -1,7 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
-
 using UnityEngine.SceneManagement;
+
+/* Controla los precios de compra y venta de los cultivos y también controla la cantidad de deuda.
+Autores:  Santiago Chevez Trejo, Carlos Iker Fuentes Reyes, 
+          Alma Teresa Carpio Revilla, Mariana Marzyani Hernandez Jurado, 
+          y Alan Rodrigo Vega Reza */
+
 public class FinanceManager : MonoBehaviour
 {
     private int _userId;

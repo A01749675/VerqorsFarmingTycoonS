@@ -5,7 +5,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Image = UnityEngine.UI.Image;
 
-
+/*Controla los diferentes climas, llama funciones de MapManager para controlar el nivel del agua de cada tile, 
+además controla las noticias del periódico. 
+Autores:  Santiago Chevez Trejo, Carlos Iker Fuentes Reyes, 
+          Alma Teresa Carpio Revilla, Mariana Marzyani Hernandez Jurado, 
+          y Alan Rodrigo Vega Reza */
 public class ClimateManager : MonoBehaviour
 {
 

@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*Controla el nivel del agua del tanque de agua y dependiendo de los diferentes climas llena el tanque, 
+cuando los aspersores lo usan baja el nivel del tanque de agua.
+Autores:  Santiago Chevez Trejo, Carlos Iker Fuentes Reyes, 
+          Alma Teresa Carpio Revilla, Mariana Marzyani Hernandez Jurado, 
+          y Alan Rodrigo Vega Reza */
 public class TankManager : MonoBehaviour
 {
     private int waterLevel; //nivel de agua del tanque

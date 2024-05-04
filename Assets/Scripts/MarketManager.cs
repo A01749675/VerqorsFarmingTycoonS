@@ -3,7 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using DPUtils.Systems.DateTime;
 using UnityEngine;
-
+/* Actualiza los datos del mercado cada 2 semanas del tiempo del juego.
+Autores:  Santiago Chevez Trejo, Carlos Iker Fuentes Reyes, 
+          Alma Teresa Carpio Revilla, Mariana Marzyani Hernandez Jurado, 
+          y Alan Rodrigo Vega Reza */
 public class MarketManager : MonoBehaviour
 {
     public static System.Random random = new System.Random();

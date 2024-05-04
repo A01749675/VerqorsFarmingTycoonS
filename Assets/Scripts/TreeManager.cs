@@ -5,9 +5,14 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Image = UnityEngine.UI.Image;
 
+/*Este código controla el UI del árbol de mejoras.
+Autores:  Santiago Chevez Trejo, Carlos Iker Fuentes Reyes, 
+          Alma Teresa Carpio Revilla, Mariana Marzyani Hernandez Jurado, 
+          y Alan Rodrigo Vega Reza */
+
 public class TreeManager : MonoBehaviour
 {
-    
+    //Se defienen los objetos del árbol de mejoras
     public GameObject arbol;
     private GameObject texto;
     public Dictionary<int,bool> mejoras = new Dictionary<int, bool>();
@@ -25,11 +30,11 @@ public class TreeManager : MonoBehaviour
     public Sprite tractor;
     public Sprite empleado;
     public Sprite tierra;
-    public Sprite Aspersor;
-    public Sprite Tanque;
-    public Sprite Agua;
-    public Sprite Seguro;
-    public Sprite IMRegen;
+    public Sprite aspersor;
+    public Sprite tanque;
+    public Sprite agua;
+    public Sprite seguro;
+    public Sprite imRegen;
     public GameObject celular;
     public ObtenerDatos obtenerDatos;
     [SerializeField]
@@ -187,7 +192,7 @@ public class TreeManager : MonoBehaviour
     {
         arbol.transform.GetChild(0).gameObject.SetActive(true);
         texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te permitirá ver el agua que tiene cada parcela. Costo: $300,000";
-        imagen.sprite = Agua;
+        imagen.sprite = agua;
         if (!mejoras[1])
         {
             botonComprar.SetActive(true);
@@ -248,7 +253,7 @@ public class TreeManager : MonoBehaviour
     {
         arbol.transform.GetChild(0).gameObject.SetActive(true);
         texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te permitirá comprar un tanque de agua, en el cual se podrá almacenar agua en caso de sequía. Costo: $100,000";
-        imagen.sprite = Tanque;
+        imagen.sprite = tanque;
         if (mejoras[2] && !mejoras[5])
         {
             botonComprar.SetActive(true);
@@ -263,7 +268,7 @@ public class TreeManager : MonoBehaviour
     {
         arbol.transform.GetChild(0).gameObject.SetActive(true);
         texto.GetComponent<TextMeshProUGUI>().text = "Está mejora te permitirá comprar un seguro para tus cultivos. Si se mueren tus cultivos recibirás un 20% de su valor. Costo: $200,000";
-        imagen.sprite = Seguro;
+        imagen.sprite = seguro;
         if (mejoras[2] && !mejoras[6])
         {
             botonComprar.SetActive(true);
@@ -277,7 +282,7 @@ public class TreeManager : MonoBehaviour
     {
         arbol.transform.GetChild(0).gameObject.SetActive(true);
         texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te permitirá tener riego automático en 3 de tus parcelas. Esto será bastante útil en sequías. Costo: $500,000";
-        imagen.sprite = Aspersor;
+        imagen.sprite = aspersor;
         if (mejoras[3] && mejoras[4] && mejoras[5] && !mejoras[7])
         {
             botonComprar.SetActive(true);
@@ -291,7 +296,7 @@ public class TreeManager : MonoBehaviour
     {
         arbol.transform.GetChild(0).gameObject.SetActive(true);
         texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te dará los beneficios de la agricultura regenerativa. Dale click al botón para conocer sobre agricultura regenerativa. Costo: $300,000";
-        imagen.sprite = IMRegen;
+        imagen.sprite = imRegen;
         if (mejoras[3] && mejoras[4] && mejoras[5] && !mejoras[8])
         {
             botonComprar.SetActive(true);
@@ -333,7 +338,7 @@ public class TreeManager : MonoBehaviour
     {
         arbol.transform.GetChild(0).gameObject.SetActive(true);
         texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora incrementa la capacidad del tanque de agua. Costo: $200,000";
-        imagen.sprite = Tanque;
+        imagen.sprite = tanque;
         if (mejoras[7] && mejoras[8] && !mejoras[11])
         {
             botonComprar.SetActive(true);
@@ -347,7 +352,7 @@ public class TreeManager : MonoBehaviour
     {
         arbol.transform.GetChild(0).gameObject.SetActive(true);
         texto.GetComponent<TextMeshProUGUI>().text = "Está mejora te permitirá comprar un mejor seguro para tus cultivos. Si se mueren tus cultivos recibirás un 35% de su valor. Costo: $300,000";
-        imagen.sprite = Seguro;
+        imagen.sprite = seguro;
         if (mejoras[7] && mejoras[8] && mejoras[6] && !mejoras[12])
         {
             botonComprar.SetActive(true);
@@ -375,7 +380,7 @@ public class TreeManager : MonoBehaviour
     {
         arbol.transform.GetChild(0).gameObject.SetActive(true);
         texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te permitirá tener riego automático en 2 de tus parcelas. Esto será bastante útil en sequías. Costo: $500,000";
-        imagen.sprite = Aspersor;
+        imagen.sprite = aspersor;
         if (mejoras[9] && mejoras[10] && mejoras[11] && !mejoras[14])
         {
             botonComprar.SetActive(true);
@@ -389,7 +394,7 @@ public class TreeManager : MonoBehaviour
     {
         arbol.transform.GetChild(0).gameObject.SetActive(true);
         texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te dará los beneficios de la agricultura regenerativa. Dale click al botón para conocer sobre agricultura regenerativa. Costo: $400,000";
-        imagen.sprite = IMRegen;
+        imagen.sprite = imRegen;
         if (mejoras[9] && mejoras[10] && mejoras[11] && !mejoras[15])
         {
             botonComprar.SetActive(true);
@@ -431,7 +436,7 @@ public class TreeManager : MonoBehaviour
     {
         arbol.transform.GetChild(0).gameObject.SetActive(true);
         texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora incrementa la capacidad del tanque de agua. Costo: $250,000";
-        imagen.sprite = Tanque;
+        imagen.sprite = tanque;
         if (mejoras[13] && mejoras[14] && mejoras[15]  && !mejoras[18])
         {
             botonComprar.SetActive(true);
@@ -445,7 +450,7 @@ public class TreeManager : MonoBehaviour
     {
         arbol.transform.GetChild(0).gameObject.SetActive(true);
         texto.GetComponent<TextMeshProUGUI>().text = "Está mejora te permitirá comprar un mejor seguro para tus cultivos. Si se mueren tus cultivos recibirás un 50% de su valor. Costo: $450,000";
-        imagen.sprite = Seguro;
+        imagen.sprite = seguro;
         if (mejoras[13] && mejoras[14] && mejoras[15] && mejoras[12] && !mejoras[19])
         {
             botonComprar.SetActive(true);
@@ -473,7 +478,7 @@ public class TreeManager : MonoBehaviour
     {
         arbol.transform.GetChild(0).gameObject.SetActive(true);
         texto.GetComponent<TextMeshProUGUI>().text = "Esta mejora te dará los beneficios de la agricultura regenerativa. Dale click al botón para conocer sobre agricultura regenerativa. Costo: $500,000";
-        imagen.sprite = IMRegen;
+        imagen.sprite = imRegen;
         if (mejoras[16] && mejoras[17] && mejoras[18] && !mejoras[21])
         {
             botonComprar.SetActive(true);

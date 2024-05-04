@@ -4,6 +4,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
+/* Recibe datos de la base de datos y los asigna a variables para su uso en el juego.
+Autores:  Santiago Chevez Trejo, Carlos Iker Fuentes Reyes, 
+          Alma Teresa Carpio Revilla, Mariana Marzyani Hernandez Jurado, 
+          y Alan Rodrigo Vega Reza */
 public class ObtenerDatos : MonoBehaviour
 {
     // Variables públicas para guardar los datos del usuario

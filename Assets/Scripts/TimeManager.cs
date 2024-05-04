@@ -5,6 +5,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
+/* Maneja el paso del tiempo en el juego y provee la hora al ClockManager
+Autores:  Santiago Chevez Trejo, Carlos Iker Fuentes Reyes, 
+          Alma Teresa Carpio Revilla, Mariana Marzyani Hernandez Jurado, 
+          y Alan Rodrigo Vega Reza */
+
 namespace DPUtils.Systems.DateTime{
 public class TimeManager : MonoBehaviour
 {

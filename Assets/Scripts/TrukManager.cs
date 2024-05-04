@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using TMPro.Examples;
 using UnityEngine;
 
+/*Controla las animaciones de los tractores y llama funciones de MapManager para cosechar. 
+Autores:  Santiago Chevez Trejo, Carlos Iker Fuentes Reyes, 
+          Alma Teresa Carpio Revilla, Mariana Marzyani Hernandez Jurado, 
+          y Alan Rodrigo Vega Reza */
+
 public class TrukManager : MonoBehaviour
 {
 

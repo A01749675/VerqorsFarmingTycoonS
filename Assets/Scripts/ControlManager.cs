@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Controla las animaciones de la hoz y de regar de manera manual y llama los métodos de plantar 
+y regar en el MapManager
+Autores:  Santiago Chevez Trejo, Carlos Iker Fuentes Reyes, 
+          Alma Teresa Carpio Revilla, Mariana Marzyani Hernandez Jurado, 
+          y Alan Rodrigo Vega Reza */
 public class ControlManager : MonoBehaviour
 {
     public GameObject herramienta;

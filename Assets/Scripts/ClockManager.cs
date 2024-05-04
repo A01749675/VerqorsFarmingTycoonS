@@ -7,6 +7,11 @@ using Image = UnityEngine.UI.Image;
 using System.Diagnostics.Tracing;
 using Unity.VisualScripting;
 
+/* Controla el movimiento del reloj con la hora del TimeManager y hace el cálculo de 
+la fecha utilizando los ciclos que mide el MapManager
+Autores:  Santiago Chevez Trejo, Carlos Iker Fuentes Reyes, 
+          Alma Teresa Carpio Revilla, Mariana Marzyani Hernandez Jurado, 
+          y Alan Rodrigo Vega Reza */
 public class ClockManager : MonoBehaviour
 {
 

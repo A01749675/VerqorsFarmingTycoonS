@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Llama funciones de MapManager para regar los cultivos y las funciones de TankManager
+ para bajar el nivel del tanque de agua conforme se usa.
+Autores:  Santiago Chevez Trejo, Carlos Iker Fuentes Reyes, 
+          Alma Teresa Carpio Revilla, Mariana Marzyani Hernandez Jurado, 
+          y Alan Rodrigo Vega Reza */
 public class SprinklerManager : MonoBehaviour
 {
 

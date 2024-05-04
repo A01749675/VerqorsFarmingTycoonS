@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+/*Permite el movimiento de la cámara usando WASD, las flechas de movimiento 
+y arrastrando con el mouse, de igual manera limita el movimiento de la cámara 
+para que no se pueda salir del mapa.
+Autores:  Santiago Chevez Trejo, Carlos Iker Fuentes Reyes, 
+          Alma Teresa Carpio Revilla, Mariana Marzyani Hernandez Jurado, 
+          y Alan Rodrigo Vega Reza */
 public class CameraMovement : MonoBehaviour
 {
     [SerializeField] 

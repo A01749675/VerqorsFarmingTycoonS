@@ -7,6 +7,7 @@ using UnityEditor;
 using Image = UnityEngine.UI.Image;
 
 using UnityEngine.SceneManagement;
+/* Controla todos los elementos del canvas que se utiliza para controlar los elementos del UI */
 public class UiControl : MonoBehaviour
 {
 

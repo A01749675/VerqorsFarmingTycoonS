@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Guarda los datos de la deuda del usuario, tiene funciones para pagar y actualizar la deuda.
+Autores:  Santiago Chevez Trejo, Carlos Iker Fuentes Reyes, 
+          Alma Teresa Carpio Revilla, Mariana Marzyani Hernandez Jurado, 
+          y Alan Rodrigo Vega Reza */
+
 public class UserController : MonoBehaviour
 {
     public Dictionary<string,int> user_data;
