@@ -33,6 +33,7 @@ public class AudioControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Inicializar los valores de los volumenes y si están silenciados o no
         volumenMusica = PlayerPrefs.GetFloat("volumenMusica", 0.5f);
         isMuted = PlayerPrefs.GetInt("isMuted", 1) == 1;
         volumeControl.GetComponent<Scrollbar>().value = volumenMusica;
