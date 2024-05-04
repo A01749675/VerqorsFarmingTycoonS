@@ -12,9 +12,7 @@ Autores:  Santiago Chevez Trejo, Carlos Iker Fuentes Reyes,
           y Alan Rodrigo Vega Reza */
 public class ClimateManager : MonoBehaviour
 {
-
     //random int number generator
-
     public static System.Random random = new System.Random();
 
     private Dictionary<int,Dictionary<string,int>> climates;
