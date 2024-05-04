@@ -54,6 +54,7 @@ public class ClimateManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        //diccionario con los diferentes climas y sus atributos
         climates = new Dictionary<int,Dictionary<string,int>>(){
             //type 0 drought
             {0,new Dictionary<string,int>(){
@@ -98,6 +99,7 @@ public class ClimateManager : MonoBehaviour
         {3,30},
         {4,10}
         };
+        //Fuentes de efectos de audio para diferentes climas
         audioSourceLluvia = GameObject.Find("Lluvia").GetComponent<AudioSource>();
         audioSourceFlood = GameObject.Find("Inundacion").GetComponent<AudioSource>();
         audioSourceHurricane = GameObject.Find("Huracan").GetComponent<AudioSource>();
@@ -110,6 +112,7 @@ public class ClimateManager : MonoBehaviour
         UpdateClimate(cycle);
     }
 
+    //Funcion que actualiza el clima de manera aleatoria cada vez que cambia el ciclo
     private void UpdateClimate(int cycle){
         if(!climateAlreadyExecuted){
             climateAlreadyExecuted = true;
