@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.cdnfonts.com/css/arcade-classic" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/joystix" rel="stylesheet">
+    <title>Financiamiento</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+</head>
+
+<body>
+    <div class="contenedor">
+        <div class="background-image"></div>
+        <h1>Elige<span style="font-family: Arial, sans-serif;"> </span>tu<span style="font-family: Arial, sans-serif;">
+            </span>financiamiento </h1>
+        <p>El banco ha rechazado tu solicitud</p>
+        <p> Debemos de buscar otras opciones</p>
+        <div class="columna" id="columna1">
+            <div class="imagen_credito">
+                <img src="assets/img/C_Verqor.png" alt="Verqor" style="max-height: 150px;">
+            </div>
+
+            <h2>Verqor</h2>
+            <!-- VERQOR  -->
+
+            <!-- Información verqor -->
+            <p style="text-align: justify; padding: 0 10%;
+            font-family: 'Arial', sans-serif;">
+                La opción de Verqor no solo te proporciona crédito rápido, 
+                sino también acceso a una red nacional de distribuidores 
+                de agroinsumos a precios competitivos, seguro agrícola obligatorio 
+                para protegerte de los imprevistos. Además, Verqor te conecta con 
+                compradores de prestigio, mejorando tus oportunidades de venta. 
+                Ideal para aquellos que valoran la eficiencia, la tecnología 
+                y la seguridad en su granja.
+            </p>
+            <!-- Botón de selección para Verqor -->
+            <form action="/select-financing" method="POST">
+                <input type="hidden" name="userId" value="<%= userId %>">
+                <input type="hidden" name="option" value="1">
+                <button type="submit" class="btn" style="margin-top: 0;">Seleccionar</button>
+            </form>
+        </div>
+        
+        <div class="columna" id="columna3">
+            <div class="imagen_credito">
+                <img src="assets/img/C_Coyote.png" alt="Verqor" style="max-height: 150px;">
+            </div>
+            <h2>Coyote</h2>
+            <!-- COYOTE-->
+
+            <!-- Información coyote -->
+            <p style="text-align: justify; padding: 0 10%;
+            font-family: 'Arial', sans-serif;">
+            El financiamiento a través del Coyote es la vía más rápida para obtener recursos, 
+            pero viene cargado de riesgos. Con tasas de interés elevadas y la falta de un 
+            seguro agrícola, esta opción representa el desafío de gestionar tu granja bajo 
+            presión constante, por lo que  podría complicarte la vida en la granja más 
+            de lo que te ayuda. Este tipo de financiamiento no te permite adquirir un seguro.
+            </p>
+            <br>
+            <form action="/select-financing" method="POST">
+                <input type="hidden" name="userId" value="<%= userId %>">
+                <input type="hidden" name="option" value="3">
+                <button type="submit" class="btn" style="margin-top: 0;">Seleccionar</button>
+            </form>
+        </div>
+    </div>
+    <script src="assets/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.cdnfonts.com/css/arcade-classic" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/joystix" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/style_info.css">
+    <title>Información de Usuarios</title>
+    <script>
+        function generateUserTable(maxResults = 'todos', moneyFilter = 0) {
+            const xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                if (this.status === 200) {
+                    document.getElementById('results').innerHTML = this.responseText;
+                    applyStyling(); // Aplicar estilos después de cargar la tabla
+                }
+            };
+
+            xhr.open('GET', `/getUserData?maxResults=${maxResults}&moneyFilter=${moneyFilter}`, true);
+            xhr.send();
+        }
+
+        function applyStyling() {
+            const rows = document.querySelectorAll('.tabla tr:not(:first-child)');
+            const colorsForRow = ['#F6E1C1', '#FCEECD', '#E8DBC9', '#E9D4C7', '#F8E7D6'];
+            const colorsForColumns = ['#F9C068', '#EABE5F', '#C29759', '#C98963', '#DAA36E'];
+
+            rows.forEach((rowIndex, index) => {
+                const row = rowIndex.querySelectorAll('td');
+                const rowColor = colorsForRow[index % colorsForRow.length];
+                row.forEach((cell, cellIndex) => {
+                    if (cellIndex < 3) { // Solo para las primeras tres columnas
+                        cell.style.backgroundColor = colorsForColumns[index % colorsForColumns.length];
+                    } else {
+                        cell.style.backgroundColor = rowColor;
+                    }
+                });
+            });
+        }
+
+        function applyFilters() {
+            const maxResults = document.getElementById('max_results').value;
+            const moneyFilter = document.getElementById('money_filter').value;
+            generateUserTable(maxResults, moneyFilter);
+        }
+
+        window.onload = function () {
+            applyFilters(); // Llamar a la función para cargar los datos al cargar la página
+        };
+
+    </script>
+</head>
+
+<body>
+    <div class="background-container"></div>
+    <h2>Consultar<span style="opacity: 0;">_</span>Datos</h2>
+    <div class="main-content">
+        <form id="filter-form" class="filtros">
+            <div class="numero_filas">
+                <label for="max_results">Número de filas:</label>
+                <select name="max_results" id="max_results">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="todos" selected>Todos</option>
+                </select>
+            </div>
+            <div class="min_dinero">
+                <label for="money_filter">Dinero mayor a:</label>
+                <input type="number" id="money_filter" name="money_filter" min="0" value="0">
+            </div>
+            <button class="btn_filtros btn" type="button" onclick="applyFilters()">Filtrar</button>
+        </form>
+        <div id="results" class="tabla">
+            <!-- La tabla de resultados se carga aquí -->
+        </div>
+    </div>
+</body>
+
+</html>

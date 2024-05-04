@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.cdnfonts.com/css/joystix" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/joystix" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <title>Banco</title>
+    <link rel="stylesheet" href="../assets/style_banco.css">
+    <style>
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #c0d9e9;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+
+        .popup h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .popup p {
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .popup button {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 20px;
+            background-color: #0f4c75;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<header>
+    <img src="../assets/img/C_Banco.png" alt="Left Image" class="header-left">
+    <h1>¡Bienvenido al Sistema Digital del Banco Agrario de México!</h1>
+    <div class="header-right">
+        <div class="user-info">
+            {{usuario}}
+            <i class="fas fa-user"></i>
+        </div>
+    </div>
+</header>
+
+<body>
+    <div class="container-1">
+        <img src="../assets/img/granjero.png" alt="Imagen Izquierda">
+        <div class="content">
+            <p style="font-size: 13px;">SOLICITUD DE CRÉDITO</p>
+            <p style="background-color: #9AB9C1; padding: 10px;">FORMULARIO PARA LA VALIDACIÓN DEL PERFIL DE
+                AGRICULTOR</p>
+        </div>
+        <img src="../assets/img/solicitud.png" alt="Imagen Derecha">
+    </div>
+    <div class="container-2">
+        <p>Conteste las siguientes preguntas en base a sus conocimientos agrícolas.</p>
+    </div>
+    <div class="container-3" id="questions-container">
+        <!-- Aquí se agregarán las preguntas generadas dinámicamente -->
+    </div>
+
+    <div class="submit-button" id="submit-button">
+        <button onclick="enviarRespuestas()">Enviar</button>
+    </div>
+
+    <div class="popup" id="popup">
+        <h2>Resultado de la solicitud de crédito</h2>
+        <p id="popup-message"></p>
+
+        <button onclick="continuar()">Continuar</button>
+    </div>
+
+    <script>
+        // Definir bancos de preguntas
+        const preguntasGenerales = [
+            {
+                id_pregunta: 1,
+                pregunta: "¿Cuál de los siguientes no es considerado un agroinsumo?",
+                respuestas: ["Fertilizantes", "Maquinaria agrícola", "Productos financieros", "Pesticidas"],
+                respuestaCorrecta: 2
+            },
+            {
+                id_pregunta: 2,
+                pregunta: "¿Cuánto tiempo aproximadamente puede durar el ciclo productivo de un cultivo de maíz en México?",
+                respuestas: ["3-4 meses", "5-7 meses", "8-10 meses", "Más de un año"],
+                respuestaCorrecta: 1
+            },
+            {
+                id_pregunta: 3,
+                pregunta: "¿Qué afirmación es verdadera sobre los insumos orgánicos?",
+                respuestas: ["Son exclusivamente químicos sintéticos para mejorar el rendimiento.", "Son derivados únicamente de componentes animales.", "Incluyen componentes naturales con un límite en químicos sintéticos.", "Son ilegales en la mayoría de los países."],
+                respuestaCorrecta: 2
+            },
+            {
+                id_pregunta: 4,
+                pregunta: "¿Cuál de estas no es una práctica regenerativa?",
+                respuestas: ["Rotación de cultivos", "Uso excesivo de pesticidas químicos", "Labranza de conservación", "Agricultura bajo sombra"],
+                respuestaCorrecta: 1
+            },
+            {
+                id_pregunta: 5,
+                pregunta: "¿Qué tipo de riego depende completamente de la lluvia?",
+                respuestas: ["Goteo", "Temporal", "Aspersores", "Drones"],
+                respuestaCorrecta: 1
+            },
+            {
+                id_pregunta: 6,
+                pregunta: "¿Para qué sirve principalmente un seguro agrícola?",
+                respuestas: ["Para garantizar el préstamo a los bancos", "Para cubrir posibles pérdidas en la producción agrícola", "Para financiar la compra de maquinaria nueva", "Para pagar a los trabajadores"],
+                respuestaCorrecta: 1
+            },
+            {
+                id_pregunta: 7,
+                pregunta: "¿Qué caracteriza principalmente a un crédito de avío?",
+                respuestas: ["Bajas tasas de interés y largo plazo de pago", "Financiamiento enfocado a operaciones agrícolas a corto plazo", "Crédito sin intereses", "Financiamiento únicamente para la compra de maquinaria agrícola"],
+                respuestaCorrecta: 1
+            },
+            {
+                id_pregunta: 8,
+                pregunta: "¿Qué importancia tiene la trazabilidad en la cadena de suministro agrícola?",
+                respuestas: ["Identificar fuentes de insumos no orgánicos exclusivamente.", "Rastrear el origen y recorrido de los insumos desde su extracción hasta el destino final.", "Establecer un precio fijo para todos los productos agrícolas.", "Limitar la producción agrícola a cultivos genéticamente modificados."],
+                respuestaCorrecta: 1
+            },
+            {
+                id_pregunta: 9,
+                pregunta: "¿Qué es una parcela en el contexto agrícola?",
+                respuestas: ["Una herramienta para medir la fertilidad del suelo.", "Un tipo de seguro agrícola.", "Superficie de tierra donde se siembra, crece y cosecha el cultivo.", "Un documento legal que certifica la propiedad de maquinaria agrícola."],
+                respuestaCorrecta: 2
+            },
+            {
+                id_pregunta: 10,
+                pregunta: "¿Cómo se mide el rendimiento de un cultivo?",
+                respuestas: ["En metros cuadrados por hectárea.", "En toneladas por hectárea.", "En litros de agua usados por ciclo de cultivo.", "En número de semillas germinadas por metro cuadrado."],
+                respuestaCorrecta: 1
+            },
+            {
+                id_pregunta: 11,
+                pregunta: "¿Qué no contribuye a la salud del suelo?",
+                respuestas: ["Rotación de cultivos", "Uso excesivo de agroquímicos", "Labranza de conservación", "Incorporación de materia orgánica al suelo"],
+                respuestaCorrecta: 1
+            },
+            {
+                id_pregunta: 12,
+                pregunta: "¿Qué factor no está directamente relacionado con la seguridad alimentaria?",
+                respuestas: ["La moda y tendencias de consumo.", "Acceso a alimentos inocuos y nutritivos.", "Suficiencia de la producción alimentaria.", "Preferencias alimentarias de la población."],
+                respuestaCorrecta: 0
+            },
+            {
+                id_pregunta: 13,
+                pregunta: "¿Qué significa inclusión financiera en el sector agrícola?",
+                respuestas: ["Acceso exclusivo a financiamiento para grandes corporaciones agrícolas.", "Prohibición del financiamiento informal en el agro.", "Acceso a productos y servicios financieros asequibles y apropiados para todos los agricultores.", "Aumento de los precios de los agroinsumos para mejorar la calidad del producto."],
+                respuestaCorrecta: 2
+            },
+            {
+                id_pregunta: 14,
+                pregunta: "¿Cuál de las siguientes no es una función de la maquinaria agrícola?",
+                respuestas: ["Preparación de la tierra.", "Riego y fertilización.", "Cosecha y clasificación de productos.", "Financiamiento de cultivos."],
+                respuestaCorrecta: 3
+            },
+            {
+                id_pregunta: 15,
+                pregunta: "¿Cuál es una característica del financiamiento tradicional?",
+                respuestas: ["Tasas de interés variables basadas en la fase lunar.", "Renovación automática sin revisión de términos.", "Acceso limitado con requisitos estrictos.", "Aprobación instantánea sin necesidad de documentación."],
+                respuestaCorrecta: 2
+            },
+            {
+                id_pregunta: 16,
+                pregunta: "¿Qué caracteriza a los agroinsumos sostenibles?",
+                respuestas: ["Su alta toxicidad para mejorar el rendimiento a corto plazo.", "Su capacidad para ser completamente reemplazados por insumos sintéticos.", "Su origen de componentes naturales y menor impacto ambiental.", "Su uso exclusivo en agricultura vertical."],
+                respuestaCorrecta: 2
+            },
+            {
+                id_pregunta: 17,
+                pregunta: "¿Cuál de las siguientes es una práctica efectiva para conservar el agua en la agricultura?",
+                respuestas: ["Riego por inundación en todas las parcelas.", "Uso de sistemas de riego por goteo.", "Incremento de la frecuencia de riego.", "Eliminación de la vegetación circundante para reducir la competencia por agua."],
+                respuestaCorrecta: 1
+            },
+            {
+                id_pregunta: 18,
+                pregunta: "¿Cuál es el objetivo principal de las políticas de inclusión financiera en el sector agrícola?",
+                respuestas: ["Reducir el número de productos financieros disponibles.", "Aumentar las tasas de interés para los préstamos agrícolas.", "Brindar acceso a servicios financieros asequibles a más agricultores.", "Limitar el acceso al crédito a grandes empresas agrícolas."],
+                respuestaCorrecta: 2
+            },
+            {
+                id_pregunta: 19,
+                pregunta: "¿Cuál es uno de los principales desafíos para implementar la agricultura sostenible?",
+                respuestas: ["La disponibilidad excesiva de insumos orgánicos.", "El bajo costo de los agroquímicos.", "El acceso limitado a financiamiento y tecnologías sostenibles.", "La preferencia universal de los consumidores por productos no orgánicos."],
+                respuestaCorrecta: 2
+            },
+            {
+                id_pregunta: 20,
+                pregunta: "¿Qué no cubre típicamente un seguro agrícola?",
+                respuestas: ["Pérdida de cultivos debido a desastres naturales.", "Robo de maquinaria agrícola.", "Daños causados por mal manejo de insumos.", "Incapacidad del agricultor para trabajar debido a enfermedad."],
+                respuestaCorrecta: 3
+            },
+            {
+                id_pregunta: 21,
+                pregunta: "¿Qué indicador no señala un suelo saludable?",
+                respuestas: ["Alta biodiversidad microbiana.", "Capacidad para retener agua", "Erosión severa.", "Alto contenido orgánico."],
+                respuestaCorrecta: 2
+            },
+            {
+                id_pregunta: 22,
+                pregunta: "Cuál de las siguientes no es considerada una innovación en el sector agrícola?",
+                respuestas: [
+                    "Uso de drones para el monitoreo de cultivos.",
+                    "Implementación de prácticas de agricultura regenerativa.",
+                    "Expansión de la superficie agrícola mediante deforestación.",
+                    "Desarrollo de variedades de cultivos resistentes a sequías."
+                ],
+                respuestaCorrecta: 2
+            }
+        ];
+
+
+
+        const preguntasTecnicas = [
+            {
+                id_pregunta: 23,
+                pregunta: "¿Cuál es la relación ideal de C:N (Carbono:Nitrógeno) en suelo agrícola para promover la descomposición de la materia orgánica sin secuestrar nitrógeno de las plantas?",
+                respuestas: ["10:1", "20:1", "30:1", "40:1"],
+                respuestaCorrecta: 2
+            },
+            {
+                id_pregunta: 24,
+                pregunta: "¿Qué práctica NO es parte del Manejo Integrado de Plagas (MIP)?",
+                respuestas: ["Uso de pesticidas como única solución.", "Control biológico mediante enemigos naturales.", "Implementación de prácticas culturales adecuadas.", "Monitoreo y uso de umbrales económicos."],
+                respuestaCorrecta: 0
+            },
+            {
+                id_pregunta: 25,
+                pregunta: "¿Cuál es el principal efecto del estrés hídrico en la fase de floración de un cultivo?",
+                respuestas: ["Incremento en la producción de biomasa.", "Aumento en la tasa de fotosíntesis.", "Reducción de la fertilidad de los gametos.", "Mejora en la absorción de nutrientes."],
+                respuestaCorrecta: 2
+            },
+            {
+                id_pregunta: 26,
+                pregunta: "¿Qué técnica de agricultura de precisión permite la aplicación variable de insumos en diferentes zonas del campo?",
+                respuestas: ["GIS (Sistemas de Información Geográfica).", "GPS (Sistema de Posicionamiento Global).", "VRT (Tasa Variable de Tecnología).", "UAS (Sistemas Aéreos No Tripulados)."],
+                respuestaCorrecta: 2
+            },
+            {
+                id_pregunta: 27,
+                pregunta: "¿Qué método de mejora genética permite la creación de plantas que expresan genes de interés sin modificar el genoma?",
+                respuestas: ["Hibridación convencional.", "Mutagénesis inducida.", "Transformación genética.", "Edición de genes (CRISPR-Cas9)."],
+                respuestaCorrecta: 3
+            },
+            {
+                id_pregunta: 28,
+                pregunta: "¿Cuál es la eficiencia de aplicación del agua en un sistema de riego por goteo bajo condiciones óptimas?",
+                respuestas: ["50-70%", "70-85%", "85-95%", "95-100%"],
+                respuestaCorrecta: 2
+            },
+            {
+                id_pregunta: 29,
+                pregunta: "¿Cuál es la definición de elasticidad-precio de la demanda en el contexto de los productos agrícolas?",
+                respuestas: ["Cambio en la cantidad demandada con respecto al cambio en los ingresos de los consumidores.", "Cambio en la cantidad demandada con respecto al cambio en el precio de los productos.", "Variabilidad del precio con respecto a cambios en las condiciones climáticas.", "Relación entre los costos de producción y los precios de venta."],
+                respuestaCorrecta: 1
+            },
+            {
+                id_pregunta: 30,
+                pregunta: "¿Qué agente causal es responsable del tizón tardío en papas y tomates?",
+                respuestas: ["Phytophthora infestans.", "Fusarium oxysporum.", "Alternaria solani.", "Puccinia graminis."],
+                respuestaCorrecta: 0
+            },
+            {
+                id_pregunta: 31,
+                pregunta: "¿Cuál es el pH óptimo para la mayoría de los cultivos agrícolas?",
+                respuestas: ["4.0 - 5.0", "5.5 - 6.5", "6.5 - 7.5", "7.5 - 8.5"],
+                respuestaCorrecta: 2
+            },
+            {
+                id_pregunta: 32,
+                pregunta: "¿Cuál es un indicador clave de un suelo saludable bajo manejo sostenible?",
+                respuestas: ["Alta capacidad de infiltración de agua.", "Alta densidad aparente del suelo.", "Baja diversidad biológica en el suelo.", "Bajo contenido de materia orgánica."],
+                respuestaCorrecta: 0
+            }
+        ];
+
+
+        // Función para obtener preguntas al azar
+        function obtenerPreguntasAlAzar(preguntas, cantidad) {
+            const preguntasAlAzar = [];
+            const copiaPreguntas = preguntas.slice(); // Copia del array original
+
+            for (let i = 0; i < cantidad; i++) {
+                const indiceAleatorio = Math.floor(Math.random() * copiaPreguntas.length);
+                preguntasAlAzar.push(copiaPreguntas.splice(indiceAleatorio, 1)[0]);
+            }
+
+            return preguntasAlAzar;
+        }
+
+        // Función para agregar preguntas al contenedor
+        function agregarPreguntasAlContenedor(preguntas) {
+            const contenedor = document.getElementById('questions-container');
+            contenedor.innerHTML = ''; // Limpiar contenedor
+
+            preguntas.forEach((pregunta, index) => {
+                const preguntaHTML = `
+                    <div class="form-group">
+                        <div class="card">
+                            <div class="question" id="pregunta-${pregunta.id_pregunta}"> ${index + 1}. ${pregunta.pregunta}</div>
+                            <div class="answer-options">
+                                ${pregunta.respuestas.map((respuesta, idx) => `
+                                    <label class="answer-option">
+                                        <input type="radio" name="answer${pregunta.id_pregunta}" data-pregunta="${pregunta.id_pregunta}" value="${idx}" required> ${respuesta}
+                                    </label>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                contenedor.innerHTML += preguntaHTML;
+            });
+        }
+
+        function enviarRespuestas() {
+            const respuestas = document.querySelectorAll('input[type="radio"]:checked');
+            let respuestasCorrectas = 0;
+            let montoAprobado = 0; // Inicializamos el monto aprobado
+
+            respuestas.forEach(respuesta => {
+                const preguntaIndex = parseInt(respuesta.dataset.pregunta);
+                const pregunta = preguntasGenerales.concat(preguntasTecnicas).find(pregunta => pregunta.id_pregunta === preguntaIndex);
+
+                // Obtener el valor de la respuesta seleccionada y convertirlo a entero
+                const respuestaSeleccionada = parseInt(respuesta.value);
+
+                // Obtener el índice de la respuesta correcta dentro del array de respuestas
+                const indiceRespuestaCorrecta = pregunta.respuestaCorrecta;
+
+                // Verificar si el valor de la respuesta seleccionada coincide con el índice de la respuesta correcta
+                if (respuestaSeleccionada === indiceRespuestaCorrecta) {
+                    respuestasCorrectas++;
+                }
+            });
+
+            // Utilizamos la estructura switch para asignar el monto aprobado
+            switch (respuestasCorrectas) {
+                case 6:
+                    montoAprobado = 800000;
+                    break;
+                case 7:
+                    montoAprobado = 900000;
+                    break;
+                case 8:
+                    montoAprobado = 1000000;
+                    break;
+                case 9:
+                    montoAprobado = 1100000;
+                    break;
+                case 10:
+                    montoAprobado = 1200000;
+                    break;
+                default:
+                    // Mostrar el resultado en el cuadro emergente
+                    const popup = document.getElementById('popup');
+                    const popupMessage = document.getElementById('popup-message');
+                    const continuarButton = document.querySelector('.popup button');
+
+                    popupMessage.innerText = `Solicitud de Crédito rechazada. Puntaje: ${respuestasCorrectas}`;
+
+                    // Agregar el botón "Ok" solo si no está presente en el documento
+                    if (!document.getElementById('boton-ok')) {
+                        const botonOk = document.createElement('button');
+                        botonOk.id = 'boton-ok';
+                        botonOk.innerText = 'Ok';
+                        botonOk.addEventListener('click', () => {
+                            window.location.href = '/financiamiento-2';
+                        });
+                        popup.appendChild(botonOk);
+                    }
+
+                    continuarButton.style.display = 'none';
+
+                    popup.style.display = 'block';
+                    return;
+            }
+
+            // Mostrar el resultado en el cuadro emergente
+            const popup = document.getElementById('popup');
+            const popupMessage = document.getElementById('popup-message');
+            const continuarButton = document.querySelector('.popup button');
+
+            // borrar el ok button si existe
+            const botonOk = document.getElementById('boton-ok');
+            if (botonOk) {
+                botonOk.remove();
+            }
+            popupMessage.innerText = `Solicitud de crédito aprobada. Monto: $${montoAprobado}. Puntaje: ${respuestasCorrectas}`;
+            continuarButton.style.display = 'block';
+
+            popup.style.display = 'block';
+        }
+
+
+        function continuar() {
+            const popupMessage = document.getElementById('popup-message').innerText;
+            const montoAprobado = popupMessage.split('$')[1].split('.')[0];
+
+            fetch('bank-credit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ montoAprobado: montoAprobado }),
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Manejar la respuesta del servidor aquí
+                    const userId = data.userId; // Asegúrate de que el servidor envíe userId en la respuesta
+                    console.log("userId:", userId);
+                    // llamada a la ruta de juego con id
+                    window.location.href = `/juego/${userId}`;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+
+        // Obtener preguntas al azar y agregarlas al contenedor
+        const preguntasGeneralesAlAzar = obtenerPreguntasAlAzar(preguntasGenerales, 7);
+        const preguntasTecnicasAlAzar = obtenerPreguntasAlAzar(preguntasTecnicas, 3);
+
+        const todasLasPreguntas = [...preguntasGeneralesAlAzar, ...preguntasTecnicasAlAzar];
+        agregarPreguntasAlContenedor(todasLasPreguntas);
+    </script>
+</body>
+
+</html>

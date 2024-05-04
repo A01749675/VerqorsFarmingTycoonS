@@ -1,0 +1,267 @@
+        body {
+            font-family: 'Press Start 2P', sans-serif;
+            margin: 0;
+            padding: 10px;
+            background-color: white;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #6C879A;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 0;
+        }
+
+        .header-left {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 85px;
+        }
+
+        .header-right {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            color: white;
+        }
+
+        h1 {
+            font-family: 'Press Start 2P', sans-serif;
+            font-size: 24px;
+            margin-left: 120px;
+            margin-right: 240px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-right: 20px;
+        }
+
+        .user-info i {
+            margin-left: 30px;
+            font-size: 50px;
+        }
+
+        .container-1 {
+            background-color: white;
+            height: 150px;
+            margin-top: 140px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .container-1 img {
+            max-width: 30%;
+            height: auto;
+            margin-left: 40px;
+            margin-right: 40px;
+        }
+
+        .container-1 .content {
+            text-align: center;
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container-1 .content p {
+            margin: 5px 0;
+        }
+
+        .container-1 img {
+            max-width: 10%;
+            height: auto;
+        }
+
+        .container-2 {
+            background-color: #9AB9C1;
+            width: 100%;
+            height: 50px;
+            margin-top: 10px;
+            color: black;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container-2 p {
+            font-size: 14px;
+        }
+
+        .container-3 {
+            background-color: #F7F8F9;
+            width: 100%;
+            margin-top: 0;
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .card {
+            padding: 20px;
+            text-align: center;
+            width: 90%;
+            margin-bottom: 20px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        form {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .form-group {
+            width: 45%;
+            padding: 10px;
+        }
+
+        .submit-button {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .submit-button button {
+            font-size: 0.7em;
+            font-family: 'Press Start 2P', cursive;
+            width: 150px;
+            height: 40px;
+            background: #6C879A;
+            border: 0px;
+            position: relative;
+            box-shadow: inset -4px 2px 1px 1px #46494B,
+                inset -4px -2px 1px 1px #A6C9E1,
+                inset 4px 0px 1px 1px #A6C9E1;
+            outline: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            padding: 8px;
+            align-items: center;
+            text-align: center;
+        }
+
+        .submit-button button:hover {
+            background-color: #BDD4E4;
+        }
+
+        .submit-button button:active {
+            top: 5px;
+            box-shadow: -4px 2px 1px 1px grey,
+                -4px -2px 1px 1px #BBAF89,
+                4px 0px 1px 1px lightgray;
+        }
+
+        .submit-button button::after,
+        .submit-button button::before {
+            content: '';
+            background: black;
+            position: absolute;
+            z-index: -1;
+        }
+
+        .submit-button button::after {
+            left: -2.5%;
+            top: 0;
+            width: 105%;
+            height: 100%;
+        }
+
+        .submit-button button::before {
+            left: 0;
+            top: -5%;
+            width: 100%;
+            height: 113%;
+        }
+
+        .answer-options label {
+            display: block;
+            margin: 7%;
+        }
+
+        .question {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            line-height: 1.5; 
+
+        }
+
+        @media only screen and (max-width: 700px) {
+            .container-1 img {
+                display: none;
+            }
+
+            .container-1 p {
+                font-size: 10px;
+                width: 90%;
+                margin: 0;
+                padding: 0;
+            }
+
+            .header-left {
+                display: none;
+            }
+
+            .header-right {
+                display: none;
+            }
+
+            .container-1 {
+                display: flex;
+                margin-top: 60px;
+                padding: 0;
+            }
+
+            header {
+                margin: 0;
+                padding: 0;
+            }
+
+            h1 {
+                margin-left: 0;
+                margin-right: 0;
+                font-size: 15px;
+            }
+
+            .container-2 p {
+                font-size: 10px;
+            }
+
+            .card {
+                width: calc(100% - 20px);
+            }
+
+            .container-3 {
+                padding: 0;
+                margin-top: 3px;
+            }
+
+            .form-group {
+                width: 100%;
+            }
+        }

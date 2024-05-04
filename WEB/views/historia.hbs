@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.cdnfonts.com/css/arcade-classic" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/joystix" rel="stylesheet">
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <title>Historia</title>
+    <style>
+        /* Estilos existentes */
+        @import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-align: center;
+            font-family: 'ArcadeClassic', sans-serif;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('../img9.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.6;
+            /* Opacidad para la imagen de fondo */
+            z-index: -1;
+            /* Asegurar que esté detrás de todo */
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .img {
+            position: relative;
+            width: 300px;
+            height: auto;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .img:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            color: black;
+            margin-top: 30px;
+        }
+
+        .text {
+            font-size: 16px;
+            font-weight: bold;
+            font-family: 'Press Start 2P', cursive;
+            max-width: 350px;
+            word-wrap: break-word;
+            line-height: 1.5;
+        }
+
+        .button {
+            font-size: 0.7em;
+            font-family: 'Press Start 2P', cursive;
+            width: 150px;
+            height: 40px;
+            background: #FE9D3D;
+            border: 0px;
+            position: relative;
+            box-shadow: inset -4px 2px 1px 1px #B66414,
+                inset -4px -2px 1px 1px #D58535,
+                inset 4px 0px 1px 1px #D58535;
+            outline: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            margin-top: 20px;
+            padding: 8px;
+            align-items: center;
+            text-align: center;
+        }
+
+        .button:hover {
+            background-color: #FC830A;
+        }
+
+        .button:active {
+            top: 5px;
+            box-shadow: -4px 2px 1px 1px grey,
+                -4px -2px 1px 1px #BBAF89,
+                4px 0px 1px 1px lightgray;
+        }
+
+        .button::after,
+        .button::before {
+            content: '';
+            background: black;
+            position: absolute;
+            z-index: -1;
+        }
+
+        .button::after {
+            left: -2.5%;
+            top: 0;
+            width: 105%;
+            height: 100%;
+        }
+
+        .button::before {
+            left: 0;
+            top: -5%;
+            width: 100%;
+            height: 113%;
+        }
+        @media (max-width: 768px) {
+            .text {
+                font-size: 12px;
+            }
+
+            .button {
+                font-size: 0.6em;
+                width: 120px;
+                height: 30px;
+            }
+
+            .img {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <div class="overlay" id="overlay" style="display: none;">
+            <p class="text" id="text" style="text-align: justify;">
+            </p>
+            <button class="button" id="siguiente">Siguiente</button>
+
+            <button class="button" id="continuar" style="display: none;" type="button"
+                    data-value="1">Continuar</button>
+        </div>
+        <div class="background-image"></div>
+        <!-- Imagen 1 en "../assets/img/sobre_cerrado.png" -->
+        <!-- Imagen 2 en "../assets/img/sobre_abierto.png" -->
+        <!-- Imagen 1 en "../assets/img/fondo.png" -->
+    </div>
+
+    <script>
+        window.onload = function () {
+            var img1 = document.createElement("img");
+            img1.src = "../assets/img/sobre_cerrado.png";
+            img1.className = "img";
+            var clicHecho = false;
+            var textos = [
+                "Querid@ <span id='jugador'>{{usuario}}</span>,<br><br> Como sabes, la granja López ha sido el corazón de nuestra <br> familia durante generaciones. Sin embargo, en los últimos años hemos enfrentado tiempos difíciles. Las deudas se acumulan, los cultivos no rinden como solían hacerlo y el futuro de nuestra granja está en peligro.",
+                "Sé que has estado ocupado con tu vida en la ciudad, pero necesito de tu ayuda desesperadamente, así que por favor regresa a la granja y échame una mano. <br> Espero tu regreso con ansias. <br> <br> Con cariño y esperanza, <br> Abuelo López."
+            ];
+
+            var indiceTexto = 0; 
+            img1.onclick = function () {
+                if (!clicHecho) {
+                    this.src = "../assets/img/fondo.png"; 
+                    this.style.transform = "none";
+                    if (window.innerWidth < 768) {
+                        this.style.width = "300px";
+                    }
+                    else { this.style.width = "450px"; }
+                    clicHecho = true;
+                    document.getElementById("overlay").style.display = "block"; 
+                    document.getElementById("text").innerHTML = textos[indiceTexto]; 
+                    document.getElementById("siguiente").style.display = "inline-block"; 
+                }
+            };
+            img1.onmouseover = function () {
+                if (!clicHecho) {
+                    this.src = "../assets/img/sobre_abierto.png"; /* Cambiar la imagen al pasar el ratón */
+                    this.style.width = "300px";
+                }
+            };
+            img1.onmouseleave = function () {
+                if (!clicHecho) {
+                    this.src = "../assets/img/sobre_cerrado.png"; /* Restaurar la imagen al dejar el ratón */
+                    this.style.width = "300px";
+                }
+            };
+            document.querySelector(".container").appendChild(img1);
+            
+            // Función para cambiar al siguiente texto cuando se hace clic en el botón "Siguiente"
+            document.getElementById("siguiente").onclick = function () {
+                indiceTexto++; // Incrementar el índice del texto
+                if (indiceTexto >= textos.length - 1) {
+                    document.getElementById("continuar").style.display = "inline-block"; // Mostrar botón continuar
+                    document.getElementById("siguiente").style.display = "none"; // Ocultar botón siguiente
+                }
+                document.getElementById("text").innerHTML = textos[indiceTexto]; // Mostrar el siguiente texto
+            };
+
+            document.getElementById("continuar").onclick = function () {
+                var valorContinuar = this.getAttribute('data-value');
+                var data = { valor: valorContinuar };
+                window.location.href = '/tutorial';
+            };
+
+        };
+    </script>
+
+</body>
+
+</html>
